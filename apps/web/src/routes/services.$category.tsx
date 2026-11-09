@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from '@tanstack/react-router'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
-import { canonicalServicePath, servicesForCategory } from '@/content/services'
+import { servicesForCategory } from '@/content/services'
 
 const categories = {
   agriculture: [
@@ -61,33 +61,27 @@ function CategoryPage() {
   const services = servicesForCategory(category)
   return (
     <section className="mx-auto max-w-5xl px-4 py-16 lg:px-8">
-      <Link
-        to="/services"
-        className="inline-flex items-center gap-2 font-semibold text-civic-700"
-      >
+      <Link to="/services" className="inline-flex items-center gap-2 font-semibold text-civic-700">
         <ArrowLeft className="size-4" />
         All services
       </Link>
       <h1 className="mt-6 text-4xl font-bold text-slate-950">{title}</h1>
-      <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-600">
-        {description}
-      </p>
+      <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-600">{description}</p>
       <div className="mt-10 grid gap-4 sm:grid-cols-2">
         {services.map((service) => (
-          <a
+          <Link
             key={service.id}
-            href={canonicalServicePath(service.url)}
+            to="/service-details/$slug"
+            params={{ slug: service.id }}
             className="group rounded-xl border border-slate-200 bg-white p-5 shadow-sm hover:border-civic-300"
           >
             <h2 className="font-bold text-slate-950">{service.title}</h2>
-            <p className="mt-2 text-sm leading-6 text-slate-600">
-              {service.description}
-            </p>
+            <p className="mt-2 text-sm leading-6 text-slate-600">{service.description}</p>
             <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-civic-700">
               View service
               <ArrowRight className="size-4 transition group-hover:translate-x-1" />
             </span>
-          </a>
+          </Link>
         ))}
       </div>
     </section>

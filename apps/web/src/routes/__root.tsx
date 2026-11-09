@@ -1,9 +1,4 @@
-import {
-  createRootRoute,
-  HeadContent,
-  Outlet,
-  Scripts,
-} from '@tanstack/react-router'
+import { createRootRoute, HeadContent, Outlet, Scripts } from '@tanstack/react-router'
 import { SiteShell } from '@/components/layout/site-shell'
 import { site } from '@/content/site'
 import appCss from '../styles.css?url'

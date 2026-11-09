@@ -20,12 +20,10 @@ function ServicesPage() {
   return (
     <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8">
       <p className="font-semibold text-civic-700">Service directory</p>
-      <h1 className="mt-2 text-4xl font-bold text-slate-950">
-        How can the province help?
-      </h1>
+      <h1 className="mt-2 text-4xl font-bold text-slate-950">How can the province help?</h1>
       <p className="mt-4 max-w-3xl text-lg text-slate-600">
-        Choose a category to find the responsible provincial office,
-        requirements, and official sources.
+        Choose a category to find the responsible provincial office, requirements, and official
+        sources.
       </p>
       <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {categories.map(([label, category]) => (
