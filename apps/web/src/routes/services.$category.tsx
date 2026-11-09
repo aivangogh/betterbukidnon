@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from '@tanstack/react-router'
-import { ArrowLeft, ArrowRight } from 'lucide-react'
-import { servicesForCategory } from '@/content/services'
+import { AlertTriangle, ArrowLeft, ArrowRight, Clock3, MapPin, PhoneCall } from 'lucide-react'
+import { contactDirectory } from '@/content/contact'
+import { serviceBySlug, servicesForCategory } from '@/content/services'
 
 const categories = {
   agriculture: [
@@ -67,6 +68,7 @@ function CategoryPage() {
       </Link>
       <h1 className="mt-6 text-4xl font-bold text-slate-950">{title}</h1>
       <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-600">{description}</p>
+      {category === 'health' ? <HealthOverview /> : null}
       <div className="mt-10 grid gap-4 sm:grid-cols-2">
         {services.map((service) => (
           <Link
@@ -84,6 +86,70 @@ function CategoryPage() {
           </Link>
         ))}
       </div>
+    </section>
+  )
+}
+
+function HealthOverview() {
+  const healthService = serviceBySlug('provincial-health-office')
+  return (
+    <section className="mt-10 rounded-2xl border border-civic-100 bg-civic-50 p-6">
+      <p className="text-sm font-semibold uppercase tracking-wide text-civic-700">
+        Provincial Health Office
+      </p>
+      <h2 className="mt-2 text-2xl font-bold text-slate-950">Health support in Bukidnon</h2>
+      <p className="mt-3 max-w-3xl leading-7 text-slate-700">
+        The Provincial Health Office coordinates public-health programs and provincial health
+        services. For life-threatening emergencies anywhere in Bukidnon, call 911.
+      </p>
+      <div className="mt-6 grid gap-3 text-sm sm:grid-cols-2">
+        <a
+          href={
+            contactDirectory.hotlines.find(
+              (hotline) => hotline.label === 'Provincial Health Office',
+            )?.href
+          }
+          className="flex items-start gap-3 rounded-xl bg-white p-4"
+        >
+          <PhoneCall className="mt-0.5 size-5 shrink-0 text-civic-700" aria-hidden="true" />
+          <span>
+            <strong className="block text-slate-950">Phone</strong>
+            <span className="text-slate-600">(088) 813-5631</span>
+          </span>
+        </a>
+        <div className="flex items-start gap-3 rounded-xl bg-white p-4">
+          <MapPin className="mt-0.5 size-5 shrink-0 text-civic-700" aria-hidden="true" />
+          <span>
+            <strong className="block text-slate-950">Address</strong>
+            <span className="text-slate-600">{contactDirectory.address}</span>
+          </span>
+        </div>
+        <div className="flex items-start gap-3 rounded-xl bg-white p-4">
+          <Clock3 className="mt-0.5 size-5 shrink-0 text-civic-700" aria-hidden="true" />
+          <span>
+            <strong className="block text-slate-950">Office hours</strong>
+            <span className="text-slate-600">{contactDirectory.officeHours}</span>
+          </span>
+        </div>
+        <div className="flex items-start gap-3 rounded-xl bg-white p-4">
+          <AlertTriangle className="mt-0.5 size-5 shrink-0 text-civic-700" aria-hidden="true" />
+          <span>
+            <strong className="block text-slate-950">Emergency</strong>
+            <a className="text-civic-700" href="tel:911">
+              911
+            </a>
+          </span>
+        </div>
+      </div>
+      {healthService ? (
+        <Link
+          to="/service-details/$slug"
+          params={{ slug: healthService.id }}
+          className="mt-6 inline-flex items-center gap-2 font-semibold text-civic-700"
+        >
+          View Provincial Health Office service <ArrowRight className="size-4" />
+        </Link>
+      ) : null}
     </section>
   )
 }
