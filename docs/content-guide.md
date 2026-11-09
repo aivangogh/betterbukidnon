@@ -84,8 +84,8 @@ Bukidnon data is available. To fill one:
 
 1. Get the data from the official source (Sangguniang Panlalawigan records, BLGF, DBM,
    DPWH, DTI CMCI, the Provincial Government's Facebook page).
-2. Look at the script that renders it (see [architecture.md](architecture.md#javascript)) to
-   see the fields it expects. Keep the existing top-level shape of the file.
+2. Look at its schema in `apps/web/src/content/schemas.ts` (see
+   [architecture.md](architecture.md#content-and-validation)) to see the fields it expects. Keep the existing top-level shape of the file.
 3. Add a source and "as of" date in the data where the format allows, and mention the source
    on the page.
 4. Load the page locally and check the browser console for errors.
