@@ -71,9 +71,12 @@
     <link rel="stylesheet" href="../assets/css/transparency-v2.css" />
   </head>
   <body>
-    <a href="#main-content" class="skip-link" data-i18n="budget-skip-to-main-content"
+    <!-- chrome:skip-link -->
+    <a href="#main-content" class="skip-link" data-i18n="nav-skip-to-main-content"
       >Skip to main content</a
     >
+    <!-- /chrome:skip-link -->
+    <!-- chrome:hotline -->
     <div class="hotline-bar">
       <div class="container">
         <div class="hotline-inner">
@@ -106,6 +109,8 @@
         </div>
       </div>
     </div>
+    <!-- /chrome:hotline -->
+    <!-- chrome:header -->
     <header class="site-header">
       <div class="container header-inner">
         <div class="logo-container">
@@ -117,100 +122,157 @@
             />
           </a>
         </div>
+
         <nav class="main-nav" aria-label="Main Navigation">
           <ul>
-            <li><a href="../" data-i18n="budget-home">Home</a></li>
+            <li><a href="../" data-i18n="nav-home">Home</a></li>
             <li class="has-dropdown">
               <a
                 href="../services/"
-                data-i18n="budget-services"
+                data-i18n="nav-services"
                 aria-haspopup="true"
                 aria-expanded="false"
                 >Services</a
               >
               <ul class="dropdown-menu">
                 <li>
-                  <a href="../services/certificates" data-i18n="budget-certificates"
-                    >Certificates</a
-                  >
+                  <a href="../services/certificates" data-i18n="nav-certificates">Certificates</a>
                 </li>
-                <li><a href="../services/business" data-i18n="budget-business">Business</a></li>
+                <li><a href="../services/business" data-i18n="nav-business">Business</a></li>
                 <li>
-                  <a href="../services/tax-payments" data-i18n="budget-tax-payments"
-                    >Tax Payments</a
-                  >
+                  <a href="../services/tax-payments" data-i18n="nav-tax-payments">Tax Payments</a>
                 </li>
                 <li>
-                  <a href="../services/social-services" data-i18n="budget-social-services"
+                  <a href="../services/social-services" data-i18n="nav-social-services"
                     >Social Services</a
                   >
                 </li>
-                <li><a href="../services/health" data-i18n="budget-health">Health</a></li>
+                <li><a href="../services/health" data-i18n="nav-health">Health</a></li>
                 <li>
-                  <a href="../services/agriculture" data-i18n="budget-agriculture">Agriculture</a>
+                  <a href="../services/agriculture" data-i18n="nav-agriculture">Agriculture</a>
                 </li>
                 <li>
-                  <a href="../services/infrastructure" data-i18n="budget-infrastructure"
+                  <a href="../services/infrastructure" data-i18n="nav-infrastructure"
                     >Infrastructure</a
                   >
                 </li>
-                <li><a href="../services/education" data-i18n="budget-education">Education</a></li>
+                <li><a href="../services/education" data-i18n="nav-education">Education</a></li>
                 <li>
-                  <a href="../services/public-safety" data-i18n="budget-public-safety"
+                  <a href="../services/public-safety" data-i18n="nav-public-safety"
                     >Public Safety</a
                   >
                 </li>
                 <li>
-                  <a href="../services/environment" data-i18n="budget-environment">Environment</a>
+                  <a href="../services/environment" data-i18n="nav-environment">Environment</a>
                 </li>
               </ul>
             </li>
-            <li><a href="../government/" data-i18n="budget-government">Government</a></li>
-            <li><a href="../statistics/" data-i18n="budget-statistics">Statistics</a></li>
+            <li><a href="../government/" data-i18n="nav-government">Government</a></li>
+            <li><a href="../statistics/" data-i18n="nav-statistics">Statistics</a></li>
             <li class="has-dropdown">
               <a
                 href="../legislative/"
-                data-i18n="budget-legislative"
+                data-i18n="nav-legislative"
                 aria-haspopup="true"
                 aria-expanded="false"
                 >Legislative</a
               >
               <ul class="dropdown-menu">
                 <li>
-                  <a
-                    href="../legislative/ordinance-framework"
-                    data-i18n="budget-ordinance-framework"
+                  <a href="../legislative/ordinance-framework" data-i18n="nav-ordinance-framework"
                     >Ordinance Framework</a
                   >
                 </li>
                 <li>
-                  <a
-                    href="../legislative/resolution-framework"
-                    data-i18n="budget-resolution-framework"
+                  <a href="../legislative/resolution-framework" data-i18n="nav-resolution-framework"
                     >Resolution Framework</a
                   >
                 </li>
               </ul>
             </li>
-            <li><a href="./" class="active" data-i18n="budget-transparency">Transparency</a></li>
-            <li><a href="../contact/" data-i18n="budget-contact">Contact</a></li>
+            <li>
+              <a href="../budget/" class="active" data-i18n="nav-transparency">Transparency</a>
+            </li>
+            <li class="has-dropdown">
+              <a
+                href="../projects/"
+                data-i18n="nav-projects"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >Our Projects</a
+              >
+              <ul class="dropdown-menu">
+                <li>
+                  <a
+                    href="https://budget.betterbukidnon.org"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><span data-i18n="nav-projects-budget">Budget</span>
+                    <span class="sr-only" data-i18n="nav-opens-new-tab"
+                      >(opens in a new tab)</span
+                    ></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://saln.betterbukidnon.org"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><span data-i18n="nav-projects-saln">SALN</span>
+                    <span class="sr-only" data-i18n="nav-opens-new-tab"
+                      >(opens in a new tab)</span
+                    ></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://infra.betterbukidnon.org"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><span data-i18n="nav-projects-infra">Infrastructure</span>
+                    <span class="sr-only" data-i18n="nav-opens-new-tab"
+                      >(opens in a new tab)</span
+                    ></a
+                  >
+                </li>
+                <li><a href="../projects/" data-i18n="nav-projects-all">All Projects</a></li>
+              </ul>
+            </li>
+            <li><a href="../contact/" data-i18n="nav-contact">Contact</a></li>
           </ul>
         </nav>
+
         <div class="header-actions">
           <div class="lang-selector">
-            <button type="button" class="btn btn-secondary btn-sm lang-btn" data-lang="en">
+            <button
+              type="button"
+              class="btn btn-secondary btn-sm lang-btn"
+              data-lang="en"
+              aria-label="Switch to English"
+            >
               EN
             </button>
-            <button type="button" class="btn btn-secondary btn-sm lang-btn" data-lang="fil">
+            <button
+              type="button"
+              class="btn btn-secondary btn-sm lang-btn"
+              data-lang="fil"
+              aria-label="Switch to Filipino"
+            >
               FIL
             </button>
-            <button type="button" class="btn btn-secondary btn-sm lang-btn" data-lang="ceb">
+            <button
+              type="button"
+              class="btn btn-secondary btn-sm lang-btn"
+              data-lang="ceb"
+              aria-label="Switch to Cebuano (Binisaya)"
+            >
               CEB
             </button>
           </div>
         </div>
       </div>
     </header>
+    <!-- /chrome:header -->
 
     <div class="info-bar" role="complementary" aria-label="Real-time information">
       <div class="container">
@@ -811,6 +873,7 @@
         </div>
       </section>
     </main>
+    <!-- chrome:footer -->
     <footer class="site-footer">
       <div class="container">
         <div class="footer-main-new">
@@ -822,14 +885,14 @@
             />
             <p
               class="footer-tagline"
-              data-i18n="budget-empowering-the-people-of-bukidnon-with-transparent"
+              data-i18n="footer-empowering-the-people-of-bukidnon-with-transparent"
             >
               Empowering the people of Bukidnon with transparent access to the services, programs,
               and public funds of LGU Bukidnon.
             </p>
             <div class="footer-social-new">
               <a
-                href="https://github.com/DMNCDLPRT/betterbukidnon"
+                href="https://github.com/Better-Bukidnon/betterbukidnon"
                 class="footer-social-btn"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -845,41 +908,53 @@
             </div>
           </div>
           <div class="footer-column">
-            <h4 data-i18n="budget-quick-links">Quick Links</h4>
+            <h4 data-i18n="footer-quick-links">Quick Links</h4>
             <ul class="footer-links-new">
-              <li><a href="../sitemap/" data-i18n="budget-sitemap">Sitemap</a></li>
+              <li><a href="../sitemap/" data-i18n="footer-sitemap">Sitemap</a></li>
               <li>
                 <a
                   href="https://bukidnon.gov.ph/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  data-i18n="budget-citizens-charter"
+                  data-i18n="footer-citizens-charter"
                   >Citizen's Charter</a
                 >
               </li>
-              <li><a href="../terms/" data-i18n="budget-terms-of-use">Terms of Use</a></li>
-              <li><a href="../privacy/" data-i18n="budget-privacy-policy">Privacy Policy</a></li>
+              <li><a href="../terms/" data-i18n="footer-terms-of-use">Terms of Use</a></li>
+              <li><a href="../privacy/" data-i18n="footer-privacy-policy">Privacy Policy</a></li>
               <li>
-                <a href="../accessibility/" data-i18n="budget-accessibility">Accessibility</a>
+                <a href="../accessibility/" data-i18n="footer-accessibility">Accessibility</a>
               </li>
-              <li><a href="../faq/">FAQ</a></li>
+              <li><a href="../faq/" data-i18n="footer-faq">FAQ</a></li>
             </ul>
           </div>
           <div class="footer-column">
-            <h4 data-i18n="budget-resources">Resources</h4>
+            <h4 data-i18n="footer-resources">Resources</h4>
             <ul class="footer-links-new">
               <li>
-                <a href="https://data.gov.ph" target="_blank" rel="noopener noreferrer"
+                <a
+                  href="https://data.gov.ph"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-i18n="footer-open-data-philippines"
                   >Open Data Philippines</a
                 >
               </li>
               <li>
-                <a href="https://www.foi.gov.ph/" target="_blank" rel="noopener noreferrer"
+                <a
+                  href="https://www.foi.gov.ph/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-i18n="footer-freedom-of-information"
                   >Freedom of Information</a
                 >
               </li>
               <li>
-                <a href="https://bukidnon.gov.ph/" target="_blank" rel="noopener noreferrer"
+                <a
+                  href="https://bukidnon.gov.ph/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-i18n="footer-official-lgu-bukidnon-portal"
                   >Official LGU Bukidnon Portal</a
                 >
               </li>
@@ -888,7 +963,7 @@
                   href="https://bukidnon.gov.ph/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  data-i18n="budget-sangguniang-bayan"
+                  data-i18n="footer-sangguniang-bayan"
                   >Sangguniang Panlalawigan</a
                 >
               </li>
@@ -897,7 +972,7 @@
                   href="https://www.facebook.com/lgubukidnon"
                   target="_blank"
                   rel="noopener noreferrer"
-                  data-i18n="budget-lgu-bukidnon-facebook"
+                  data-i18n="footer-lgu-bukidnon-facebook"
                   >LGU Bukidnon Facebook</a
                 >
               </li>
@@ -906,7 +981,7 @@
                   href="https://blgf.gov.ph/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  data-i18n="budget-blgf-portal"
+                  data-i18n="footer-blgf-portal"
                   >BLGF Portal</a
                 >
               </li>
@@ -915,7 +990,7 @@
                   href="https://cmci.dti.gov.ph/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  data-i18n="budget-cmci-dti-portal"
+                  data-i18n="footer-cmci-dti-portal"
                   >CMCI DTI Portal</a
                 >
               </li>
@@ -930,16 +1005,14 @@
               Cost to the People of Bukidnon = <span class="footer-cost-value">₱0</span>
             </div>
             <a href="mailto:volunteer@betterbukidnon.org" class="footer-contribute"
-              ><i class="bi bi-envelope-heart"></i>
-              <span data-i18n="budget-volunteer-with-us">Volunteer with us</span></a
+              ><i class="bi bi-envelope-heart"></i> Volunteer with us</a
             >
             <a
-              href="https://github.com/DMNCDLPRT/betterbukidnon"
+              href="https://github.com/Better-Bukidnon/betterbukidnon"
               class="footer-contribute"
               target="_blank"
               rel="noopener noreferrer"
-              ><i class="bi bi-github"></i>
-              <span data-i18n="budget-contribute-code-with-us">Contribute code with us</span></a
+              ><i class="bi bi-github"></i> Contribute code with us</a
             >
             <div class="footer-partners">
               <a
@@ -971,6 +1044,7 @@
         </div>
       </div>
     </footer>
+    <!-- /chrome:footer -->
     <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script defer src="../assets/js/translations.js"></script>
     <script defer src="../assets/js/info-bar.js"></script>

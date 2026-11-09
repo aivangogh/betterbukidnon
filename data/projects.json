@@ -1,0 +1,52 @@
+{
+  "projects": [
+    {
+      "id": "budget",
+      "name": "Budget Tracker",
+      "description": "Budget transparency portal for the Province of Bukidnon, built on BetterGov.ph data.",
+      "url": "https://budget.betterbukidnon.org",
+      "repos": [
+        {
+          "name": "Better-Bukidnon/budget",
+          "url": "https://github.com/Better-Bukidnon/budget"
+        }
+      ],
+      "type": "org",
+      "category": "transparency",
+      "status": "active",
+      "icon": "bi-cash-coin"
+    },
+    {
+      "id": "saln",
+      "name": "SALN Tracker",
+      "description": "SALN transparency portal: public officials and their declared assets, liabilities and net worth, always linked to the source.",
+      "url": "https://saln.betterbukidnon.org",
+      "repos": [
+        {
+          "name": "Better-Bukidnon/saln",
+          "url": "https://github.com/Better-Bukidnon/saln"
+        }
+      ],
+      "type": "org",
+      "category": "transparency",
+      "status": "active",
+      "icon": "bi-journal-text"
+    },
+    {
+      "id": "infra",
+      "name": "Infrastructure Tracker",
+      "description": "Every DPWH public works project in Bukidnon on Bisto.ph: roads, bridges, buildings, water and flood control, with budgets, contractors and status.",
+      "url": "https://infra.betterbukidnon.org",
+      "repos": [
+        {
+          "name": "Better-Bukidnon/infra-projects",
+          "url": "https://github.com/Better-Bukidnon/infra-projects"
+        }
+      ],
+      "type": "org",
+      "category": "transparency",
+      "status": "active",
+      "icon": "bi-cone-striped"
+    }
+  ]
+}

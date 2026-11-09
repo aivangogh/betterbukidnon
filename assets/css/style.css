@@ -2117,6 +2117,76 @@ body.mobile-menu-open {
   line-height: 1.5;
 }
 
+/* Provincial Board Cards - Government Page */
+.board-member-card {
+  background: var(--color-white);
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: var(--spacing-sm) 20px;
+}
+
+.board-member-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(0, 50, 160, 0.08);
+  color: var(--color-primary);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.board-member-name {
+  margin: 0;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.board-member-card li.board-member-name {
+  padding: 10px 0;
+}
+
+.board-member-card li.board-member-name + li.board-member-name {
+  border-top: 1px solid #f0f1f3;
+}
+
+.board-member-card > .board-member-badge:first-child {
+  margin-bottom: 6px;
+}
+
+.board-member-card p.board-member-name + .board-member-badge {
+  margin-top: 10px;
+}
+
+.board-member-badge--liga {
+  background: rgba(247, 127, 0, 0.12);
+  color: #8a4200;
+}
+
+.board-member-badge--sk {
+  background: rgba(6, 167, 125, 0.12);
+  color: #04664d;
+}
+
+.board-member-badge--ipmr {
+  background: rgba(124, 58, 237, 0.1);
+  color: #5b21b6;
+}
+
+@media (max-width: 767px) {
+  .board-member-card {
+    padding: 12px var(--spacing-sm);
+  }
+
+  .board-member-card li.board-member-name {
+    padding: 7px 0;
+  }
+
+  .board-member-card p.board-member-name + .board-member-badge {
+    margin-top: 6px;
+  }
+}
+
 /* Department Cards - Government Page */
 .dept-card {
   display: flex;

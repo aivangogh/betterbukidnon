@@ -56,20 +56,29 @@
     flex-shrink: 0;
   }
 
+  .logo-container a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
   .logo-img {
     height: 40px;
   }
 
-  .mobile-menu-toggle {
+  .header-actions {
     order: 2;
     flex-shrink: 0;
-    margin: 0 auto;
+    margin-left: auto;
+    padding: 0;
   }
 
-  .header-actions {
+  .mobile-menu-toggle {
     order: 3;
     flex-shrink: 0;
-    padding: 2px 0;
+    width: 44px;
+    height: 44px;
+    margin-left: 4px;
   }
 
   .lang-selector {
@@ -81,37 +90,38 @@
     font-size: 0.6875rem;
   }
 
+  /* Sheet below the header; 100% is the sticky header's height */
   .main-nav {
     order: 4;
-    width: 100%;
-    max-height: 0;
-    overflow: hidden;
-    transition:
-      max-height 0.3s ease,
-      opacity 0.3s ease,
-      padding 0.3s ease,
-      visibility 0s linear 0.3s;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: calc(100vh - 100%);
+    height: calc(100dvh - 100%);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    /* Bottom padding clears the hotline bar when it sits above the header */
+    padding: var(--spacing-xs) var(--spacing-sm) var(--spacing-xl);
+    background-color: var(--color-white);
+    border-top: 1px solid var(--color-bg-alt);
     opacity: 0;
     visibility: hidden;
-    padding-top: 0;
-    border-top: 1px solid transparent;
-    margin-top: 0;
-    will-change: max-height, opacity;
+    transform: translateY(-8px);
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease,
+      visibility 0s linear 0.2s;
   }
 
   .main-nav.active {
-    max-height: 80vh;
-    overflow-y: auto;
     opacity: 1;
     visibility: visible;
+    transform: none;
     transition:
-      max-height 0.3s ease,
-      opacity 0.3s ease,
-      padding 0.3s ease,
+      opacity 0.2s ease,
+      transform 0.2s ease,
       visibility 0s linear 0s;
-    padding-top: var(--spacing-sm);
-    border-top-color: var(--color-bg-alt);
-    margin-top: var(--spacing-sm);
   }
 
   .main-nav ul {
@@ -164,10 +174,11 @@
     transform: rotate(180deg);
   }
 
+  /* Hidden, not just zero-height, so Tab skips collapsed submenus */
   .main-nav .dropdown-menu {
     position: static;
     opacity: 1;
-    visibility: visible;
+    visibility: hidden;
     transform: none;
     box-shadow: none;
     background: transparent;
@@ -178,12 +189,18 @@
     overflow: hidden;
     transition:
       max-height 0.25s ease,
-      padding 0.25s ease;
+      padding 0.25s ease,
+      visibility 0s linear 0.25s;
   }
 
   .main-nav .has-dropdown.dropdown-open .dropdown-menu {
     max-height: 500px;
     padding: 4px 0 4px 16px;
+    visibility: visible;
+    transition:
+      max-height 0.25s ease,
+      padding 0.25s ease,
+      visibility 0s linear 0s;
   }
 
   .main-nav .dropdown-menu a {
@@ -586,6 +603,195 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+}
+
+/* Language menu (built by initLanguageMenu in main.js and Header.tsx) */
+.lang-menu {
+  position: relative;
+}
+
+.lang-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 30px;
+  padding: 0 10px;
+  border: 1px solid rgba(0, 50, 160, 0.25);
+  border-radius: 999px;
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  font-family: var(--font-main);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+/* 44px tap area: 28px inside the border + 2 x 8px */
+.lang-toggle::after {
+  content: '';
+  position: absolute;
+  inset: -8px 0;
+}
+
+.lang-toggle:hover,
+.lang-menu.open .lang-toggle {
+  background-color: rgba(0, 50, 160, 0.06);
+  border-color: rgba(0, 50, 160, 0.35);
+}
+
+.lang-toggle:focus {
+  outline: none;
+}
+
+.lang-toggle:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.lang-toggle .bi-globe2 {
+  font-size: 1rem;
+}
+
+.lang-toggle-caret {
+  font-size: 0.6875rem;
+  transition: transform 0.2s ease;
+}
+
+.lang-menu.open .lang-toggle-caret {
+  transform: rotate(180deg);
+}
+
+.lang-menu-list {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 1001;
+  min-width: 210px;
+  padding: 6px;
+  background-color: var(--color-white);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.12),
+    0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.lang-menu-list[hidden] {
+  display: none;
+}
+
+.lang-menu-list .lang-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  color: var(--color-text);
+  font-family: var(--font-main);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  text-align: left;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.lang-menu-list .lang-btn:hover,
+.lang-menu-list .lang-btn.active:hover {
+  background-color: var(--color-bg-alt);
+}
+
+.lang-menu-list .lang-btn.active {
+  background: none;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.lang-menu-list .lang-btn:focus {
+  outline: none;
+}
+
+.lang-menu-list .lang-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+}
+
+.lang-btn-check {
+  width: 1em;
+  font-size: 1rem;
+}
+
+.lang-menu-list .lang-btn:not(.active) .lang-btn-check {
+  visibility: hidden;
+}
+
+/* Touch targets of at least 44px */
+@media (max-width: 1024px) {
+  /* The link fills the bar's height; ::before draws the pill */
+  .hotline-items-track {
+    padding: 0;
+  }
+
+  .hotline-item {
+    position: relative;
+    z-index: 0;
+    min-height: 44px;
+    padding: 0 12px;
+    font-size: 0.75rem;
+    background: none;
+  }
+
+  .hotline-item::before {
+    content: '';
+    position: absolute;
+    inset: 8px 0;
+    z-index: -1;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.15);
+    transition: background-color 0.2s ease;
+  }
+
+  .hotline-item:hover {
+    background: none;
+  }
+
+  .hotline-item:hover::before {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .home-section-link {
+    min-height: 44px;
+  }
+
+  .home-search-tags a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-hero-v2 {
+    padding: var(--spacing-xl) 0;
+  }
+
+  /* Lets the input shrink so the button stays inside the card at 320px */
+  .home-search-box .service-search-input {
+    min-width: 0;
+  }
+
+  .home-search-box .search-submit-btn {
+    flex-shrink: 0;
   }
 }
 

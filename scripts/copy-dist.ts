@@ -29,6 +29,7 @@ const EXCLUDED = new Set([
   'playwright.config.ts',
   'playwright-report',
   'test-results',
+  'screenshots',
   '.prettierrc',
   '.prettierignore',
   '.editorconfig',

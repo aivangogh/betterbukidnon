@@ -8,6 +8,10 @@ BetterBukidnon.org is part of the [BetterGov.ph](https://bettergov.ph) volunteer
 It is **not** an official government website. The Provincial Government of Bukidnon's
 official site is [bukidnon.gov.ph](https://bukidnon.gov.ph/).
 
+This repository is built from the [BetterSolano](https://github.com/BetterSolano/bettersolano)
+template, the civic portal for the Municipality of Solano, Nueva Vizcaya. See the
+[rebrand notes](docs/rebrand-from-bettersolano.md) for what was changed for Bukidnon.
+
 **Cost to the People of Bukidnon = ₱0**
 
 ![License](https://img.shields.io/badge/license-MIT%20%7C%20CC%20BY%204.0-blue)
@@ -34,7 +38,7 @@ official site is [bukidnon.gov.ph](https://bukidnon.gov.ph/).
 ## Quick start
 
 ```bash
-git clone https://github.com/DMNCDLPRT/betterbukidnon.git
+git clone https://github.com/Better-Bukidnon/betterbukidnon.git
 cd betterbukidnon
 npm install
 npm run dev            # http://localhost:8000
@@ -105,4 +109,4 @@ See [LICENSE](LICENSE).
 ## Contact
 
 - Email: volunteer@betterbukidnon.org
-- GitHub: [DMNCDLPRT/betterbukidnon](https://github.com/DMNCDLPRT/betterbukidnon)
+- GitHub: [Better-Bukidnon/betterbukidnon](https://github.com/Better-Bukidnon/betterbukidnon)

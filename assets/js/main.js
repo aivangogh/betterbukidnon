@@ -227,6 +227,124 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initHotlineMarquee();
 
+  // Language menu. The existing .lang-btn buttons are moved into the list so
+  // TranslationEngine's click handlers and active state keep working.
+  var initLanguageMenu = function () {
+    var selector = document.querySelector('.site-header .lang-selector');
+    if (!selector) return;
+    var options = Array.prototype.slice.call(selector.querySelectorAll('.lang-btn'));
+    if (!options.length) return;
+
+    var names = { en: 'English', fil: 'Filipino', ceb: 'Cebuano (Binisaya)' };
+
+    var toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'lang-toggle';
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-controls', 'lang-menu-list');
+    toggle.innerHTML =
+      '<i class="bi bi-globe2" aria-hidden="true"></i>' +
+      '<span class="lang-toggle-code"></span>' +
+      '<span class="sr-only lang-toggle-name"></span>' +
+      '<i class="bi bi-chevron-down lang-toggle-caret" aria-hidden="true"></i>';
+
+    var list = document.createElement('div');
+    list.id = 'lang-menu-list';
+    list.className = 'lang-menu-list';
+    list.hidden = true;
+
+    options.forEach(function (btn) {
+      var lang = btn.dataset.lang;
+      var name = names[lang] || btn.textContent.trim();
+      btn.className = btn.classList.contains('active') ? 'lang-btn active' : 'lang-btn';
+      btn.removeAttribute('aria-label');
+      btn.setAttribute('lang', lang);
+      btn.innerHTML = '<i class="bi bi-check2 lang-btn-check" aria-hidden="true"></i>';
+      var label = document.createElement('span');
+      label.textContent = name;
+      btn.appendChild(label);
+      list.appendChild(btn);
+    });
+
+    selector.classList.add('lang-menu');
+    selector.appendChild(toggle);
+    selector.appendChild(list);
+
+    var showLanguage = function (lang) {
+      toggle.querySelector('.lang-toggle-code').textContent = lang.toUpperCase();
+      toggle.querySelector('.lang-toggle-name').textContent =
+        ', Language: ' + (names[lang] || lang);
+    };
+
+    var current = selector.querySelector('.lang-btn.active');
+    showLanguage(current ? current.dataset.lang : 'en');
+    document.addEventListener('languageChanged', function (e) {
+      showLanguage(e.detail.language);
+    });
+
+    var isOpen = function () {
+      return !list.hidden;
+    };
+
+    var open = function () {
+      list.hidden = false;
+      selector.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+    };
+
+    var close = function (returnFocus) {
+      if (!isOpen()) return;
+      list.hidden = true;
+      selector.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      if (returnFocus) toggle.focus();
+    };
+
+    var focusOption = function (index) {
+      options[(index + options.length) % options.length].focus();
+    };
+
+    toggle.addEventListener('click', function () {
+      if (isOpen()) {
+        close(false);
+      } else {
+        open();
+      }
+    });
+
+    list.addEventListener('click', function (e) {
+      if (e.target.closest('.lang-btn')) close(true);
+    });
+
+    selector.addEventListener('keydown', function (e) {
+      var index = options.indexOf(document.activeElement);
+      if (e.key === 'Escape' && isOpen()) {
+        e.stopPropagation();
+        close(true);
+      } else if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (!isOpen()) open();
+        var step = e.key === 'ArrowDown' ? 1 : -1;
+        if (index === -1) {
+          var active = options.indexOf(list.querySelector('.lang-btn.active'));
+          focusOption(active === -1 ? 0 : active);
+        } else {
+          focusOption(index + step);
+        }
+      }
+    });
+
+    selector.addEventListener('focusout', function (e) {
+      if (e.relatedTarget && !selector.contains(e.relatedTarget)) close(false);
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!selector.contains(e.target)) close(false);
+    });
+  };
+
+  initLanguageMenu();
+
   // Mobile Menu Toggle
   var createMobileMenu = function () {
     var headerInner = document.querySelector('.header-inner');
@@ -242,12 +360,8 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleBtn.setAttribute('aria-controls', 'main-nav');
     nav.setAttribute('id', 'main-nav');
 
-    var actions = document.querySelector('.header-actions');
-    if (actions) {
-      headerInner.insertBefore(toggleBtn, actions);
-    } else {
-      headerInner.appendChild(toggleBtn);
-    }
+    // After the language menu so the Tab order matches the layout
+    headerInner.appendChild(toggleBtn);
 
     // Get focusable elements within menu for focus trap
     var getFocusableElements = function () {

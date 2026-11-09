@@ -50,6 +50,10 @@ fi
 
 VERSION=$(node -e "console.log(require('./version.json').version)")
 
+# The header, hotline bar and footer are copied into every page from scripts/chrome/.
+# Stop here if a page was edited by hand or the templates changed without `npm run chrome`.
+pnpm exec tsx scripts/sync-chrome.ts --check
+
 # ── 2. Clean dist ────────────────────────────────────────────────────────────
 echo ""
 echo "▶ [2/6] Cleaning dist/..."
@@ -86,6 +90,7 @@ if command -v rsync &>/dev/null; then
         --exclude='playwright.config.ts' \
         --exclude='playwright-report' \
         --exclude='test-results' \
+        --exclude='screenshots' \
         --exclude='.prettierrc' \
         --exclude='.prettierignore' \
         --exclude='.editorconfig' \

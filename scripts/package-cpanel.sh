@@ -72,7 +72,7 @@ deny() {
 
 deny "local dependencies"      -name 'node_modules' -o -name 'package-lock.json' -o -name 'package.json'
 deny "version control"         -name '.git' -o -name '.gitignore' -o -name '.gitattributes'
-  deny "test tooling"            -name 'tests' -o -name 'playwright.config.ts' -o -name 'test-results' -o -name 'playwright-report'
+deny "test tooling"            -name 'tests' -o -name 'playwright.config.ts' -o -name 'test-results' -o -name 'playwright-report' -o -name 'screenshots'
 deny "editor/tooling config"   -name '.prettierrc' -o -name '.prettierignore' -o -name '.editorconfig' -o -name '.vscode' -o -name '.lighthouserc.json'
 deny "build tooling"           -name 'build.sh' -o -name 'serve.py' -o -name 'babel.config.json' -o -name 'scripts'
 deny "environment files"       -name '.env' -o -name '.env.*'

@@ -49,9 +49,9 @@ text as it is.
    loses its link once translated. Put the attribute on a `<span>` that holds plain text
    only, and keep links and `<strong>` outside it.
 3. **Keys are per page.** Most keys carry a page prefix (`treas-`, `pswdo-`, `gov-`,
-   `home-`). The footer is repeated on every page with that page's prefix, so the same
-   English sentence exists under many keys. Change all of them when you reword it
-   (search by value).
+   `home-`). The skip link, header and footer are the exception: they are shared across all
+   pages and use `nav-*` and `footer-*`, so reword them once (see
+   [architecture.md](architecture.md#shared-page-chrome)).
 4. **Keep placeholders.** Strings like `Showing {{count}} results` are interpolated. Leave
    `{{count}}` untouched in every language.
 
@@ -101,7 +101,9 @@ require('vm').runInNewContext(head + ';this.t = translations;', ctx);
    headings; everything else falls back to English.
 2. In `TranslationEngine`, add the code to `supportedLangs`, `langNames` and `langCodes`, and
    to `detectBrowserLanguage` if browsers report it.
-3. Add a language button next to EN / FIL / CEB in the header of every page and in
-   `react-app/src/components/layout/Header.tsx`, plus a `hreflang` link in each page's
-   `<head>`.
+3. Add a `.lang-btn` button for it in the `.lang-selector` of `scripts/chrome/header.html`
+   (then run `npm run chrome`), and its
+   name to `names` in `initLanguageMenu` (`assets/js/main.js`), which turns those buttons
+   into the globe language menu. In `react-app/src/components/layout/Header.tsx`, add it to
+   `LANGUAGE_OPTIONS`. Also add a `hreflang` link in each page's `<head>`.
 4. Add the language to `react-app/src/contexts/LanguageContext.tsx`.

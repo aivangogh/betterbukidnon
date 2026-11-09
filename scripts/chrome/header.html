@@ -1,0 +1,138 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="logo-container">
+      <a href="{{home}}">
+        <img
+          src="{{root}}assets/images/logo/better-bukidnon-logo.svg"
+          alt="Better Bukidnon Logo"
+          class="logo-img"
+        />
+      </a>
+    </div>
+
+    <nav class="main-nav" aria-label="Main Navigation">
+      <ul>
+        <li><a href="{{home}}"{{active:home}} data-i18n="nav-home">Home</a></li>
+        <li class="has-dropdown">
+          <a
+            href="{{root}}services/"{{active:services}}
+            data-i18n="nav-services"
+            aria-haspopup="true"
+            aria-expanded="false"
+            >Services</a
+          >
+          <ul class="dropdown-menu">
+            <li>
+              <a href="{{root}}services/certificates" data-i18n="nav-certificates">Certificates</a>
+            </li>
+            <li><a href="{{root}}services/business" data-i18n="nav-business">Business</a></li>
+            <li>
+              <a href="{{root}}services/tax-payments" data-i18n="nav-tax-payments">Tax Payments</a>
+            </li>
+            <li>
+              <a href="{{root}}services/social-services" data-i18n="nav-social-services"
+                >Social Services</a
+              >
+            </li>
+            <li><a href="{{root}}services/health" data-i18n="nav-health">Health</a></li>
+            <li>
+              <a href="{{root}}services/agriculture" data-i18n="nav-agriculture">Agriculture</a>
+            </li>
+            <li>
+              <a href="{{root}}services/infrastructure" data-i18n="nav-infrastructure"
+                >Infrastructure</a
+              >
+            </li>
+            <li><a href="{{root}}services/education" data-i18n="nav-education">Education</a></li>
+            <li>
+              <a href="{{root}}services/public-safety" data-i18n="nav-public-safety"
+                >Public Safety</a
+              >
+            </li>
+            <li>
+              <a href="{{root}}services/environment" data-i18n="nav-environment">Environment</a>
+            </li>
+          </ul>
+        </li>
+        <li><a href="{{root}}government/"{{active:government}} data-i18n="nav-government">Government</a></li>
+        <li><a href="{{root}}statistics/"{{active:statistics}} data-i18n="nav-statistics">Statistics</a></li>
+        <li class="has-dropdown">
+          <a
+            href="{{root}}legislative/"{{active:legislative}}
+            data-i18n="nav-legislative"
+            aria-haspopup="true"
+            aria-expanded="false"
+            >Legislative</a
+          >
+          <ul class="dropdown-menu">
+            <li>
+              <a href="{{root}}legislative/ordinance-framework"{{active:ordinance-framework}} data-i18n="nav-ordinance-framework"
+                >Ordinance Framework</a
+              >
+            </li>
+            <li>
+              <a href="{{root}}legislative/resolution-framework"{{active:resolution-framework}} data-i18n="nav-resolution-framework"
+                >Resolution Framework</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li><a href="{{root}}budget/"{{active:transparency}} data-i18n="nav-transparency">Transparency</a></li>
+        <li class="has-dropdown">
+          <a
+            href="{{root}}projects/"{{active:projects}}
+            data-i18n="nav-projects"
+            aria-haspopup="true"
+            aria-expanded="false"
+            >Our Projects</a
+          >
+          <ul class="dropdown-menu">
+            <li>
+              <a
+                href="https://budget.betterbukidnon.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><span data-i18n="nav-projects-budget">Budget</span>
+                <span class="sr-only" data-i18n="nav-opens-new-tab"
+                  >(opens in a new tab)</span
+                ></a
+              >
+            </li>
+            <li>
+              <a
+                href="https://saln.betterbukidnon.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><span data-i18n="nav-projects-saln">SALN</span>
+                <span class="sr-only" data-i18n="nav-opens-new-tab"
+                  >(opens in a new tab)</span
+                ></a
+              >
+            </li>
+            <li>
+              <a
+                href="https://infra.betterbukidnon.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><span data-i18n="nav-projects-infra">Infrastructure</span>
+                <span class="sr-only" data-i18n="nav-opens-new-tab"
+                  >(opens in a new tab)</span
+                ></a
+              >
+            </li>
+            <li><a href="{{root}}projects/" data-i18n="nav-projects-all">All Projects</a></li>
+          </ul>
+        </li>
+        <li><a href="{{root}}contact/"{{active:contact}} data-i18n="nav-contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <div class="lang-selector">
+        <button type="button" class="btn btn-secondary btn-sm lang-btn" data-lang="en" aria-label="Switch to English">EN</button>
+        <button type="button" class="btn btn-secondary btn-sm lang-btn" data-lang="fil" aria-label="Switch to Filipino">FIL</button>
+        <button type="button" class="btn btn-secondary btn-sm lang-btn" data-lang="ceb" aria-label="Switch to Cebuano (Binisaya)">CEB</button>
+      </div>
+    </div>
+  </div>
+</header>

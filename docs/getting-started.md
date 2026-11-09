@@ -11,7 +11,7 @@
 ## Run the site locally
 
 ```bash
-git clone https://github.com/DMNCDLPRT/betterbukidnon.git
+git clone https://github.com/Better-Bukidnon/betterbukidnon.git
 cd betterbukidnon
 npm install
 npm run dev            # http://localhost:8000
@@ -48,6 +48,26 @@ npm run lighthouse     # Lighthouse CI against a running dist/ server
 
 GitHub Actions runs Lighthouse CI on pushes and pull requests to `main`
 (`.github/workflows/lighthouse.yml`). Accessibility must score 90 or more.
+
+### Phone screenshots
+
+```bash
+npm run screenshots:mobile
+```
+
+Saves the first screen and the full page of every page at 320, 375 and 412 px wide to
+`screenshots/` (ignored by git and left out of the build), and lists any page that scrolls
+sideways. It uses your installed Google Chrome; pass `--browser=chromium` or
+`--browser=firefox` to use a browser from `npx playwright install` instead. Narrow it down with
+`--pages=home,services` and `--widths=375`.
+
+For before/after images in a pull request, run it on `develop` and on your branch with
+different output folders:
+
+```bash
+git switch develop && npm run screenshots:mobile -- --out=screenshots/before
+git switch my-branch && npm run screenshots:mobile -- --out=screenshots/after
+```
 
 ## Branches
 

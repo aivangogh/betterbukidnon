@@ -12,6 +12,9 @@ playwright-report/
 blob-report/
 .playwright/
 
+# Output of npm run screenshots:mobile
+screenshots/
+
 # Build-time config (see .env.example) and release archives
 .env
 release/

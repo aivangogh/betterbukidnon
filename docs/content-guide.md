@@ -10,22 +10,23 @@ pages listed below.
 
 ## Where things live
 
-| What                                                    | Where                                                                                                                  |
-| ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| Emergency hotline bar                                   | `<div class="hotline-items">` in every `*.html` file, plus `react-app/src/components/layout/HotlineBar.tsx`            |
-| Footer                                                  | bottom of every `*.html` file, plus `react-app/src/components/layout/Footer.tsx`                                       |
-| Homepage                                                | `index.html` and the `home-*` keys in `translations.js`                                                                |
-| Governor, Vice Governor, Board Members, representatives | `data/officials.json` (rendered by `assets/js/officials.js`) and the cards in `government/index.html` and `index.html` |
-| Cities, municipalities and districts                    | `government/index.html` (section `#lgus`) and `data/demographics.json`                                                 |
-| Population and area                                     | `data/demographics.json`, the homepage stat cards, `statistics/index.html`                                             |
-| Service categories                                      | `services/*.html`                                                                                                      |
-| Office pages and document guides                        | `service-details/*.html`                                                                                               |
-| Search results                                          | `data/services.json` and `assets/js/search.js`                                                                         |
-| Capitol directory                                       | `contact/index.html`                                                                                                   |
-| Ordinances and resolutions                              | `data/ordinances.json`, `data/resolutions.json`                                                                        |
-| Budget, SRE and DPWH projects                           | `data/fiscal_transparency.json`, `data/dpwh-projects.json`                                                             |
-| News                                                    | `data/news.json` (see [news-curation.md](news-curation.md))                                                            |
-| Sitemap                                                 | `sitemap.xml` and `sitemap/index.html`                                                                                 |
+| What                                                    | Where                                                                                                                                 |
+| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| Emergency hotline bar                                   | `scripts/chrome/hotline.html` (then `npm run chrome`), plus `react-app/src/components/layout/HotlineBar.tsx`                          |
+| Header, navigation and footer                           | `scripts/chrome/header.html`, `footer.html` (then `npm run chrome`), plus the React `Header.tsx` and `Footer.tsx`                     |
+| Homepage                                                | `index.html` and the `home-*` keys in `translations.js`                                                                               |
+| Governor, Vice Governor, Board Members, representatives | `data/officials.json` (rendered by `assets/js/officials.js`) and the cards in `government/index.html` and `index.html`                |
+| Cities, municipalities and districts                    | `government/index.html` (section `#lgus`) and `data/demographics.json`                                                                |
+| Population and area                                     | `data/demographics.json`, the homepage stat cards, `statistics/index.html`                                                            |
+| Service categories                                      | `services/*.html`                                                                                                                     |
+| Office pages and document guides                        | `service-details/*.html`                                                                                                              |
+| Search results                                          | `data/services.json` and `assets/js/search.js`                                                                                        |
+| Capitol directory                                       | `contact/index.html`                                                                                                                  |
+| Ordinances and resolutions                              | `data/ordinances.json`, `data/resolutions.json`                                                                                       |
+| Budget, SRE and DPWH projects                           | `data/fiscal_transparency.json`, `data/dpwh-projects.json`                                                                            |
+| News                                                    | `data/news.json` (see [news-curation.md](news-curation.md))                                                                           |
+| Our Projects page and nav dropdown                      | `data/projects.json` (rendered by `assets/js/projects.js`), the "Our Projects" dropdown in `scripts/chrome/header.html`, `Header.tsx` |
+| Sitemap                                                 | `sitemap.xml` and `sitemap/index.html`                                                                                                |
 
 ## Common tasks
 
@@ -40,11 +41,11 @@ pages listed below.
 
 ### A hotline number changes
 
-The hotline bar is copied into every page. Replace it everywhere with one command and check
-the diff:
+The hotline bar is generated from one template. Edit the number in
+`scripts/chrome/hotline.html`, then copy it into every page and check the diff:
 
 ```bash
-grep -rl "(088) 813-1262" --include=*.html . | xargs sed -i 's/(088) 813-1262/(088) 813-XXXX/g; s/+63888131262/+6388813XXXX/g'
+npm run chrome
 git diff --stat
 ```
 
@@ -60,6 +61,21 @@ Also update `react-app/src/components/layout/HotlineBar.tsx`, `contact/index.htm
 4. Link to it from the relevant `services/*.html` page and from `government/index.html` if
    it is an office.
 5. Add it to `data/services.json` (for search), `sitemap.xml` and `sitemap/index.html`.
+
+### Add or change a project on the Our Projects page
+
+1. Add an entry to `data/projects.json`: `id`, `name`, `description`, `url`, `repos` (a list
+   of `{ "name": "Org/repo", "url": "https://github.com/Org/repo" }`), `type` (`org` or
+   `community`), `category`, `status` (`active`, `development` or `archived`) and a Bootstrap
+   `icon`. The tabs, repo filter, category filter and the View Details dialog are built from
+   this file.
+2. Add `proj-<id>-name` and `proj-<id>-desc` to `en`, `fil` and `ceb` in `translations.js`
+   (and `proj-cat-<category>` for a new category). The JSON text is the English fallback.
+3. If the project is `active`, also add it to the "Our Projects" dropdown: add an `<li>` to
+   the dropdown in `scripts/chrome/header.html` and run `npm run chrome`, add
+   `EXTERNAL_PROJECTS` in `react-app/src/components/layout/Header.tsx`, and add a
+   `nav-projects-<id>` key in `translations.js` and `LanguageContext.tsx`.
+4. Bump `CACHE_VERSION` in `sw.js` so browsers pick up the new data.
 
 ### Fill an empty data file
 

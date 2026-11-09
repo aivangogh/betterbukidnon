@@ -16,7 +16,7 @@ how to update content and translations, and how it is deployed.
 ### Setup
 
 ```bash
-git clone https://github.com/DMNCDLPRT/betterbukidnon.git
+git clone https://github.com/Better-Bukidnon/betterbukidnon.git
 cd betterbukidnon
 npm install
 npm run dev
@@ -29,7 +29,7 @@ for the full workflow, including the React app in `react-app/` and the productio
 
 ### Reporting Bugs
 
-1. Check existing [issues](https://github.com/DMNCDLPRT/betterbukidnon/issues) to avoid duplicates
+1. Check existing [issues](https://github.com/Better-Bukidnon/betterbukidnon/issues) to avoid duplicates
 2. Create a new issue with:
    - Clear, descriptive title
    - Steps to reproduce
@@ -151,7 +151,7 @@ Pull requests are reviewed for:
 
 ## Community
 
-- **GitHub:** [issues and discussions](https://github.com/DMNCDLPRT/betterbukidnon/issues)
+- **GitHub:** [issues and discussions](https://github.com/Better-Bukidnon/betterbukidnon/issues)
 - **Email:** volunteer@betterbukidnon.org
 - **BetterGov.ph:** the wider volunteer movement this project is part of, at [bettergov.ph](https://bettergov.ph)
 

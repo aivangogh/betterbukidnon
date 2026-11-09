@@ -96,7 +96,7 @@ Out of scope:
 
 For security concerns: **volunteer@betterbukidnon.org**
 
-For general inquiries: open a [GitHub issue](https://github.com/DMNCDLPRT/betterbukidnon/issues)
+For general inquiries: open a [GitHub issue](https://github.com/Better-Bukidnon/betterbukidnon/issues)
 
 ---
 

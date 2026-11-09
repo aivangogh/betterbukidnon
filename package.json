@@ -19,9 +19,12 @@
     "version:minor": "tsx scripts/bump-version.ts minor",
     "version:patch": "tsx scripts/bump-version.ts patch",
     "version:check": "tsx scripts/bump-version.ts",
+    "chrome": "tsx scripts/sync-chrome.ts",
+    "chrome:check": "tsx scripts/sync-chrome.ts --check",
     "test": "playwright test",
     "test:chrome": "playwright test --project=chrome",
     "test:report": "playwright show-report",
+    "screenshots:mobile": "node scripts/mobile-screenshots.mjs",
     "lighthouse": "lhci autorun",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
@@ -47,7 +50,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/DMNCDLPRT/betterbukidnon.git"
+    "url": "https://github.com/Better-Bukidnon/betterbukidnon.git"
   },
   "homepage": "https://betterbukidnon.org",
   "license": "MIT",

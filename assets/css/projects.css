@@ -1,0 +1,401 @@
+/* Our Projects page: status tabs, search/filter row and card grid.
+   Uses the site tokens from style.css (--color-*, --spacing-*, --border-radius, --shadow-*). */
+
+.projects-section {
+  background: var(--color-bg-alt);
+}
+
+/* Status tabs with count badges */
+.projects-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  border-bottom: 2px solid #e3e6ea;
+  margin-bottom: var(--spacing-md);
+}
+
+.projects-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  margin-bottom: -2px;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  font: inherit;
+  font-weight: 600;
+  color: var(--color-text-light);
+  cursor: pointer;
+}
+
+.projects-tab:hover {
+  color: var(--color-primary);
+}
+
+.projects-tab[aria-selected='true'] {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+.projects-tab-count {
+  min-width: 24px;
+  padding: 0 8px;
+  border-radius: 50px;
+  background: #e3e6ea;
+  color: var(--color-text);
+  font-size: 0.75rem;
+  line-height: 22px;
+  text-align: center;
+}
+
+.projects-tab[aria-selected='true'] .projects-tab-count {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* Search and filter row */
+.projects-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.projects-search {
+  position: relative;
+  flex: 1 1 260px;
+}
+
+.projects-search i {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  transform: translateY(-50%);
+  color: var(--color-text-light);
+  pointer-events: none;
+}
+
+.projects-search input,
+.projects-select select {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid #c9ced4;
+  border-radius: var(--border-radius);
+  background: var(--color-white);
+  color: var(--color-text);
+  font: inherit;
+}
+
+.projects-search input {
+  padding-left: 40px;
+}
+
+.projects-select {
+  flex: 0 1 200px;
+}
+
+/* Card grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-md);
+  list-style: none;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--color-white);
+  border: 1px solid #e3e6ea;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.project-card-media {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 140px;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 3rem;
+}
+
+.project-card-badges {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 0.75rem;
+}
+
+.project-badge {
+  padding: 3px 10px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--color-primary-dark);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.project-badge--type {
+  background: #fde8ec;
+  color: #a4112e;
+}
+
+.project-badge--category {
+  margin-left: auto;
+}
+
+.project-badge--active {
+  background: #d9f4ea;
+  color: #04654b;
+}
+
+.project-badge--development {
+  background: #fff0dc;
+  color: #8a4500;
+}
+
+.project-badge--archived {
+  background: #e9ecef;
+  color: #495057;
+}
+
+.project-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-md);
+}
+
+.project-card-title {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.project-card-desc {
+  margin: 0;
+  color: var(--color-text-light);
+}
+
+.project-card-repo-label {
+  position: absolute;
+  left: 12px;
+  bottom: 10px;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+}
+
+.project-card-repo {
+  margin: 0;
+  color: #8a9099;
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  overflow-wrap: anywhere;
+}
+
+.project-card-host {
+  color: #6b7280;
+  font-size: 0.8125rem;
+  overflow-wrap: anywhere;
+}
+
+.project-card-details {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 4px;
+  background: none;
+  border: 0;
+  color: var(--color-primary);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.project-card-details:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
+.project-card-url {
+  margin-top: auto;
+  padding-top: var(--spacing-xs);
+  color: var(--color-primary);
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+.project-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-xs) var(--spacing-md) var(--spacing-sm);
+  border-top: 1px solid #f0f2f4;
+}
+
+.projects-empty {
+  padding: var(--spacing-xl) var(--spacing-md);
+  text-align: center;
+  color: var(--color-text-light);
+}
+
+.projects-empty[hidden] {
+  display: none;
+}
+
+.projects-noscript {
+  padding: var(--spacing-md);
+}
+
+/* Details dialog (opened with HTMLDialogElement.showModal()) */
+body.project-dialog-open {
+  overflow: hidden;
+}
+
+.project-dialog {
+  width: min(560px, calc(100% - 32px));
+  max-height: calc(100vh - 48px);
+  margin: auto;
+  padding: 0;
+  overflow-y: auto;
+  border: 0;
+  border-radius: 12px;
+  background: var(--color-white);
+  color: var(--color-text);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.project-dialog::backdrop {
+  background: rgba(0, 20, 60, 0.6);
+}
+
+.project-dialog .project-card-media {
+  height: 180px;
+}
+
+.project-dialog-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.45);
+  color: var(--color-white);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.project-dialog-close:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+/* keep the badges clear of the close button */
+.project-dialog .project-card-badges {
+  right: 56px;
+}
+
+.project-dialog-body {
+  padding: var(--spacing-md);
+}
+
+.project-dialog-body h2 {
+  margin: 0 0 4px;
+  font-size: 1.5rem;
+}
+
+.project-dialog-heading {
+  margin: var(--spacing-md) 0 6px;
+  color: #8a9099;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project-dialog-repos {
+  list-style: none;
+}
+
+.project-dialog-repo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 1px solid #e3e6ea;
+  border-radius: var(--border-radius);
+  background: var(--color-bg-alt);
+  color: var(--color-text);
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 0.875rem;
+  overflow-wrap: anywhere;
+}
+
+.project-dialog-repo i:last-child {
+  margin-left: auto;
+  color: var(--color-text-light);
+}
+
+.project-dialog-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-top: 1px solid #e3e6ea;
+  background: var(--color-bg-alt);
+}
+
+.project-dialog-count {
+  color: var(--color-text-light);
+  font-size: 0.8125rem;
+}
+
+@media (max-width: 600px) {
+  .projects-tab {
+    flex: 1 1 auto;
+    justify-content: center;
+    padding: 10px 8px;
+  }
+
+  .projects-select {
+    flex: 1 1 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card {
+    transition: none;
+  }
+
+  .project-card:hover {
+    transform: none;
+  }
+}

@@ -13,6 +13,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { findPages, ROOT } from './sync-chrome.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
@@ -82,47 +83,20 @@ try {
   console.warn('Warning: Could not update package.json:', e.message)
 }
 
-// Update all HTML files — replace hardcoded "Ver. X.X.X" in footer
-const htmlDirs = [
-  '.',
-  'accessibility',
-  'budget',
-  'contact',
-  'faq',
-  'government',
-  'legislative',
-  'news',
-  'privacy',
-  'service-details',
-  'services',
-  'sitemap',
-  'statistics',
-  'terms',
-  'transparency',
-]
-
+// Update the "Ver. X.X.X" in every page footer. The page list comes from sync-chrome.ts,
+// so pages in a new section folder are found without editing this file.
 let filesUpdated = 0
 const versionPattern = new RegExp('Ver\\. ' + oldVersion.replace(/\./g, '\\.'), 'g')
 
-htmlDirs.forEach(function (dir) {
-  const dirPath = path.join(__dirname, '..', dir)
-  if (!fs.existsSync(dirPath)) return
-
-  const files = fs.readdirSync(dirPath).filter(function (f) {
-    return f.endsWith('.html')
-  })
-
-  files.forEach(function (file) {
-    const filePath = path.join(dirPath, file)
-    let content = fs.readFileSync(filePath, 'utf8')
-    if (versionPattern.test(content)) {
-      content = content.replace(versionPattern, 'Ver. ' + newVersion)
-      fs.writeFileSync(filePath, content)
-      filesUpdated++
-    }
-    // Reset regex lastIndex
-    versionPattern.lastIndex = 0
-  })
+findPages(ROOT, []).forEach(function (filePath) {
+  let content = fs.readFileSync(filePath, 'utf8')
+  if (versionPattern.test(content)) {
+    content = content.replace(versionPattern, 'Ver. ' + newVersion)
+    fs.writeFileSync(filePath, content)
+    filesUpdated++
+  }
+  // Reset regex lastIndex
+  versionPattern.lastIndex = 0
 })
 
 console.log('Updated ' + filesUpdated + ' HTML file(s)')

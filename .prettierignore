@@ -5,3 +5,5 @@ package-lock.json
 *.min.css
 react-app/.next
 react-app/node_modules
+scripts/chrome
+.claude
