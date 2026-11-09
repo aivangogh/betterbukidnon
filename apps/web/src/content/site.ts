@@ -7,11 +7,11 @@ export const site = {
 } as const
 
 export const navigation = [
-  { label: 'Services', to: '/services' },
-  { label: 'Government', to: '/government' },
-  { label: 'Legislative', to: '/legislative' },
-  { label: 'Statistics', to: '/statistics' },
-  { label: 'Transparency', to: '/budget' },
-  { label: 'News', to: '/news' },
-  { label: 'Contact', to: '/contact' },
+  { label: 'nav.services', to: '/services' },
+  { label: 'nav.government', to: '/government' },
+  { label: 'nav.legislative', to: '/legislative' },
+  { label: 'nav.statistics', to: '/statistics' },
+  { label: 'nav.transparency', to: '/budget' },
+  { label: 'nav.news', to: '/news' },
+  { label: 'nav.contact', to: '/contact' },
 ] as const
