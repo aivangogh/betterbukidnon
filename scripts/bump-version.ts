@@ -1,17 +1,20 @@
-#!/usr/bin/env node
+#!/usr/bin/env -S pnpm exec tsx
 
 /**
  * Cross-platform version bump script for BetterBukidnon.
  *
  * Usage:
- *   node scripts/bump-version.js patch   (default)
- *   node scripts/bump-version.js minor
- *   node scripts/bump-version.js major
- *   node scripts/bump-version.js          (shows current version)
+ *   pnpm tsx scripts/bump-version.ts patch   (default)
+ *   pnpm tsx scripts/bump-version.ts minor
+ *   pnpm tsx scripts/bump-version.ts major
+ *   pnpm tsx scripts/bump-version.ts          (shows current version)
  */
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const VERSION_FILE = path.join(__dirname, '..', 'version.json');
 const PACKAGE_FILE = path.join(__dirname, '..', 'package.json');
@@ -29,7 +32,7 @@ const bumpType = process.argv[2] || '';
 
 if (!bumpType) {
   console.log('Current version: ' + versionData.version);
-  console.log('Usage: node scripts/bump-version.js [major|minor|patch]');
+  console.log('Usage: pnpm tsx scripts/bump-version.ts [major|minor|patch]');
   process.exit(0);
 }
 

@@ -12,7 +12,7 @@
 BUMP_TYPE=${1:-""}
 
 if [ -z "$BUMP_TYPE" ]; then
-    node "$(dirname "$0")/bump-version.js"
+    pnpm exec tsx "$(dirname "$0")/bump-version.ts"
 else
-    node "$(dirname "$0")/bump-version.js" "$BUMP_TYPE"
+    pnpm exec tsx "$(dirname "$0")/bump-version.ts" "$BUMP_TYPE"
 fi
