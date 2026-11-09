@@ -1,0 +1,7 @@
+allowBuilds:
+  '@biomejs/biome': true
+  core-js: false
+  esbuild: true
+  lightningcss: true
+  sharp: true
+  workerd: true
