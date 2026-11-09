@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { ExternalLink, LibraryBig } from 'lucide-react'
+import { Icon } from '@/components/ui/icon'
 import { SectionPage } from '@/components/content/section-page'
 import { ordinances, resolutions } from '@/content/civic-data'
 
@@ -13,7 +13,7 @@ function LegislativePage() {
       eyebrow="Sangguniang Panlalawigan"
       title="Legislative records"
       description="Provincial ordinances and resolutions copied only from official records."
-      icon={LibraryBig}
+      icon="bank2"
     >
       <div className="mt-10 grid gap-6 md:grid-cols-2">
         <RecordGroup
@@ -45,9 +45,9 @@ function RecordGroup({ title, count, source }: { title: string; count: number; s
             href="https://bukidnon.gov.ph/"
             target="_blank"
             rel="noreferrer"
-            className="mt-5 inline-flex items-center gap-2 font-semibold text-civic-700"
+            className="mt-5 inline-flex items-center gap-2 font-semibold text-primary"
           >
-            Official source <ExternalLink className="size-4" />
+            Official source <Icon name="box-arrow-up-right" className="text-base" />
           </a>
         </>
       ) : (

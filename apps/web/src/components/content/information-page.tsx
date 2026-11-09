@@ -1,4 +1,4 @@
-import type { LucideIcon } from 'lucide-react'
+import type { IconName } from '@/components/ui/icon'
 import { SectionPage } from './section-page'
 
 export function InformationPage({
@@ -11,7 +11,7 @@ export function InformationPage({
   eyebrow: string
   title: string
   description: string
-  icon: LucideIcon
+  icon: IconName
   sections: ReadonlyArray<{ heading: string; body: string }>
 }) {
   return (

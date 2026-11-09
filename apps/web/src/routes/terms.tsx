@@ -1,4 +1,3 @@
-import { Scale } from 'lucide-react'
 import { createFileRoute } from '@tanstack/react-router'
 import { InformationPage } from '@/components/content/information-page'
 
@@ -8,7 +7,7 @@ export const Route = createFileRoute('/terms')({
       eyebrow="Terms"
       title="Terms of use"
       description="Use this portal as a guide to verified sources, not as a substitute for official government advice."
-      icon={Scale}
+      icon="file-earmark-text"
       sections={[
         {
           heading: 'Information accuracy',

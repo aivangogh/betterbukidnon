@@ -1,4 +1,4 @@
-import { Search, X } from 'lucide-react'
+import { Icon } from '@/components/ui/icon'
 import { useState } from 'react'
 import { Link } from '@tanstack/react-router'
 import { searchServices } from '@/content/services'
@@ -13,7 +13,7 @@ export function ServiceSearch({ compact = false }: { compact?: boolean }) {
         Search provincial services
       </label>
       <div className="flex items-center gap-3 rounded-xl bg-white px-4 py-3 text-slate-900 shadow-lg">
-        <Search className="size-5 shrink-0 text-civic-700" aria-hidden="true" />
+        <Icon name="search" className="text-xl shrink-0 text-primary" />
         <input
           id="service-search"
           value={query}
@@ -30,7 +30,7 @@ export function ServiceSearch({ compact = false }: { compact?: boolean }) {
             className="rounded-md p-1 text-slate-500 hover:bg-slate-100"
             onClick={() => setQuery('')}
           >
-            <X className="size-4" />
+            <Icon name="x-lg" className="text-base" />
           </button>
         ) : null}
       </div>
@@ -43,7 +43,7 @@ export function ServiceSearch({ compact = false }: { compact?: boolean }) {
                   <Link
                     to="/service-details/$slug"
                     params={{ slug: service.id }}
-                    className="block border-b border-slate-100 px-4 py-3 last:border-0 hover:bg-civic-50"
+                    className="block border-b border-slate-100 px-4 py-3 last:border-0 hover:bg-primary-tint"
                     onClick={() => setQuery('')}
                   >
                     <span className="font-semibold">{service.title}</span>

@@ -36,7 +36,7 @@ export function PwaUpdateNotice() {
 
   return (
     <aside
-      className="fixed inset-x-4 bottom-4 z-50 mx-auto max-w-md rounded-xl border border-civic-100 bg-white p-4 shadow-xl"
+      className="fixed inset-x-4 bottom-4 z-50 mx-auto max-w-md rounded-xl border border-primary-tint bg-white p-4 shadow-xl"
       aria-live="polite"
     >
       <p className="font-semibold text-slate-950">An update is available</p>
@@ -47,7 +47,7 @@ export function PwaUpdateNotice() {
           refreshOnUpdate.current = true
           registration?.waiting?.postMessage({ type: 'SKIP_WAITING' })
         }}
-        className="mt-3 rounded-md bg-civic-700 px-4 py-2 text-sm font-semibold text-white hover:bg-civic-800"
+        className="mt-3 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-primary-dark"
       >
         Refresh now
       </button>

@@ -1,4 +1,3 @@
-import { Accessibility } from 'lucide-react'
 import { createFileRoute } from '@tanstack/react-router'
 import { InformationPage } from '@/components/content/information-page'
 
@@ -8,7 +7,7 @@ export const Route = createFileRoute('/accessibility')({
       eyebrow="Accessibility"
       title="Accessibility statement"
       description="BetterBukidnon.org aims to make public information usable by everyone."
-      icon={Accessibility}
+      icon="universal-access"
       sections={[
         {
           heading: 'Our commitment',

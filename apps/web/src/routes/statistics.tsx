@@ -1,5 +1,4 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { ChartNoAxesCombined } from 'lucide-react'
 import { SectionPage } from '@/components/content/section-page'
 import { demographics } from '@/content/civic-data'
 
@@ -25,12 +24,12 @@ function StatisticsPage() {
       eyebrow="Open data"
       title="Bukidnon at a glance"
       description="Population, land area, barangays, cities, municipalities, and verified provincial indicators."
-      icon={ChartNoAxesCombined}
+      icon="bar-chart-fill"
     >
       <dl className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {metrics.map(([value, label]) => (
           <div key={label} className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-            <dd className="text-3xl font-bold text-civic-800">{value}</dd>
+            <dd className="text-3xl font-bold text-primary-dark">{value}</dd>
             <dt className="mt-2 text-sm font-medium text-slate-600">{label}</dt>
           </div>
         ))}

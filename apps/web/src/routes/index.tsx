@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { ArrowRight, Building2, HeartPulse, Landmark } from 'lucide-react'
+import { Icon } from '@/components/ui/icon'
 import { motion } from 'motion/react'
 import { VolunteerDialog } from '@/components/engagement/volunteer-dialog'
 import { ServiceSearch } from '@/components/services/service-search'
@@ -11,19 +11,19 @@ const highlights = [
     title: 'Provincial services',
     text: 'Find the right office, requirements, and official contacts.',
     to: '/services',
-    icon: Building2,
+    icon: 'building',
   },
   {
     title: 'Health and safety',
     text: 'Access health services, emergency contacts, and public guidance.',
     to: '/services/health',
-    icon: HeartPulse,
+    icon: 'heart-pulse-fill',
   },
   {
     title: 'Open government',
     text: 'Explore officials, legislation, budgets, and public records.',
     to: '/government',
-    icon: Landmark,
+    icon: 'building-fill',
   },
 ] as const
 
@@ -31,14 +31,16 @@ function HomePage() {
   return (
     <>
       <VolunteerDialog />
-      <section className="overflow-hidden bg-gradient-to-br from-civic-900 via-civic-700 to-pine-700 text-white">
+      <section className="overflow-hidden bg-linear-135 from-primary to-secondary text-white">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-20 lg:grid-cols-[1.15fr_.85fr] lg:px-8 lg:py-28">
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45 }}
           >
-            <p className="mb-4 font-semibold text-civic-100">A civic portal built for Bukidnons</p>
+            <p className="mb-4 font-semibold text-primary-tint">
+              A civic portal built for Bukidnons
+            </p>
             <h1 className="max-w-3xl text-4xl font-bold tracking-tight sm:text-6xl">
               Public information should be easy to find and understand.
             </h1>
@@ -49,9 +51,9 @@ function HomePage() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 to="/services"
-                className="inline-flex items-center gap-2 rounded-lg bg-white px-5 py-3 font-semibold text-civic-900 shadow-lg hover:bg-civic-50"
+                className="inline-flex items-center gap-2 rounded-lg bg-white px-5 py-3 font-semibold text-primary-dark shadow-lg hover:bg-primary-tint"
               >
-                Browse services <ArrowRight className="size-4" />
+                Browse services <Icon name="arrow-right" className="text-base" />
               </Link>
               <Link
                 to="/contact"
@@ -72,19 +74,23 @@ function HomePage() {
       </section>
       <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8">
         <div className="grid gap-5 md:grid-cols-3">
-          {highlights.map(({ title, text, to, icon: Icon }) => {
+          {highlights.map(({ title, text, to, icon }) => {
             const content = (
               <>
-                <Icon className="size-9 text-civic-600" />
+                <Icon name={icon} className="text-4xl text-primary" />
                 <h2 className="mt-5 text-xl font-bold text-slate-900">{title}</h2>
                 <p className="mt-2 leading-7 text-slate-600">{text}</p>
-                <span className="mt-5 inline-flex items-center gap-2 font-semibold text-civic-700">
-                  Explore <ArrowRight className="size-4 transition group-hover:translate-x-1" />
+                <span className="mt-5 inline-flex items-center gap-2 font-semibold text-primary">
+                  Explore{' '}
+                  <Icon
+                    name="arrow-right"
+                    className="text-base transition group-hover:translate-x-1"
+                  />
                 </span>
               </>
             )
             const className =
-              'group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-civic-200 hover:shadow-lg'
+              'group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-primary/20 hover:shadow-lg'
             return to === '/services/health' ? (
               <Link
                 key={title}

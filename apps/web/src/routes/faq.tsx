@@ -1,4 +1,3 @@
-import { CircleHelp } from 'lucide-react'
 import { createFileRoute } from '@tanstack/react-router'
 import { InformationPage } from '@/components/content/information-page'
 
@@ -8,7 +7,7 @@ export const Route = createFileRoute('/faq')({
       eyebrow="Help"
       title="Frequently asked questions"
       description="Common questions about provincial services and this volunteer civic portal."
-      icon={CircleHelp}
+      icon="question-circle-fill"
       sections={[
         {
           heading: 'Is this an official government website?',

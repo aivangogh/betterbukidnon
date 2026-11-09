@@ -46,7 +46,7 @@ pnpm web:dev
 ```
 
 The app uses Vite+, React 19, TypeScript 7, TanStack Start/Router, Tailwind CSS 4, Zod, Motion,
-and Lucide React. Production build: `pnpm build` prerenders the portal and generates the
+and Bootstrap Icons. Production build: `pnpm build` prerenders the portal and generates the
 service worker in `apps/web/dist/client`, which Cloudflare Workers serves as static assets.
 
 ## Documentation

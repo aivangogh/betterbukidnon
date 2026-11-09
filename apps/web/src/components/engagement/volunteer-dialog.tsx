@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'motion/react'
 import { useEffect, useRef, useState } from 'react'
-import { Mail, X } from 'lucide-react'
+import { Icon } from '@/components/ui/icon'
 
 const STORAGE_KEY = 'bb-vol-popup-v1'
 const SHOW_DELAY_MS = 800
@@ -124,10 +124,10 @@ export function VolunteerDialog() {
               className="absolute right-4 top-4 z-10 rounded-full bg-white/15 p-2 text-white hover:bg-white/25 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               onClick={dismiss}
             >
-              <X className="size-5" />
+              <Icon name="x-lg" className="text-xl" />
             </button>
-            <div className="bg-gradient-to-br from-civic-900 via-civic-700 to-pine-700 px-7 py-10 text-white">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-civic-100">
+            <div className="bg-linear-135 from-primary to-secondary px-7 py-10 text-white">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary-tint">
                 BetterBukidnon volunteers
               </p>
               <h2 id="volunteer-dialog-title" className="mt-3 text-3xl font-bold">
@@ -144,18 +144,18 @@ export function VolunteerDialog() {
               </p>
               <ul className="mt-5 grid gap-2 text-sm text-slate-700 sm:grid-cols-2">
                 {roles.map((role) => (
-                  <li key={role} className="rounded-lg bg-civic-50 px-3 py-2">
+                  <li key={role} className="rounded-lg bg-primary-tint px-3 py-2">
                     {role}
                   </li>
                 ))}
               </ul>
               <div className="mt-7 flex flex-wrap gap-3">
                 <a
-                  className="inline-flex items-center gap-2 rounded-lg bg-civic-700 px-5 py-3 font-semibold text-white hover:bg-civic-800"
+                  className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 font-semibold text-white hover:bg-primary-dark"
                   href="mailto:volunteer@betterbukidnon.org"
                   onClick={dismiss}
                 >
-                  <Mail className="size-4" /> Email the volunteers
+                  <Icon name="envelope-fill" className="text-base" /> Email the volunteers
                 </a>
                 <button
                   type="button"

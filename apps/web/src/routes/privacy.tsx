@@ -1,4 +1,3 @@
-import { ShieldCheck } from 'lucide-react'
 import { createFileRoute } from '@tanstack/react-router'
 import { InformationPage } from '@/components/content/information-page'
 
@@ -8,7 +7,7 @@ export const Route = createFileRoute('/privacy')({
       eyebrow="Privacy"
       title="Privacy notice"
       description="This portal is designed to provide public information without requiring an account."
-      icon={ShieldCheck}
+      icon="shield-lock"
       sections={[
         {
           heading: 'Information we store',

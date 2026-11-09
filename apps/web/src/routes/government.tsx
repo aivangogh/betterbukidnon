@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { ArrowRight, Landmark } from 'lucide-react'
+import { Icon } from '@/components/ui/icon'
 import { SectionPage } from '@/components/content/section-page'
 import { demographics, officials } from '@/content/civic-data'
 
@@ -13,7 +13,7 @@ function GovernmentPage() {
       eyebrow="Provincial government"
       title="Government of Bukidnon"
       description="Learn about the provincial executive, Sangguniang Panlalawigan, congressional districts, cities, and municipalities."
-      icon={Landmark}
+      icon="building-fill"
     >
       <div className="mt-10 grid gap-5 md:grid-cols-2">
         {[officials.governor, officials.vice_governor].map((official) => (
@@ -21,7 +21,7 @@ function GovernmentPage() {
             key={official.title}
             className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
           >
-            <p className="text-sm font-semibold text-civic-700">{official.title}</p>
+            <p className="text-sm font-semibold text-primary">{official.title}</p>
             <h2 className="mt-2 text-xl font-bold text-slate-950">{official.name}</h2>
             <p className="mt-2 text-sm text-slate-600">{official.party}</p>
           </div>
@@ -30,9 +30,9 @@ function GovernmentPage() {
       <div className="mt-6 flex flex-wrap gap-3">
         <Link
           to="/government/officials"
-          className="inline-flex items-center gap-2 rounded-lg bg-civic-700 px-5 py-3 font-semibold text-white hover:bg-civic-800"
+          className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 font-semibold text-white hover:bg-primary-dark"
         >
-          View all officials <ArrowRight className="size-4" />
+          View all officials <Icon name="arrow-right" className="text-base" />
         </Link>
         <a
           href="#lgus"

@@ -41,7 +41,7 @@ Current migration goals:
 | Components        | Local components with a `cn()` class helper  | Accessible, composable UI; follow shadcn/ui patterns when adding primitives |
 | Animation         | Motion (`motion/react`)                      | Interface transitions and animated components                               |
 | Validation        | Zod                                          | Runtime validation for imported JSON content and editor input               |
-| Icons             | Lucide React                                 | Consistent React icon components                                            |
+| Icons             | Bootstrap Icons (`components/ui/icon.tsx`)   | The same icon font the legacy pages use                                     |
 | Offline support   | Workbox build and a generated service worker | Precaches the static site and handles offline navigation                    |
 | Hosting           | Cloudflare Workers static assets             | Serves the prerendered output and preview deployments                       |
 
@@ -122,7 +122,19 @@ fully translated.
 ### Styling and UI
 
 Tailwind CSS 4 is loaded through `@tailwindcss/vite`. Shared design tokens and global rules live
-in `apps/web/src/styles.css`; component styles are expressed with Tailwind classes. Reusable
+in `apps/web/src/styles.css`; component styles are expressed with Tailwind classes.
+
+The legacy pages are the visual spec. The theme tokens copy their values from
+`assets/css/style.css`: `primary` (#0032a0), `primary-dark`, `secondary`, `accent`, `ink`,
+`surface-alt`, the hotline, info bar and footer colors, Inter (300–700, self-hosted with
+Fontsource), the 1200px `container-site` utility, the 8px `rounded-site` radius, and the
+`shadow-sm`/`shadow-md` values. Use these tokens instead of Tailwind's default palette, and
+compare a migrated route with its legacy page at desktop and phone widths before merging.
+
+Icons use `<Icon name="arrow-right" />`, which renders the Bootstrap Icons font with the same
+`bi bi-*` classes as the legacy markup. `name` is typed against the icon set. Pass `label` for
+an icon that carries meaning on its own; icons next to visible text are hidden from assistive
+technology. Reusable
 local components live under `components/`. shadcn/ui is a component pattern and generator, not a
 runtime dependency: add only the primitives the app actually uses, and keep generated code
 typed and accessible.

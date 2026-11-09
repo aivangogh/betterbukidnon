@@ -1,4 +1,4 @@
-import { Download, FilePenLine } from 'lucide-react'
+import { Icon } from '@/components/ui/icon'
 import { useState } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
 import newsJson from '../../../../data/news.json'
@@ -34,10 +34,10 @@ function NewsEditorPage() {
 
   return (
     <section className="mx-auto max-w-5xl px-4 py-16 lg:px-8">
-      <div className="flex size-12 items-center justify-center rounded-xl bg-civic-100 text-civic-700">
-        <FilePenLine />
+      <div className="flex size-12 items-center justify-center rounded-xl bg-primary-tint text-primary">
+        <Icon name="pencil-square" className="text-2xl" />
       </div>
-      <p className="mt-6 font-semibold text-civic-700">Maintainer tool</p>
+      <p className="mt-6 font-semibold text-primary">Maintainer tool</p>
       <h1 className="mt-2 text-4xl font-bold text-slate-950">News JSON editor</h1>
       <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-600">
         This static tool validates data/news.json in your browser. It cannot publish content
@@ -47,16 +47,16 @@ function NewsEditorPage() {
         aria-label="News JSON"
         value={value}
         onChange={(event) => setValue(event.target.value)}
-        className="mt-8 min-h-96 w-full rounded-xl border border-slate-300 bg-slate-950 p-4 font-mono text-sm text-slate-100 outline-none focus:border-civic-500"
+        className="mt-8 min-h-96 w-full rounded-xl border border-slate-300 bg-slate-950 p-4 font-mono text-sm text-slate-100 outline-none focus:border-primary"
         spellCheck="false"
       />
       <div className="mt-4 flex flex-wrap items-center gap-4">
         <button
           type="button"
           onClick={download}
-          className="inline-flex items-center gap-2 rounded-lg bg-civic-700 px-5 py-3 font-semibold text-white hover:bg-civic-800"
+          className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 font-semibold text-white hover:bg-primary-dark"
         >
-          <Download className="size-4" /> Validate and download
+          <Icon name="download" className="text-base" /> Validate and download
         </button>
         <p aria-live="polite" className="text-sm text-slate-600">
           {message}

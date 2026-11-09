@@ -8,7 +8,7 @@ export const Route = createFileRoute('/government/officials')({
 function OfficialsPage() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-16 lg:px-8">
-      <p className="font-semibold text-civic-700">Term {officials.term}</p>
+      <p className="font-semibold text-primary">Term {officials.term}</p>
       <h1 className="mt-2 text-4xl font-bold text-slate-950">Elected officials of Bukidnon</h1>
       <p className="mt-4 text-slate-600">
         Last verified{' '}
@@ -38,7 +38,7 @@ function OfficialsPage() {
           {officials.sources.map((source) => (
             <li key={source.url}>
               <a
-                className="font-medium text-civic-700 underline"
+                className="font-medium text-primary underline"
                 href={source.url}
                 target="_blank"
                 rel="noreferrer"
