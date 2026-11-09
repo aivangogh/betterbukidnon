@@ -1,9 +1,8 @@
 # Architecture
 
-BetterBukidnon is a **static website**: hand-written HTML pages, one shared stylesheet set,
-vanilla JavaScript, and JSON data files fetched in the browser. There is no server-side code
-and no database. One page (`/services/health`) is built with Next.js and merged in at build
-time. Cloudflare Workers serves the built files as static assets.
+BetterBukidnon is a **static civic portal** built with Vite+, React 19, TypeScript, TanStack
+Start, Tailwind CSS, and JSON content contracts. There is no runtime server or database.
+TanStack Start prerenders the portal and Cloudflare Workers serves the static assets.
 
 ## Directory layout
 

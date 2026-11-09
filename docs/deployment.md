@@ -1,7 +1,7 @@
 # Deployment
 
 The site runs on **Cloudflare Workers** as static assets. There is no Worker script: Cloudflare
-serves the files in `dist/` directly. Configuration is in [`wrangler.jsonc`](../wrangler.jsonc).
+serves the files in `apps/web/dist/client` directly. Configuration is in [`wrangler.jsonc`](../wrangler.jsonc).
 
 ## Environments
 
@@ -13,10 +13,10 @@ serves the files in `dist/` directly. Configuration is in [`wrangler.jsonc`](../
 
 Asset settings shared by both environments:
 
-- `assets.directory: ./dist`
-- `html_handling: auto-trailing-slash`: `/services/health` serves `services/health.html`,
-  `/budget/` serves `budget/index.html`
-- `not_found_handling: 404-page`: unknown paths get `dist/404.html` with status 404
+- `assets.directory: ./apps/web/dist/client`
+- `html_handling: auto-trailing-slash`: prerendered routes such as `/services/health` and
+  `/budget` resolve to their generated `index.html` files
+- `not_found_handling: 404-page`: unknown paths get `apps/web/dist/client/404.html` with status 404
 
 Custom domains are declared in `routes` for each environment and applied on deploy. Do not
 add or remove them in the Cloudflare dashboard; change `wrangler.jsonc` instead. Production
@@ -25,7 +25,7 @@ sets its own `routes` so it does not inherit `dev.betterbukidnon.org`.
 ## Automatic deploys (Workers Builds)
 
 Each Worker is connected to this repository through Cloudflare Workers Builds and builds
-`dist/` with the project's build script before deploying:
+`apps/web/dist/client` with the project's build script before deploying:
 
 - `betterbukidnon` deploys `develop` with `npx wrangler deploy`
 - `betterbukidnon-production` deploys `main` with `npx wrangler deploy --env production`
@@ -34,14 +34,13 @@ Each Worker is connected to this repository through Cloudflare Workers Builds an
 
 The build and deploy commands themselves are stored in the Cloudflare dashboard (Workers &
 Pages → the Worker → Settings → Builds), not in this repository. Check there before changing
-the build script. A build command of `npm run build` bumps the patch version on every
-deploy; `bash build.sh --no-bump` does not.
+the build script. Run `pnpm build` before deploying; it does not mutate the package version.
 
 ## Manual deploy
 
 ```bash
-npm ci
-bash build.sh --no-bump
+pnpm install --frozen-lockfile
+pnpm build
 npx wrangler login                      # once
 npx wrangler deploy                     # development → dev.betterbukidnon.org
 npx wrangler deploy --env production    # production  → betterbukidnon.org

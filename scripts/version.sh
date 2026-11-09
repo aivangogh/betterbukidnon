@@ -5,7 +5,6 @@
 #   - version.json (master source of truth)
 #   - package.json sync
 #   - all HTML files (Ver. X.X.X pattern)
-#   - react-app/public/version.json sync
 #
 # Usage: ./scripts/version.sh [major|minor|patch]
 

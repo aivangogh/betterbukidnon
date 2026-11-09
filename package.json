@@ -9,12 +9,12 @@
     "pnpm": ">=11"
   },
   "scripts": {
-    "dev": "python3 -m http.server 8000",
-    "build": "bash build.sh",
-    "build:major": "bash scripts/version.sh major && bash build.sh --no-bump",
-    "build:minor": "bash scripts/version.sh minor && bash build.sh --no-bump",
-    "serve": "python3 -m http.server 8000",
-    "serve:dist": "cd dist && python3 -m http.server 8080",
+    "dev": "pnpm web:dev",
+    "build": "pnpm web:build",
+    "build:major": "pnpm version:major && pnpm build",
+    "build:minor": "pnpm version:minor && pnpm build",
+    "serve": "pnpm web:dev",
+    "serve:dist": "cd apps/web/dist/client && python3 -m http.server 8080",
     "version:major": "tsx scripts/bump-version.ts major",
     "version:minor": "tsx scripts/bump-version.ts minor",
     "version:patch": "tsx scripts/bump-version.ts patch",
