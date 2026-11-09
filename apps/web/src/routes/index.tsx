@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { ArrowRight, Building2, HeartPulse, Landmark, Search } from 'lucide-react'
 import { motion } from 'motion/react'
+import { VolunteerDialog } from '@/components/engagement/volunteer-dialog'
 
 export const Route = createFileRoute('/')({ component: HomePage })
 
@@ -28,6 +29,7 @@ const highlights = [
 function HomePage() {
   return (
     <>
+      <VolunteerDialog />
       <section className="overflow-hidden bg-gradient-to-br from-civic-900 via-civic-700 to-pine-700 text-white">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-20 lg:grid-cols-[1.15fr_.85fr] lg:px-8 lg:py-28">
           <motion.div
