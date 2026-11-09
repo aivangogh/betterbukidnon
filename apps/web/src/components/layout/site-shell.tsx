@@ -2,7 +2,7 @@ import { Link } from '@tanstack/react-router'
 import { Menu, ShieldCheck, X } from 'lucide-react'
 import { useState } from 'react'
 import { navigation, site } from '@/content/site'
-import logoUrl from '../../../../assets/images/logo/better-bukidnon-logo.svg?url'
+import logoUrl from '../../../../../assets/images/logo/better-bukidnon-logo.svg?url'
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false)
@@ -65,16 +65,11 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
           </div>
           <div>
             <p className="font-semibold">Public service</p>
-            <p className="mt-2 text-sm text-slate-300">
-              Cost to the people of Bukidnon: ₱0
-            </p>
+            <p className="mt-2 text-sm text-slate-300">Cost to the people of Bukidnon: ₱0</p>
           </div>
           <div className="flex items-start gap-2 text-sm text-slate-300">
             <ShieldCheck className="mt-0.5 size-5 shrink-0" />
-            <span>
-              Facts should be verified against the linked official government
-              sources.
-            </span>
+            <span>Facts should be verified against the linked official government sources.</span>
           </div>
         </div>
       </footer>

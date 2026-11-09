@@ -13,9 +13,12 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as BudgetRouteImport } from './routes/budget'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as GovernmentRouteImport } from './routes/government'
+import { Route as LegislativeRouteImport } from './routes/legislative'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as StatisticsRouteImport } from './routes/statistics'
+import { Route as GovernmentOfficialsRouteImport } from './routes/government.officials'
+import { Route as ServiceDetailsSlugRouteImport } from './routes/service-details.$slug'
 import { Route as ServicesCategoryRouteImport } from './routes/services.$category'
 
 const IndexRoute = IndexRouteImport.update({
@@ -38,6 +41,11 @@ const GovernmentRoute = GovernmentRouteImport.update({
   path: '/government',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LegislativeRoute = LegislativeRouteImport.update({
+  id: '/legislative',
+  path: '/legislative',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NewsRoute = NewsRouteImport.update({
   id: '/news',
   path: '/news',
@@ -53,6 +61,16 @@ const StatisticsRoute = StatisticsRouteImport.update({
   path: '/statistics',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GovernmentOfficialsRoute = GovernmentOfficialsRouteImport.update({
+  id: '/officials',
+  path: '/officials',
+  getParentRoute: () => GovernmentRoute,
+} as any)
+const ServiceDetailsSlugRoute = ServiceDetailsSlugRouteImport.update({
+  id: '/service-details/$slug',
+  path: '/service-details/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesCategoryRoute = ServicesCategoryRouteImport.update({
   id: '/$category',
   path: '/$category',
@@ -63,20 +81,26 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/budget': typeof BudgetRoute
   '/contact': typeof ContactRoute
-  '/government': typeof GovernmentRoute
+  '/government': typeof GovernmentRouteWithChildren
+  '/legislative': typeof LegislativeRoute
   '/news': typeof NewsRoute
   '/services': typeof ServicesRouteWithChildren
   '/statistics': typeof StatisticsRoute
+  '/government/officials': typeof GovernmentOfficialsRoute
+  '/service-details/$slug': typeof ServiceDetailsSlugRoute
   '/services/$category': typeof ServicesCategoryRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/budget': typeof BudgetRoute
   '/contact': typeof ContactRoute
-  '/government': typeof GovernmentRoute
+  '/government': typeof GovernmentRouteWithChildren
+  '/legislative': typeof LegislativeRoute
   '/news': typeof NewsRoute
   '/services': typeof ServicesRouteWithChildren
   '/statistics': typeof StatisticsRoute
+  '/government/officials': typeof GovernmentOfficialsRoute
+  '/service-details/$slug': typeof ServiceDetailsSlugRoute
   '/services/$category': typeof ServicesCategoryRoute
 }
 export interface FileRoutesById {
@@ -84,10 +108,13 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/budget': typeof BudgetRoute
   '/contact': typeof ContactRoute
-  '/government': typeof GovernmentRoute
+  '/government': typeof GovernmentRouteWithChildren
+  '/legislative': typeof LegislativeRoute
   '/news': typeof NewsRoute
   '/services': typeof ServicesRouteWithChildren
   '/statistics': typeof StatisticsRoute
+  '/government/officials': typeof GovernmentOfficialsRoute
+  '/service-details/$slug': typeof ServiceDetailsSlugRoute
   '/services/$category': typeof ServicesCategoryRoute
 }
 export interface FileRouteTypes {
@@ -97,9 +124,12 @@ export interface FileRouteTypes {
     | '/budget'
     | '/contact'
     | '/government'
+    | '/legislative'
     | '/news'
     | '/services'
     | '/statistics'
+    | '/government/officials'
+    | '/service-details/$slug'
     | '/services/$category'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -107,9 +137,12 @@ export interface FileRouteTypes {
     | '/budget'
     | '/contact'
     | '/government'
+    | '/legislative'
     | '/news'
     | '/services'
     | '/statistics'
+    | '/government/officials'
+    | '/service-details/$slug'
     | '/services/$category'
   id:
     | '__root__'
@@ -117,9 +150,12 @@ export interface FileRouteTypes {
     | '/budget'
     | '/contact'
     | '/government'
+    | '/legislative'
     | '/news'
     | '/services'
     | '/statistics'
+    | '/government/officials'
+    | '/service-details/$slug'
     | '/services/$category'
   fileRoutesById: FileRoutesById
 }
@@ -127,10 +163,12 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BudgetRoute: typeof BudgetRoute
   ContactRoute: typeof ContactRoute
-  GovernmentRoute: typeof GovernmentRoute
+  GovernmentRoute: typeof GovernmentRouteWithChildren
+  LegislativeRoute: typeof LegislativeRoute
   NewsRoute: typeof NewsRoute
   ServicesRoute: typeof ServicesRouteWithChildren
   StatisticsRoute: typeof StatisticsRoute
+  ServiceDetailsSlugRoute: typeof ServiceDetailsSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -163,6 +201,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GovernmentRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/legislative': {
+      id: '/legislative'
+      path: '/legislative'
+      fullPath: '/legislative'
+      preLoaderRoute: typeof LegislativeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/news': {
       id: '/news'
       path: '/news'
@@ -184,6 +229,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StatisticsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/government/officials': {
+      id: '/government/officials'
+      path: '/officials'
+      fullPath: '/government/officials'
+      preLoaderRoute: typeof GovernmentOfficialsRouteImport
+      parentRoute: typeof GovernmentRoute
+    }
+    '/service-details/$slug': {
+      id: '/service-details/$slug'
+      path: '/service-details/$slug'
+      fullPath: '/service-details/$slug'
+      preLoaderRoute: typeof ServiceDetailsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/$category': {
       id: '/services/$category'
       path: '/$category'
@@ -193,6 +252,18 @@ declare module '@tanstack/react-router' {
     }
   }
 }
+
+interface GovernmentRouteChildren {
+  GovernmentOfficialsRoute: typeof GovernmentOfficialsRoute
+}
+
+const GovernmentRouteChildren: GovernmentRouteChildren = {
+  GovernmentOfficialsRoute: GovernmentOfficialsRoute,
+}
+
+const GovernmentRouteWithChildren = GovernmentRoute._addFileChildren(
+  GovernmentRouteChildren,
+)
 
 interface ServicesRouteChildren {
   ServicesCategoryRoute: typeof ServicesCategoryRoute
@@ -210,10 +281,12 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BudgetRoute: BudgetRoute,
   ContactRoute: ContactRoute,
-  GovernmentRoute: GovernmentRoute,
+  GovernmentRoute: GovernmentRouteWithChildren,
+  LegislativeRoute: LegislativeRoute,
   NewsRoute: NewsRoute,
   ServicesRoute: ServicesRouteWithChildren,
   StatisticsRoute: StatisticsRoute,
+  ServiceDetailsSlugRoute: ServiceDetailsSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

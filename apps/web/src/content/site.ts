@@ -9,6 +9,7 @@ export const site = {
 export const navigation = [
   { label: 'Services', to: '/services' },
   { label: 'Government', to: '/government' },
+  { label: 'Legislative', to: '/legislative' },
   { label: 'Statistics', to: '/statistics' },
   { label: 'Transparency', to: '/budget' },
   { label: 'News', to: '/news' },

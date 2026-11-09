@@ -5,7 +5,7 @@
   "type": "module",
   "packageManager": "pnpm@12.15.0",
   "engines": {
-    "node": ">=22.12.0",
+    "node": "^22.18.0 || ^24.11.0 || >=26.0.0",
     "pnpm": ">=11"
   },
   "scripts": {
@@ -25,11 +25,12 @@
     "lighthouse": "lhci autorun",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "modern:dev": "cd modern && vite dev",
-    "modern:build": "cd modern && vite build",
-    "modern:preview": "cd modern && vite preview",
-    "modern:typecheck": "tsc -p modern/tsconfig.json --noEmit",
-    "modern:check": "biome check modern",
+    "web:dev": "cd apps/web && vp dev",
+    "web:build": "cd apps/web && vp build",
+    "web:preview": "cd apps/web && vp preview",
+    "web:typecheck": "vp check --no-fmt --no-lint apps/web",
+    "web:check": "vp check apps/web",
+    "web:test": "vp test run apps/web/src",
     "package": "bash scripts/package-cpanel.sh --build",
     "package:only": "bash scripts/package-cpanel.sh"
   },
@@ -51,17 +52,16 @@
   "homepage": "https://betterbukidnon.org",
   "license": "MIT",
   "devDependencies": {
-    "@biomejs/biome": "^2.4.5",
-    "@tailwindcss/vite": "^4.1.18",
-    "@types/node": "^24.10.0",
-    "@types/react": "^19.2.0",
-    "@types/react-dom": "^19.2.0",
-    "@vitejs/plugin-react": "^6.0.1",
     "@babel/cli": "^7.23.9",
     "@babel/core": "^7.29.6",
     "@babel/preset-env": "^7.23.9",
     "@lhci/cli": "^0.15.1",
     "@playwright/test": "^1.61.0",
+    "@tailwindcss/vite": "^4.1.18",
+    "@types/node": "^24.10.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^6.0.1",
     "clean-css-cli": "^5.6.3",
     "core-js": "^3.40.0",
     "html-minifier-terser": "^7.2.0",
@@ -69,7 +69,8 @@
     "prettier": "^3.8.1",
     "terser": "^5.44.1",
     "typescript": "^7.0.2",
-    "vite": "^8.0.0"
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
   },
   "dependencies": {
     "@tanstack/react-router": "^1.170.46",

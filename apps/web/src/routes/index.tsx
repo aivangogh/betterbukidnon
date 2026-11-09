@@ -1,11 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import {
-  ArrowRight,
-  Building2,
-  HeartPulse,
-  Landmark,
-  Search,
-} from 'lucide-react'
+import { ArrowRight, Building2, HeartPulse, Landmark, Search } from 'lucide-react'
 import { motion } from 'motion/react'
 
 export const Route = createFileRoute('/')({ component: HomePage })
@@ -41,15 +35,13 @@ function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45 }}
           >
-            <p className="mb-4 font-semibold text-civic-100">
-              A civic portal built for Bukidnons
-            </p>
+            <p className="mb-4 font-semibold text-civic-100">A civic portal built for Bukidnons</p>
             <h1 className="max-w-3xl text-4xl font-bold tracking-tight sm:text-6xl">
               Public information should be easy to find and understand.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-200">
-              Browse provincial services, officials, emergency contacts,
-              statistics, and transparency records in one accessible place.
+              Browse provincial services, officials, emergency contacts, statistics, and
+              transparency records in one accessible place.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
@@ -89,13 +81,10 @@ function HomePage() {
             const content = (
               <>
                 <Icon className="size-9 text-civic-600" />
-                <h2 className="mt-5 text-xl font-bold text-slate-900">
-                  {title}
-                </h2>
+                <h2 className="mt-5 text-xl font-bold text-slate-900">{title}</h2>
                 <p className="mt-2 leading-7 text-slate-600">{text}</p>
                 <span className="mt-5 inline-flex items-center gap-2 font-semibold text-civic-700">
-                  Explore{' '}
-                  <ArrowRight className="size-4 transition group-hover:translate-x-1" />
+                  Explore <ArrowRight className="size-4 transition group-hover:translate-x-1" />
                 </span>
               </>
             )

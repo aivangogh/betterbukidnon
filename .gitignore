@@ -21,4 +21,5 @@ release/
 
 # TypeScript incremental build info
 *.tsbuildinfo
-modern/dist/
+apps/web/dist/
+.vitest/

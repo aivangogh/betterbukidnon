@@ -20,9 +20,7 @@ export function SectionPage({
       </div>
       <p className="mt-6 font-semibold text-civic-700">{eyebrow}</p>
       <h1 className="mt-2 text-4xl font-bold text-slate-950">{title}</h1>
-      <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-600">
-        {description}
-      </p>
+      <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-600">{description}</p>
       {children}
     </section>
   )
