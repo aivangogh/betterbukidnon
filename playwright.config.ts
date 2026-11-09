@@ -1,33 +1,28 @@
-// @ts-check
-const { defineConfig, devices } = require('@playwright/test');
+import { defineConfig, devices } from '@playwright/test'
 
 /**
- * Cross-browser validation harness.
+ * Cross-browser validation harness for the legacy static surface.
  *
- * Chrome and Edge run as real installed channels (not bundled Chromium) so the
- * results reflect the shipping browsers; Firefox uses Gecko and WebKit is the
- * engine behind Safari on both macOS and iOS.
+ * This remains separate from the new TanStack Start build until the legacy
+ * pages are retired; keeping the config typed makes that boundary explicit.
  */
-module.exports = defineConfig({
+export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
-  forbidOnly: !!process.env.CI,
+  forbidOnly: Boolean(process.env.CI),
   retries: process.env.CI ? 1 : 0,
   reporter: process.env.CI ? [['github'], ['html', { open: 'never' }]] : [['list']],
-
   use: {
-    baseURL: process.env.BASE_URL || 'http://localhost:8321',
+    baseURL: process.env.BASE_URL ?? 'http://localhost:8321',
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
   },
-
   webServer: {
     command: 'python3 -m http.server 8321',
     url: 'http://localhost:8321/index.html',
     reuseExistingServer: true,
     timeout: 30_000,
   },
-
   projects: [
     { name: 'chrome', use: { ...devices['Desktop Chrome'], channel: 'chrome' } },
     { name: 'edge', use: { ...devices['Desktop Edge'], channel: 'msedge' } },
@@ -36,4 +31,4 @@ module.exports = defineConfig({
     { name: 'mobile-safari', use: { ...devices['iPhone 13'] } },
     { name: 'mobile-chrome', use: { ...devices['Pixel 7'] } },
   ],
-});
+})

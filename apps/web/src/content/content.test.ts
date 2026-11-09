@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vite-plus/test'
-import { demographics, fiscalData, officials, ordinances, resolutions } from './civic-data'
+import { demographics, fiscalData, news, officials, ordinances, resolutions } from './civic-data'
 import { serviceBySlug, services, servicesForCategory } from './services'
 
 describe('civic content contracts', () => {
@@ -9,6 +9,7 @@ describe('civic content contracts', () => {
     expect(fiscalData.fiscal_years).toEqual([])
     expect(ordinances.ordinances).toEqual([])
     expect(resolutions.resolutions).toEqual([])
+    expect(news.news).toEqual([])
   })
 
   it('keeps every service id unique', () => {

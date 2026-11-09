@@ -30,8 +30,8 @@ export const newsItemSchema = z.object({
   id: z.union([z.string(), z.number()]),
   title: z.string().min(1),
   excerpt: z.string().optional(),
-  date: z.string().optional(),
-  url: z.string().optional(),
+  date: z.iso.date().optional(),
+  url: z.url().optional(),
   image: z.string().optional(),
   category: z.string().optional(),
 })

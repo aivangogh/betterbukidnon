@@ -1,11 +1,13 @@
 import demographicsJson from '../../../../data/demographics.json'
 import fiscalJson from '../../../../data/fiscal_transparency.json'
+import newsJson from '../../../../data/news.json'
 import officialsJson from '../../../../data/officials.json'
 import ordinancesJson from '../../../../data/ordinances.json'
 import resolutionsJson from '../../../../data/resolutions.json'
 import {
   demographicsDataSchema,
   fiscalDataSchema,
+  newsDataSchema,
   officialsDataSchema,
   ordinancesDataSchema,
   parseContent,
@@ -33,3 +35,5 @@ export const fiscalData = parseContent(
   fiscalJson,
   'data/fiscal_transparency.json',
 )
+
+export const news = parseContent(newsDataSchema, newsJson, 'data/news.json')
