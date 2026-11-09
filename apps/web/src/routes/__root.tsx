@@ -1,5 +1,6 @@
 import { createRootRoute, HeadContent, Outlet, Scripts } from '@tanstack/react-router'
 import { SiteShell } from '@/components/layout/site-shell'
+import { LocaleProvider } from '@/components/i18n/locale-provider'
 import { PwaUpdateNotice } from '@/components/pwa/update-notice'
 import { site } from '@/content/site'
 import appCss from '../styles.css?url'
@@ -29,9 +30,11 @@ function RootDocument() {
         <HeadContent />
       </head>
       <body>
-        <SiteShell>
-          <Outlet />
-        </SiteShell>
+        <LocaleProvider>
+          <SiteShell>
+            <Outlet />
+          </SiteShell>
+        </LocaleProvider>
         <PwaUpdateNotice />
         <Scripts />
       </body>

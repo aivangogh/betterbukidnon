@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vite-plus/test'
 import { demographics, fiscalData, news, officials, ordinances, resolutions } from './civic-data'
 import { searchServices, serviceBySlug, services, servicesForCategory } from './services'
+import { translate } from './translations'
 
 describe('civic content contracts', () => {
   it('validates all current datasets at import time', () => {
@@ -34,5 +35,11 @@ describe('civic content contracts', () => {
   it('ranks service search results by title relevance', () => {
     expect(searchServices('birth certificate')[0]?.id).toBe('birth-certificate')
     expect(searchServices('zzzz')).toEqual([])
+  })
+
+  it('provides localized shell labels with English fallback contracts', () => {
+    expect(translate('fil', 'nav.services')).toBe('Mga Serbisyo')
+    expect(translate('ceb', 'shell.language')).toBe('Pinulongan')
+    expect(translate('en', 'shell.cost')).toContain('₱0')
   })
 })
