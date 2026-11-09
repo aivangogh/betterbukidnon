@@ -39,9 +39,9 @@ describe('civic content contracts', () => {
   })
 
   it('provides localized shell labels with English fallback contracts', () => {
-    expect(translate('fil', 'nav.services')).toBe('Mga Serbisyo')
-    expect(translate('ceb', 'shell.language')).toBe('Pinulongan')
-    expect(translate('en', 'shell.cost')).toContain('₱0')
+    expect(translate('fil', 'nav-services')).toBe('Mga Serbisyo')
+    expect(translate('fil', 'nav-home')).toBe('Tahanan')
+    expect(translate('en', 'nav-projects')).toBe('Our Projects')
   })
 
   it('keeps the public hotline directory complete and callable', () => {
