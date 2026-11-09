@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vite-plus/test'
 import { demographics, fiscalData, news, officials, ordinances, resolutions } from './civic-data'
-import { serviceBySlug, services, servicesForCategory } from './services'
+import { searchServices, serviceBySlug, services, servicesForCategory } from './services'
 
 describe('civic content contracts', () => {
   it('validates all current datasets at import time', () => {
@@ -29,5 +29,10 @@ describe('civic content contracts', () => {
     expect(
       servicesForCategory('health').every((service) => service.url.includes('service-details')),
     ).toBe(true)
+  })
+
+  it('ranks service search results by title relevance', () => {
+    expect(searchServices('birth certificate')[0]?.id).toBe('birth-certificate')
+    expect(searchServices('zzzz')).toEqual([])
   })
 })

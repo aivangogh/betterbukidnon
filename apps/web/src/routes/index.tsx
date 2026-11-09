@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { ArrowRight, Building2, HeartPulse, Landmark, Search } from 'lucide-react'
+import { ArrowRight, Building2, HeartPulse, Landmark } from 'lucide-react'
 import { motion } from 'motion/react'
 import { VolunteerDialog } from '@/components/engagement/volunteer-dialog'
+import { ServiceSearch } from '@/components/services/service-search'
 
 export const Route = createFileRoute('/')({ component: HomePage })
 
@@ -61,16 +62,8 @@ function HomePage() {
             </div>
           </motion.div>
           <div className="self-end rounded-2xl border border-white/15 bg-white/10 p-6 shadow-2xl backdrop-blur">
-            <div className="flex items-center gap-3">
-              <Search className="size-5" />
-              <h2 className="font-semibold">Find a service</h2>
-            </div>
-            <Link
-              to="/services"
-              className="mt-4 block rounded-xl bg-white px-4 py-4 text-slate-500 shadow"
-            >
-              Search services and government offices…
-            </Link>
+            <h2 className="font-semibold">Find a service</h2>
+            <ServiceSearch compact />
             <p className="mt-4 text-sm text-slate-200">
               Popular: property tax, birth certificates, social assistance
             </p>
