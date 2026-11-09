@@ -1,13 +1,13 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 import { localeSchema, type Locale } from '@/content/schemas'
-import { translate, type TranslationKey } from '@/content/translations'
+import { translate, type TranslationKey, type TranslationParams } from '@/content/translations'
 
 const STORAGE_KEY = 'betterbukidnon-locale'
 
 type LocaleContextValue = {
   locale: Locale
   setLocale: (locale: Locale) => void
-  t: (key: TranslationKey) => string
+  t: (key: TranslationKey, params?: TranslationParams) => string
 }
 
 const LocaleContext = createContext<LocaleContextValue | null>(null)
@@ -44,7 +44,7 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
           // The in-memory selection remains active for this visit.
         }
       },
-      t: (key) => translate(locale, key),
+      t: (key, params) => translate(locale, key, params),
     }),
     [locale],
   )

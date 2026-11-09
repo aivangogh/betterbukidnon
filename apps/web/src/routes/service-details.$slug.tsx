@@ -40,7 +40,9 @@ function ServiceDetailPage() {
         <Detail icon="clock" label="Processing time" value={service.processingTime ?? 'Varies'} />
       </dl>
       <div className="mt-10 rounded-2xl border border-amber-200 bg-amber-50 p-6 text-amber-950">
-        <h2 className="font-bold">Verify before visiting</h2>
+        <h2 className="mb-0 text-[length:inherit] font-bold text-inherit">
+          Verify before visiting
+        </h2>
         <p className="mt-2 leading-7">
           Requirements, fees, and office procedures can change. Contact the responsible office or
           consult its official government channel before travelling or submitting documents.

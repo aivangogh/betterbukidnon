@@ -37,7 +37,7 @@ function ContactPage() {
             <a
               key={hotline.label}
               href={hotline.href}
-              className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm hover:border-primary/30"
+              className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm hover:border-primary/30 text-inherit hover:text-inherit hover:no-underline"
             >
               <span className="text-sm font-semibold text-primary">{hotline.label}</span>
               <span className="mt-2 block text-xl font-bold text-slate-950">{hotline.display}</span>

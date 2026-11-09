@@ -127,18 +127,18 @@ export function VolunteerDialog() {
               <Icon name="x-lg" className="text-xl" />
             </button>
             <div className="bg-linear-135 from-primary to-secondary px-7 py-10 text-white">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary-tint">
+              <p className="mb-0 text-sm font-semibold uppercase tracking-[0.18em] text-primary-tint">
                 BetterBukidnon volunteers
               </p>
-              <h2 id="volunteer-dialog-title" className="mt-3 text-3xl font-bold">
+              <h2 id="volunteer-dialog-title" className="mb-0 mt-3 text-3xl font-bold text-inherit">
                 Be part of something greater
               </h2>
-              <p className="mt-3 text-slate-200">
+              <p className="mb-0 mt-3 text-slate-200">
                 Help make reliable public information easier for every Bukidnon to find.
               </p>
             </div>
             <div className="p-7">
-              <p className="leading-7 text-slate-600">
+              <p className="mb-0 leading-7 text-slate-600">
                 This is a volunteer civic project. You can contribute a few hours, local knowledge,
                 research, design, or code.
               </p>

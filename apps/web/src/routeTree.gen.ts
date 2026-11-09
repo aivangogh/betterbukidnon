@@ -19,6 +19,7 @@ import { Route as LegislativeRouteImport } from './routes/legislative'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as OfflineRouteImport } from './routes/offline'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SitemapRouteImport } from './routes/sitemap'
 import { Route as StatisticsRouteImport } from './routes/statistics'
@@ -78,6 +79,11 @@ const OfflineRoute = OfflineRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesRoute = ServicesRouteImport.update({
@@ -144,6 +150,7 @@ export interface FileRoutesByFullPath {
   '/news': typeof NewsRoute
   '/offline': typeof OfflineRoute
   '/privacy': typeof PrivacyRoute
+  '/projects': typeof ProjectsRoute
   '/services': typeof ServicesRouteWithChildren
   '/sitemap': typeof SitemapRoute
   '/statistics': typeof StatisticsRoute
@@ -166,6 +173,7 @@ export interface FileRoutesByTo {
   '/news': typeof NewsRoute
   '/offline': typeof OfflineRoute
   '/privacy': typeof PrivacyRoute
+  '/projects': typeof ProjectsRoute
   '/services': typeof ServicesRouteWithChildren
   '/sitemap': typeof SitemapRoute
   '/statistics': typeof StatisticsRoute
@@ -189,6 +197,7 @@ export interface FileRoutesById {
   '/news': typeof NewsRoute
   '/offline': typeof OfflineRoute
   '/privacy': typeof PrivacyRoute
+  '/projects': typeof ProjectsRoute
   '/services': typeof ServicesRouteWithChildren
   '/sitemap': typeof SitemapRoute
   '/statistics': typeof StatisticsRoute
@@ -213,6 +222,7 @@ export interface FileRouteTypes {
     | '/news'
     | '/offline'
     | '/privacy'
+    | '/projects'
     | '/services'
     | '/sitemap'
     | '/statistics'
@@ -235,6 +245,7 @@ export interface FileRouteTypes {
     | '/news'
     | '/offline'
     | '/privacy'
+    | '/projects'
     | '/services'
     | '/sitemap'
     | '/statistics'
@@ -257,6 +268,7 @@ export interface FileRouteTypes {
     | '/news'
     | '/offline'
     | '/privacy'
+    | '/projects'
     | '/services'
     | '/sitemap'
     | '/statistics'
@@ -280,6 +292,7 @@ export interface RootRouteChildren {
   NewsRoute: typeof NewsRoute
   OfflineRoute: typeof OfflineRoute
   PrivacyRoute: typeof PrivacyRoute
+  ProjectsRoute: typeof ProjectsRoute
   ServicesRoute: typeof ServicesRouteWithChildren
   SitemapRoute: typeof SitemapRoute
   StatisticsRoute: typeof StatisticsRoute
@@ -358,6 +371,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services': {
@@ -482,6 +502,7 @@ const rootRouteChildren: RootRouteChildren = {
   NewsRoute: NewsRoute,
   OfflineRoute: OfflineRoute,
   PrivacyRoute: PrivacyRoute,
+  ProjectsRoute: ProjectsRoute,
   ServicesRoute: ServicesRouteWithChildren,
   SitemapRoute: SitemapRoute,
   StatisticsRoute: StatisticsRoute,
