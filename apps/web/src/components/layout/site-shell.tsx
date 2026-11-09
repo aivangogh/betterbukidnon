@@ -2,6 +2,7 @@ import { Link } from '@tanstack/react-router'
 import { Menu, ShieldCheck, X } from 'lucide-react'
 import { useState } from 'react'
 import { navigation, site } from '@/content/site'
+import { contactDirectory } from '@/content/contact'
 import { useLocale } from '@/components/i18n/locale-provider'
 import { LanguageSwitcher } from '@/components/i18n/language-switcher'
 import logoUrl from '../../../../../assets/images/logo/better-bukidnon-logo.svg?url'
@@ -18,7 +19,8 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
         {t('shell.skip')}
       </a>
       <div className="bg-civic-900 px-4 py-2 text-center text-sm text-white">
-        {t('shell.emergency')}: 911 · Bukidnon PDRRMO: (088) 813-5255
+        {t('shell.emergency')}: {contactDirectory.hotlines[0].display} · Bukidnon PDRRMD:{' '}
+        {contactDirectory.hotlines[1].display}
       </div>
       <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 lg:px-8">
