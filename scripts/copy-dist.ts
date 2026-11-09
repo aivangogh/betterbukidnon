@@ -1,11 +1,11 @@
-#!/usr/bin/env node
+#!/usr/bin/env -S pnpm exec tsx
 /**
  * Cross-platform file copy with exclusions (rsync replacement).
- * Usage: node scripts/copy-dist.js <src> <dest>
+ * Usage: pnpm tsx scripts/copy-dist.ts <src> <dest>
  */
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'node:fs'
+import path from 'node:path'
 
 const EXCLUDED = new Set([
   'node_modules',
@@ -27,7 +27,7 @@ const EXCLUDED = new Set([
   'validate-translations.js',
   // Keep in step with the rsync exclude list in build.sh.
   'tests',
-  'playwright.config.js',
+  'playwright.config.ts',
   'playwright-report',
   'test-results',
   '.prettierrc',
@@ -69,7 +69,7 @@ function copyDir(src, dest) {
 
 const [, , src, dest] = process.argv;
 if (!src || !dest) {
-  console.error('Usage: node scripts/copy-dist.js <src> <dest>');
+  console.error('Usage: pnpm tsx scripts/copy-dist.ts <src> <dest>');
   process.exit(1);
 }
 
