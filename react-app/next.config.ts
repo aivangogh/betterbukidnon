@@ -1,7 +1,7 @@
-const path = require('path');
+import path from 'node:path'
+import type { NextConfig } from 'next'
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
   output: 'export',
   trailingSlash: false,
   skipTrailingSlashRedirect: true,
@@ -32,6 +32,6 @@ const nextConfig = {
   env: {
     SITE_URL: process.env.SITE_URL || 'https://betterbukidnon.org',
   },
-};
+}
 
-module.exports = nextConfig;
+export default nextConfig
