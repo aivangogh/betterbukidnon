@@ -75,7 +75,7 @@ function CategoryPage() {
             key={service.id}
             to="/service-details/$slug"
             params={{ slug: service.id }}
-            className="group rounded-xl border border-slate-200 bg-white p-5 shadow-sm hover:border-primary/30"
+            className="group rounded-xl border border-slate-200 bg-white p-5 shadow-sm hover:border-primary/30 text-inherit hover:text-inherit hover:no-underline"
           >
             <h2 className="font-bold text-slate-950">{service.title}</h2>
             <p className="mt-2 text-sm leading-6 text-slate-600">{service.description}</p>
@@ -109,7 +109,7 @@ function HealthOverview() {
               (hotline) => hotline.label === 'Provincial Health Office',
             )?.href
           }
-          className="flex items-start gap-3 rounded-xl bg-white p-4"
+          className="flex items-start gap-3 rounded-xl bg-white p-4 text-inherit hover:text-inherit hover:no-underline"
         >
           <Icon name="telephone-fill" className="mt-0.5 text-xl shrink-0 text-primary" />
           <span>

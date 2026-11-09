@@ -52,6 +52,44 @@ const messages = {
     'footer-blgf-portal': 'BLGF Portal',
     'footer-cmci-dti-portal': 'CMCI DTI Portal',
     'footer-faq': 'FAQ',
+    'proj-title': 'Our Projects',
+    'proj-type-org': 'Org Projects',
+    'proj-type-community': 'Community',
+    'proj-about': 'About',
+    'proj-contributors': 'Contributors',
+    'proj-contributors-link': 'See contributors on GitHub',
+    'proj-repository': 'Repository',
+    'proj-repos-count': '{{count}} repository',
+    'proj-visit-project': 'Visit Project',
+    'proj-close': 'Close',
+    'proj-home': 'Home',
+    'proj-badge': 'Projects',
+    'proj-subtitle':
+      "Community-built tools that make Bukidnon's government information easier to find and check.",
+    'proj-tabs-label': 'Project status',
+    'proj-tab-active': 'Active',
+    'proj-tab-development': 'Development',
+    'proj-tab-archived': 'Archived',
+    'proj-search-label': 'Search projects',
+    'proj-search-placeholder': 'Search projects...',
+    'proj-all-repos': 'All Repos',
+    'proj-all-categories': 'All Categories',
+    'proj-filter-repo-label': 'Filter by repository',
+    'proj-filter-category-label': 'Filter by category',
+    'proj-view-details': 'View Details',
+    'proj-showing': 'Showing {{count}} projects',
+    'proj-empty': 'No projects match your search.',
+    'proj-load-error': 'Projects could not be loaded. Please try again later.',
+    'proj-cat-transparency': 'Transparency',
+    'proj-budget-name': 'Budget Tracker',
+    'proj-budget-desc':
+      'Budget transparency portal for the Province of Bukidnon, built on BetterGov.ph data.',
+    'proj-saln-name': 'SALN Tracker',
+    'proj-saln-desc':
+      'SALN transparency portal: public officials and their declared assets, liabilities and net worth, always linked to the source.',
+    'proj-infra-name': 'Infrastructure Tracker',
+    'proj-infra-desc':
+      'Every DPWH public works project in Bukidnon on Bisto.ph: roads, bridges, buildings, water and flood control, with budgets, contractors and status.',
   },
   fil: {
     'nav-home': 'Tahanan',
@@ -97,6 +135,44 @@ const messages = {
     'footer-blgf-portal': 'BLGF Portal',
     'footer-cmci-dti-portal': 'CMCI DTI Portal',
     'footer-faq': 'FAQ',
+    'proj-title': 'Mga Proyekto Namin',
+    'proj-type-org': 'Mga Proyekto ng Organisasyon',
+    'proj-type-community': 'Komunidad',
+    'proj-about': 'Tungkol dito',
+    'proj-contributors': 'Mga Kontribyutor',
+    'proj-contributors-link': 'Tingnan ang mga kontribyutor sa GitHub',
+    'proj-repository': 'Repository',
+    'proj-repos-count': '{{count}} repository',
+    'proj-visit-project': 'Bisitahin ang Proyekto',
+    'proj-close': 'Isara',
+    'proj-home': 'Tahanan',
+    'proj-badge': 'Mga Proyekto',
+    'proj-subtitle':
+      'Mga kasangkapang gawa ng komunidad na nagpapadali sa paghanap at pagsuri ng impormasyon ng pamahalaan ng Bukidnon.',
+    'proj-tabs-label': 'Katayuan ng proyekto',
+    'proj-tab-active': 'Aktibo',
+    'proj-tab-development': 'Ginagawa pa',
+    'proj-tab-archived': 'Naka-archive',
+    'proj-search-label': 'Maghanap ng proyekto',
+    'proj-search-placeholder': 'Maghanap ng proyekto...',
+    'proj-all-repos': 'Lahat ng Repo',
+    'proj-all-categories': 'Lahat ng Kategorya',
+    'proj-filter-repo-label': 'Salain ayon sa repository',
+    'proj-filter-category-label': 'Salain ayon sa kategorya',
+    'proj-view-details': 'Tingnan ang Detalye',
+    'proj-showing': 'Ipinapakita ang {{count}} proyekto',
+    'proj-empty': 'Walang proyektong tumutugma sa iyong hinahanap.',
+    'proj-load-error': 'Hindi ma-load ang mga proyekto. Pakisubukang muli mamaya.',
+    'proj-cat-transparency': 'Transparensiya',
+    'proj-budget-name': 'Budget Tracker',
+    'proj-budget-desc':
+      'Portal para sa transparensiya ng badyet ng Lalawigan ng Bukidnon, gawa mula sa datos ng BetterGov.ph.',
+    'proj-saln-name': 'SALN Tracker',
+    'proj-saln-desc':
+      'Portal ng transparensiya sa SALN: mga opisyal ng pamahalaan at ang kanilang idineklarang ari-arian, utang at net worth, laging may link sa pinagmulan.',
+    'proj-infra-name': 'Infrastructure Tracker',
+    'proj-infra-desc':
+      'Bawat proyekto ng DPWH sa Bukidnon na nasa Bisto.ph: kalsada, tulay, gusali, tubig at flood control, kasama ang badyet, kontratista at katayuan.',
   },
   ceb: {
     'nav-home': 'Panguna',
@@ -142,12 +218,62 @@ const messages = {
     'footer-blgf-portal': 'BLGF Portal',
     'footer-cmci-dti-portal': 'CMCI DTI Portal',
     'footer-faq': 'FAQ',
+    'proj-title': 'Among mga Proyekto',
+    'proj-type-org': 'Mga Proyekto sa Organisasyon',
+    'proj-type-community': 'Komunidad',
+    'proj-about': 'Mahitungod niini',
+    'proj-contributors': 'Mga Kontribyutor',
+    'proj-contributors-link': 'Tan-awa ang mga kontribyutor sa GitHub',
+    'proj-repository': 'Repository',
+    'proj-repos-count': '{{count}} ka repository',
+    'proj-visit-project': 'Bisitaha ang Proyekto',
+    'proj-close': 'Isira',
+    'proj-home': 'Panguna',
+    'proj-badge': 'Mga Proyekto',
+    'proj-subtitle':
+      'Mga himan nga gihimo sa komunidad aron mas sayon pangitaon ug susihon ang impormasyon sa gobyerno sa Bukidnon.',
+    'proj-tabs-label': 'Kahimtang sa proyekto',
+    'proj-tab-active': 'Aktibo',
+    'proj-tab-development': 'Gihimo pa',
+    'proj-tab-archived': 'Naka-archive',
+    'proj-search-label': 'Pangitaa ang mga proyekto',
+    'proj-search-placeholder': 'Pangitaa ang mga proyekto...',
+    'proj-all-repos': 'Tanang Repo',
+    'proj-all-categories': 'Tanang Kategorya',
+    'proj-filter-repo-label': 'Pilia suno sa repository',
+    'proj-filter-category-label': 'Pilia suno sa kategorya',
+    'proj-view-details': 'Tan-awa ang Detalye',
+    'proj-showing': 'Gipakita ang {{count}} ka proyekto',
+    'proj-empty': 'Walay proyekto nga motakdo sa imong gipangita.',
+    'proj-load-error': 'Wala ma-load ang mga proyekto. Palihug sulayi usab unya.',
+    'proj-cat-transparency': 'Transparensya',
+    'proj-budget-name': 'Budget Tracker',
+    'proj-budget-desc':
+      'Portal alang sa transparensya sa badyet sa Probinsya sa Bukidnon, gihimo gikan sa datos sa BetterGov.ph.',
+    'proj-saln-name': 'SALN Tracker',
+    'proj-saln-desc':
+      'Portal sa transparensya sa SALN: mga opisyal sa gobyerno ug ilang gideklarar nga kabtangan, utang ug net worth, kanunay adunay link sa tinubdan.',
+    'proj-infra-name': 'Infrastructure Tracker',
+    'proj-infra-desc':
+      'Matag proyekto sa DPWH sa Bukidnon nga anaa sa Bisto.ph: dalan, taytayan, bilding, tubig ug flood control, uban ang badyet, kontraktor ug kahimtang.',
   },
 } as const satisfies Record<Locale, Record<string, string>>
 
 export type TranslationKey = keyof (typeof messages)['en']
 
-export function translate(locale: Locale, key: TranslationKey) {
+export type TranslationParams = Record<string, string | number>
+
+/** For keys built at runtime, such as the legacy `proj-<id>-name`. */
+export function isTranslationKey(key: string): key is TranslationKey {
+  return key in messages.en
+}
+
+/** Looks up a string, falling back to English, and fills `{{name}}` placeholders. */
+export function translate(locale: Locale, key: TranslationKey, params?: TranslationParams) {
   const localized: Partial<Record<TranslationKey, string>> = messages[locale]
-  return localized[key] ?? messages.en[key]
+  const text: string = localized[key] ?? messages.en[key]
+  if (!params) return text
+  return text.replace(/\{\{(\w+)\}\}/g, (match, name: string) =>
+    name in params ? String(params[name]) : match,
+  )
 }

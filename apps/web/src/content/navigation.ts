@@ -60,13 +60,14 @@ export const primaryNavigation: readonly NavItem[] = [
   },
   { label: 'nav-transparency', sections: ['budget'], link: linkOptions({ to: '/budget' }) },
   {
-    // No link or "All Projects" entry until the Projects route exists.
     label: 'nav-projects',
     sections: ['projects'],
+    link: linkOptions({ to: '/projects' }),
     children: [
       { label: 'nav-projects-budget', href: 'https://budget.betterbukidnon.org' },
       { label: 'nav-projects-saln', href: 'https://saln.betterbukidnon.org' },
       { label: 'nav-projects-infra', href: 'https://infra.betterbukidnon.org' },
+      { label: 'nav-projects-all', link: linkOptions({ to: '/projects' }) },
     ],
   },
   { label: 'nav-contact', sections: ['contact'], link: linkOptions({ to: '/contact' }) },

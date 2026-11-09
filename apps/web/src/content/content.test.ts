@@ -1,7 +1,9 @@
 import { describe, expect, it } from 'vite-plus/test'
 import { demographics, fiscalData, news, officials, ordinances, resolutions } from './civic-data'
 import { searchServices, serviceBySlug, services, servicesForCategory } from './services'
-import { translate } from './translations'
+import bootstrapIcons from 'bootstrap-icons/font/bootstrap-icons.json' with { type: 'json' }
+import { projectIcon, projects } from './projects'
+import { isTranslationKey, translate } from './translations'
 import { contactDirectory } from './contact'
 
 describe('civic content contracts', () => {
@@ -47,5 +49,21 @@ describe('civic content contracts', () => {
   it('keeps the public hotline directory complete and callable', () => {
     expect(contactDirectory.hotlines).toHaveLength(6)
     expect(contactDirectory.hotlines.every((hotline) => hotline.href.startsWith('tel:'))).toBe(true)
+  })
+
+  it('uses only Bootstrap Icons that exist for projects', () => {
+    for (const project of projects) expect(bootstrapIcons).toHaveProperty(projectIcon(project))
+  })
+
+  it('has translated names and descriptions for every project', () => {
+    for (const project of projects) {
+      expect(isTranslationKey(`proj-${project.id}-name`)).toBe(true)
+      expect(isTranslationKey(`proj-${project.id}-desc`)).toBe(true)
+    }
+  })
+
+  it('fills count placeholders in translations', () => {
+    expect(translate('ceb', 'proj-showing', { count: 3 })).toBe('Gipakita ang 3 ka proyekto')
+    expect(translate('en', 'proj-repos-count', { count: 1 })).toBe('1 repository')
   })
 })

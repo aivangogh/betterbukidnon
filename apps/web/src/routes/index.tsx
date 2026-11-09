@@ -41,7 +41,7 @@ function HomePage() {
             <p className="mb-4 font-semibold text-primary-tint">
               A civic portal built for Bukidnons
             </p>
-            <h1 className="max-w-3xl text-4xl font-bold tracking-tight sm:text-6xl">
+            <h1 className="mb-0 max-w-3xl text-4xl font-bold tracking-tight text-inherit sm:text-6xl">
               Public information should be easy to find and understand.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-200">
@@ -57,14 +57,16 @@ function HomePage() {
               </Link>
               <Link
                 to="/contact"
-                className="inline-flex items-center rounded-lg border border-white/50 px-5 py-3 font-semibold hover:bg-white/10"
+                className="inline-flex items-center rounded-lg border border-white/50 px-5 py-3 font-semibold hover:bg-white/10 text-inherit hover:text-inherit hover:no-underline"
               >
                 Contact directory
               </Link>
             </div>
           </motion.div>
           <div className="self-end rounded-2xl border border-white/15 bg-white/10 p-6 shadow-2xl backdrop-blur">
-            <h2 className="font-semibold">Find a service</h2>
+            <h2 className="mb-0 text-[length:inherit] font-semibold text-inherit">
+              Find a service
+            </h2>
             <ServiceSearch compact />
             <p className="mt-4 text-sm text-slate-200">
               Popular: property tax, birth certificates, social assistance
@@ -90,7 +92,7 @@ function HomePage() {
               </>
             )
             const className =
-              'group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-primary/20 hover:shadow-lg'
+              'group rounded-2xl border border-slate-200 bg-white p-6 text-inherit shadow-sm transition hover:-translate-y-1 hover:border-primary/20 hover:text-inherit hover:no-underline hover:shadow-lg'
             return to === '/services/health' ? (
               <Link
                 key={title}

@@ -43,7 +43,7 @@ export function ServiceSearch({ compact = false }: { compact?: boolean }) {
                   <Link
                     to="/service-details/$slug"
                     params={{ slug: service.id }}
-                    className="block border-b border-slate-100 px-4 py-3 last:border-0 hover:bg-primary-tint"
+                    className="block border-b border-slate-100 px-4 py-3 last:border-0 hover:bg-primary-tint text-inherit hover:text-inherit hover:no-underline"
                     onClick={() => setQuery('')}
                   >
                     <span className="font-semibold">{service.title}</span>

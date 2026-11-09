@@ -10,23 +10,23 @@ pages listed below.
 
 ## Where things live
 
-| What                                                    | Where                                                                                                                                 |
-| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| Emergency hotline bar                                   | `scripts/chrome/hotline.html` (then `npm run chrome`), plus `react-app/src/components/layout/HotlineBar.tsx`                          |
-| Header, navigation and footer                           | `scripts/chrome/header.html`, `footer.html` (then `npm run chrome`), plus the React `Header.tsx` and `Footer.tsx`                     |
-| Homepage                                                | `index.html` and the `home-*` keys in `translations.js`                                                                               |
-| Governor, Vice Governor, Board Members, representatives | `data/officials.json` (rendered by `assets/js/officials.js`) and the cards in `government/index.html` and `index.html`                |
-| Cities, municipalities and districts                    | `government/index.html` (section `#lgus`) and `data/demographics.json`                                                                |
-| Population and area                                     | `data/demographics.json`, the homepage stat cards, `statistics/index.html`                                                            |
-| Service categories                                      | `services/*.html`                                                                                                                     |
-| Office pages and document guides                        | `service-details/*.html`                                                                                                              |
-| Search results                                          | `data/services.json` and `assets/js/search.js`                                                                                        |
-| Capitol directory                                       | `contact/index.html`                                                                                                                  |
-| Ordinances and resolutions                              | `data/ordinances.json`, `data/resolutions.json`                                                                                       |
-| Budget, SRE and DPWH projects                           | `data/fiscal_transparency.json`, `data/dpwh-projects.json`                                                                            |
-| News                                                    | `data/news.json` (see [news-curation.md](news-curation.md))                                                                           |
-| Our Projects page and nav dropdown                      | `data/projects.json` (rendered by `assets/js/projects.js`), the "Our Projects" dropdown in `scripts/chrome/header.html`, `Header.tsx` |
-| Sitemap                                                 | `sitemap.xml` and `sitemap/index.html`                                                                                                |
+| What                                                    | Where                                                                                                                                       |
+| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| Emergency hotline bar                                   | `scripts/chrome/hotline.html` (then `npm run chrome`), plus `react-app/src/components/layout/HotlineBar.tsx`                                |
+| Header, navigation and footer                           | `scripts/chrome/header.html`, `footer.html` (then `npm run chrome`), plus the React `Header.tsx` and `Footer.tsx`                           |
+| Homepage                                                | `index.html` and the `home-*` keys in `translations.js`                                                                                     |
+| Governor, Vice Governor, Board Members, representatives | `data/officials.json` (rendered by `assets/js/officials.js`) and the cards in `government/index.html` and `index.html`                      |
+| Cities, municipalities and districts                    | `government/index.html` (section `#lgus`) and `data/demographics.json`                                                                      |
+| Population and area                                     | `data/demographics.json`, the homepage stat cards, `statistics/index.html`                                                                  |
+| Service categories                                      | `services/*.html`                                                                                                                           |
+| Office pages and document guides                        | `service-details/*.html`                                                                                                                    |
+| Search results                                          | `data/services.json` and `assets/js/search.js`                                                                                              |
+| Capitol directory                                       | `contact/index.html`                                                                                                                        |
+| Ordinances and resolutions                              | `data/ordinances.json`, `data/resolutions.json`                                                                                             |
+| Budget, SRE and DPWH projects                           | `data/fiscal_transparency.json`, `data/dpwh-projects.json`                                                                                  |
+| News                                                    | `data/news.json` (see [news-curation.md](news-curation.md))                                                                                 |
+| Our Projects page and nav dropdown                      | `data/projects.json` (validated in `apps/web/src/content/projects.ts`), the "Our Projects" dropdown in `apps/web/src/content/navigation.ts` |
+| Sitemap                                                 | `sitemap.xml` and `sitemap/index.html`                                                                                                      |
 
 ## Common tasks
 
@@ -67,15 +67,16 @@ Also update `react-app/src/components/layout/HotlineBar.tsx`, `contact/index.htm
 1. Add an entry to `data/projects.json`: `id`, `name`, `description`, `url`, `repos` (a list
    of `{ "name": "Org/repo", "url": "https://github.com/Org/repo" }`), `type` (`org` or
    `community`), `category`, `status` (`active`, `development` or `archived`) and a Bootstrap
-   `icon`. The tabs, repo filter, category filter and the View Details dialog are built from
-   this file.
-2. Add `proj-<id>-name` and `proj-<id>-desc` to `en`, `fil` and `ceb` in `translations.js`
-   (and `proj-cat-<category>` for a new category). The JSON text is the English fallback.
-3. If the project is `active`, also add it to the "Our Projects" dropdown: add an `<li>` to
-   the dropdown in `scripts/chrome/header.html` and run `npm run chrome`, add
-   `EXTERNAL_PROJECTS` in `react-app/src/components/layout/Header.tsx`, and add a
-   `nav-projects-<id>` key in `translations.js` and `LanguageContext.tsx`.
-4. Bump `CACHE_VERSION` in `sw.js` so browsers pick up the new data.
+   `icon` class such as `bi-cash-coin`. The tabs, repo filter, category filter and the View
+   Details dialog are built from this file, and the build fails if an entry is invalid.
+2. Add `proj-<id>-name` and `proj-<id>-desc` to `en`, `fil` and `ceb` in
+   `apps/web/src/content/translations.ts` (and `proj-cat-<category>` for a new category).
+   `pnpm web:test` fails if a project has no translated name or description, or if its icon
+   is not in Bootstrap Icons.
+3. If the project is `active`, also add it to the "Our Projects" dropdown in
+   `apps/web/src/content/navigation.ts`, with a `nav-projects-<id>` key in `translations.ts`.
+4. While the legacy `projects/` page still exists, make the same change in
+   `assets/js/translations.js` and `scripts/chrome/header.html` (then `pnpm chrome`).
 
 ### Fill an empty data file
 

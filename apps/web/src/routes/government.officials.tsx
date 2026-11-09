@@ -33,7 +33,7 @@ function OfficialsPage() {
         />
       </div>
       <div className="mt-12 rounded-xl bg-slate-100 p-6">
-        <h2 className="font-bold">Sources</h2>
+        <h2 className="mb-0 text-[length:inherit] font-bold text-inherit">Sources</h2>
         <ul className="mt-3 space-y-2">
           {officials.sources.map((source) => (
             <li key={source.url}>

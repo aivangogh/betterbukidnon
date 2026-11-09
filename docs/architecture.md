@@ -16,9 +16,9 @@ Migration work is reviewed in incremental pull requests against the `develop` br
 the merged code on `develop` as the source of truth; an open pull request is not part of the
 deployed application until merged and deployed.
 
-Not yet migrated: the Our Projects page (`projects/`, `data/projects.json`) has no app route,
-and several routes are shorter than the legacy pages they replace (FAQ, legal pages, and most
-translations). See [Legacy static pages](#legacy-static-pages).
+Not yet migrated: several routes are shorter than the legacy pages they replace (FAQ, legal
+pages, and most translations). Routes that match the legacy design so far: the page chrome
+and `/projects`. See [Legacy static pages](#legacy-static-pages).
 
 Current migration goals:
 
