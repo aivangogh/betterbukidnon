@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { ArrowRight } from 'lucide-react'
+import { ServiceSearch } from '@/components/services/service-search'
 
 export const Route = createFileRoute('/services')({ component: ServicesPage })
 
@@ -25,6 +26,7 @@ function ServicesPage() {
         Choose a category to find the responsible provincial office, requirements, and official
         sources.
       </p>
+      <ServiceSearch />
       <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {categories.map(([label, category]) => (
           <Link
