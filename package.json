@@ -2,6 +2,12 @@
   "name": "betterbukidnon-web",
   "version": "2.0.0",
   "description": "BetterBukidnon.org - volunteer civic portal for the Province of Bukidnon",
+  "type": "module",
+  "packageManager": "pnpm@12.15.0",
+  "engines": {
+    "node": ">=22.12.0",
+    "pnpm": ">=11"
+  },
   "scripts": {
     "dev": "python3 -m http.server 8000",
     "build": "bash build.sh",
@@ -19,6 +25,11 @@
     "lighthouse": "lhci autorun",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "modern:dev": "cd modern && vite dev",
+    "modern:build": "cd modern && vite build",
+    "modern:preview": "cd modern && vite preview",
+    "modern:typecheck": "tsc -p modern/tsconfig.json --noEmit",
+    "modern:check": "biome check modern",
     "package": "bash scripts/package-cpanel.sh --build",
     "package:only": "bash scripts/package-cpanel.sh"
   },
@@ -40,6 +51,12 @@
   "homepage": "https://betterbukidnon.org",
   "license": "MIT",
   "devDependencies": {
+    "@biomejs/biome": "^2.4.5",
+    "@tailwindcss/vite": "^4.1.18",
+    "@types/node": "^24.10.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^6.0.1",
     "@babel/cli": "^7.23.9",
     "@babel/core": "^7.29.6",
     "@babel/preset-env": "^7.23.9",
@@ -50,7 +67,22 @@
     "html-minifier-terser": "^7.2.0",
     "playwright": "^1.61.0",
     "prettier": "^3.8.1",
-    "terser": "^5.44.1"
+    "terser": "^5.44.1",
+    "typescript": "^7.0.2",
+    "vite": "^8.0.0"
+  },
+  "dependencies": {
+    "@tanstack/react-router": "^1.170.46",
+    "@tanstack/react-start": "^1.169.5",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.553.0",
+    "motion": "^12.23.24",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss": "^4.1.18",
+    "zod": "^4.1.12"
   },
   "overrides": {
     "tmp": "0.2.7",
