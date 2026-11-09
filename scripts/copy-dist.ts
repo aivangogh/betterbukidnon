@@ -14,7 +14,6 @@ const EXCLUDED = new Set([
   '.vscode',
   '.claude',
   '.DS_Store',
-  'react-app',
   'admin',
   'build.sh',
   'babel.config.json',

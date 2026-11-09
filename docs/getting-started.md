@@ -29,15 +29,12 @@ python3 serve.py       # same for the built dist/ folder
 ## Build for production
 
 ```bash
-npm run build          # bumps the patch version, then builds dist/
-bash build.sh --no-bump
-bash build.sh --no-react   # skip the Next.js build (faster)
-npm run serve:dist     # preview dist/ on http://localhost:8080
+pnpm build             # prerenders apps/web/dist/client
+pnpm serve:dist        # preview the production output on http://localhost:8080
 ```
 
-`build.sh` copies the site into `dist/` (leaving out development files such as `docs/`,
-`scripts/`, `tests/`, `admin/` and `react-app/`), builds the React app and merges its
-`/services/health` page, then minifies HTML, CSS and JavaScript. See
+`pnpm build` prerenders the civic portal into `apps/web/dist/client` and generates the
+service worker used by Cloudflare static-assets deployment. See
 [architecture.md](architecture.md#build-pipeline) for the details.
 
 ## Tests and checks

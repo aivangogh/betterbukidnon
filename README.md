@@ -40,8 +40,8 @@ npm install
 npm run dev            # http://localhost:8000
 ```
 
-Production build: `npm run build` writes `dist/`, which Cloudflare Workers serves as static
-assets (see `wrangler.jsonc`).
+Production build: `pnpm build` writes `apps/web/dist/client`, which Cloudflare Workers serves as
+static assets (see `wrangler.jsonc`).
 
 ## Documentation
 
