@@ -1,4 +1,3 @@
-import { BookOpenCheck } from 'lucide-react'
 import { createFileRoute } from '@tanstack/react-router'
 import { InformationPage } from '@/components/content/information-page'
 
@@ -8,7 +7,7 @@ export const Route = createFileRoute('/legislative/ordinance-framework')({
       eyebrow="Legislative records"
       title="Ordinance framework"
       description="How provincial ordinances function within Bukidnon's local legislative process."
-      icon={BookOpenCheck}
+      icon="journal-text"
       sections={[
         {
           heading: 'What is an ordinance?',

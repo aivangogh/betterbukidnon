@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { Clock3, ExternalLink, MapPin, Phone, PhoneCall } from 'lucide-react'
+import { Icon, type IconName } from '@/components/ui/icon'
 import { SectionPage } from '@/components/content/section-page'
 import { contactDirectory } from '@/content/contact'
 
@@ -11,17 +11,17 @@ function ContactPage() {
       eyebrow="Directory"
       title="Contact provincial offices"
       description="Find public contact channels and emergency hotlines. For urgent emergencies in the Philippines, call 911."
-      icon={Phone}
+      icon="telephone-fill"
     >
       <div className="mt-10 grid gap-5 md:grid-cols-3">
-        <ContactCard icon={MapPin} label="Address">
+        <ContactCard icon="geo-alt" label="Address">
           {contactDirectory.address}
         </ContactCard>
-        <ContactCard icon={Clock3} label="Office hours">
+        <ContactCard icon="clock" label="Office hours">
           {contactDirectory.officeHours}
         </ContactCard>
-        <ContactCard icon={PhoneCall} label="Capitol phone">
-          <a className="font-semibold text-civic-700" href={`tel:${contactDirectory.phone}`}>
+        <ContactCard icon="telephone-fill" label="Capitol phone">
+          <a className="font-semibold text-primary" href={`tel:${contactDirectory.phone}`}>
             {contactDirectory.phone}
           </a>
         </ContactCard>
@@ -37,9 +37,9 @@ function ContactPage() {
             <a
               key={hotline.label}
               href={hotline.href}
-              className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm hover:border-civic-300"
+              className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm hover:border-primary/30"
             >
-              <span className="text-sm font-semibold text-civic-700">{hotline.label}</span>
+              <span className="text-sm font-semibold text-primary">{hotline.label}</span>
               <span className="mt-2 block text-xl font-bold text-slate-950">{hotline.display}</span>
             </a>
           ))}
@@ -49,26 +49,27 @@ function ContactPage() {
         href={contactDirectory.website}
         target="_blank"
         rel="noreferrer"
-        className="mt-10 inline-flex items-center gap-2 font-semibold text-civic-700"
+        className="mt-10 inline-flex items-center gap-2 font-semibold text-primary"
       >
-        Visit the official provincial website <ExternalLink className="size-4" />
+        Visit the official provincial website{' '}
+        <Icon name="box-arrow-up-right" className="text-base" />
       </a>
     </SectionPage>
   )
 }
 
 function ContactCard({
-  icon: Icon,
+  icon,
   label,
   children,
 }: {
-  icon: typeof MapPin
+  icon: IconName
   label: string
   children: React.ReactNode
 }) {
   return (
     <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-      <Icon className="size-6 text-civic-700" aria-hidden="true" />
+      <Icon name={icon} className="text-2xl text-primary" />
       <p className="mt-4 text-sm font-semibold text-slate-500">{label}</p>
       <div className="mt-1 leading-7 text-slate-900">{children}</div>
     </div>

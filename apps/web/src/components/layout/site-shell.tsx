@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router'
-import { Menu, ShieldCheck, X } from 'lucide-react'
+import { Icon } from '@/components/ui/icon'
 import { useState } from 'react'
 import { navigation, site } from '@/content/site'
 import { contactDirectory } from '@/content/contact'
@@ -18,7 +18,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       >
         {t('shell.skip')}
       </a>
-      <div className="bg-civic-900 px-4 py-2 text-center text-sm text-white">
+      <div className="bg-primary-dark px-4 py-2 text-center text-sm text-white">
         {t('shell.emergency')}: {contactDirectory.hotlines[0].display} · Bukidnon PDRRMD:{' '}
         {contactDirectory.hotlines[1].display}
       </div>
@@ -26,7 +26,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 lg:px-8">
           <Link
             to="/"
-            className="flex items-center gap-3 font-bold text-civic-900"
+            className="flex items-center gap-3 font-bold text-primary-dark"
             onClick={() => setOpen(false)}
           >
             <img src={logoUrl} alt="" className="h-11 w-auto" />
@@ -40,7 +40,11 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
             onClick={() => setOpen((value) => !value)}
           >
             <span className="sr-only">Toggle navigation</span>
-            {open ? <X /> : <Menu />}
+            {open ? (
+              <Icon name="x-lg" className="text-2xl" />
+            ) : (
+              <Icon name="list" className="text-2xl" />
+            )}
           </button>
           <div className="flex items-center gap-3">
             <LanguageSwitcher />
@@ -53,8 +57,8 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
                 <Link
                   key={item.to}
                   to={item.to}
-                  className="rounded-md px-3 py-2 text-sm font-medium text-slate-700 hover:bg-civic-50 hover:text-civic-700"
-                  activeProps={{ className: 'bg-civic-50 text-civic-700' }}
+                  className="rounded-md px-3 py-2 text-sm font-medium text-slate-700 hover:bg-primary-tint hover:text-primary"
+                  activeProps={{ className: 'bg-primary-tint text-primary' }}
                   onClick={() => setOpen(false)}
                 >
                   {t(item.label)}
@@ -65,7 +69,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
         </div>
       </header>
       <main id="main-content">{children}</main>
-      <footer className="mt-20 bg-civic-900 text-white">
+      <footer className="mt-20 bg-primary-dark text-white">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 md:grid-cols-3 lg:px-8">
           <div>
             <p className="text-lg font-bold">{site.name}</p>
@@ -76,7 +80,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
             <p className="mt-2 text-sm text-slate-300">{t('shell.cost')}</p>
           </div>
           <div className="flex items-start gap-2 text-sm text-slate-300">
-            <ShieldCheck className="mt-0.5 size-5 shrink-0" />
+            <Icon name="shield-check" className="mt-0.5 text-xl shrink-0" />
             <span>Facts should be verified against the linked official government sources.</span>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { ArrowRight } from 'lucide-react'
+import { Icon } from '@/components/ui/icon'
 import { ServiceSearch } from '@/components/services/service-search'
 
 export const Route = createFileRoute('/services')({ component: ServicesPage })
@@ -20,7 +20,7 @@ const categories = [
 function ServicesPage() {
   return (
     <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8">
-      <p className="font-semibold text-civic-700">Service directory</p>
+      <p className="font-semibold text-primary">Service directory</p>
       <h1 className="mt-2 text-4xl font-bold text-slate-950">How can the province help?</h1>
       <p className="mt-4 max-w-3xl text-lg text-slate-600">
         Choose a category to find the responsible provincial office, requirements, and official
@@ -33,10 +33,13 @@ function ServicesPage() {
             key={category}
             to="/services/$category"
             params={{ category }}
-            className="group flex items-center justify-between rounded-xl border border-slate-200 bg-white p-5 font-semibold text-slate-900 shadow-sm hover:border-civic-300"
+            className="group flex items-center justify-between rounded-xl border border-slate-200 bg-white p-5 font-semibold text-slate-900 shadow-sm hover:border-primary/30"
           >
             <span>{label}</span>
-            <ArrowRight className="size-5 text-civic-600 transition group-hover:translate-x-1" />
+            <Icon
+              name="arrow-right"
+              className="text-xl text-primary transition group-hover:translate-x-1"
+            />
           </Link>
         ))}
       </div>

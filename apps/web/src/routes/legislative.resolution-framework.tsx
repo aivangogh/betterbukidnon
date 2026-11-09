@@ -1,4 +1,3 @@
-import { FileCheck2 } from 'lucide-react'
 import { createFileRoute } from '@tanstack/react-router'
 import { InformationPage } from '@/components/content/information-page'
 
@@ -8,7 +7,7 @@ export const Route = createFileRoute('/legislative/resolution-framework')({
       eyebrow="Legislative records"
       title="Resolution framework"
       description="How provincial resolutions record the position or action of the Sangguniang Panlalawigan."
-      icon={FileCheck2}
+      icon="file-earmark-text"
       sections={[
         {
           heading: 'What is a resolution?',

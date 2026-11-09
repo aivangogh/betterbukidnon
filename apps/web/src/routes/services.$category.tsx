@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from '@tanstack/react-router'
-import { AlertTriangle, ArrowLeft, ArrowRight, Clock3, MapPin, PhoneCall } from 'lucide-react'
+import { Icon } from '@/components/ui/icon'
 import { contactDirectory } from '@/content/contact'
 import { serviceBySlug, servicesForCategory } from '@/content/services'
 
@@ -62,8 +62,8 @@ function CategoryPage() {
   const services = servicesForCategory(category)
   return (
     <section className="mx-auto max-w-5xl px-4 py-16 lg:px-8">
-      <Link to="/services" className="inline-flex items-center gap-2 font-semibold text-civic-700">
-        <ArrowLeft className="size-4" />
+      <Link to="/services" className="inline-flex items-center gap-2 font-semibold text-primary">
+        <Icon name="arrow-left" className="text-base" />
         All services
       </Link>
       <h1 className="mt-6 text-4xl font-bold text-slate-950">{title}</h1>
@@ -75,13 +75,13 @@ function CategoryPage() {
             key={service.id}
             to="/service-details/$slug"
             params={{ slug: service.id }}
-            className="group rounded-xl border border-slate-200 bg-white p-5 shadow-sm hover:border-civic-300"
+            className="group rounded-xl border border-slate-200 bg-white p-5 shadow-sm hover:border-primary/30"
           >
             <h2 className="font-bold text-slate-950">{service.title}</h2>
             <p className="mt-2 text-sm leading-6 text-slate-600">{service.description}</p>
-            <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-civic-700">
+            <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary">
               View service
-              <ArrowRight className="size-4 transition group-hover:translate-x-1" />
+              <Icon name="arrow-right" className="text-base transition group-hover:translate-x-1" />
             </span>
           </Link>
         ))}
@@ -93,8 +93,8 @@ function CategoryPage() {
 function HealthOverview() {
   const healthService = serviceBySlug('provincial-health-office')
   return (
-    <section className="mt-10 rounded-2xl border border-civic-100 bg-civic-50 p-6">
-      <p className="text-sm font-semibold uppercase tracking-wide text-civic-700">
+    <section className="mt-10 rounded-2xl border border-primary-tint bg-primary-tint p-6">
+      <p className="text-sm font-semibold uppercase tracking-wide text-primary">
         Provincial Health Office
       </p>
       <h2 className="mt-2 text-2xl font-bold text-slate-950">Health support in Bukidnon</h2>
@@ -111,31 +111,31 @@ function HealthOverview() {
           }
           className="flex items-start gap-3 rounded-xl bg-white p-4"
         >
-          <PhoneCall className="mt-0.5 size-5 shrink-0 text-civic-700" aria-hidden="true" />
+          <Icon name="telephone-fill" className="mt-0.5 text-xl shrink-0 text-primary" />
           <span>
             <strong className="block text-slate-950">Phone</strong>
             <span className="text-slate-600">(088) 813-5631</span>
           </span>
         </a>
         <div className="flex items-start gap-3 rounded-xl bg-white p-4">
-          <MapPin className="mt-0.5 size-5 shrink-0 text-civic-700" aria-hidden="true" />
+          <Icon name="geo-alt" className="mt-0.5 text-xl shrink-0 text-primary" />
           <span>
             <strong className="block text-slate-950">Address</strong>
             <span className="text-slate-600">{contactDirectory.address}</span>
           </span>
         </div>
         <div className="flex items-start gap-3 rounded-xl bg-white p-4">
-          <Clock3 className="mt-0.5 size-5 shrink-0 text-civic-700" aria-hidden="true" />
+          <Icon name="clock" className="mt-0.5 text-xl shrink-0 text-primary" />
           <span>
             <strong className="block text-slate-950">Office hours</strong>
             <span className="text-slate-600">{contactDirectory.officeHours}</span>
           </span>
         </div>
         <div className="flex items-start gap-3 rounded-xl bg-white p-4">
-          <AlertTriangle className="mt-0.5 size-5 shrink-0 text-civic-700" aria-hidden="true" />
+          <Icon name="exclamation-triangle-fill" className="mt-0.5 text-xl shrink-0 text-primary" />
           <span>
             <strong className="block text-slate-950">Emergency</strong>
-            <a className="text-civic-700" href="tel:911">
+            <a className="text-primary" href="tel:911">
               911
             </a>
           </span>
@@ -145,9 +145,9 @@ function HealthOverview() {
         <Link
           to="/service-details/$slug"
           params={{ slug: healthService.id }}
-          className="mt-6 inline-flex items-center gap-2 font-semibold text-civic-700"
+          className="mt-6 inline-flex items-center gap-2 font-semibold text-primary"
         >
-          View Provincial Health Office service <ArrowRight className="size-4" />
+          View Provincial Health Office service <Icon name="arrow-right" className="text-base" />
         </Link>
       ) : null}
     </section>

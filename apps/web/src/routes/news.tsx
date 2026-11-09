@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { ExternalLink, Newspaper } from 'lucide-react'
+import { Icon } from '@/components/ui/icon'
 import { SectionPage } from '@/components/content/section-page'
 import { news } from '@/content/civic-data'
 
@@ -13,7 +13,7 @@ function NewsPage() {
       eyebrow="Updates"
       title="News and public information"
       description="Curated public-interest updates from verified provincial and government sources."
-      icon={Newspaper}
+      icon="newspaper"
     >
       {news.news.length === 0 ? (
         <div className="mt-10 rounded-2xl border border-dashed border-slate-300 bg-white p-8">
@@ -26,9 +26,9 @@ function NewsPage() {
             href="https://bukidnon.gov.ph/"
             target="_blank"
             rel="noreferrer"
-            className="mt-5 inline-flex items-center gap-2 font-semibold text-civic-700"
+            className="mt-5 inline-flex items-center gap-2 font-semibold text-primary"
           >
-            Visit the provincial government <ExternalLink className="size-4" />
+            Visit the provincial government <Icon name="box-arrow-up-right" className="text-base" />
           </a>
         </div>
       ) : (
@@ -39,7 +39,7 @@ function NewsPage() {
               className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
             >
               {item.category ? (
-                <p className="text-sm font-semibold text-civic-700">{item.category}</p>
+                <p className="text-sm font-semibold text-primary">{item.category}</p>
               ) : null}
               <h2 className="mt-2 text-xl font-bold text-slate-950">{item.title}</h2>
               {item.date ? (
@@ -52,12 +52,12 @@ function NewsPage() {
               ) : null}
               {item.url ? (
                 <a
-                  className="mt-4 inline-flex items-center gap-2 font-semibold text-civic-700"
+                  className="mt-4 inline-flex items-center gap-2 font-semibold text-primary"
                   href={item.url}
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Read source <ExternalLink className="size-4" />
+                  Read source <Icon name="box-arrow-up-right" className="text-base" />
                 </a>
               ) : null}
             </article>
