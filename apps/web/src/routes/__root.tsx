@@ -1,5 +1,6 @@
 import { createRootRoute, HeadContent, Outlet, Scripts } from '@tanstack/react-router'
 import { SiteShell } from '@/components/layout/site-shell'
+import { PwaUpdateNotice } from '@/components/pwa/update-notice'
 import { site } from '@/content/site'
 import appCss from '../styles.css?url'
 
@@ -12,7 +13,11 @@ export const Route = createRootRoute({
       { name: 'description', content: site.description },
       { name: 'theme-color', content: '#0b3153' },
     ],
-    links: [{ rel: 'stylesheet', href: appCss }],
+    links: [
+      { rel: 'stylesheet', href: appCss },
+      { rel: 'manifest', href: '/manifest.webmanifest' },
+      { rel: 'icon', href: '/icons/app-icon.svg', type: 'image/svg+xml' },
+    ],
   }),
   shellComponent: RootDocument,
 })
@@ -27,6 +32,7 @@ function RootDocument() {
         <SiteShell>
           <Outlet />
         </SiteShell>
+        <PwaUpdateNotice />
         <Scripts />
       </body>
     </html>
