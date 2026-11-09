@@ -49,7 +49,7 @@ jobs:
           # FB_API_VERSION: v21.0
           # FB_LIMIT: '25'
           # MAX_FB_ITEMS: '30'
-        run: node scripts/sync-facebook.js
+        run: pnpm exec tsx scripts/sync-facebook.ts
 
       - name: Deploy news.json to cPanel (FTPS) [legacy hosting]
         if: steps.sync.outputs.changed == 'true' && env.FTP_SERVER != ''
