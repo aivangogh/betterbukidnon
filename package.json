@@ -26,7 +26,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "web:dev": "cd apps/web && vp dev",
-    "web:build": "cd apps/web && vp build",
+    "web:build": "cd apps/web && vp build && cd ../.. && tsx scripts/generate-web-sw.ts",
     "web:preview": "cd apps/web && vp preview",
     "web:typecheck": "vp check --no-fmt --no-lint apps/web",
     "web:check": "vp check apps/web",
@@ -68,9 +68,11 @@
     "playwright": "^1.61.0",
     "prettier": "^3.8.1",
     "terser": "^5.44.1",
+    "tsx": "^4.20.6",
     "typescript": "^7.0.2",
     "vite": "catalog:",
-    "vite-plus": "catalog:"
+    "vite-plus": "catalog:",
+    "workbox-build": "^7.4.1"
   },
   "dependencies": {
     "@tanstack/react-router": "^1.170.46",

@@ -15,7 +15,7 @@ export default defineConfig({
   test: {
     include: ['src/**/*.test.ts'],
   },
-  publicDir: false,
+  publicDir: 'public',
   resolve: {
     alias: { '@': new URL('./src', import.meta.url).pathname },
     tsconfigPaths: true,
