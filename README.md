@@ -15,9 +15,9 @@ template, the civic portal for the Municipality of Solano, Nueva Vizcaya. See th
 **Cost to the People of Bukidnon = ₱0**
 
 ![License](https://img.shields.io/badge/license-MIT%20%7C%20CC%20BY%204.0-blue)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+![Vite+](https://img.shields.io/badge/Vite%2B-646CFF?logo=vite&logoColor=white)
+![React](https://img.shields.io/badge/React-19-149ECA?logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-7-3178C6?logo=typescript&logoColor=white)
 ![Cloudflare Workers](https://img.shields.io/badge/Cloudflare%20Workers-F38020?logo=cloudflare&logoColor=white)
 
 - Production: [betterbukidnon.org](https://betterbukidnon.org)
@@ -40,19 +40,21 @@ template, the civic portal for the Municipality of Solano, Nueva Vizcaya. See th
 ```bash
 git clone https://github.com/Better-Bukidnon/betterbukidnon.git
 cd betterbukidnon
-npm install
-npm run dev            # http://localhost:8000
+corepack enable
+pnpm install
+pnpm web:dev
 ```
 
-Production build: `npm run build` writes `dist/`, which Cloudflare Workers serves as static
-assets (see `wrangler.jsonc`).
+The app uses Vite+, React 19, TypeScript 7, TanStack Start/Router, Tailwind CSS 4, Zod, Motion,
+and Lucide React. Production build: `pnpm build` prerenders the portal and generates the
+service worker in `apps/web/dist/client`, which Cloudflare Workers serves as static assets.
 
 ## Documentation
 
 Everything else is in [docs/](docs/README.md):
 
 - [Getting started](docs/getting-started.md): local setup, build, tests, branches
-- [Architecture](docs/architecture.md): pages, scripts, data files, React app, build pipeline
+- [Architecture](docs/architecture.md): migration status, stack, app structure, routes, content, and build pipeline
 - [Content guide](docs/content-guide.md): updating officials, hotlines, services and data
 - [Bukidnon fact sheet](docs/bukidnon-facts.md): every province fact the site uses, with sources
 - [Translations](docs/translations.md): how EN / FIL / CEB work and how to edit them
@@ -60,13 +62,12 @@ Everything else is in [docs/](docs/README.md):
 - [Claude Code subagents](docs/claude-code.md): the AI helpers included in `.claude/agents/`
 - [Rebrand notes](docs/rebrand-from-bettersolano.md): what changed from the BetterSolano template
 
-## Technology
+## Migration note
 
-Plain HTML5, CSS3 and vanilla JavaScript, with JSON data files and no backend. One page
-(`/services/health`) is built with Next.js 14 and TypeScript. Charts use Chart.js, maps use
-OpenStreetMap and Leaflet, icons are Bootstrap Icons, and weather comes from Open-Meteo.
-Hosting is Cloudflare Workers static assets. The site is also an installable PWA with
-offline support.
+The site is being migrated from the static HTML/JavaScript it was forked from to one typed
+React application in `apps/web`, which is what gets deployed. The legacy pages at the
+repository root stay until their routes reach parity; see the
+[architecture guide](docs/architecture.md#migration-status).
 
 ## Contributing
 

@@ -51,7 +51,7 @@ text as it is.
 3. **Keys are per page.** Most keys carry a page prefix (`treas-`, `pswdo-`, `gov-`,
    `home-`). The skip link, header and footer are the exception: they are shared across all
    pages and use `nav-*` and `footer-*`, so reword them once (see
-   [architecture.md](architecture.md#shared-page-chrome)).
+   [architecture.md](architecture.md#legacy-static-pages)).
 4. **Keep placeholders.** Strings like `Showing {{count}} results` are interpolated. Leave
    `{{count}}` untouched in every language.
 

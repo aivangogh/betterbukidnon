@@ -41,9 +41,9 @@ fi
 echo ""
 echo "▶ [1/6] Version management..."
 if [ "$SKIP_BUMP" = false ]; then
-    # bump-version.js: updates version.json → package.json → all HTML files
+    # bump-version.ts: updates version.json → package.json → all HTML files
     #                  → react-app/public/version.json
-    node scripts/bump-version.js "$BUMP_TYPE"
+    pnpm exec tsx scripts/bump-version.ts "$BUMP_TYPE"
 else
     echo "  Skipping bump (--no-bump). Current: $(node -e "console.log(require('./version.json').version)")"
 fi
@@ -52,7 +52,7 @@ VERSION=$(node -e "console.log(require('./version.json').version)")
 
 # The header, hotline bar and footer are copied into every page from scripts/chrome/.
 # Stop here if a page was edited by hand or the templates changed without `npm run chrome`.
-node scripts/sync-chrome.js --check
+pnpm exec tsx scripts/sync-chrome.ts --check
 
 # ── 2. Clean dist ────────────────────────────────────────────────────────────
 echo ""
@@ -87,7 +87,7 @@ if command -v rsync &>/dev/null; then
         --exclude='.gitignore' \
         --exclude='validate-translations.js' \
         --exclude='tests' \
-        --exclude='playwright.config.js' \
+        --exclude='playwright.config.ts' \
         --exclude='playwright-report' \
         --exclude='test-results' \
         --exclude='screenshots' \
@@ -105,7 +105,7 @@ if command -v rsync &>/dev/null; then
         . dist/
 else
     # Fallback: cross-platform Node.js copy (Windows / no rsync)
-    node scripts/copy-dist.js . dist
+    pnpm exec tsx scripts/copy-dist.ts . dist
 fi
 echo "  Legacy files copied."
 
