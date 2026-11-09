@@ -5,13 +5,3 @@ export const site = {
   url: 'https://betterbukidnon.org',
   disclaimer: 'A volunteer civic project, not an official government website.',
 } as const
-
-export const navigation = [
-  { label: 'nav.services', to: '/services' },
-  { label: 'nav.government', to: '/government' },
-  { label: 'nav.legislative', to: '/legislative' },
-  { label: 'nav.statistics', to: '/statistics' },
-  { label: 'nav.transparency', to: '/budget' },
-  { label: 'nav.news', to: '/news' },
-  { label: 'nav.contact', to: '/contact' },
-] as const

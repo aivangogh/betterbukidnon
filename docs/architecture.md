@@ -94,10 +94,14 @@ data-driven service detail pages so their direct URLs exist at deployment time.
 
 ### Shared components
 
-`components/layout/site-shell.tsx` owns the shared header, navigation, emergency banner, and
-footer. Root route metadata and the document shell live in `routes/__root.tsx`. Features with
-state live in focused components, such as the volunteer dialog, service search, language
-switcher, and PWA update notice.
+`components/layout/site-shell.tsx` renders the page chrome in the legacy order: skip link,
+`hotline-bar.tsx`, `site-header.tsx` (navigation with dropdowns, the slide-down menu at 1024px
+and below, and `i18n/language-menu.tsx`), `info-bar.tsx` (exchange rate, Malaybalay weather,
+and Philippine time), the page, and `site-footer.tsx`. Pages that need a trail use
+`breadcrumbs.tsx`. Navigation, footer links, and the hotline bar items come from
+`content/navigation.ts`; hotline numbers come from `content/contact.ts`. Root route metadata
+and the document shell live in `routes/__root.tsx`. Other stateful features have their own
+components, such as the volunteer dialog, service search, and PWA update notice.
 
 ### Content and validation
 
@@ -114,7 +118,8 @@ shell translations have typed modules as well.
 ### Localization
 
 Locale codes are `en`, `fil`, and `ceb`, defined by the shared locale schema. The app currently
-localizes shared shell labels through `content/translations.ts`; the language provider persists
+localizes the page chrome through `content/translations.ts`, which uses the legacy
+`assets/js/translations.js` keys and strings (`nav-*`, `footer-*`) so both sites read the same; the language provider persists
 selection when browser storage is available and detects supported browser preferences. Other
 route content should be translated incrementally. Do not imply that every route is already
 fully translated.
@@ -127,9 +132,15 @@ in `apps/web/src/styles.css`; component styles are expressed with Tailwind class
 The legacy pages are the visual spec. The theme tokens copy their values from
 `assets/css/style.css`: `primary` (#0032a0), `primary-dark`, `secondary`, `accent`, `ink`,
 `surface-alt`, the hotline, info bar and footer colors, Inter (300–700, self-hosted with
-Fontsource), the 1200px `container-site` utility, the 8px `rounded-site` radius, and the
+Fontsource), the `container-site` utility (the legacy `.container`: 1200px, 960px from 1025px to
+1199px, and 24/16/8px side padding), the 8px `rounded-site` radius, the legacy breakpoints
+(`xs` 481, `sm` 576, `md` 768, `lg` 992, `xl` 1025; `max-xl:` is the legacy
+`max-width: 1024px`), the global link colors, and the
 `shadow-sm`/`shadow-md` values. Use these tokens instead of Tailwind's default palette, and
 compare a migrated route with its legacy page at desktop and phone widths before merging.
+Legacy text inherits the body's 1.6 line-height, so set legacy font sizes with arbitrary values
+such as `text-[0.8125rem]`; Tailwind's named sizes (`text-sm`, `text-xs`) also set a
+line-height and make elements a pixel or two shorter than the legacy ones.
 
 Icons use `<Icon name="arrow-right" />`, which renders the Bootstrap Icons font with the same
 `bi bi-*` classes as the legacy markup. `name` is typed against the icon set. Pass `label` for

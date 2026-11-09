@@ -39,6 +39,27 @@
   --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
 
   --container-site: 1200px;
+
+  /* Legacy breakpoints (max-width 480/575/767/991/1024px), as min-width: max-xl is "1024px and below". */
+  --breakpoint-xs: 481px;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1025px;
+
+  --animate-hotline-scroll: hotline-scroll 25s linear infinite;
+  @keyframes hotline-scroll {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  --animate-rate-fade-in: rate-fade-in 0.4s ease-out;
+  @keyframes rate-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+  }
 }
 
 /* In the base layer so Tailwind utilities (leading-*, font-*) can still override them. */
@@ -70,14 +91,61 @@
     outline: 3px solid var(--color-accent);
     outline-offset: 2px;
   }
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  a:hover {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+  }
 }
 
-/* Legacy .container: 1200px wide with 24px side padding. */
+/* Legacy .container, including its responsive.css widths and side padding. */
 @utility container-site {
   width: 100%;
   max-width: var(--container-site);
   margin-inline: auto;
   padding-inline: 24px;
+  @media (min-width: 1025px) and (max-width: 1199px) {
+    max-width: 960px;
+  }
+  @media (max-width: 767px) {
+    padding-inline: 16px;
+  }
+  @media (max-width: 480px) {
+    padding-inline: 8px;
+  }
+}
+
+/*
+ * Legacy menu transitions: visibility switches instantly when a panel opens (so its links can
+ * take focus at once) and only after the fade or collapse when it closes.
+ */
+@utility transition-fade-hide {
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    visibility 0s linear 0.2s;
+}
+@utility transition-fade-show {
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    visibility 0s linear 0s;
+}
+@utility transition-collapse-hide {
+  transition:
+    max-height 0.25s ease,
+    padding 0.25s ease,
+    visibility 0s linear 0.25s;
+}
+@utility transition-collapse-show {
+  transition:
+    max-height 0.25s ease,
+    padding 0.25s ease,
+    visibility 0s linear 0s;
 }
 
 @media (prefers-reduced-motion: reduce) {
