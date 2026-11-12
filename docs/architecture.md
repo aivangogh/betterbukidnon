@@ -131,14 +131,21 @@ The schemas cover services, news, officials, demographics, legislative records, 
 data. `content/content.test.ts` checks dataset contracts and common lookups. Contact data and
 shell translations have typed modules as well.
 
-### Localization
+### Languages and SEO
 
-Locale codes are `en`, `fil`, and `ceb`, defined by the shared locale schema. The app currently
-localizes the page chrome through `content/translations.ts`, which uses the legacy
-`assets/js/translations.js` keys and strings (`nav-*`, `footer-*`) so both sites read the same; the language provider persists
-selection when browser storage is available and detects supported browser preferences. Other
-route content should be translated incrementally. Do not imply that every route is already
-fully translated.
+The language is part of the URL: English at the root, `/fil/...` and `/ceb/...` for Filipino
+and Cebuano, each prerendered as its own page. Paraglide JS (`apps/web/paraglide.config.ts`,
+messages in `apps/web/messages/`) compiles interface text to typed functions (`m.nav_home()`)
+and maps localized URLs onto the same route files through the router's `rewrite`. Record data
+uses `{ en, fil, ceb }` strings read with `useLocale().l()`. Plain links from data go through
+`localizePath()` so they stay in the current language. See [translations.md](translations.md).
+
+Every route sets its head with `seo()` from `lib/seo.ts` (title, description, canonical,
+`hreflang` for every language, Open Graph and Twitter tags); the home page and breadcrumbs add
+JSON-LD. After the build, `scripts/generate-seo-files.ts` writes `sitemap.xml` and
+`robots.txt` (indexable only for production builds), and `pnpm seo:check` validates the
+result. The reasons for these choices are in
+[ADR 0001](adr/0001-i18n-seo-content-architecture.md).
 
 ### Styling and UI
 
@@ -175,7 +182,8 @@ motion preferences and avoid animating essential content in a way that delays ac
 
 ## Build and deployment
 
-The root `pnpm build` command runs the app build and then generates the Workbox service worker.
+The root `pnpm build` command runs the app build (every page in every language), then
+`scripts/generate-seo-files.ts` (sitemap and `robots.txt`), then the Workbox service worker.
 TanStack Start writes the browser deployment to `apps/web/dist/client` and a separate server
 bundle to `apps/web/dist/server`; only the client directory is deployed because routes are
 prerendered. `wrangler.jsonc` points Cloudflare static assets at `apps/web/dist/client`.
@@ -190,14 +198,16 @@ before changing those settings. Building does not publish or deploy the site.
 
 ## Quality checks
 
-| Command                            | Purpose                                                       |
-| ---------------------------------- | ------------------------------------------------------------- |
-| `pnpm web:dev`                     | Run the app locally                                           |
-| `pnpm web:check`                   | Format, lint, and type-check app files with Vite+             |
-| `pnpm web:test`                    | Run app content tests                                         |
-| `pnpm web:build`                   | Build and prerender the app, then generate its service worker |
-| `pnpm build`                       | Production build alias used by CI and deployment              |
-| `pnpm exec playwright test --list` | Check browser-test discovery                                  |
+| Command                            | Purpose                                                        |
+| ---------------------------------- | -------------------------------------------------------------- |
+| `pnpm web:dev`                     | Run the app locally                                            |
+| `pnpm web:check`                   | Format, lint, and type-check app files with Vite+              |
+| `pnpm web:test`                    | Run app content tests                                          |
+| `pnpm web:build`                   | Build and prerender the app, then generate its service worker  |
+| `pnpm build`                       | Production build alias used by CI and deployment               |
+| `pnpm seo:check`                   | Validate titles, canonical and hreflang links, and the sitemap |
+| `pnpm web:messages`                | Regenerate the typed Paraglide messages                        |
+| `pnpm exec playwright test --list` | Check browser-test discovery                                   |
 
 Browser tests under `tests/` still target legacy static pages during the transition. Migrate
 their fixtures to the new app or replace them with route-focused tests before deleting the old

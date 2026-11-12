@@ -1,7 +1,16 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { InformationPage } from '@/components/content/information-page'
+import { seo } from '@/lib/seo'
+import { m } from '@/paraglide/messages'
 
 export const Route = createFileRoute('/accessibility')({
+  head: () =>
+    seo({
+      title: m.seo_accessibility_title(),
+      description: m.seo_accessibility_description(),
+      path: '/accessibility',
+    }),
+
   component: () => (
     <InformationPage
       eyebrow="Accessibility"

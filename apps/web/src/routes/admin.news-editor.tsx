@@ -3,8 +3,18 @@ import { useState } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
 import newsJson from '../../../../data/news.json'
 import { newsDataSchema } from '@/content/schemas'
+import { seo } from '@/lib/seo'
 
-export const Route = createFileRoute('/admin/news-editor')({ component: NewsEditorPage })
+export const Route = createFileRoute('/admin/news-editor')({
+  head: () =>
+    seo({
+      title: 'News editor',
+      description: 'Edit and validate data/news.json.',
+      path: '/admin/news-editor',
+      noindex: true,
+    }),
+  component: NewsEditorPage,
+})
 
 function NewsEditorPage() {
   const [value, setValue] = useState(() => JSON.stringify(newsJson, null, 2))

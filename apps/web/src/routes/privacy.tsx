@@ -1,7 +1,16 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { InformationPage } from '@/components/content/information-page'
+import { seo } from '@/lib/seo'
+import { m } from '@/paraglide/messages'
 
 export const Route = createFileRoute('/privacy')({
+  head: () =>
+    seo({
+      title: m.seo_privacy_title(),
+      description: m.seo_privacy_description(),
+      path: '/privacy',
+    }),
+
   component: () => (
     <InformationPage
       eyebrow="Privacy"

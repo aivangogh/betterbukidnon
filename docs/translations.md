@@ -2,11 +2,11 @@
 
 The site is available in three languages:
 
-| Code  | Language           | Coverage                                                                                   |
-| ----- | ------------------ | ------------------------------------------------------------------------------------------ |
-| `en`  | English            | Complete; the fallback for everything                                                      |
-| `fil` | Filipino           | Near complete                                                                              |
-| `ceb` | Cebuano (Binisaya) | Navigation, buttons, headings, footer and shared page text; the rest falls back to English |
+| Code  | Language           | URL                    | Coverage                                                                                   |
+| ----- | ------------------ | ---------------------- | ------------------------------------------------------------------------------------------ |
+| `en`  | English            | `/services/health`     | Complete; the fallback for everything                                                      |
+| `fil` | Filipino           | `/fil/services/health` | Near complete                                                                              |
+| `ceb` | Cebuano (Binisaya) | `/ceb/services/health` | Navigation, buttons, headings, footer and shared page text; the rest falls back to English |
 
 Cebuano replaced the upstream template's Ilocano because it is the language most widely
 spoken in Bukidnon. Binukid, Higaonon and other indigenous languages would be welcome
@@ -14,75 +14,63 @@ additions. See "Adding a language" below.
 
 ## How it works
 
-All dictionaries and the engine live in `assets/js/translations.js`:
+Every page exists once per language, at its own URL, and is prerendered as a static HTML
+page. The language comes only from the URL: English at the root, Filipino under `/fil`,
+Cebuano under `/ceb`. The globe menu links to the same page in the other languages. There is
+no automatic redirect by browser language, so every language version stays reachable for
+visitors and search engines.
 
-```js
-const translations = {
-  en:  { 'nav-home': 'Home', ... },
-  fil: { 'nav-home': 'Tahanan', ... },
-  ceb: { 'nav-home': 'Panguna', ... },
-};
-const TranslationEngine = { ... };
-```
+Text comes from three places, depending on what it is:
 
-On page load, `TranslationEngine.init()` picks the language: the saved choice in
-`localStorage.selectedLang`, then the browser language (`tl`/`fil` → Filipino,
-`ceb`/`bis` → Cebuano), then English. It then walks the page:
+| What                                                           | Where                                                  | Example                        |
+| -------------------------------------------------------------- | ------------------------------------------------------ | ------------------------------ |
+| Interface text (navigation, buttons, headings, footer, labels) | `apps/web/messages/{en,fil,ceb}.json`                  | `"nav_home": "Tahanan"`        |
+| Records shared across pages (category pages, later officials…) | `data/*.json`, each string as `{ "en", "fil", "ceb" }` | `data/service-categories.json` |
+| Documents (service guides, FAQ, policies; coming with MDX)     | `content/<collection>/<slug>/{en,fil,ceb}.mdx`         | —                              |
 
-| Attribute                     | What gets replaced          |
-| ----------------------------- | --------------------------- |
-| `data-i18n="key"`             | the element's `textContent` |
-| `data-i18n-placeholder="key"` | `placeholder`               |
-| `data-i18n-title="key"`       | `title`                     |
-| `data-i18n-aria="key"`        | `aria-label`                |
-| `data-i18n-alt="key"`         | `alt`                       |
+A missing Filipino or Cebuano message, record string or document falls back to English.
 
-A missing key in `fil` or `ceb` falls back to `en`. A key missing everywhere leaves the HTML
-text as it is.
+Interface messages are compiled by [Paraglide JS](https://paraglidejs.com) into typed
+functions: `m.nav_home()` in code. A message that is used in code but missing from
+`en.json` fails the type check, so typos cannot ship.
 
-## Rules that trip people up
+## Editing interface text
 
-1. **The dictionary wins over the HTML, even in English.** If you change the text inside a
-   `data-i18n` element but not the dictionary, visitors still see the old text. Change the
-   `en` value (and `fil`, `ceb`) for that key, or give the element a new key.
-2. **`textContent` wipes child elements.** `<p data-i18n="x">Call <a href="…">911</a></p>`
-   loses its link once translated. Put the attribute on a `<span>` that holds plain text
-   only, and keep links and `<strong>` outside it.
-3. **Keys are per page.** Most keys carry a page prefix (`treas-`, `pswdo-`, `gov-`,
-   `home-`). The skip link, header and footer are the exception: they are shared across all
-   pages and use `nav-*` and `footer-*`, so reword them once (see
-   [architecture.md](architecture.md#legacy-static-pages)).
-4. **Keep placeholders.** Strings like `Showing {{count}} results` are interpolated. Leave
-   `{{count}}` untouched in every language.
-
-## Editing translations
-
-For a few strings, edit `assets/js/translations.js` directly. Each language block is a flat
-list of `'key': 'value',` lines, with `en` first, then `fil`, then `ceb`.
-
-For many strings, write a patch file and merge it with a small Node script that loads the
-dictionaries, changes them and writes the file back. That was how the Bukidnon conversion
-was done: each change set was a JSON patch of this shape:
+Each language has one flat JSON file in `apps/web/messages/`. Keys are the same in every
+file; `en.json` has every key.
 
 ```json
 {
-  "en": { "home-volunteer-cta": "Contribute on GitHub" },
-  "fil": { "home-volunteer-cta": "Mag-ambag sa GitHub" },
-  "ceb": { "home-volunteer-cta": "Motabang sa GitHub" },
-  "remove": ["home-take-the-quiz"]
+  "nav_home": "Tahanan",
+  "proj_showing": "Ipinapakita ang {count} proyekto"
 }
 ```
 
-To load the dictionaries in Node, evaluate the part of the file before
-`const TranslationEngine` (the rest touches `document` and fails outside a browser):
+- **Keep placeholders.** `{count}` and other `{name}` placeholders are filled in by the
+  page. Keep them, spelled exactly the same, in every language. `pnpm web:test` fails if a
+  translation's placeholders differ from English.
+- **Only translate keys that exist in English.** A key in `fil.json` that is not in
+  `en.json` fails `pnpm web:test`.
+- To add a new piece of interface text, add the key to `en.json` (and `fil.json`,
+  `ceb.json` if you have the translation), then use `m.your_key()` in the component.
+  `pnpm web:messages` regenerates the typed functions; `pnpm web:dev` does it automatically.
+- Page titles and descriptions for search results are messages too (`seo_*_title`,
+  `seo_*_description`).
 
-```js
-const src = require('fs').readFileSync('assets/js/translations.js', 'utf8');
-const head = src.slice(0, src.indexOf('\nconst TranslationEngine'));
-const ctx = {};
-require('vm').runInNewContext(head + ';this.t = translations;', ctx);
-// ctx.t.en, ctx.t.fil, ctx.t.ceb
+## Editing record data
+
+Strings in data files carry every language next to each other:
+
+```json
+"title": {
+  "en": "Health Services",
+  "fil": "Mga Serbisyong Pangkalusugan",
+  "ceb": "Mga Serbisyo sa Panglawas"
+}
 ```
+
+`en` is required; leave out `fil` or `ceb` rather than copying the English text, so the
+gap stays visible. See [content-guide.md](content-guide.md) for each data file.
 
 ## Style
 
@@ -97,13 +85,18 @@ require('vm').runInNewContext(head + ';this.t = translations;', ctx);
 
 ## Adding a language
 
-1. Add a block to `translations` (e.g. `bkd: { … }`). Start with navigation, buttons and
-   headings; everything else falls back to English.
-2. In `TranslationEngine`, add the code to `supportedLangs`, `langNames` and `langCodes`, and
-   to `detectBrowserLanguage` if browsers report it.
-3. Add a `.lang-btn` button for it in the `.lang-selector` of `scripts/chrome/header.html`
-   (then run `npm run chrome`), and its
-   name to `names` in `initLanguageMenu` (`assets/js/main.js`), which turns those buttons
-   into the globe language menu. In `react-app/src/components/layout/Header.tsx`, add it to
-   `LANGUAGE_OPTIONS`. Also add a `hreflang` link in each page's `<head>`.
-4. Add the language to `react-app/src/contexts/LanguageContext.tsx`.
+1. Add the code to `locales` in `apps/web/project.inlang/settings.json` and create
+   `apps/web/messages/<code>.json`. Start with navigation, buttons and headings; everything
+   else falls back to English.
+2. Add a URL pattern for it in `apps/web/paraglide.config.ts`, before the English pattern,
+   and its name to `localeNames` in `apps/web/src/components/i18n/locale-provider.tsx`.
+3. Add it to the locale lists in `apps/web/src/lib/seo.ts` (`og:locale`),
+   `apps/web/vite.config.ts` (prerendered pages), `scripts/generate-seo-files.ts` and
+   `scripts/check-seo.ts`, and to `localizedTextSchema` in `apps/web/src/content/schemas.ts`.
+4. Run `pnpm build && pnpm seo:check`: every page should now exist in the new language with
+   `hreflang` links in all the others.
+
+## The legacy site
+
+The legacy static pages at the repository root still use `assets/js/translations.js` and
+`data-i18n` attributes until they are removed. Do not add new text there; add it to the app.

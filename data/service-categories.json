@@ -22,6 +22,9 @@
         "fil": "Ang mga talaan ng kapanganakan, kasal at kamatayan ay hawak ng inyong lungsod o munisipyo at ng PSA",
         "ceb": "Ang rekord sa pagkatawo, kasal, ug kamatayon gi-asikaso sa imong siyudad o munisipyo ug sa PSA"
       },
+      "metaDescription": {
+        "en": "How to get birth, marriage and death certificates in Bukidnon: register with the city or municipal civil registrar and request copies from the PSA. A volunteer-run guide."
+      },
       "contacts": [],
       "sections": [
         {
@@ -211,6 +214,9 @@
         "en": "Business permits are issued by your city or municipality. Here is where the Province fits in.",
         "fil": "Ang mga business permit ay inilalabas ng inyong lungsod o munisipyo. Narito kung saan pumapasok ang Lalawigan."
       },
+      "metaDescription": {
+        "en": "How to get a business permit in Bukidnon: permits are issued by the city or municipal hall, with provincial taxes handled by the Provincial Treasurer. A volunteer-run guide."
+      },
       "contacts": [],
       "sections": [
         {
@@ -390,6 +396,9 @@
         "en": "Real property tax and other payments: which treasurer to pay in Bukidnon",
         "fil": "Amilyar (real property tax) at iba pang bayarin: aling ingat-yaman ang babayaran sa Bukidnon",
         "ceb": "Amilyar ug uban pang bayranan: kinsang treasurer ang bayran sa Bukidnon"
+      },
+      "metaDescription": {
+        "en": "Where to pay taxes in Bukidnon: the Provincial Treasurer for real property tax in the 20 municipalities, city treasurers in Malaybalay and Valencia. A volunteer-run guide."
       },
       "contacts": [
         {
@@ -598,6 +607,9 @@
         "fil": "Ang Provincial Social Welfare and Development Office at mga lokal na tanggapan ng kapakanang panlipunan",
         "ceb": "Ang Provincial Social Welfare and Development Office ug mga lokal nga opisina sa kaayohan"
       },
+      "metaDescription": {
+        "en": "Social welfare in Bukidnon: the Provincial Social Welfare and Development Office (PSWDO), city and municipal social welfare offices, and national programs. A volunteer-run guide."
+      },
       "contacts": [
         {
           "icon": "people",
@@ -785,6 +797,9 @@
         "en": "The Provincial Health Office and where to go for health services in Bukidnon",
         "fil": "Ang Provincial Health Office at kung saan pupunta para sa mga serbisyong pangkalusugan sa Bukidnon",
         "ceb": "Ang Provincial Health Office ug asa moadto alang sa serbisyo sa panglawas sa Bukidnon"
+      },
+      "metaDescription": {
+        "en": "Health services in Bukidnon: the Provincial Health Office, city and municipal health offices, DOH and emergency numbers. A volunteer-run guide."
       },
       "contacts": [
         {
@@ -985,6 +1000,9 @@
         "en": "Farming support from the Provincial Government of Bukidnon, and where local and national programs fit in",
         "fil": "Suporta sa pagsasaka mula sa Pamahalaang Panlalawigan ng Bukidnon, at kung saan pumapasok ang mga lokal at pambansang programa"
       },
+      "metaDescription": {
+        "en": "Agriculture services in Bukidnon: the Office of the Provincial Agriculturist, city and municipal agriculture offices, and national agencies. A volunteer-run guide."
+      },
       "contacts": [
         {
           "icon": "telephone",
@@ -1170,6 +1188,9 @@
         "en": "Provincial roads, bridges and projects, and who issues building permits",
         "fil": "Mga kalsada, tulay at proyekto ng lalawigan, at kung sino ang naglalabas ng building permit",
         "ceb": "Mga dalan, tulay, ug proyekto sa probinsya, ug kinsay nag-isyu og building permit"
+      },
+      "metaDescription": {
+        "en": "Infrastructure in Bukidnon: the Provincial Engineer's Office for provincial roads and projects, city and municipal building permits, and DPWH for national roads. A volunteer-run guide."
       },
       "contacts": [
         {
@@ -1371,6 +1392,9 @@
         "fil": "Ang papel ng Lalawigan sa edukasyon, at kung sino ang nagpapatakbo ng mga paaralan at scholarship sa Bukidnon",
         "ceb": "Ang papel sa Probinsya sa edukasyon, ug kinsay nagdumala sa mga eskwelahan ug scholarship sa Bukidnon"
       },
+      "metaDescription": {
+        "en": "Education in Bukidnon: DepEd Division of Bukidnon, the Provincial School Board and Special Education Fund, Central Mindanao University and Bukidnon State University. A volunteer-run guide."
+      },
       "contacts": [],
       "sections": [
         {
@@ -1534,6 +1558,9 @@
         "en": "Emergency numbers and who responds to disasters, crime and fire in Bukidnon",
         "fil": "Mga numero sa emergency at kung sino ang tumutugon sa sakuna, krimen at sunog sa Bukidnon",
         "ceb": "Mga numero sa emerhensya ug kinsay motubag sa katalagman, krimen, ug sunog sa Bukidnon"
+      },
+      "metaDescription": {
+        "en": "Emergency and public safety contacts in Bukidnon: 911, PDRRMD, Bukidnon Police Provincial Office and BFP Malaybalay. A volunteer-run guide; confirm numbers with the offices."
       },
       "contacts": [
         {
@@ -1763,6 +1790,9 @@
       "description": {
         "en": "Environmental protection in Bukidnon: provincial planning, national agencies and local governments",
         "fil": "Pangangalaga sa kapaligiran sa Bukidnon: pagpaplano ng lalawigan, mga pambansang ahensya at mga lokal na pamahalaan"
+      },
+      "metaDescription": {
+        "en": "Environment services in Bukidnon: provincial planning, DENR permits, solid waste handled by cities and municipalities, and protected areas such as Mount Kitanglad. A volunteer-run guide."
       },
       "contacts": [],
       "sections": [

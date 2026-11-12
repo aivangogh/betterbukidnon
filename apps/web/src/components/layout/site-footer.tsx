@@ -1,7 +1,6 @@
 import { Link } from '@tanstack/react-router'
 import bettergovLogoUrl from '@/assets/logo/bettergov-footer.svg?url'
 import logoWhiteUrl from '@/assets/logo/better-bukidnon-logo-white.svg?url'
-import { useLocale } from '@/components/i18n/locale-provider'
 import { Icon } from '@/components/ui/icon'
 import {
   footerQuickLinks,
@@ -12,6 +11,7 @@ import {
   type InternalNavLink,
 } from '@/content/navigation'
 import versionData from '../../../../../version.json'
+import { m } from '@/paraglide/messages'
 
 const columnHeading = 'mb-5 text-[0.8125rem] font-semibold uppercase tracking-[0.5px] text-white/50'
 const columnLink =
@@ -20,23 +20,21 @@ const pill =
   'mt-3 inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-2 text-[0.8125rem] text-white/70 no-underline transition hover:bg-white/10 hover:text-white'
 
 function FooterLink({ item }: { item: InternalNavLink | ExternalNavLink }) {
-  const { t } = useLocale()
   if ('href' in item) {
     return (
       <a href={item.href} target="_blank" rel="noopener noreferrer" className={columnLink}>
-        {t(item.label)}
+        {item.label()}
       </a>
     )
   }
   return (
     <Link {...item.link} className={columnLink}>
-      {t(item.label)}
+      {item.label()}
     </Link>
   )
 }
 
 export function SiteFooter() {
-  const { t } = useLocale()
   return (
     <footer className="bg-linear-180 from-footer to-footer-dark text-white">
       <div className="container-site">
@@ -44,7 +42,7 @@ export function SiteFooter() {
           <div className="max-w-80 max-xl:col-span-full max-lg:max-w-full max-sm:flex max-sm:flex-col max-sm:items-center max-sm:text-center">
             <img src={logoWhiteUrl} alt="Better Bukidnon logo" className="mb-4 h-14 w-auto" />
             <p className="mb-6 text-[0.875rem] leading-[1.6] text-white/70">
-              {t('footer-empowering-the-people-of-bukidnon-with-transparent')}
+              {m.footer_empowering_the_people_of_bukidnon_with_transparent()}
             </p>
             <div className="flex gap-3">
               <a
@@ -67,10 +65,10 @@ export function SiteFooter() {
           </div>
 
           <div className="max-sm:flex max-sm:flex-col max-sm:items-center max-sm:text-center">
-            <h2 className={columnHeading}>{t('footer-quick-links')}</h2>
+            <h2 className={columnHeading}>{m.footer_quick_links()}</h2>
             <ul className="m-0 list-none p-0">
               {footerQuickLinks.map((item) => (
-                <li key={item.label} className="mb-2">
+                <li key={item.label()} className="mb-2">
                   <FooterLink item={item} />
                 </li>
               ))}
@@ -78,10 +76,10 @@ export function SiteFooter() {
           </div>
 
           <div className="max-sm:flex max-sm:flex-col max-sm:items-center max-sm:text-center">
-            <h2 className={columnHeading}>{t('footer-resources')}</h2>
+            <h2 className={columnHeading}>{m.footer_resources()}</h2>
             <ul className="m-0 list-none p-0">
               {footerResources.map((item) => (
-                <li key={item.label} className="mb-2">
+                <li key={item.label()} className="mb-2">
                   <FooterLink item={item} />
                 </li>
               ))}

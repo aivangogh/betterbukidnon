@@ -4,8 +4,9 @@
   "compatibility_date": "2026-10-23",
   "assets": {
     "directory": "./apps/web/dist/client",
-    // TanStack Start prerenders clean URLs such as /services/health and /budget.
-    "html_handling": "auto-trailing-slash",
+    // Pages are prerendered as folder/index.html. drop-trailing-slash serves them at
+    // /services/health (the legacy and canonical form) and redirects /services/health/ there.
+    "html_handling": "drop-trailing-slash",
     // Unknown paths get apps/web/dist/client/404.html with a 404 status
     "not_found_handling": "404-page"
   },

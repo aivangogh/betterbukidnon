@@ -13,6 +13,7 @@ import {
   trackSearch,
   type Suggestions,
 } from '@/content/search'
+import { localizePath } from '@/lib/i18n'
 import { cn } from '@/lib/utils'
 
 // Markup and behavior follow the legacy assets/js/search.js dropdown and its injected styles.
@@ -51,6 +52,7 @@ export function ServiceSearchBox({
   id,
   placeholder,
   label = 'Search services',
+  initialQuery,
   inputClassName,
   wrapperClassName,
   children,
@@ -58,6 +60,8 @@ export function ServiceSearchBox({
   id: string
   placeholder: string
   label?: string
+  /** Opens the box already searching for this, e.g. from /services?q=. */
+  initialQuery?: string
   inputClassName?: string
   /** Classes for the element that holds the input and the dropdown (legacy .search-input-wrapper). */
   wrapperClassName?: string
@@ -97,6 +101,17 @@ export function ServiceSearchBox({
     setOpen(true)
     trackSearch(value, found.length)
   }
+
+  // Pages are prerendered without a query, so ?q= is applied after hydration.
+  useEffect(() => {
+    const value = initialQuery?.trim() ?? ''
+    if (value.length < 2) return
+    setQuery(value)
+    performSearch(value)
+    input.current?.focus()
+    // Runs once for the query the page was opened with.
+    // oxlint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialQuery])
 
   // Debounced like legacy: suggestions update at once, results 150ms after typing stops.
   useEffect(() => {
@@ -333,7 +348,7 @@ export function ServiceSearchBox({
                         <a
                           key={service.id}
                           id={optionId(index)}
-                          href={serviceHref(service)}
+                          href={localizePath(serviceHref(service))}
                           role="option"
                           aria-selected={selected === index}
                           onClick={(event) => {

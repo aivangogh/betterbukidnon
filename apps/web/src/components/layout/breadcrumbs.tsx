@@ -1,11 +1,25 @@
-import { Link } from '@tanstack/react-router'
+import { Link, useRouter } from '@tanstack/react-router'
 import { Fragment } from 'react'
 import type { InternalNavLink } from '@/content/navigation'
+import { localizePath } from '@/lib/i18n'
+import { scriptJson } from '@/lib/seo'
+import { breadcrumbStructuredData } from '@/lib/structured-data'
 
 type Crumb = { label: string; link?: InternalNavLink['link'] }
 
-/** Legacy `.breadcrumbs`: "Home / Section / Page", with the last item as the current page. */
+/**
+ * Legacy `.breadcrumbs`: "Home / Section / Page", with the last item as the current page.
+ * Also emits the trail as a schema.org BreadcrumbList for search results.
+ */
 export function Breadcrumbs({ items }: { items: readonly Crumb[] }) {
+  const router = useRouter()
+  const structured = breadcrumbStructuredData(
+    items.map((item) => ({
+      label: item.label,
+      // buildLocation gives the route path; the trail must point to this language's pages.
+      href: item.link ? localizePath(router.buildLocation(item.link).href) : undefined,
+    })),
+  )
   return (
     <div className="container-site">
       <nav
@@ -30,6 +44,11 @@ export function Breadcrumbs({ items }: { items: readonly Crumb[] }) {
           )
         })}
       </nav>
+      <script
+        type="application/ld+json"
+        // Serialized page data only, with `<` escaped.
+        dangerouslySetInnerHTML={{ __html: scriptJson(structured) }}
+      />
     </div>
   )
 }

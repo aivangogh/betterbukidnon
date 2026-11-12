@@ -1,12 +1,20 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { SectionPage } from '@/components/content/section-page'
-import { useLocale } from '@/components/i18n/locale-provider'
 import { primaryNavigation } from '@/content/navigation'
+import { seo } from '@/lib/seo'
+import { m } from '@/paraglide/messages'
 
-export const Route = createFileRoute('/sitemap')({ component: SitemapPage })
+export const Route = createFileRoute('/sitemap')({
+  head: () =>
+    seo({
+      title: m.seo_sitemap_title(),
+      description: m.seo_sitemap_description(),
+      path: '/sitemap',
+    }),
+  component: SitemapPage,
+})
 
 function SitemapPage() {
-  const { t } = useLocale()
   return (
     <SectionPage
       eyebrow="Navigation"
@@ -18,12 +26,12 @@ function SitemapPage() {
         {primaryNavigation
           .flatMap((item) => (item.link ? [{ ...item, link: item.link }] : []))
           .map((item) => (
-            <li key={item.label}>
+            <li key={item.label()}>
               <Link
                 {...item.link}
                 className="block rounded-xl border border-slate-200 bg-white p-5 font-semibold text-primary shadow-sm hover:border-primary/30"
               >
-                {t(item.label)}
+                {item.label()}
               </Link>
             </li>
           ))}

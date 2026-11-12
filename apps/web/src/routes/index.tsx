@@ -10,8 +10,17 @@ import {
   VolunteerCta,
 } from '@/components/home/home-sections-lower'
 import { WeatherMap } from '@/components/home/weather-map'
+import { homeStructuredData } from '@/lib/structured-data'
+import { seo } from '@/lib/seo'
+import { m } from '@/paraglide/messages'
 
-export const Route = createFileRoute('/')({ component: HomePage })
+export const Route = createFileRoute('/')({
+  head: () => ({
+    ...seo({ description: m.seo_home_description(), path: '/' }),
+    scripts: homeStructuredData(),
+  }),
+  component: HomePage,
+})
 
 // Same sections and order as the legacy index.html.
 function HomePage() {

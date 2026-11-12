@@ -1,17 +1,16 @@
 import { Link } from '@tanstack/react-router'
-import { useLocale } from '@/components/i18n/locale-provider'
 import { Icon, type IconName } from '@/components/ui/icon'
 import { LottieAnimation } from '@/components/ui/lottie'
 import type { InternalNavLink } from '@/content/navigation'
-import { isTranslationKey, type TranslationKey } from '@/content/translations'
+import { text, type Message } from '@/lib/i18n'
 import { cn } from '@/lib/utils'
 import { GlanceHeader, SectionHeader, SectionLink } from './home-ui'
+import { m } from '@/paraglide/messages'
 
 const dotGrid = (alpha: number) =>
   `radial-gradient(circle, rgba(0,50,160,${alpha}) 1px, transparent 1px)`
 
 export function LguCta() {
-  const { t } = useLocale()
   const button =
     'inline-flex items-center gap-2.5 rounded-site px-7 py-3.5 text-[1rem] font-semibold transition-all hover:no-underline max-[769px]:w-full max-[769px]:justify-center max-[769px]:px-6'
   return (
@@ -31,10 +30,10 @@ export function LguCta() {
               id="lgu-cta-heading"
               className="mb-4 mt-0 text-[2.25rem] font-extrabold leading-[1.2] text-ink max-[769px]:text-[1.5rem]"
             >
-              {t('home-lgu-cta-heading')}
+              {m.home_lgu_cta_heading()}
             </h2>
             <p className="mb-8 text-[1.0625rem] text-ink-light max-[769px]:mb-6 max-[769px]:text-[0.9375rem]">
-              {t('home-lgu-cta-subtitle')}
+              {m.home_lgu_cta_subtitle()}
             </p>
             <div className="flex flex-wrap items-center gap-4 max-[769px]:flex-col max-[769px]:justify-center max-[769px]:gap-3">
               <Link
@@ -46,7 +45,7 @@ export function LguCta() {
                 )}
               >
                 <Icon name="geo-alt-fill" />
-                <span>{t('home-lgu-cta-find')}</span>
+                <span>{m.home_lgu_cta_find()}</span>
               </Link>
               <Link
                 to="/government"
@@ -56,7 +55,7 @@ export function LguCta() {
                 )}
               >
                 <Icon name="building" />
-                <span>{t('home-lgu-cta-offices')}</span>
+                <span>{m.home_lgu_cta_offices()}</span>
               </Link>
             </div>
           </div>
@@ -68,46 +67,45 @@ export function LguCta() {
 
 const popularServices: ReadonlyArray<{
   icon: IconName
-  title: TranslationKey
-  text: TranslationKey
+  title: Message
+  text: Message
   category?: string
 }> = [
-  { icon: 'cash-coin', title: 'service-tax', text: 'service-tax-desc', category: 'tax-payments' },
+  { icon: 'cash-coin', title: m.service_tax, text: m.service_tax_desc, category: 'tax-payments' },
   {
     icon: 'people-fill',
-    title: 'service-social',
-    text: 'service-social-desc',
+    title: m.service_social,
+    text: m.service_social_desc,
     category: 'social-services',
   },
   {
     icon: 'heart-pulse-fill',
-    title: 'service-health',
-    text: 'service-health-desc',
+    title: m.service_health,
+    text: m.service_health_desc,
     category: 'health',
   },
   {
     icon: 'flower1',
-    title: 'home-agriculture',
-    text: 'home-agriculture-desc',
+    title: m.home_agriculture,
+    text: m.home_agriculture_desc,
     category: 'agriculture',
   },
   {
     icon: 'file-earmark-text-fill',
-    title: 'service-certificates',
-    text: 'service-certificates-desc',
+    title: m.service_certificates,
+    text: m.service_certificates_desc,
     category: 'certificates',
   },
-  { icon: 'grid-fill', title: 'btn-view-all-services', text: 'home-browse-complete-directory' },
+  { icon: 'grid-fill', title: m.btn_view_all_services, text: m.home_browse_complete_directory },
 ]
 
 export function PopularServices() {
-  const { t } = useLocale()
   return (
     <section className="section-y">
       <div className="container-site">
         <SectionHeader
-          title={t('section-popular')}
-          subtitle={t('home-quick-access-to-frequently-requested-provincial')}
+          title={m.section_popular()}
+          subtitle={m.home_quick_access_to_frequently_requested_provincial()}
         />
         <div className="grid grid-cols-3 gap-6 max-[993px]:grid-cols-2 max-[769px]:grid-cols-1">
           {popularServices.map((service) => {
@@ -124,10 +122,10 @@ export function PopularServices() {
                 </span>
                 <div className="min-w-0 flex-1">
                   <h3 className={cn('mb-1 mt-0 text-[1rem]', all ? 'text-white' : 'text-ink')}>
-                    {t(service.title)}
+                    {service.title()}
                   </h3>
                   <p className={cn('m-0 text-[0.8125rem]', all ? 'text-white' : 'text-ink-light')}>
-                    {t(service.text)}
+                    {service.text()}
                   </p>
                 </div>
                 <Icon
@@ -147,7 +145,7 @@ export function PopularServices() {
             )
             return service.category ? (
               <Link
-                key={service.title}
+                key={service.title()}
                 to="/services/$category"
                 params={{ category: service.category }}
                 className={card}
@@ -155,7 +153,7 @@ export function PopularServices() {
                 {content}
               </Link>
             ) : (
-              <Link key={service.title} to="/services" className={card}>
+              <Link key={service.title()} to="/services" className={card}>
                 {content}
               </Link>
             )
@@ -169,58 +167,56 @@ export function PopularServices() {
 // Same figures as the legacy homepage; sources are in docs/bukidnon-facts.md.
 const glance: ReadonlyArray<{
   icon: IconName
-  /** A translation key, or literal text such as a figure. */
-  value: string
-  label: TranslationKey
-  source: TranslationKey
+  /** A message, or literal text such as a figure. */
+  value: string | Message
+  label: Message
+  source: Message
   link: InternalNavLink['link']
 }> = [
   {
     icon: 'people-fill',
     value: '1,601,902',
-    label: 'home-population',
-    source: 'home-2024-census',
+    label: m.home_population,
+    source: m.home_2024_census,
     link: { to: '/statistics' },
   },
   {
     icon: 'geo-alt-fill',
     value: '464',
-    label: 'home-barangays',
-    source: 'home-lgu-count',
+    label: m.home_barangays,
+    source: m.home_lgu_count,
     link: { to: '/government', hash: 'lgus' },
   },
   {
     icon: 'award-fill',
-    value: 'home-1st-class',
-    label: 'home-province',
-    source: 'home-income-classification',
+    value: m.home_1st_class,
+    label: m.home_province,
+    source: m.home_income_classification,
     link: { to: '/budget' },
   },
   {
     icon: 'rulers',
-    value: 'home-land-area-value',
-    label: 'home-land-area',
-    source: 'home-land-area-rank',
+    value: m.home_land_area_value,
+    label: m.home_land_area,
+    source: m.home_land_area_rank,
     link: { to: '/statistics' },
   },
 ]
 
 export function GlanceStats() {
-  const { t } = useLocale()
-  const text = (value: string) => (isTranslationKey(value) ? t(value) : value)
   return (
     <section className="bg-surface-alt py-12">
       <div className="container-site">
         <GlanceHeader
-          title={t('home-bukidnon-at-a-glance')}
+          title={m.home_bukidnon_at_a_glance()}
           action={
-            <SectionLink link={{ to: '/statistics' }}>{t('home-view-statistics')}</SectionLink>
+            <SectionLink link={{ to: '/statistics' }}>{m.home_view_statistics()}</SectionLink>
           }
         />
         <div className="grid grid-cols-4 gap-6 max-[993px]:grid-cols-2 max-[577px]:grid-cols-1">
           {glance.map((stat) => (
             <Link
-              key={stat.label}
+              key={stat.label()}
               {...stat.link}
               className="group relative flex items-center gap-4 overflow-hidden rounded-xl border border-line bg-white p-6 text-ink transition-all duration-300 before:absolute before:inset-y-0 before:left-0 before:w-1 before:bg-linear-180 before:from-primary before:to-secondary before:opacity-0 before:transition-opacity before:duration-300 before:content-[''] hover:-translate-y-0.5 hover:border-primary hover:text-ink hover:no-underline hover:shadow-[0_8px_24px_rgba(0,50,160,0.12)] hover:before:opacity-100"
             >
@@ -232,9 +228,9 @@ export function GlanceStats() {
                   {text(stat.value)}
                 </span>
                 <span className="mt-0.5 block text-[0.875rem] font-medium text-ink">
-                  {t(stat.label)}
+                  {stat.label()}
                 </span>
-                <span className="mt-0.5 block text-[0.75rem] text-ink-light">{t(stat.source)}</span>
+                <span className="mt-0.5 block text-[0.75rem] text-ink-light">{stat.source()}</span>
               </div>
             </Link>
           ))}

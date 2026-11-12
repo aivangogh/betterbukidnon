@@ -1,18 +1,19 @@
+import { useRouterState } from '@tanstack/react-router'
 import { useEffect, useId, useRef, useState } from 'react'
 import { Icon } from '@/components/ui/icon'
-import { localeSchema } from '@/content/schemas'
-import { localeNames } from '@/content/translations'
+import { localizePath } from '@/lib/i18n'
 import { cn } from '@/lib/utils'
-import { useLocale } from './locale-provider'
-
-const locales = localeSchema.options
+import { locales } from '@/paraglide/runtime'
+import { localeNames, useLocale } from './locale-provider'
 
 export function LanguageMenu() {
-  const { locale, setLocale } = useLocale()
+  const { locale } = useLocale()
+  // The router location is the unprefixed route path, e.g. /services/health.
+  const path = useRouterState({ select: (state) => state.location.href })
   const [open, setOpen] = useState(false)
   const root = useRef<HTMLDivElement>(null)
   const toggle = useRef<HTMLButtonElement>(null)
-  const options = useRef<Array<HTMLButtonElement | null>>([])
+  const options = useRef<Array<HTMLAnchorElement | null>>([])
   const listId = useId()
 
   useEffect(() => {
@@ -39,7 +40,7 @@ export function LanguageMenu() {
       ref={root}
       className="relative"
       onKeyDown={(event) => {
-        const index = options.current.indexOf(document.activeElement as HTMLButtonElement)
+        const index = options.current.indexOf(document.activeElement as HTMLAnchorElement)
         if (event.key === 'Escape' && open) {
           event.stopPropagation()
           close(true)
@@ -82,20 +83,19 @@ export function LanguageMenu() {
         className="absolute right-0 top-[calc(100%+10px)] z-[1001] min-w-52.5 rounded-xl border border-black/8 bg-white p-1.5 shadow-[0_12px_32px_rgba(0,0,0,0.12),0_2px_6px_rgba(0,0,0,0.06)]"
       >
         {locales.map((option, index) => (
-          <button
+          // A full page load: each language is its own prerendered page.
+          <a
             key={option}
             ref={(element) => {
               options.current[index] = element
             }}
-            type="button"
+            href={localizePath(path, option)}
+            hrefLang={option}
             lang={option}
-            onClick={() => {
-              setLocale(option)
-              close(true)
-            }}
+            aria-current={option === locale ? 'true' : undefined}
             className={cn(
-              'flex min-h-11 w-full cursor-pointer items-center gap-2.5 rounded-lg px-3 text-left text-[0.9375rem] font-medium text-ink hover:bg-surface-alt focus:outline-none focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary',
-              option === locale && 'font-semibold text-primary',
+              'flex min-h-11 w-full cursor-pointer items-center gap-2.5 rounded-lg px-3 text-left text-[0.9375rem] font-medium text-ink no-underline hover:bg-surface-alt hover:text-ink hover:no-underline focus:outline-none focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary',
+              option === locale && 'font-semibold text-primary hover:text-primary',
             )}
           >
             <Icon
@@ -103,7 +103,7 @@ export function LanguageMenu() {
               className={cn('w-[1em] text-[1rem]', option !== locale && 'invisible')}
             />
             <span>{localeNames[option]}</span>
-          </button>
+          </a>
         ))}
       </div>
     </div>

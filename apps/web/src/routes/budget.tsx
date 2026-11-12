@@ -2,8 +2,14 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Icon } from '@/components/ui/icon'
 import { SectionPage } from '@/components/content/section-page'
 import { fiscalData } from '@/content/civic-data'
+import { seo } from '@/lib/seo'
+import { m } from '@/paraglide/messages'
 
-export const Route = createFileRoute('/budget')({ component: BudgetPage })
+export const Route = createFileRoute('/budget')({
+  head: () =>
+    seo({ title: m.seo_budget_title(), description: m.seo_budget_description(), path: '/budget' }),
+  component: BudgetPage,
+})
 
 function BudgetPage() {
   return (

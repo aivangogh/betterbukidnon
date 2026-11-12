@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from '@tanstack/react-router'
 import { Icon, type IconName } from '@/components/ui/icon'
 import { serviceBySlug } from '@/content/services'
+import { seo } from '@/lib/seo'
 
 export const Route = createFileRoute('/service-details/$slug')({
   loader: ({ params }) => {
@@ -8,14 +9,14 @@ export const Route = createFileRoute('/service-details/$slug')({
     if (!service) throw notFound()
     return { service }
   },
-  head: ({ loaderData }) => ({
-    meta: [
-      {
-        title: `${loaderData?.service.title ?? 'Service'} | BetterBukidnon.org`,
-      },
-      { name: 'description', content: loaderData?.service.description ?? '' },
-    ],
-  }),
+  head: ({ loaderData, params }) =>
+    loaderData
+      ? seo({
+          title: loaderData.service.title,
+          description: loaderData.service.description,
+          path: `/service-details/${params.slug}`,
+        })
+      : {},
   component: ServiceDetailPage,
 })
 

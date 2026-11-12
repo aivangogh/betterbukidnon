@@ -2,8 +2,17 @@ import { createFileRoute, Link } from '@tanstack/react-router'
 import { Icon } from '@/components/ui/icon'
 import { SectionPage } from '@/components/content/section-page'
 import { demographics, officials } from '@/content/civic-data'
+import { seo } from '@/lib/seo'
+import { m } from '@/paraglide/messages'
 
 export const Route = createFileRoute('/government/')({
+  head: () =>
+    seo({
+      title: m.seo_government_title(),
+      description: m.seo_government_description(),
+      path: '/government',
+    }),
+
   component: GovernmentPage,
 })
 
