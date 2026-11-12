@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { Icon } from '@/components/ui/icon'
-import { ServiceSearch } from '@/components/services/service-search'
+import { ServiceSearchBox } from '@/components/services/service-search-box'
 
 export const Route = createFileRoute('/services')({ component: ServicesPage })
 
@@ -26,7 +26,20 @@ function ServicesPage() {
         Choose a category to find the responsible provincial office, requirements, and official
         sources.
       </p>
-      <ServiceSearch />
+      {/* Legacy .page-header-search; the page around it is rebuilt in the Services PR. */}
+      <div className="mx-auto mt-6 max-w-125">
+        <ServiceSearchBox
+          id="service-search"
+          placeholder="Search services (e.g., birth certificate, business permit)"
+          wrapperClassName="group/search w-full"
+          inputClassName="w-full rounded-full border-2 border-transparent bg-white py-4 pl-12 pr-5 text-[1rem] leading-[normal] shadow-[0_4px_20px_rgba(0,50,160,0.12),0_2px_8px_rgba(0,0,0,0.06)] transition-all duration-250 placeholder:text-[#9ca3af] hover:shadow-[0_6px_24px_rgba(0,50,160,0.15),0_2px_8px_rgba(0,0,0,0.08)] focus:border-primary focus:shadow-[0_8px_32px_rgba(0,50,160,0.2),0_4px_12px_rgba(0,0,0,0.08)] focus:outline-none"
+        >
+          <Icon
+            name="search"
+            className="pointer-events-none absolute left-4.5 top-1/2 -translate-y-1/2 text-[1.125rem] text-primary opacity-70 transition-opacity group-focus-within/search:opacity-100"
+          />
+        </ServiceSearchBox>
+      </div>
       <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {categories.map(([label, category]) => (
           <Link

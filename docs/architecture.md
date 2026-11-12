@@ -105,6 +105,15 @@ and Philippine time), the page, and `site-footer.tsx`. Pages that need a trail u
 and the document shell live in `routes/__root.tsx`. Other stateful features have their own
 components, such as the volunteer dialog, service search, and PWA update notice.
 
+Service search (`components/services/service-search-box.tsx`, used by the home hero and the
+Services page) runs the engine in `content/search.ts`, a port of the legacy
+`assets/js/search.js`: the same fuzzy matching, scores, "Did you mean?" suggestions, category
+chips, and recent and popular searches, under the same `localStorage` keys.
+`content/search.test.ts` holds results recorded from the legacy engine; if you change
+ranking on purpose, update those expectations in the same pull request. Results link to the
+app path for each `services.json` entry (`serviceHref`), and keywords in `services.json` are
+what most searches match against.
+
 ### Content and validation
 
 Content remains in repository JSON files under `data/`. App modules in `content/` import the

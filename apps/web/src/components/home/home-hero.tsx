@@ -1,8 +1,7 @@
-import { Link, useNavigate } from '@tanstack/react-router'
-import { useEffect, useId, useRef, useState } from 'react'
+import { Link } from '@tanstack/react-router'
 import { useLocale } from '@/components/i18n/locale-provider'
+import { ServiceSearchBox } from '@/components/services/service-search-box'
 import { Icon } from '@/components/ui/icon'
-import { searchServices } from '@/content/services'
 import { cn } from '@/lib/utils'
 import { buttonBase } from './home-ui'
 
@@ -14,93 +13,26 @@ const popular = [
 
 function HeroSearch() {
   const { t } = useLocale()
-  const navigate = useNavigate()
-  const [query, setQuery] = useState('')
-  const [open, setOpen] = useState(false)
-  const root = useRef<HTMLDivElement>(null)
-  const listId = useId()
-  const results = query.trim().length >= 2 ? searchServices(query).slice(0, 8) : []
-
-  useEffect(() => {
-    const onClick = (event: MouseEvent) => {
-      if (!root.current?.contains(event.target as Node)) setOpen(false)
-    }
-    document.addEventListener('click', onClick)
-    return () => document.removeEventListener('click', onClick)
-  }, [])
-
   return (
     <div className="rounded-2xl border border-primary/8 bg-white p-8 shadow-[0_8px_32px_rgba(0,50,160,0.1),0_2px_8px_rgba(0,0,0,0.04)] transition-[box-shadow,border-color] duration-300 focus-within:border-primary/15 focus-within:shadow-[0_12px_40px_rgba(0,50,160,0.15),0_4px_12px_rgba(0,0,0,0.06)] max-[769px]:p-6">
       <h2 className="mb-6 flex items-center gap-2 text-[1rem] text-ink">
         <Icon name="search" className="text-primary" />
         <span>{t('home-find-a-service')}</span>
       </h2>
-      <form
-        role="search"
-        onSubmit={(event) => {
-          event.preventDefault()
-          const first = results[0]
-          if (first) void navigate({ to: '/service-details/$slug', params: { slug: first.id } })
-        }}
+      <ServiceSearchBox
+        id="hero-search"
+        placeholder={t('home-search-placeholder')}
+        wrapperClassName="flex gap-2"
+        inputClassName="min-w-0 flex-1 rounded-[10px] border-2 border-[#e5e7eb] bg-[#fafbfc] px-4 py-3.5 text-[1rem] leading-[normal] text-ink transition-[border-color,box-shadow,background-color] placeholder:text-[#9ca3af] hover:border-[#d0d5dd] hover:bg-white focus:border-primary focus:bg-white focus:shadow-[0_0_0_4px_rgba(0,50,160,0.1)] focus:outline-none"
       >
-        <div ref={root} className="relative flex gap-2">
-          <input
-            type="search"
-            id="hero-search"
-            placeholder={t('home-search-placeholder')}
-            aria-label="Search services"
-            aria-controls={listId}
-            aria-expanded={open && query.trim().length >= 2}
-            autoComplete="off"
-            value={query}
-            onChange={(event) => {
-              setQuery(event.target.value)
-              setOpen(true)
-            }}
-            onFocus={() => setOpen(true)}
-            onKeyDown={(event) => {
-              if (event.key === 'Escape') setOpen(false)
-            }}
-            className="min-w-0 flex-1 rounded-[10px] border-2 leading-[normal] border-[#e5e7eb] bg-[#fafbfc] px-4 py-3.5 text-[1rem] text-ink transition-[border-color,box-shadow,background-color] placeholder:text-[#9ca3af] hover:border-[#d0d5dd] hover:bg-white focus:border-primary focus:bg-white focus:shadow-[0_0_0_4px_rgba(0,50,160,0.1)] focus:outline-none"
-          />
-          <button
-            type="submit"
-            aria-label="Search"
-            className="flex size-12 shrink-0 cursor-pointer items-center justify-center rounded-[10px] border-0 bg-linear-135 from-primary to-[#0044cc] text-[1.125rem] text-white shadow-[0_2px_8px_rgba(0,50,160,0.3)] transition-all hover:-translate-y-px hover:from-primary-dark hover:to-[#003399] hover:shadow-[0_4px_12px_rgba(0,50,160,0.4)] active:translate-y-0"
-          >
-            <Icon name="arrow-right" />
-          </button>
-          {open && query.trim().length >= 2 && (
-            <div
-              id={listId}
-              className="absolute inset-x-0 top-full z-[1000] mt-2 max-h-120 overflow-y-auto rounded-2xl border border-primary/10 bg-white text-left shadow-[0_12px_40px_rgba(0,50,160,0.15),0_4px_12px_rgba(0,0,0,0.08)]"
-            >
-              {results.length ? (
-                <ul aria-label="Search results">
-                  {results.map((service) => (
-                    <li key={service.id}>
-                      <Link
-                        to="/service-details/$slug"
-                        params={{ slug: service.id }}
-                        className="block border-b border-primary/6 px-4 py-3 text-ink last:border-0 hover:bg-primary/4 hover:text-ink hover:no-underline"
-                      >
-                        <span className="block font-semibold">{service.title}</span>
-                        <span className="mt-1 block text-[0.75rem] text-ink-light">
-                          {service.office ?? service.category}
-                        </span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <p className="m-0 px-4 py-6 text-center text-[0.875rem] text-ink-light">
-                  No matching services found.
-                </p>
-              )}
-            </div>
-          )}
-        </div>
-      </form>
+        <button
+          type="submit"
+          aria-label="Search"
+          className="flex size-12 shrink-0 cursor-pointer items-center justify-center rounded-[10px] border-0 bg-linear-135 from-primary to-[#0044cc] text-[1.125rem] text-white shadow-[0_2px_8px_rgba(0,50,160,0.3)] transition-all hover:-translate-y-px hover:from-primary-dark hover:to-[#003399] hover:shadow-[0_4px_12px_rgba(0,50,160,0.4)] active:translate-y-0"
+        >
+          <Icon name="arrow-right" />
+        </button>
+      </ServiceSearchBox>
       <div className="mt-4 flex flex-wrap items-center gap-2 text-[0.8125rem]">
         <span className="font-medium text-ink-light">{t('home-popular')}</span>
         {popular.map((tag) => (

@@ -71,6 +71,12 @@
       transform: translateY(0);
     }
   }
+  @keyframes search-dropdown-in {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+  }
   --animate-rate-fade-in: rate-fade-in 0.4s ease-out;
   @keyframes rate-fade-in {
     from {
