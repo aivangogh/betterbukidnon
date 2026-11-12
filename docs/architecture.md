@@ -17,8 +17,8 @@ the merged code on `develop` as the source of truth; an open pull request is not
 deployed application until merged and deployed.
 
 Not yet migrated: several routes are shorter than the legacy pages they replace (FAQ, legal
-pages, and most translations). Routes that match the legacy design so far: the page chrome,
-`/` (home), and `/projects`. See [Legacy static pages](#legacy-static-pages).
+pages, and most translations). Routes that match the legacy design so far: the page chrome, `/` (home), `/projects`,
+`/services`, and the ten `/services/<category>` pages. See [Legacy static pages](#legacy-static-pages).
 
 Current migration goals:
 
@@ -85,10 +85,15 @@ Routes live in `apps/web/src/routes`. Filenames define URLs; examples include:
 | Route file                  | URL                      |
 | --------------------------- | ------------------------ |
 | `index.tsx`                 | `/`                      |
-| `services.tsx`              | `/services`              |
-| `services.$category.tsx`    | `/services/:category`    |
+| `services/index.tsx`        | `/services`              |
+| `services/$category.tsx`    | `/services/:category`    |
 | `service-details.$slug.tsx` | `/service-details/:slug` |
-| `government.officials.tsx`  | `/government/officials`  |
+| `government/officials.tsx`  | `/government/officials`  |
+
+A section with several pages (`services/`, `government/`, `legislative/`) is a folder with an
+`index.tsx`, so its pages are siblings. A flat `services.tsx` next to `services.$category.tsx`
+would make the second a child of the first, and the child page would render the parent's
+content instead of its own.
 
 The generated `routeTree.gen.ts` is maintained by TanStack tooling. Do not hand-edit it. Static
 prerender configuration in `apps/web/vite.config.ts` enables link crawling and explicitly adds

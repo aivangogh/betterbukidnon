@@ -164,3 +164,54 @@ export const projectSchema = z.object({
 
 export const projectsDataSchema = z.object({ projects: z.array(projectSchema) })
 export type Project = z.infer<typeof projectSchema>
+
+/** Text in each site language; English is required and is the fallback for the others. */
+export const localizedTextSchema = z.object({
+  en: z.string().min(1),
+  fil: z.string().min(1).optional(),
+  ceb: z.string().min(1).optional(),
+})
+export type LocalizedText = z.infer<typeof localizedTextSchema>
+
+/** An app path (`/services/health`), `tel:` number, or external `https:` URL. */
+const hrefSchema = z.string().regex(/^(\/|tel:|https:\/\/)/)
+const iconSchema = z.string().regex(/^[a-z0-9-]+$/)
+
+export const serviceCategoryPageSchema = z.object({
+  breadcrumb: localizedTextSchema,
+  badge: localizedTextSchema,
+  icon: iconSchema,
+  title: localizedTextSchema,
+  description: localizedTextSchema,
+  contacts: z.array(
+    z.object({
+      icon: iconSchema,
+      href: hrefSchema,
+      label: localizedTextSchema,
+      value: localizedTextSchema,
+    }),
+  ),
+  sections: z.array(
+    z.object({
+      title: localizedTextSchema,
+      intro: localizedTextSchema.optional(),
+      cards: z.array(
+        z.object({
+          icon: iconSchema,
+          title: localizedTextSchema,
+          text: localizedTextSchema,
+          link: z.object({ href: hrefSchema, label: localizedTextSchema }).optional(),
+        }),
+      ),
+    }),
+  ),
+  note: z.object({
+    text: localizedTextSchema,
+    link: z.object({ href: hrefSchema, label: localizedTextSchema }),
+  }),
+})
+export type ServiceCategoryPage = z.infer<typeof serviceCategoryPageSchema>
+
+export const serviceCategoriesDataSchema = z.object({
+  categories: z.record(z.string().regex(/^[a-z0-9-]+$/), serviceCategoryPageSchema),
+})

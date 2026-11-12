@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
-import { localeSchema, type Locale } from '@/content/schemas'
+import { localeSchema, type Locale, type LocalizedText } from '@/content/schemas'
 import { translate, type TranslationKey, type TranslationParams } from '@/content/translations'
 
 const STORAGE_KEY = 'betterbukidnon-locale'
@@ -8,6 +8,8 @@ type LocaleContextValue = {
   locale: Locale
   setLocale: (locale: Locale) => void
   t: (key: TranslationKey, params?: TranslationParams) => string
+  /** Picks the current language from content data, falling back to English. */
+  l: (text: LocalizedText) => string
 }
 
 const LocaleContext = createContext<LocaleContextValue | null>(null)
@@ -45,6 +47,7 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
         }
       },
       t: (key, params) => translate(locale, key, params),
+      l: (text) => text[locale] ?? text.en,
     }),
     [locale],
   )
