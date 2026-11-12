@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from 'react'
 import markerIcon2xUrl from 'leaflet/dist/images/marker-icon-2x.png?url'
 import markerIconUrl from 'leaflet/dist/images/marker-icon.png?url'
 import markerShadowUrl from 'leaflet/dist/images/marker-shadow.png?url'
-import { useLocale } from '@/components/i18n/locale-provider'
 import { Icon, type IconName } from '@/components/ui/icon'
 import { GlanceHeader } from './home-ui'
+import { m } from '@/paraglide/messages'
 
 // Provincial Capitol, Malaybalay City (same point as the legacy weather-map.js).
 const CAPITOL: [number, number] = [8.1575, 125.1278]
@@ -254,7 +254,6 @@ function WeatherCard() {
 }
 
 function CapitolMap() {
-  const { t } = useLocale()
   const container = useRef<HTMLDivElement>(null)
   const [interactive, setInteractive] = useState(false)
 
@@ -334,19 +333,18 @@ function CapitolMap() {
       </div>
       <p className="m-0 flex items-center gap-1.5 border-t border-black/5 bg-white px-6 py-3 text-[0.75rem] text-ink-light">
         <Icon name="geo-alt" className="text-[0.8125rem] text-primary" />
-        <span>{t('home-capitol-address')}</span>
+        <span>{m.home_capitol_address()}</span>
       </p>
-      <p className="sr-only">{t('home-map-description')}</p>
+      <p className="sr-only">{m.home_map_description()}</p>
     </div>
   )
 }
 
 export function WeatherMap() {
-  const { t } = useLocale()
   return (
     <section className="bg-surface-alt py-12 max-xl:py-8 max-md:py-6">
       <div className="container-site">
-        <GlanceHeader title={t('home-weather-and-map-of-bukidnon')} />
+        <GlanceHeader title={m.home_weather_and_map_of_bukidnon()} />
         <div className="grid grid-cols-[340px_minmax(0,1fr)] items-stretch gap-8 max-lg:grid-cols-[minmax(0,1fr)] max-lg:gap-6">
           <div className="flex flex-col" aria-live="polite">
             <WeatherCard />

@@ -1,7 +1,12 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { InformationPage } from '@/components/content/information-page'
+import { seo } from '@/lib/seo'
+import { m } from '@/paraglide/messages'
 
 export const Route = createFileRoute('/terms')({
+  head: () =>
+    seo({ title: m.seo_terms_title(), description: m.seo_terms_description(), path: '/terms' }),
+
   component: () => (
     <InformationPage
       eyebrow="Terms"

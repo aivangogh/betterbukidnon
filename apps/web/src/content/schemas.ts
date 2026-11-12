@@ -183,6 +183,8 @@ export const serviceCategoryPageSchema = z.object({
   icon: iconSchema,
   title: localizedTextSchema,
   description: localizedTextSchema,
+  /** The page's search-result description (meta description). */
+  metaDescription: localizedTextSchema,
   contacts: z.array(
     z.object({
       icon: iconSchema,

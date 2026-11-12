@@ -14,7 +14,7 @@ pages listed below.
 | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Emergency hotline bar                                   | `scripts/chrome/hotline.html` (then `npm run chrome`), plus `react-app/src/components/layout/HotlineBar.tsx`                                     |
 | Header, navigation and footer                           | `scripts/chrome/header.html`, `footer.html` (then `npm run chrome`), plus the React `Header.tsx` and `Footer.tsx`                                |
-| Homepage                                                | `apps/web/src/components/home/` and the `home-*` keys in `apps/web/src/content/translations.ts`                                                  |
+| Homepage                                                | `apps/web/src/components/home/` and the `home_*` keys in `apps/web/messages/*.json`                                                              |
 | Governor, Vice Governor, Board Members, representatives | `data/officials.json` (rendered by `assets/js/officials.js`) and the cards in `government/index.html` and `index.html`                           |
 | Cities, municipalities and districts                    | `government/index.html` (section `#lgus`) and `data/demographics.json`                                                                           |
 | Population and area                                     | `data/demographics.json`, the homepage stat cards, `statistics/index.html`                                                                       |
@@ -78,12 +78,12 @@ Bootstrap Icons.
    `community`), `category`, `status` (`active`, `development` or `archived`) and a Bootstrap
    `icon` class such as `bi-cash-coin`. The tabs, repo filter, category filter and the View
    Details dialog are built from this file, and the build fails if an entry is invalid.
-2. Add `proj-<id>-name` and `proj-<id>-desc` to `en`, `fil` and `ceb` in
-   `apps/web/src/content/translations.ts` (and `proj-cat-<category>` for a new category).
-   `pnpm web:test` fails if a project has no translated name or description, or if its icon
-   is not in Bootstrap Icons.
+2. Add `proj_<id>_name` and `proj_<id>_desc` to `apps/web/messages/{en,fil,ceb}.json` (and
+   `proj_cat_<category>` for a new category), and map them in `projectText` in
+   `apps/web/src/routes/projects.tsx`. `pnpm web:test` fails if a project has no name or
+   description in a language, or if its icon is not in Bootstrap Icons.
 3. If the project is `active`, also add it to the "Our Projects" dropdown in
-   `apps/web/src/content/navigation.ts`, with a `nav-projects-<id>` key in `translations.ts`.
+   `apps/web/src/content/navigation.ts`, with a `nav_projects_<id>` message.
 4. While the legacy `projects/` page still exists, make the same change in
    `assets/js/translations.js` and `scripts/chrome/header.html` (then `pnpm chrome`).
 

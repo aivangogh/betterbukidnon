@@ -1,3 +1,5 @@
+import { paraglideVitePlugin } from '@inlang/paraglide-js'
+import { paraglideOptions } from './paraglide.config'
 import tailwindcss from '@tailwindcss/vite'
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import viteReact from '@vitejs/plugin-react'
@@ -21,6 +23,7 @@ export default defineConfig({
     tsconfigPaths: true,
   },
   plugins: [
+    paraglideVitePlugin(paraglideOptions),
     tailwindcss(),
     tanstackStart({
       prerender: {
@@ -28,7 +31,14 @@ export default defineConfig({
         crawlLinks: true,
         failOnError: true,
       },
-      pages: serviceDetailPages,
+      // The locale home pages seed the crawl of each language's pages.
+      pages: [
+        ...serviceDetailPages,
+        ...['fil', 'ceb'].flatMap((locale) => [
+          { path: `/${locale}`, prerender: { enabled: true } },
+          ...serviceDetailPages.map((page) => ({ ...page, path: `/${locale}${page.path}` })),
+        ]),
+      ],
     }),
     viteReact(),
   ],

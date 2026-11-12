@@ -29,3 +29,9 @@ apps/web/dist/
 
 # TanStack router generator scratch files
 .tanstack/
+
+# Paraglide's compiled messages and runtime (generated from apps/web/messages)
+apps/web/src/paraglide/
+
+# inlang project cache
+apps/web/project.inlang/cache/

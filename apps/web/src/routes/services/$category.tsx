@@ -6,6 +6,9 @@ import { Breadcrumbs } from '@/components/layout/breadcrumbs'
 import { Icon, type IconName } from '@/components/ui/icon'
 import { SiteLink } from '@/components/ui/site-link'
 import { serviceCategories } from '@/content/service-categories'
+import { m } from '@/paraglide/messages'
+import { localized } from '@/lib/i18n'
+import { seo } from '@/lib/seo'
 
 export const Route = createFileRoute('/services/$category')({
   loader: ({ params }) => {
@@ -13,6 +16,14 @@ export const Route = createFileRoute('/services/$category')({
     if (!page) throw notFound()
     return page
   },
+  head: ({ loaderData, params }) =>
+    loaderData
+      ? seo({
+          title: localized(loaderData.title),
+          description: localized(loaderData.metaDescription),
+          path: `/services/${params.category}`,
+        })
+      : {},
   component: ServiceCategoryPage,
 })
 
@@ -21,14 +32,14 @@ const compact = 'py-6 max-xl:py-8 max-md:py-6'
 
 function ServiceCategoryPage() {
   const page = Route.useLoaderData()
-  const { t, l } = useLocale()
+  const { l } = useLocale()
 
   return (
     <>
       <Breadcrumbs
         items={[
-          { label: t('nav-home'), link: { to: '/' } },
-          { label: t('nav-services'), link: { to: '/services' } },
+          { label: m.nav_home(), link: { to: '/' } },
+          { label: m.nav_services(), link: { to: '/services' } },
           { label: l(page.breadcrumb) },
         ]}
       />

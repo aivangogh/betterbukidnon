@@ -2,8 +2,18 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Icon, type IconName } from '@/components/ui/icon'
 import { SectionPage } from '@/components/content/section-page'
 import { contactDirectory } from '@/content/contact'
+import { seo } from '@/lib/seo'
+import { m } from '@/paraglide/messages'
 
-export const Route = createFileRoute('/contact')({ component: ContactPage })
+export const Route = createFileRoute('/contact')({
+  head: () =>
+    seo({
+      title: m.seo_contact_title(),
+      description: m.seo_contact_description(),
+      path: '/contact',
+    }),
+  component: ContactPage,
+})
 
 function ContactPage() {
   return (

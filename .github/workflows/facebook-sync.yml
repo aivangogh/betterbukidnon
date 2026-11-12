@@ -4,7 +4,7 @@ name: Facebook News Sync
 # them, merges them into data/news.json, and (if changed) uploads the file.
 #
 # HOSTING NOTE: the site now deploys on Cloudflare Workers (wrangler.jsonc,
-# `npm run build`). The cPanel FTP deploy step below is LEGACY and only runs when
+# `pnpm build`). The cPanel FTP deploy step below is LEGACY and only runs when
 # FTP_SERVER is set. Without it, the job uploads news.json as an artifact; commit
 # that file to the repo so the next Cloudflare build picks it up.
 # Runs on a schedule with no manual intervention. Stays dormant and harmless
@@ -36,9 +36,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Enable pnpm
+        run: corepack enable
+
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Sync Facebook posts into data/news.json
         id: sync

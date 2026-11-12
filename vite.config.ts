@@ -6,6 +6,7 @@ export default defineConfig({
     ignorePatterns: [
       'apps/web/dist/**',
       'apps/web/src/routeTree.gen.ts',
+      'apps/web/src/paraglide/**',
       'dist/**',
       'node_modules/**',
     ],
@@ -17,6 +18,7 @@ export default defineConfig({
     ignorePatterns: [
       'apps/web/dist/**',
       'apps/web/src/routeTree.gen.ts',
+      'apps/web/src/paraglide/**',
       'dist/**',
       'node_modules/**',
     ],

@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [develop, main]
+  push:
+    branches: [develop, main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Enable pnpm
+        run: corepack enable
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # web:check and web:test compile the Paraglide messages first.
+      - name: Format, lint and type-check
+        run: pnpm web:check
+
+      - name: Unit and content tests
+        run: pnpm web:test
+
+      - name: Build (prerenders every page in every language)
+        run: pnpm build
+
+      - name: Check titles, canonical and hreflang links, JSON-LD and the sitemap
+        run: pnpm seo:check

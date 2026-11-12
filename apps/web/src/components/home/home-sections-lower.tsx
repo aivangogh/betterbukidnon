@@ -1,42 +1,40 @@
 import { Link } from '@tanstack/react-router'
-import { useLocale } from '@/components/i18n/locale-provider'
 import { Icon, type IconName } from '@/components/ui/icon'
 import { LottieAnimation } from '@/components/ui/lottie'
 import { contactDirectory } from '@/content/contact'
 import { repositoryUrl } from '@/content/navigation'
-import { isTranslationKey, type TranslationKey } from '@/content/translations'
+import { text, type Message } from '@/lib/i18n'
 import { GlanceHeader, SectionHeader, SectionLink } from './home-ui'
+import { m } from '@/paraglide/messages'
 
 const timeline: ReadonlyArray<{
-  /** A translation key, or literal text such as a year. */
-  year: string
-  text: TranslationKey
+  /** A message, or literal text such as a year. */
+  year: string | Message
+  text: Message
 }> = [
-  { year: 'home-history-precolonial-label', text: 'home-history-precolonial' },
-  { year: '1850s', text: 'home-history-1850s' },
-  { year: '1907', text: 'home-history-1907' },
-  { year: '1917', text: 'home-history-1917' },
-  { year: '1977', text: 'home-history-1977' },
-  { year: '1998–2001', text: 'home-history-cityhood' },
-  { year: '2012', text: 'home-history-2012' },
+  { year: m.home_history_precolonial_label, text: m.home_history_precolonial },
+  { year: '1850s', text: m.home_history_1850s },
+  { year: '1907', text: m.home_history_1907 },
+  { year: '1917', text: m.home_history_1917 },
+  { year: '1977', text: m.home_history_1977 },
+  { year: '1998–2001', text: m.home_history_cityhood },
+  { year: '2012', text: m.home_history_2012 },
 ]
 
-const historyCards: ReadonlyArray<{ icon: IconName; title: TranslationKey; text: TranslationKey }> =
-  [
-    {
-      icon: 'people-fill',
-      title: 'home-history-card-tribes-title',
-      text: 'home-history-card-tribes',
-    },
-    {
-      icon: 'triangle-fill',
-      title: 'home-history-card-highlands-title',
-      text: 'home-history-card-highlands',
-    },
-  ]
+const historyCards: ReadonlyArray<{ icon: IconName; title: Message; text: Message }> = [
+  {
+    icon: 'people-fill',
+    title: m.home_history_card_tribes_title,
+    text: m.home_history_card_tribes,
+  },
+  {
+    icon: 'triangle-fill',
+    title: m.home_history_card_highlands_title,
+    text: m.home_history_card_highlands,
+  },
+]
 
 export function History() {
-  const { t } = useLocale()
   return (
     <section className="section-y bg-linear-180 from-surface-alt to-surface">
       <div className="container-site">
@@ -44,7 +42,7 @@ export function History() {
           title={
             <>
               <Icon name="book" className="text-primary" />
-              <span>{t('home-brief-history-of-bukidnon')}</span>
+              <span>{m.home_brief_history_of_bukidnon()}</span>
             </>
           }
         />
@@ -52,16 +50,16 @@ export function History() {
           <div className="relative pl-7 before:absolute before:inset-y-2 before:left-1.5 before:w-0.5 before:rounded-xs before:bg-linear-180 before:from-primary before:to-primary/20 before:content-['']">
             {timeline.map((item, index) => (
               <div
-                key={item.text}
+                key={item.text()}
                 className="group relative animate-[history-fade-in-up_0.5s_ease_forwards] pb-5 opacity-0 last:pb-0 motion-reduce:animate-none motion-reduce:opacity-100"
                 style={{ animationDelay: `${(index + 1) * 0.1}s` }}
               >
                 <div className="absolute -left-7 top-1 z-[1] size-3.5 rounded-full border-3 border-primary bg-surface transition-all duration-300 group-hover:scale-120 group-hover:bg-primary group-hover:shadow-[0_0_0_4px_rgba(0,50,160,0.15)]" />
                 <div className="rounded-[10px] border border-black/6 bg-surface px-4.5 py-4 transition-all duration-300 group-hover:translate-x-1 group-hover:border-primary group-hover:shadow-[0_4px_16px_rgba(0,50,160,0.1)]">
                   <span className="mb-2 inline-block rounded-[20px] bg-primary px-2.5 py-0.75 text-[0.75rem] font-bold text-white">
-                    {isTranslationKey(item.year) ? t(item.year) : item.year}
+                    {text(item.year)}
                   </span>
-                  <p className="m-0 text-[0.875rem] leading-[1.6] text-ink">{t(item.text)}</p>
+                  <p className="m-0 text-[0.875rem] leading-[1.6] text-ink">{item.text()}</p>
                 </div>
               </div>
             ))}
@@ -69,7 +67,7 @@ export function History() {
           <div className="sticky top-25 flex flex-col gap-4 max-[901px]:static max-[901px]:flex-row max-[901px]:flex-wrap max-sm:flex-col">
             {historyCards.map((card) => (
               <div
-                key={card.title}
+                key={card.title()}
                 className="flex items-start gap-3.5 rounded-xl border border-black/6 bg-surface p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary hover:shadow-[0_4px_16px_rgba(0,50,160,0.1)] max-[901px]:flex-[1_1_280px] max-sm:flex-[1_1_100%]"
               >
                 <div className="flex size-11 shrink-0 items-center justify-center rounded-[10px] bg-linear-135 from-primary to-secondary">
@@ -77,11 +75,9 @@ export function History() {
                 </div>
                 <div>
                   <h3 className="mb-1.5 mt-0 text-[0.9375rem] font-semibold text-ink">
-                    {t(card.title)}
+                    {card.title()}
                   </h3>
-                  <p className="m-0 text-[0.8125rem] leading-[1.5] text-ink-light">
-                    {t(card.text)}
-                  </p>
+                  <p className="m-0 text-[0.8125rem] leading-[1.5] text-ink-light">{card.text()}</p>
                 </div>
               </div>
             ))}
@@ -95,7 +91,6 @@ export function History() {
 const FACEBOOK_PAGE = 'https://www.facebook.com/lgubukidnon'
 
 export function LatestUpdates() {
-  const { t } = useLocale()
   const points: ReadonlyArray<{ icon: IconName; text: string }> = [
     { icon: 'megaphone', text: 'Official announcements & advisories' },
     { icon: 'calendar-event', text: 'Events & community programs' },
@@ -105,8 +100,8 @@ export function LatestUpdates() {
     <section className="section-y bg-linear-180 from-[#f0f4ff] to-white">
       <div className="container-site">
         <SectionHeader
-          title={t('section-updates')}
-          action={<SectionLink link={{ to: '/news' }}>{t('home-view-all')}</SectionLink>}
+          title={m.section_updates()}
+          action={<SectionLink link={{ to: '/news' }}>{m.home_view_all()}</SectionLink>}
         />
         <div className="grid grid-cols-[380px_1fr] items-center gap-[clamp(32px,5vw,72px)] max-[1101px]:grid-cols-[340px_1fr] max-[961px]:grid-cols-1 max-[961px]:gap-8">
           <div className="max-[961px]:mx-auto max-[961px]:max-w-140 max-[961px]:text-center">
@@ -174,7 +169,6 @@ export function LatestUpdates() {
 const leaderContact = 'inline-flex items-center justify-center gap-2 text-[0.875rem] text-ink-light'
 
 export function Leadership() {
-  const { t } = useLocale()
   const badge =
     'mb-4 inline-block rounded-full bg-linear-135 from-primary to-secondary px-3.5 py-1.5 text-[0.75rem] font-semibold text-white'
   const card = 'rounded-xl border border-line bg-white p-8 text-center'
@@ -182,20 +176,20 @@ export function Leadership() {
     <section className="section-y bg-surface-alt">
       <div className="container-site">
         <SectionHeader
-          title={t('section-leadership')}
+          title={m.section_leadership()}
           action={
             <SectionLink link={{ to: '/government/officials' }}>
-              {t('home-view-all-officials')}
+              {m.home_view_all_officials()}
             </SectionLink>
           }
         />
         <div className="grid grid-cols-2 gap-6 max-[769px]:grid-cols-1">
           <div className={card}>
-            <div className={badge}>{t('title-governor')}</div>
+            <div className={badge}>{m.title_governor()}</div>
             <h3 className="mb-4 mt-0 text-[1.25rem] text-ink">Hon. Rogelio Neil P. Roque</h3>
             <div className="flex flex-col gap-2">
               <span className={leaderContact}>
-                <Icon name="building" /> <span>{t('home-pgo')}</span>
+                <Icon name="building" /> <span>{m.home_pgo()}</span>
               </span>
               <a href="tel:+63888132457" className={`${leaderContact} hover:text-primary`}>
                 <Icon name="telephone" /> (088) 813-2457
@@ -203,20 +197,20 @@ export function Leadership() {
             </div>
           </div>
           <div className={card}>
-            <div className={badge}>{t('title-vice-governor')}</div>
+            <div className={badge}>{m.title_vice_governor()}</div>
             <h3 className="mb-4 mt-0 text-[1.25rem] text-ink">Hon. Clive D. Quiño</h3>
             <div className="flex flex-col gap-2">
               <span className={leaderContact}>
-                <Icon name="bank" /> <span>{t('home-sp-presiding-officer')}</span>
+                <Icon name="bank" /> <span>{m.home_sp_presiding_officer()}</span>
               </span>
               <Link to="/legislative" className={`${leaderContact} hover:text-primary`}>
-                <Icon name="arrow-right" /> <span>{t('home-view-legislative')}</span>
+                <Icon name="arrow-right" /> <span>{m.home_view_legislative()}</span>
               </Link>
             </div>
           </div>
         </div>
         <p className="mb-0 mt-4 text-center text-[0.8125rem] text-ink-light">
-          {t('home-leadership-term')}
+          {m.home_leadership_term()}
         </p>
       </div>
     </section>
@@ -224,12 +218,11 @@ export function Leadership() {
 }
 
 export function ContactInfo() {
-  const { t } = useLocale()
   const card =
     'flex items-start gap-4 rounded-xl border border-line bg-white p-6 text-ink transition-all duration-200 hover:border-primary hover:text-ink hover:no-underline hover:shadow-[0_4px_12px_rgba(0,50,160,0.08)]'
   const items: ReadonlyArray<{
     icon: IconName
-    title: TranslationKey
+    title: Message
     value: string
     note: string
     href?: string
@@ -237,33 +230,33 @@ export function ContactInfo() {
   }> = [
     {
       icon: 'telephone-fill',
-      title: 'contact-phone',
+      title: m.contact_phone,
       value: contactDirectory.phone,
-      note: t('contact-hours'),
+      note: m.contact_hours(),
       // (088) 813-5741 -> tel:+63888135741 (drop the trunk 0 after the country code)
       href: `tel:+63${contactDirectory.phone.replace(/\D/g, '').slice(1)}`,
     },
     {
       icon: 'globe2',
-      title: 'home-official-website',
+      title: m.home_official_website,
       value: 'bukidnon.gov.ph',
-      note: t('home-official-website-note'),
+      note: m.home_official_website_note(),
       href: contactDirectory.website,
       external: true,
     },
     {
       icon: 'geo-alt-fill',
-      title: 'contact-address',
-      value: t('home-capitol-compound'),
-      note: t('home-capitol-city'),
+      title: m.contact_address,
+      value: m.home_capitol_compound(),
+      note: m.home_capitol_city(),
     },
   ]
   return (
     <section className="section-y">
       <div className="container-site">
         <SectionHeader
-          title={t('section-contact')}
-          action={<SectionLink link={{ to: '/contact' }}>{t('home-view-all')}</SectionLink>}
+          title={m.section_contact()}
+          action={<SectionLink link={{ to: '/contact' }}>{m.home_view_all()}</SectionLink>}
         />
         <div className="grid grid-cols-3 gap-6 max-[993px]:grid-cols-1">
           {items.map((item) => {
@@ -274,7 +267,7 @@ export function ContactInfo() {
                 </div>
                 <div className="min-w-0 flex-1">
                   <h3 className="mb-1 mt-0 text-[0.8125rem] font-medium uppercase tracking-[0.5px] text-ink-light">
-                    {t(item.title)}
+                    {item.title()}
                   </h3>
                   <p className="mb-1 text-[1rem] font-semibold text-ink">{item.value}</p>
                   <span className="text-[0.8125rem] text-ink-light">{item.note}</span>
@@ -283,7 +276,7 @@ export function ContactInfo() {
             )
             return item.href ? (
               <a
-                key={item.title}
+                key={item.title()}
                 href={item.href}
                 className={card}
                 {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
@@ -291,7 +284,7 @@ export function ContactInfo() {
                 {content}
               </a>
             ) : (
-              <div key={item.title} className={card}>
+              <div key={item.title()} className={card}>
                 {content}
               </div>
             )
@@ -303,7 +296,6 @@ export function ContactInfo() {
 }
 
 export function VolunteerCta() {
-  const { t } = useLocale()
   return (
     <section
       aria-labelledby="volunteer-cta-heading"
@@ -325,13 +317,13 @@ export function VolunteerCta() {
               id="volunteer-cta-heading"
               className="mb-2 mt-0 text-[2.25rem] font-extrabold leading-[1.2] text-ink max-[993px]:min-md:text-[1.75rem] max-md:text-[1.5rem]"
             >
-              {t('home-volunteer-heading')}
+              {m.home_volunteer_heading()}
             </h2>
             <p className="mb-4 text-[1.0625rem] font-semibold text-primary max-md:text-[1rem]">
-              {t('home-volunteer-subtitle')}
+              {m.home_volunteer_subtitle()}
             </p>
             <p className="mb-8 text-[0.9375rem] leading-[1.7] text-ink-light max-md:text-[0.875rem]">
-              {t('home-volunteer-description')}
+              {m.home_volunteer_description()}
             </p>
             <a
               href={repositoryUrl}
@@ -340,7 +332,7 @@ export function VolunteerCta() {
               className="inline-flex items-center gap-2.5 rounded-site bg-primary px-8 py-3.5 text-[1rem] font-semibold text-white shadow-[0_2px_8px_rgba(0,50,160,0.25)] transition-all hover:-translate-y-px hover:bg-[#002a88] hover:text-white hover:no-underline hover:shadow-[0_4px_16px_rgba(0,50,160,0.35)] focus:bg-[#002a88] focus:text-white focus:shadow-[0_0_0_3px_rgba(0,50,160,0.4)] focus:outline-none active:translate-y-0 max-md:w-full max-md:justify-center"
             >
               <Icon name="github" />
-              <span>{t('home-volunteer-cta')}</span>
+              <span>{m.home_volunteer_cta()}</span>
             </a>
           </div>
         </div>

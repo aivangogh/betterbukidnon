@@ -2,10 +2,10 @@ import { Link, useRouterState } from '@tanstack/react-router'
 import { useEffect, useRef, useState } from 'react'
 import logoUrl from '@/assets/logo/better-bukidnon-logo.svg?url'
 import { LanguageMenu } from '@/components/i18n/language-menu'
-import { useLocale } from '@/components/i18n/locale-provider'
 import { Icon } from '@/components/ui/icon'
 import { primaryNavigation, type NavItem } from '@/content/navigation'
 import { cn } from '@/lib/utils'
+import { m } from '@/paraglide/messages'
 
 const MOBILE_NAV = '(max-width: 1024px)'
 const isMobileNav = () => window.matchMedia(MOBILE_NAV).matches
@@ -28,7 +28,6 @@ function DropdownItem({
   open: boolean
   onOpenChange: (open: boolean) => void
 }) {
-  const { t } = useLocale()
   const trigger = useRef<HTMLElement>(null)
   const menu = useRef<HTMLUListElement>(null)
   const menuLinks = () => Array.from(menu.current?.querySelectorAll('a') ?? [])
@@ -90,7 +89,7 @@ function DropdownItem({
     >
       {item.link ? (
         <Link {...item.link} ref={trigger as React.Ref<HTMLAnchorElement>} {...triggerProps}>
-          {t(item.label)}
+          {item.label()}
         </Link>
       ) : (
         <button
@@ -99,7 +98,7 @@ function DropdownItem({
           {...triggerProps}
           className={cn(triggerProps.className, 'cursor-pointer max-xl:w-full max-xl:text-left')}
         >
-          {t(item.label)}
+          {item.label()}
         </button>
       )}
       <ul
@@ -115,7 +114,7 @@ function DropdownItem({
         )}
       >
         {children.map((child, index) => (
-          <li key={child.label} className="w-full">
+          <li key={child.label()} className="w-full">
             {'href' in child ? (
               <a
                 href={child.href}
@@ -124,8 +123,8 @@ function DropdownItem({
                 className={menuLinkClass}
                 onKeyDown={(event) => onMenuKeyDown(event, index)}
               >
-                {t(child.label)}
-                <span className="sr-only"> {t('nav-opens-new-tab')}</span>
+                {child.label()}
+                <span className="sr-only"> {m.nav_opens_new_tab()}</span>
               </a>
             ) : (
               <Link
@@ -133,7 +132,7 @@ function DropdownItem({
                 className={menuLinkClass}
                 onKeyDown={(event) => onMenuKeyDown(event, index)}
               >
-                {t(child.label)}
+                {child.label()}
               </Link>
             )}
           </li>
@@ -144,7 +143,6 @@ function DropdownItem({
 }
 
 export function SiteHeader() {
-  const { t } = useLocale()
   const pathname = useRouterState({ select: (state) => state.location.pathname })
   const section = pathname.split('/')[1] ?? ''
   const [menuOpen, setMenuOpen] = useState(false)
@@ -244,22 +242,22 @@ export function SiteHeader() {
               if (item.children) {
                 return (
                   <DropdownItem
-                    key={item.label}
+                    key={item.label()}
                     item={item}
                     active={active}
-                    open={openDropdown === item.label}
-                    onOpenChange={(open) => setOpenDropdown(open ? item.label : null)}
+                    open={openDropdown === item.label()}
+                    onOpenChange={(open) => setOpenDropdown(open ? item.label() : null)}
                   />
                 )
               }
               return (
-                <li key={item.label} className="relative">
+                <li key={item.label()} className="relative">
                   <Link
                     {...item.link}
                     className={cn(linkClass, active && 'text-primary')}
                     aria-current={active ? 'page' : undefined}
                   >
-                    {t(item.label)}
+                    {item.label()}
                   </Link>
                 </li>
               )
