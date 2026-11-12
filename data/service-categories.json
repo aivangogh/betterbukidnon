@@ -1,0 +1,1928 @@
+{
+  "categories": {
+    "certificates": {
+      "breadcrumb": {
+        "en": "Certificates & Vital Records",
+        "fil": "Mga Sertipiko at Vital Records",
+        "ceb": "Mga Sertipiko ug Vital Records"
+      },
+      "badge": {
+        "en": "Certificates",
+        "fil": "Mga Sertipiko",
+        "ceb": "Mga Sertipiko"
+      },
+      "icon": "file-earmark-text-fill",
+      "title": {
+        "en": "Certificates & Vital Records",
+        "fil": "Mga Sertipiko at Vital Records",
+        "ceb": "Mga Sertipiko ug Vital Records"
+      },
+      "description": {
+        "en": "Birth, marriage and death records are handled by your city or municipality and the PSA",
+        "fil": "Ang mga talaan ng kapanganakan, kasal at kamatayan ay hawak ng inyong lungsod o munisipyo at ng PSA",
+        "ceb": "Ang rekord sa pagkatawo, kasal, ug kamatayon gi-asikaso sa imong siyudad o munisipyo ug sa PSA"
+      },
+      "contacts": [],
+      "sections": [
+        {
+          "title": {
+            "en": "How it works in Bukidnon",
+            "fil": "Paano ito gumagana sa Bukidnon",
+            "ceb": "Giunsa kini sa Bukidnon"
+          },
+          "intro": {
+            "en": "Civil registration is done by the Local Civil Registry Office (LCRO) of the city or municipality where the event happened. The Province does not issue these documents.",
+            "fil": "Ang pagpaparehistro ng sibil ay ginagawa ng Local Civil Registry Office (LCRO) ng lungsod o munisipyo kung saan naganap ang pangyayari. Hindi naglalabas ng mga dokumentong ito ang Lalawigan."
+          },
+          "cards": [
+            {
+              "icon": "building",
+              "title": {
+                "en": "City or municipal civil registrar",
+                "fil": "Civil registrar ng lungsod o munisipyo",
+                "ceb": "City o municipal civil registrar"
+              },
+              "text": {
+                "en": "Register a birth, marriage or death, or ask for a copy, at the LCRO of Malaybalay City, Valencia City or your municipality.",
+                "fil": "Magrehistro ng kapanganakan, kasal o kamatayan, o humingi ng kopya, sa LCRO ng Malaybalay City, Valencia City o inyong munisipyo."
+              },
+              "link": {
+                "href": "/government/#lgus",
+                "label": {
+                  "en": "Find your city or municipality",
+                  "fil": "Hanapin ang inyong lungsod o munisipyo",
+                  "ceb": "Pangitaa ang imong siyudad o munisipyo"
+                }
+              }
+            },
+            {
+              "icon": "journal-check",
+              "title": {
+                "en": "Civil registration guide",
+                "fil": "Gabay sa pagpaparehistro ng sibil",
+                "ceb": "Giya sa civil registration"
+              },
+              "text": {
+                "en": "Learn how registration and PSA copies work.",
+                "fil": "Alamin kung paano gumagana ang rehistrasyon at mga kopya ng PSA.",
+                "ceb": "Pagkat-on kung unsaon pagtrabaho ang pagrehistro ug mga kopya sa PSA."
+              },
+              "link": {
+                "href": "/service-details/civil-registrar",
+                "label": {
+                  "en": "Read the guide",
+                  "fil": "Basahin ang gabay",
+                  "ceb": "Basaha ang giya"
+                }
+              }
+            },
+            {
+              "icon": "flag",
+              "title": {
+                "en": "Philippine Statistics Authority",
+                "fil": "Philippine Statistics Authority",
+                "ceb": "Philippine Statistics Authority"
+              },
+              "text": {
+                "en": "The PSA issues the security-paper copies that many offices ask for. See psa.gov.ph for current ways to request them.",
+                "fil": "Naglalabas ang PSA ng mga kopyang nasa security paper na hinihingi ng maraming opisina. Tingnan ang psa.gov.ph para sa kasalukuyang paraan ng paghiling ng mga ito."
+              },
+              "link": {
+                "href": "https://psa.gov.ph/",
+                "label": {
+                  "en": "Visit the PSA website",
+                  "fil": "Bisitahin ang website ng PSA",
+                  "ceb": "Bisitaha ang website sa PSA"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": {
+            "en": "Document guides",
+            "fil": "Mga gabay sa dokumento",
+            "ceb": "Mga giya sa dokumento"
+          },
+          "intro": {
+            "en": "Each guide explains the general steps. Requirements may vary, so confirm with the civil registrar.",
+            "fil": "Ipinapaliwanag ng bawat gabay ang mga pangkalahatang hakbang. Maaaring magkaiba ang mga kinakailangan, kaya kumpirmahin sa civil registrar."
+          },
+          "cards": [
+            {
+              "icon": "emoji-smile",
+              "title": {
+                "en": "Birth certificate",
+                "fil": "Sertipiko ng kapanganakan",
+                "ceb": "Birth certificate"
+              },
+              "text": {
+                "en": "Get a copy of a birth record registered in Bukidnon.",
+                "fil": "Kumuha ng kopya ng talaan ng kapanganakang nairehistro sa Bukidnon.",
+                "ceb": "Kuhaa ang kopya sa rekord sa pagkatawo nga narehistro sa Bukidnon."
+              },
+              "link": {
+                "href": "/service-details/birth-certificate",
+                "label": {
+                  "en": "Read the guide",
+                  "fil": "Basahin ang gabay",
+                  "ceb": "Basaha ang giya"
+                }
+              }
+            },
+            {
+              "icon": "heart",
+              "title": {
+                "en": "Marriage certificate",
+                "fil": "Marriage certificate",
+                "ceb": "Marriage certificate"
+              },
+              "text": {
+                "en": "Marriage registration and copies of a marriage record.",
+                "fil": "Pagpaparehistro ng kasal at mga kopya ng talaan ng kasal.",
+                "ceb": "Pagrehistro sa kasal ug mga kopya sa rekord sa kasal."
+              },
+              "link": {
+                "href": "/service-details/marriage-certificate",
+                "label": {
+                  "en": "Read the guide",
+                  "fil": "Basahin ang gabay",
+                  "ceb": "Basaha ang giya"
+                }
+              }
+            },
+            {
+              "icon": "flower1",
+              "title": {
+                "en": "Death certificate",
+                "fil": "Death certificate",
+                "ceb": "Death certificate"
+              },
+              "text": {
+                "en": "Death registration and copies of a death record.",
+                "fil": "Rehistro ng kamatayan at mga kopya ng talaan ng kamatayan.",
+                "ceb": "Pagrehistro sa kamatayon ug mga kopya sa rekord sa kamatayon."
+              },
+              "link": {
+                "href": "/service-details/death-certificate",
+                "label": {
+                  "en": "Read the guide",
+                  "fil": "Basahin ang gabay",
+                  "ceb": "Basaha ang giya"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "note": {
+        "text": {
+          "en": "This page is a general guide written by volunteers. Requirements, fees and processing times are set by each office and may vary, so confirm with the office before you go. The official source is the",
+          "fil": "Ang pahinang ito ay pangkalahatang gabay na isinulat ng mga boluntaryo. Ang mga kinakailangan, bayarin at oras ng pagproseso ay itinatakda ng bawat opisina at maaaring magkaiba, kaya kumpirmahin sa opisina bago pumunta. Ang opisyal na pinagmulan ay ang"
+        },
+        "link": {
+          "href": "https://bukidnon.gov.ph/",
+          "label": {
+            "en": "Provincial Government of Bukidnon website",
+            "fil": "Website ng Pamahalaang Panlalawigan ng Bukidnon",
+            "ceb": "Website sa Probinsyal nga Gobyerno sa Bukidnon"
+          }
+        }
+      }
+    },
+    "business": {
+      "breadcrumb": {
+        "en": "Business Permits & Licenses",
+        "fil": "Mga Business Permit at Lisensya",
+        "ceb": "Mga Business Permit ug Lisensya"
+      },
+      "badge": {
+        "en": "Business",
+        "fil": "Negosyo",
+        "ceb": "Negosyo"
+      },
+      "icon": "shop",
+      "title": {
+        "en": "Business Permits & Licenses",
+        "fil": "Mga Business Permit at Lisensya",
+        "ceb": "Mga Business Permit ug Lisensya"
+      },
+      "description": {
+        "en": "Business permits are issued by your city or municipality. Here is where the Province fits in.",
+        "fil": "Ang mga business permit ay inilalabas ng inyong lungsod o munisipyo. Narito kung saan pumapasok ang Lalawigan."
+      },
+      "contacts": [],
+      "sections": [
+        {
+          "title": {
+            "en": "Where to get a business permit",
+            "fil": "Saan kukuha ng business permit",
+            "ceb": "Asa makakuha og business permit"
+          },
+          "intro": {
+            "en": "In the Philippines, the mayor's permit and local business tax are handled by the city or municipality where the business is located, not by the Province.",
+            "fil": "Sa Pilipinas, ang mayor's permit at lokal na buwis sa negosyo ay inaasikaso ng lungsod o munisipyo kung saan matatagpuan ang negosyo, hindi ng Lalawigan."
+          },
+          "cards": [
+            {
+              "icon": "building",
+              "title": {
+                "en": "City or municipal hall",
+                "fil": "City hall o munisipyo",
+                "ceb": "City o municipal hall"
+              },
+              "text": {
+                "en": "Apply at the Business Permits and Licensing Office (BPLO) of Malaybalay City, Valencia City or your municipality.",
+                "fil": "Mag-apply sa Business Permits and Licensing Office (BPLO) ng Malaybalay City, Valencia City o inyong munisipyo."
+              },
+              "link": {
+                "href": "/government/#lgus",
+                "label": {
+                  "en": "Find your city or municipality",
+                  "fil": "Hanapin ang inyong lungsod o munisipyo",
+                  "ceb": "Pangitaa ang imong siyudad o munisipyo"
+                }
+              }
+            },
+            {
+              "icon": "file-earmark-text",
+              "title": {
+                "en": "How permits work in Bukidnon",
+                "fil": "Paano gumagana ang mga permit sa Bukidnon",
+                "ceb": "Giunsa pagmugna ang mga permit sa Bukidnon"
+              },
+              "text": {
+                "en": "Read the general steps for applying and renewing a business permit.",
+                "fil": "Basahin ang mga pangkalahatang hakbang sa pag-apply at pag-renew ng business permit.",
+                "ceb": "Basaha ang kinatibuk-ang mga lakang sa pag-aplay ug pag-renew og business permit."
+              },
+              "link": {
+                "href": "/service-details/business-permits-licensing",
+                "label": {
+                  "en": "Read the guide",
+                  "fil": "Basahin ang gabay",
+                  "ceb": "Basaha ang giya"
+                }
+              }
+            },
+            {
+              "icon": "clipboard-check",
+              "title": {
+                "en": "Other registrations",
+                "fil": "Iba pang rehistrasyon",
+                "ceb": "Uban pang mga rehistro"
+              },
+              "text": {
+                "en": "Depending on the business, you may also register with the DTI (business name), the SEC or CDA, the BIR, and the barangay. Each agency sets its own requirements.",
+                "fil": "Depende sa negosyo, maaari rin kayong magparehistro sa DTI (pangalan ng negosyo), SEC o CDA, BIR, at barangay. May sariling kinakailangan ang bawat ahensya."
+              }
+            }
+          ]
+        },
+        {
+          "title": {
+            "en": "What the Province handles",
+            "fil": "Ang hinahawakan ng Lalawigan",
+            "ceb": "Unsay gi-asikaso sa Probinsya"
+          },
+          "intro": {
+            "en": "The Provincial Government collects certain provincial taxes and fees allowed by the Local Government Code.",
+            "fil": "Nangongolekta ang Pamahalaang Panlalawigan ng ilang buwis at bayaring panlalawigan na pinapayagan ng Local Government Code."
+          },
+          "cards": [
+            {
+              "icon": "cash-coin",
+              "title": {
+                "en": "Provincial Treasurer's Office",
+                "fil": "Provincial Treasurer's Office",
+                "ceb": "Opisina sa Provincial Treasurer"
+              },
+              "text": {
+                "en": "Collects provincial taxes and fees. Ask the office whether any provincial tax applies to your kind of business.",
+                "fil": "Nangongolekta ng mga buwis at bayaring panlalawigan. Itanong sa opisina kung may buwis na panlalawigang naaangkop sa uri ng inyong negosyo."
+              },
+              "link": {
+                "href": "/service-details/provincial-treasurer",
+                "label": {
+                  "en": "Office details",
+                  "fil": "Mga detalye ng opisina",
+                  "ceb": "Detalye sa opisina"
+                }
+              }
+            },
+            {
+              "icon": "diagram-3",
+              "title": {
+                "en": "Planning and investment",
+                "fil": "Pagpaplano at pamumuhunan",
+                "ceb": "Pagplano ug pamuhunan"
+              },
+              "text": {
+                "en": "The Provincial Planning and Development Office prepares the provincial development plan that guides local investment.",
+                "fil": "Inihahanda ng Provincial Planning and Development Office ang plano sa kaunlaran ng lalawigan na gumagabay sa lokal na pamumuhunan."
+              },
+              "link": {
+                "href": "/service-details/provincial-planning",
+                "label": {
+                  "en": "Planning office",
+                  "fil": "Tanggapan ng pagpaplano",
+                  "ceb": "Planning office"
+                }
+              }
+            },
+            {
+              "icon": "geo-alt",
+              "title": {
+                "en": "Zoning and building",
+                "fil": "Zoning at pagtatayo",
+                "ceb": "Zoning ug building"
+              },
+              "text": {
+                "en": "Zoning clearance and building permits are issued by the city or municipal government.",
+                "fil": "Ang zoning clearance at building permit ay inilalabas ng pamahalaan ng lungsod o munisipyo.",
+                "ceb": "Ang zoning clearance ug building permit gi-isyu sa gobyerno sa siyudad o munisipyo."
+              },
+              "link": {
+                "href": "/government/#lgus",
+                "label": {
+                  "en": "Find your city or municipality",
+                  "fil": "Hanapin ang inyong lungsod o munisipyo",
+                  "ceb": "Pangitaa ang imong siyudad o munisipyo"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "note": {
+        "text": {
+          "en": "This page is a general guide written by volunteers. Requirements, fees and processing times are set by each office and may vary, so confirm with the office before you go. The official source is the",
+          "fil": "Ang pahinang ito ay pangkalahatang gabay na isinulat ng mga boluntaryo. Ang mga kinakailangan, bayarin at oras ng pagproseso ay itinatakda ng bawat opisina at maaaring magkaiba, kaya kumpirmahin sa opisina bago pumunta. Ang opisyal na pinagmulan ay ang"
+        },
+        "link": {
+          "href": "https://bukidnon.gov.ph/",
+          "label": {
+            "en": "Provincial Government of Bukidnon website",
+            "fil": "Website ng Pamahalaang Panlalawigan ng Bukidnon",
+            "ceb": "Website sa Probinsyal nga Gobyerno sa Bukidnon"
+          }
+        }
+      }
+    },
+    "tax-payments": {
+      "breadcrumb": {
+        "en": "Taxes & Payments",
+        "fil": "Buwis at Bayad",
+        "ceb": "Buhis ug mga Bayranan"
+      },
+      "badge": {
+        "en": "Taxes",
+        "fil": "Mga Buwis",
+        "ceb": "Buhis"
+      },
+      "icon": "cash-coin",
+      "title": {
+        "en": "Tax & Payment Services",
+        "fil": "Mga Serbisyo sa Buwis at Bayad",
+        "ceb": "Mga Serbisyo sa Buhis ug Bayranan"
+      },
+      "description": {
+        "en": "Real property tax and other payments: which treasurer to pay in Bukidnon",
+        "fil": "Amilyar (real property tax) at iba pang bayarin: aling ingat-yaman ang babayaran sa Bukidnon",
+        "ceb": "Amilyar ug uban pang bayranan: kinsang treasurer ang bayran sa Bukidnon"
+      },
+      "contacts": [
+        {
+          "icon": "cash-coin",
+          "href": "tel:0888132474",
+          "label": {
+            "en": "Provincial Treasurer's Office",
+            "fil": "Provincial Treasurer's Office",
+            "ceb": "Opisina sa Provincial Treasurer"
+          },
+          "value": {
+            "en": "(088) 813-2474",
+            "fil": "(088) 813-2474",
+            "ceb": "(088) 813-2474"
+          }
+        }
+      ],
+      "sections": [
+        {
+          "title": {
+            "en": "Real property tax",
+            "fil": "Amilyar (real property tax)",
+            "ceb": "Amilyar"
+          },
+          "intro": {
+            "en": "Where you pay depends on where the property is located.",
+            "fil": "Nakadepende kung saan magbabayad batay sa lokasyon ng ari-arian.",
+            "ceb": "Ang asa ka mobayad nagdepende kung asa nahimutang ang kabtangan."
+          },
+          "cards": [
+            {
+              "icon": "house",
+              "title": {
+                "en": "Property in the 20 municipalities",
+                "fil": "Ari-arian sa 20 munisipyo",
+                "ceb": "Kabtangan sa 20 ka munisipyo"
+              },
+              "text": {
+                "en": "Real property tax is handled with the Provincial Treasurer's Office. Your municipal treasurer can tell you where to pay.",
+                "fil": "Ang amilyar (real property tax) ay hawak ng Provincial Treasurer's Office. Masasabi ng inyong municipal treasurer kung saan magbabayad."
+              },
+              "link": {
+                "href": "/service-details/provincial-treasurer",
+                "label": {
+                  "en": "Provincial Treasurer",
+                  "fil": "Provincial Treasurer",
+                  "ceb": "Provincial Treasurer"
+                }
+              }
+            },
+            {
+              "icon": "building",
+              "title": {
+                "en": "Malaybalay City and Valencia City",
+                "fil": "Malaybalay City at Valencia City",
+                "ceb": "Malaybalay City ug Valencia City"
+              },
+              "text": {
+                "en": "Residents of these two cities pay the city treasurer, not the Provincial Treasurer.",
+                "fil": "Ang mga residente ng dalawang lungsod na ito ay nagbabayad sa city treasurer, hindi sa Provincial Treasurer.",
+                "ceb": "Ang mga residente niining duha ka siyudad mobayad sa city treasurer, dili sa Provincial Treasurer."
+              },
+              "link": {
+                "href": "/government/#lgus",
+                "label": {
+                  "en": "Find your city or municipality",
+                  "fil": "Hanapin ang inyong lungsod o munisipyo",
+                  "ceb": "Pangitaa ang imong siyudad o munisipyo"
+                }
+              }
+            },
+            {
+              "icon": "file-earmark-ruled",
+              "title": {
+                "en": "Tax declarations and assessment",
+                "fil": "Mga tax declaration at assessment",
+                "ceb": "Tax declaration ug assessment"
+              },
+              "text": {
+                "en": "The Provincial Assessor handles property assessment for the municipalities. Cities have their own assessors.",
+                "fil": "Ang Provincial Assessor ang nag-aasikaso ng pagtataya ng ari-arian para sa mga munisipyo. May sariling assessor ang mga lungsod."
+              },
+              "link": {
+                "href": "/service-details/property-declaration",
+                "label": {
+                  "en": "Tax declaration guide",
+                  "fil": "Gabay sa tax declaration",
+                  "ceb": "Giya sa tax declaration"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": {
+            "en": "Other payments",
+            "fil": "Iba pang bayarin",
+            "ceb": "Uban pang bayranan"
+          },
+          "intro": {
+            "en": "Several common payments are not collected by the Province.",
+            "fil": "Ilang karaniwang bayarin ay hindi kinokolekta ng Lalawigan.",
+            "ceb": "Daghang kasagarang bayranan dili kolektahon sa Probinsya."
+          },
+          "cards": [
+            {
+              "icon": "person-vcard",
+              "title": {
+                "en": "Community tax certificate (cedula)",
+                "fil": "Community tax certificate (cedula)",
+                "ceb": "Community tax certificate (cedula)"
+              },
+              "text": {
+                "en": "Issued by the city or municipal treasurer.",
+                "fil": "Inilalabas ng city o municipal treasurer.",
+                "ceb": "Gi-isyu sa city o municipal treasurer."
+              },
+              "link": {
+                "href": "/government/#lgus",
+                "label": {
+                  "en": "Find your city or municipality",
+                  "fil": "Hanapin ang inyong lungsod o munisipyo",
+                  "ceb": "Pangitaa ang imong siyudad o munisipyo"
+                }
+              }
+            },
+            {
+              "icon": "shop",
+              "title": {
+                "en": "Business tax and permits",
+                "fil": "Buwis sa negosyo at mga permit",
+                "ceb": "Buhis sa negosyo ug permit"
+              },
+              "text": {
+                "en": "Paid to the city or municipal treasurer when you get or renew your business permit.",
+                "fil": "Binabayaran sa city o municipal treasurer kapag kumukuha o nagre-renew ng business permit.",
+                "ceb": "Gibayran sa city o municipal treasurer kung mokuha o mag-renew ka sa imong business permit."
+              },
+              "link": {
+                "href": "/service-details/business-permits-licensing",
+                "label": {
+                  "en": "Business permit guide",
+                  "fil": "Gabay sa business permit",
+                  "ceb": "Giya sa business permit"
+                }
+              }
+            },
+            {
+              "icon": "receipt",
+              "title": {
+                "en": "Provincial taxes and fees",
+                "fil": "Mga buwis at bayaring panlalawigan",
+                "ceb": "Buhis ug bayranan sa probinsya"
+              },
+              "text": {
+                "en": "Ask the Provincial Treasurer's Office about transfer tax and other provincial fees.",
+                "fil": "Itanong sa Provincial Treasurer's Office ang tungkol sa transfer tax at iba pang bayarin ng lalawigan.",
+                "ceb": "Pangutana sa Opisina sa Provincial Treasurer bahin sa transfer tax ug uban pang bayranan sa probinsya."
+              },
+              "link": {
+                "href": "/service-details/provincial-treasurer",
+                "label": {
+                  "en": "Provincial Treasurer",
+                  "fil": "Provincial Treasurer",
+                  "ceb": "Provincial Treasurer"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "note": {
+        "text": {
+          "en": "This page is a general guide written by volunteers. Requirements, fees and processing times are set by each office and may vary, so confirm with the office before you go. The official source is the",
+          "fil": "Ang pahinang ito ay pangkalahatang gabay na isinulat ng mga boluntaryo. Ang mga kinakailangan, bayarin at oras ng pagproseso ay itinatakda ng bawat opisina at maaaring magkaiba, kaya kumpirmahin sa opisina bago pumunta. Ang opisyal na pinagmulan ay ang"
+        },
+        "link": {
+          "href": "https://bukidnon.gov.ph/",
+          "label": {
+            "en": "Provincial Government of Bukidnon website",
+            "fil": "Website ng Pamahalaang Panlalawigan ng Bukidnon",
+            "ceb": "Website sa Probinsyal nga Gobyerno sa Bukidnon"
+          }
+        }
+      }
+    },
+    "social-services": {
+      "breadcrumb": {
+        "en": "Social Services",
+        "fil": "Mga Serbisyong Panlipunan",
+        "ceb": "Serbisyong Sosyal"
+      },
+      "badge": {
+        "en": "Social Services",
+        "fil": "Mga Serbisyong Panlipunan",
+        "ceb": "Serbisyong Sosyal"
+      },
+      "icon": "people-fill",
+      "title": {
+        "en": "Social Welfare Services",
+        "fil": "Mga Serbisyo sa Kapakanang Panlipunan",
+        "ceb": "Mga Serbisyo sa Kaayohang Sosyal"
+      },
+      "description": {
+        "en": "The Provincial Social Welfare and Development Office and local welfare offices",
+        "fil": "Ang Provincial Social Welfare and Development Office at mga lokal na tanggapan ng kapakanang panlipunan",
+        "ceb": "Ang Provincial Social Welfare and Development Office ug mga lokal nga opisina sa kaayohan"
+      },
+      "contacts": [
+        {
+          "icon": "people",
+          "href": "tel:0888135734",
+          "label": {
+            "en": "PSWDO",
+            "fil": "PSWDO",
+            "ceb": "PSWDO"
+          },
+          "value": {
+            "en": "(088) 813-5734",
+            "fil": "(088) 813-5734",
+            "ceb": "(088) 813-5734"
+          }
+        }
+      ],
+      "sections": [
+        {
+          "title": {
+            "en": "What the Province does",
+            "fil": "Ang ginagawa ng Lalawigan",
+            "ceb": "Unsay gibuhat sa Probinsya"
+          },
+          "intro": {
+            "en": "Under the Local Government Code, the province provides social welfare services and supports those of its cities and municipalities.",
+            "fil": "Sa ilalim ng Local Government Code, nagbibigay ang lalawigan ng mga serbisyong panlipunan at sinusuportahan ang mga serbisyo ng mga lungsod at munisipyo nito."
+          },
+          "cards": [
+            {
+              "icon": "people-fill",
+              "title": {
+                "en": "Provincial Social Welfare and Development Office",
+                "fil": "Provincial Social Welfare and Development Office",
+                "ceb": "Provincial Social Welfare and Development Office"
+              },
+              "text": {
+                "en": "The PSWDO leads provincial programs for families, children, women, senior citizens, persons with disabilities and people in crisis.",
+                "fil": "Pinamumunuan ng PSWDO ang mga programang panlalawigan para sa mga pamilya, bata, kababaihan, senior citizen, taong may kapansanan at mga nasa krisis."
+              },
+              "link": {
+                "href": "/service-details/pswdo",
+                "label": {
+                  "en": "Office details",
+                  "fil": "Mga detalye ng opisina",
+                  "ceb": "Detalye sa opisina"
+                }
+              }
+            },
+            {
+              "icon": "cash-coin",
+              "title": {
+                "en": "Assistance",
+                "fil": "Tulong",
+                "ceb": "Tabang"
+              },
+              "text": {
+                "en": "Assistance for people in difficult situations is evaluated by social workers. Ask the PSWDO what applies to you.",
+                "fil": "Ang tulong para sa mga taong nasa mahirap na sitwasyon ay sinusuri ng mga social worker. Itanong sa PSWDO kung ano ang naaangkop sa inyo."
+              }
+            },
+            {
+              "icon": "people",
+              "title": {
+                "en": "Community programs",
+                "fil": "Mga programang pangkomunidad",
+                "ceb": "Mga programa sa komunidad"
+              },
+              "text": {
+                "en": "The PSWDO coordinates with city and municipal social welfare offices and barangays.",
+                "fil": "Nakikipag-ugnayan ang PSWDO sa mga tanggapan ng kapakanang panlipunan ng lungsod at munisipyo at sa mga barangay.",
+                "ceb": "Ang PSWDO nakigtambayayong sa mga opisina sa kaayohang sosyal sa siyudad ug munisipyo ug sa mga barangay."
+              },
+              "link": {
+                "href": "/government/#lgus",
+                "label": {
+                  "en": "Find your city or municipality",
+                  "fil": "Hanapin ang inyong lungsod o munisipyo",
+                  "ceb": "Pangitaa ang imong siyudad o munisipyo"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": {
+            "en": "Who handles what",
+            "fil": "Sino ang may hawak ng ano",
+            "ceb": "Kinsay nag-asikaso sa unsa"
+          },
+          "intro": {
+            "en": "IDs and benefits are often processed locally.",
+            "fil": "Ang mga ID at benepisyo ay kadalasang pinoproseso sa lokal.",
+            "ceb": "Ang mga ID ug benepisyo kasagarang giproseso sa lokal."
+          },
+          "cards": [
+            {
+              "icon": "person-vcard",
+              "title": {
+                "en": "Senior citizen, PWD and solo parent IDs",
+                "fil": "Mga ID ng senior citizen, PWD at solo parent",
+                "ceb": "Senior citizen, PWD ug solo parent ID"
+              },
+              "text": {
+                "en": "These are usually processed at the city or municipal office for senior citizens, persons with disabilities and social welfare. Ask your city or municipal hall.",
+                "fil": "Karaniwang pinoproseso ang mga ito sa opisina ng lungsod o munisipyo para sa mga senior citizen, taong may kapansanan at social welfare. Magtanong sa inyong city hall o munisipyo."
+              },
+              "link": {
+                "href": "/government/#lgus",
+                "label": {
+                  "en": "Find your city or municipality",
+                  "fil": "Hanapin ang inyong lungsod o munisipyo",
+                  "ceb": "Pangitaa ang imong siyudad o munisipyo"
+                }
+              }
+            },
+            {
+              "icon": "flag",
+              "title": {
+                "en": "DSWD national programs",
+                "fil": "Mga pambansang programa ng DSWD",
+                "ceb": "Nasudnong mga programa sa DSWD"
+              },
+              "text": {
+                "en": "Programs such as 4Ps are run by the Department of Social Welfare and Development, with local social welfare offices as partners.",
+                "fil": "Ang mga programang tulad ng 4Ps ay pinapatakbo ng Department of Social Welfare and Development, katuwang ang mga lokal na tanggapan ng kapakanang panlipunan."
+              }
+            },
+            {
+              "icon": "telephone",
+              "title": {
+                "en": "Need help now",
+                "fil": "Kailangan ng tulong ngayon",
+                "ceb": "Kinahanglan og tabang karon"
+              },
+              "text": {
+                "en": "For emergencies call 911. For welfare concerns, call the PSWDO during office hours.",
+                "fil": "Sa mga emergency, tumawag sa 911. Para sa mga alalahaning panlipunan, tawagan ang PSWDO sa oras ng opisina.",
+                "ceb": "Alang sa emerhensya tawga ang 911. Alang sa mga kabalaka sa kaayohan, tawga ang PSWDO sa oras sa opisina."
+              },
+              "link": {
+                "href": "/service-details/pswdo",
+                "label": {
+                  "en": "PSWDO",
+                  "fil": "PSWDO",
+                  "ceb": "PSWDO"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "note": {
+        "text": {
+          "en": "This page is a general guide written by volunteers. Requirements, fees and processing times are set by each office and may vary, so confirm with the office before you go. The official source is the",
+          "fil": "Ang pahinang ito ay pangkalahatang gabay na isinulat ng mga boluntaryo. Ang mga kinakailangan, bayarin at oras ng pagproseso ay itinatakda ng bawat opisina at maaaring magkaiba, kaya kumpirmahin sa opisina bago pumunta. Ang opisyal na pinagmulan ay ang"
+        },
+        "link": {
+          "href": "https://bukidnon.gov.ph/",
+          "label": {
+            "en": "Provincial Government of Bukidnon website",
+            "fil": "Website ng Pamahalaang Panlalawigan ng Bukidnon",
+            "ceb": "Website sa Probinsyal nga Gobyerno sa Bukidnon"
+          }
+        }
+      }
+    },
+    "health": {
+      "breadcrumb": {
+        "en": "Health Services",
+        "fil": "Mga Serbisyong Pangkalusugan",
+        "ceb": "Mga Serbisyo sa Panglawas"
+      },
+      "badge": {
+        "en": "Health",
+        "fil": "Kalusugan",
+        "ceb": "Panglawas"
+      },
+      "icon": "heart-pulse-fill",
+      "title": {
+        "en": "Health Services",
+        "fil": "Mga Serbisyong Pangkalusugan",
+        "ceb": "Mga Serbisyo sa Panglawas"
+      },
+      "description": {
+        "en": "The Provincial Health Office and where to go for health services in Bukidnon",
+        "fil": "Ang Provincial Health Office at kung saan pupunta para sa mga serbisyong pangkalusugan sa Bukidnon",
+        "ceb": "Ang Provincial Health Office ug asa moadto alang sa serbisyo sa panglawas sa Bukidnon"
+      },
+      "contacts": [
+        {
+          "icon": "heart-pulse",
+          "href": "tel:0888135631",
+          "label": {
+            "en": "Provincial Health Office",
+            "fil": "Provincial Health Office",
+            "ceb": "Provincial Health Office"
+          },
+          "value": {
+            "en": "(088) 813-5631",
+            "fil": "(088) 813-5631",
+            "ceb": "(088) 813-5631"
+          }
+        },
+        {
+          "icon": "telephone-fill",
+          "href": "tel:911",
+          "label": {
+            "en": "National Emergency Hotline",
+            "fil": "National Emergency Hotline",
+            "ceb": "National Emergency Hotline"
+          },
+          "value": {
+            "en": "911",
+            "fil": "911",
+            "ceb": "911"
+          }
+        }
+      ],
+      "sections": [
+        {
+          "title": {
+            "en": "What the Province does",
+            "fil": "Ang ginagawa ng Lalawigan",
+            "ceb": "Unsay gibuhat sa Probinsya"
+          },
+          "intro": {
+            "en": "The Provincial Health Office (PHO) leads public health work for the province and supports health services in its cities and municipalities.",
+            "fil": "Pinamumunuan ng Provincial Health Office (PHO) ang pampublikong kalusugan sa lalawigan at sinusuportahan ang mga serbisyong pangkalusugan sa mga lungsod at munisipyo nito."
+          },
+          "cards": [
+            {
+              "icon": "hospital",
+              "title": {
+                "en": "Provincial Health Office",
+                "fil": "Provincial Health Office",
+                "ceb": "Provincial Health Office"
+              },
+              "text": {
+                "en": "Coordinates provincial health programs and supports the health offices of the cities and municipalities. Visit the Provincial Capitol in Malaybalay City, Monday to Friday, 8 AM to 5 PM.",
+                "fil": "Nag-uugnay ng mga programang pangkalusugan ng lalawigan at sumusuporta sa mga health office ng mga lungsod at munisipyo. Bisitahin ang Provincial Capitol sa Malaybalay City, Lunes hanggang Biyernes, 8 AM hanggang 5 PM."
+              },
+              "link": {
+                "href": "/service-details/provincial-health-office",
+                "label": {
+                  "en": "Office details",
+                  "fil": "Mga detalye ng opisina",
+                  "ceb": "Detalye sa opisina"
+                }
+              }
+            },
+            {
+              "icon": "building-add",
+              "title": {
+                "en": "Provincial hospitals",
+                "fil": "Mga ospital ng lalawigan",
+                "ceb": "Mga ospital sa probinsya"
+              },
+              "text": {
+                "en": "In general, provinces support the operation of provincial and district hospitals. Ask the PHO which facilities are near you.",
+                "fil": "Sa pangkalahatan, sinusuportahan ng mga lalawigan ang operasyon ng mga ospital ng lalawigan at distrito. Itanong sa PHO kung aling pasilidad ang malapit sa inyo."
+              }
+            },
+            {
+              "icon": "heart",
+              "title": {
+                "en": "Medical and financial help",
+                "fil": "Tulong medikal at pinansyal",
+                "ceb": "Medikal ug pinansyal nga tabang"
+              },
+              "text": {
+                "en": "The Provincial Social Welfare and Development Office can advise on assistance for people in need.",
+                "fil": "Maaaring magpayo ang Provincial Social Welfare and Development Office tungkol sa tulong para sa mga nangangailangan."
+              },
+              "link": {
+                "href": "/service-details/pswdo",
+                "label": {
+                  "en": "PSWDO",
+                  "fil": "PSWDO",
+                  "ceb": "PSWDO"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": {
+            "en": "Who handles what",
+            "fil": "Sino ang may hawak ng ano",
+            "ceb": "Kinsay nag-asikaso sa unsa"
+          },
+          "intro": {
+            "en": "Most first-contact care is local.",
+            "fil": "Karamihan ng unang pangangalaga ay lokal.",
+            "ceb": "Kadaghanan sa unang pag-atiman lokal."
+          },
+          "cards": [
+            {
+              "icon": "house-heart",
+              "title": {
+                "en": "Health centers and RHUs",
+                "fil": "Mga health center at RHU",
+                "ceb": "Mga health center ug RHU"
+              },
+              "text": {
+                "en": "Consultations, vaccination and maternal care are usually available at the rural health unit or city health office of your city or municipality.",
+                "fil": "Karaniwang makukuha ang konsultasyon, pagbabakuna at maternal care sa rural health unit o city health office ng inyong lungsod o munisipyo."
+              },
+              "link": {
+                "href": "/government/#lgus",
+                "label": {
+                  "en": "Find your city or municipality",
+                  "fil": "Hanapin ang inyong lungsod o munisipyo",
+                  "ceb": "Pangitaa ang imong siyudad o munisipyo"
+                }
+              }
+            },
+            {
+              "icon": "flag",
+              "title": {
+                "en": "National programs",
+                "fil": "Mga pambansang programa",
+                "ceb": "Nasudnong mga programa"
+              },
+              "text": {
+                "en": "The Department of Health sets national programs. PhilHealth handles health insurance membership and benefits.",
+                "fil": "Ang Department of Health ang nagtatakda ng mga pambansang programa. Ang PhilHealth ang nag-aasikaso ng pagiging miyembro at mga benepisyo sa health insurance."
+              }
+            },
+            {
+              "icon": "exclamation-octagon",
+              "title": {
+                "en": "Emergencies",
+                "fil": "Mga Emergency",
+                "ceb": "Mga Emerhensya"
+              },
+              "text": {
+                "en": "For a medical emergency call 911. You can also reach the Provincial Disaster Risk Reduction and Management Department.",
+                "fil": "Para sa medikal na emergency, tumawag sa 911. Maaari ring makipag-ugnayan sa Provincial Disaster Risk Reduction and Management Department."
+              },
+              "link": {
+                "href": "/service-details/pdrrmd",
+                "label": {
+                  "en": "PDRRMD",
+                  "fil": "PDRRMD",
+                  "ceb": "PDRRMD"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "note": {
+        "text": {
+          "en": "This page is a general guide written by volunteers. Requirements, fees and processing times are set by each office and may vary, so confirm with the office before you go. The official source is the",
+          "fil": "Ang pahinang ito ay pangkalahatang gabay na isinulat ng mga boluntaryo. Ang mga kinakailangan, bayarin at oras ng pagproseso ay itinatakda ng bawat opisina at maaaring magkaiba, kaya kumpirmahin sa opisina bago pumunta. Ang opisyal na pinagmulan ay ang"
+        },
+        "link": {
+          "href": "https://bukidnon.gov.ph/",
+          "label": {
+            "en": "Provincial Government of Bukidnon website",
+            "fil": "Website ng Pamahalaang Panlalawigan ng Bukidnon",
+            "ceb": "Website sa Probinsyal nga Gobyerno sa Bukidnon"
+          }
+        }
+      }
+    },
+    "agriculture": {
+      "breadcrumb": {
+        "en": "Agriculture",
+        "fil": "Agrikultura",
+        "ceb": "Agrikultura"
+      },
+      "badge": {
+        "en": "Agriculture",
+        "fil": "Agrikultura",
+        "ceb": "Agrikultura"
+      },
+      "icon": "tree-fill",
+      "title": {
+        "en": "Agriculture Services",
+        "fil": "Mga Serbisyo sa Agrikultura",
+        "ceb": "Mga Serbisyo sa Agrikultura"
+      },
+      "description": {
+        "en": "Farming support from the Provincial Government of Bukidnon, and where local and national programs fit in",
+        "fil": "Suporta sa pagsasaka mula sa Pamahalaang Panlalawigan ng Bukidnon, at kung saan pumapasok ang mga lokal at pambansang programa"
+      },
+      "contacts": [
+        {
+          "icon": "telephone",
+          "href": "tel:0888135741",
+          "label": {
+            "en": "Capitol main line",
+            "fil": "Pangunahing linya ng Capitol",
+            "ceb": "Capitol main line"
+          },
+          "value": {
+            "en": "(088) 813-5741",
+            "fil": "(088) 813-5741",
+            "ceb": "(088) 813-5741"
+          }
+        }
+      ],
+      "sections": [
+        {
+          "title": {
+            "en": "What the Province does",
+            "fil": "Ang ginagawa ng Lalawigan",
+            "ceb": "Unsay gibuhat sa Probinsya"
+          },
+          "intro": {
+            "en": "Bukidnon is known as the food basket of Mindanao. Under the Local Government Code, a province supports agricultural development across its cities and municipalities.",
+            "fil": "Kilala ang Bukidnon bilang food basket ng Mindanao. Sa ilalim ng Local Government Code, sinusuportahan ng lalawigan ang pag-unlad ng agrikultura sa mga lungsod at munisipyo nito."
+          },
+          "cards": [
+            {
+              "icon": "tree-fill",
+              "title": {
+                "en": "Office of the Provincial Agriculturist",
+                "fil": "Opisina ng Provincial Agriculturist",
+                "ceb": "Opisina sa Provincial Agriculturist"
+              },
+              "text": {
+                "en": "In general, this office plans and coordinates agricultural development for the province, and provides technical help and extension services to farmers.",
+                "fil": "Sa pangkalahatan, nagpaplano at nag-uugnay ang opisinang ito ng kaunlarang pang-agrikultura ng lalawigan, at nagbibigay ng teknikal na tulong at extension service sa mga magsasaka."
+              },
+              "link": {
+                "href": "/service-details/provincial-agriculture",
+                "label": {
+                  "en": "Office details",
+                  "fil": "Mga detalye ng opisina",
+                  "ceb": "Detalye sa opisina"
+                }
+              }
+            },
+            {
+              "icon": "diagram-3",
+              "title": {
+                "en": "Planning and coordination",
+                "fil": "Pagpaplano at koordinasyon",
+                "ceb": "Pagplano ug koordinasyon"
+              },
+              "text": {
+                "en": "Provincial agriculture programs are planned together with the Provincial Planning and Development Office and funded through the provincial budget.",
+                "fil": "Ang mga programang pang-agrikultura ng lalawigan ay pinaplano kasama ang Provincial Planning and Development Office at pinopondohan sa pamamagitan ng badyet ng lalawigan."
+              },
+              "link": {
+                "href": "/service-details/provincial-planning",
+                "label": {
+                  "en": "Planning office",
+                  "fil": "Tanggapan ng pagpaplano",
+                  "ceb": "Planning office"
+                }
+              }
+            },
+            {
+              "icon": "cash-stack",
+              "title": {
+                "en": "Provincial budget",
+                "fil": "Badyet ng lalawigan",
+                "ceb": "Badyet sa probinsya"
+              },
+              "text": {
+                "en": "Agriculture spending is part of the provincial budget approved by the Sangguniang Panlalawigan.",
+                "fil": "Ang gastusin sa agrikultura ay bahagi ng badyet ng lalawigan na inaprubahan ng Sangguniang Panlalawigan."
+              },
+              "link": {
+                "href": "/budget/",
+                "label": {
+                  "en": "View the budget page",
+                  "fil": "Tingnan ang pahina ng badyet",
+                  "ceb": "Tan-awa ang panid sa badyet"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": {
+            "en": "Who handles what",
+            "fil": "Sino ang may hawak ng ano",
+            "ceb": "Kinsay nag-asikaso sa unsa"
+          },
+          "intro": {
+            "en": "Many farm services are delivered close to the farm, so start with the office nearest you.",
+            "fil": "Maraming serbisyong pansakahan ang inihahatid malapit sa bukid, kaya magsimula sa pinakamalapit na opisina.",
+            "ceb": "Daghang serbisyo sa uma ang gihatag duol sa uma, busa sugdi sa opisina nga pinakaduol nimo."
+          },
+          "cards": [
+            {
+              "icon": "building",
+              "title": {
+                "en": "City or municipal agriculture office",
+                "fil": "Agriculture office ng lungsod o munisipyo",
+                "ceb": "City o municipal agriculture office"
+              },
+              "text": {
+                "en": "Farmers usually register and ask for local assistance at the agriculture office of their city or municipality.",
+                "fil": "Karaniwang nagpaparehistro at humihingi ng lokal na tulong ang mga magsasaka sa agriculture office ng kanilang lungsod o munisipyo."
+              },
+              "link": {
+                "href": "/government/#lgus",
+                "label": {
+                  "en": "Find your city or municipality",
+                  "fil": "Hanapin ang inyong lungsod o munisipyo",
+                  "ceb": "Pangitaa ang imong siyudad o munisipyo"
+                }
+              }
+            },
+            {
+              "icon": "flag",
+              "title": {
+                "en": "National agencies",
+                "fil": "Mga pambansang ahensya",
+                "ceb": "Nasudnong mga ahensya"
+              },
+              "text": {
+                "en": "Crop insurance, farm credit, fertilizer and seed subsidies, and registry programs come from national agencies such as the Department of Agriculture and its partners. Ask your local agriculture office which program applies.",
+                "fil": "Ang crop insurance, pautang sa pagsasaka, subsidyo sa pataba at binhi, at mga registry program ay mula sa mga pambansang ahensya tulad ng Department of Agriculture at mga katuwang nito. Itanong sa inyong lokal na tanggapan ng agrikultura kung aling programa ang naaangkop."
+              }
+            },
+            {
+              "icon": "mortarboard",
+              "title": {
+                "en": "Training and research",
+                "fil": "Pagsasanay at pananaliksik",
+                "ceb": "Training ug panukiduki"
+              },
+              "text": {
+                "en": "Central Mindanao University in Musuan, Maramag does agricultural education and research in the province.",
+                "fil": "Ang Central Mindanao University sa Musuan, Maramag ay may edukasyon at pananaliksik sa agrikultura sa lalawigan."
+              }
+            }
+          ]
+        }
+      ],
+      "note": {
+        "text": {
+          "en": "This page is a general guide written by volunteers. Requirements, fees and processing times are set by each office and may vary, so confirm with the office before you go. The official source is the",
+          "fil": "Ang pahinang ito ay pangkalahatang gabay na isinulat ng mga boluntaryo. Ang mga kinakailangan, bayarin at oras ng pagproseso ay itinatakda ng bawat opisina at maaaring magkaiba, kaya kumpirmahin sa opisina bago pumunta. Ang opisyal na pinagmulan ay ang"
+        },
+        "link": {
+          "href": "https://bukidnon.gov.ph/",
+          "label": {
+            "en": "Provincial Government of Bukidnon website",
+            "fil": "Website ng Pamahalaang Panlalawigan ng Bukidnon",
+            "ceb": "Website sa Probinsyal nga Gobyerno sa Bukidnon"
+          }
+        }
+      }
+    },
+    "infrastructure": {
+      "breadcrumb": {
+        "en": "Infrastructure",
+        "fil": "Imprastraktura",
+        "ceb": "Imprastraktura"
+      },
+      "badge": {
+        "en": "Infrastructure",
+        "fil": "Imprastraktura",
+        "ceb": "Imprastraktura"
+      },
+      "icon": "building-fill-gear",
+      "title": {
+        "en": "Infrastructure Services",
+        "fil": "Mga Serbisyong Imprastraktura",
+        "ceb": "Mga Serbisyo sa Imprastraktura"
+      },
+      "description": {
+        "en": "Provincial roads, bridges and projects, and who issues building permits",
+        "fil": "Mga kalsada, tulay at proyekto ng lalawigan, at kung sino ang naglalabas ng building permit",
+        "ceb": "Mga dalan, tulay, ug proyekto sa probinsya, ug kinsay nag-isyu og building permit"
+      },
+      "contacts": [
+        {
+          "icon": "tools",
+          "href": "tel:0888133656",
+          "label": {
+            "en": "Provincial Engineer's Office",
+            "fil": "Provincial Engineer's Office",
+            "ceb": "Opisina sa Provincial Engineer"
+          },
+          "value": {
+            "en": "(088) 813-3656",
+            "fil": "(088) 813-3656",
+            "ceb": "(088) 813-3656"
+          }
+        },
+        {
+          "icon": "droplet",
+          "href": "tel:0888133688",
+          "label": {
+            "en": "PEO Waterworks",
+            "fil": "PEO Waterworks",
+            "ceb": "PEO Waterworks"
+          },
+          "value": {
+            "en": "(088) 813-3688",
+            "fil": "(088) 813-3688",
+            "ceb": "(088) 813-3688"
+          }
+        }
+      ],
+      "sections": [
+        {
+          "title": {
+            "en": "What the Province does",
+            "fil": "Ang ginagawa ng Lalawigan",
+            "ceb": "Unsay gibuhat sa Probinsya"
+          },
+          "intro": {
+            "en": "The Province builds and maintains provincial infrastructure under the Local Government Code.",
+            "fil": "Itinatayo at pinapanatili ng Lalawigan ang imprastraktura ng lalawigan sa ilalim ng Local Government Code."
+          },
+          "cards": [
+            {
+              "icon": "cone-striped",
+              "title": {
+                "en": "Provincial Engineer's Office",
+                "fil": "Provincial Engineer's Office",
+                "ceb": "Opisina sa Provincial Engineer"
+              },
+              "text": {
+                "en": "In general, the PEO plans, builds and maintains provincial roads, bridges and other provincial public works.",
+                "fil": "Sa pangkalahatan, ang PEO ang nagpaplano, nagtatayo at nagpapanatili ng mga kalsada, tulay at iba pang public works ng lalawigan."
+              },
+              "link": {
+                "href": "/service-details/provincial-engineering",
+                "label": {
+                  "en": "Office details",
+                  "fil": "Mga detalye ng opisina",
+                  "ceb": "Detalye sa opisina"
+                }
+              }
+            },
+            {
+              "icon": "diagram-3",
+              "title": {
+                "en": "Planning",
+                "fil": "Pagpaplano",
+                "ceb": "Pagplano"
+              },
+              "text": {
+                "en": "The Provincial Planning and Development Office prepares the development plan that sets project priorities.",
+                "fil": "Inihahanda ng Provincial Planning and Development Office ang development plan na nagtatakda ng mga prayoridad sa proyekto."
+              },
+              "link": {
+                "href": "/service-details/provincial-planning",
+                "label": {
+                  "en": "Planning office",
+                  "fil": "Tanggapan ng pagpaplano",
+                  "ceb": "Planning office"
+                }
+              }
+            },
+            {
+              "icon": "box-seam",
+              "title": {
+                "en": "Supplies and equipment",
+                "fil": "Mga suplay at kagamitan",
+                "ceb": "Suplay ug kagamitan"
+              },
+              "text": {
+                "en": "The Provincial General Services Office manages provincial property and procurement support.",
+                "fil": "Pinamamahalaan ng Provincial General Services Office ang ari-arian ng lalawigan at suporta sa procurement."
+              },
+              "link": {
+                "href": "/service-details/provincial-general-services",
+                "label": {
+                  "en": "General Services",
+                  "fil": "General Services",
+                  "ceb": "Kinatibuk-ang Serbisyo"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": {
+            "en": "Who handles what",
+            "fil": "Sino ang may hawak ng ano",
+            "ceb": "Kinsay nag-asikaso sa unsa"
+          },
+          "intro": {
+            "en": "Different roads and permits belong to different levels of government.",
+            "fil": "Magkakaibang daan at permit ang sakop ng magkakaibang antas ng pamahalaan.",
+            "ceb": "Lahi-lahi nga lebel sa gobyerno ang tag-iya sa lain-laing dalan ug permit."
+          },
+          "cards": [
+            {
+              "icon": "house-gear",
+              "title": {
+                "en": "Building and zoning permits",
+                "fil": "Mga building at zoning permit",
+                "ceb": "Building ug zoning permit"
+              },
+              "text": {
+                "en": "Building permits, occupancy permits and zoning clearances are issued by the Office of the Building Official of your city or municipality.",
+                "fil": "Ang mga building permit, occupancy permit at zoning clearance ay inilalabas ng Office of the Building Official ng inyong lungsod o munisipyo."
+              },
+              "link": {
+                "href": "/government/#lgus",
+                "label": {
+                  "en": "Find your city or municipality",
+                  "fil": "Hanapin ang inyong lungsod o munisipyo",
+                  "ceb": "Pangitaa ang imong siyudad o munisipyo"
+                }
+              }
+            },
+            {
+              "icon": "signpost-split",
+              "title": {
+                "en": "National roads",
+                "fil": "Mga pambansang kalsada",
+                "ceb": "Nasudnong mga dalan"
+              },
+              "text": {
+                "en": "National highways and bridges are under the Department of Public Works and Highways. Barangay and municipal roads are handled by the local government concerned.",
+                "fil": "Ang mga pambansang highway at tulay ay sa ilalim ng Department of Public Works and Highways. Ang mga barangay at municipal road ay hawak ng kinauukulang lokal na pamahalaan."
+              }
+            },
+            {
+              "icon": "megaphone",
+              "title": {
+                "en": "Report a problem",
+                "fil": "Mag-ulat ng problema",
+                "ceb": "Mag-report og problema"
+              },
+              "text": {
+                "en": "For a damaged provincial road or bridge, contact the Provincial Engineer's Office. For other roads, contact the city, municipality or barangay.",
+                "fil": "Para sa nasirang daan o tulay ng lalawigan, makipag-ugnayan sa Provincial Engineer's Office. Para sa ibang daan, makipag-ugnayan sa lungsod, munisipyo o barangay."
+              }
+            }
+          ]
+        }
+      ],
+      "note": {
+        "text": {
+          "en": "This page is a general guide written by volunteers. Requirements, fees and processing times are set by each office and may vary, so confirm with the office before you go. The official source is the",
+          "fil": "Ang pahinang ito ay pangkalahatang gabay na isinulat ng mga boluntaryo. Ang mga kinakailangan, bayarin at oras ng pagproseso ay itinatakda ng bawat opisina at maaaring magkaiba, kaya kumpirmahin sa opisina bago pumunta. Ang opisyal na pinagmulan ay ang"
+        },
+        "link": {
+          "href": "https://bukidnon.gov.ph/",
+          "label": {
+            "en": "Provincial Government of Bukidnon website",
+            "fil": "Website ng Pamahalaang Panlalawigan ng Bukidnon",
+            "ceb": "Website sa Probinsyal nga Gobyerno sa Bukidnon"
+          }
+        }
+      }
+    },
+    "education": {
+      "breadcrumb": {
+        "en": "Education",
+        "fil": "Edukasyon",
+        "ceb": "Edukasyon"
+      },
+      "badge": {
+        "en": "Education",
+        "fil": "Edukasyon",
+        "ceb": "Edukasyon"
+      },
+      "icon": "mortarboard-fill",
+      "title": {
+        "en": "Education Services",
+        "fil": "Mga Serbisyo sa Edukasyon",
+        "ceb": "Mga Serbisyo sa Edukasyon"
+      },
+      "description": {
+        "en": "The Province's role in education, and who runs schools and scholarships in Bukidnon",
+        "fil": "Ang papel ng Lalawigan sa edukasyon, at kung sino ang nagpapatakbo ng mga paaralan at scholarship sa Bukidnon",
+        "ceb": "Ang papel sa Probinsya sa edukasyon, ug kinsay nagdumala sa mga eskwelahan ug scholarship sa Bukidnon"
+      },
+      "contacts": [],
+      "sections": [
+        {
+          "title": {
+            "en": "What the Province does",
+            "fil": "Ang ginagawa ng Lalawigan",
+            "ceb": "Unsay gibuhat sa Probinsya"
+          },
+          "intro": {
+            "en": "Public schools are run by the national Department of Education. Provincial and city or municipal governments support them in limited ways.",
+            "fil": "Ang mga pampublikong paaralan ay pinapatakbo ng pambansang Department of Education. Limitado ang suportang ibinibigay ng mga pamahalaang panlalawigan at ng lungsod o munisipyo."
+          },
+          "cards": [
+            {
+              "icon": "journal-bookmark",
+              "title": {
+                "en": "Provincial School Board",
+                "fil": "Provincial School Board",
+                "ceb": "Provincial School Board"
+              },
+              "text": {
+                "en": "Under the Local Government Code, the Provincial School Board decides how the province uses its share of the Special Education Fund (SEF) for schools.",
+                "fil": "Sa ilalim ng Local Government Code, nagpapasya ang Provincial School Board kung paano gagamitin ng lalawigan ang bahagi nito sa Special Education Fund (SEF) para sa mga paaralan."
+              }
+            },
+            {
+              "icon": "award",
+              "title": {
+                "en": "Scholarships and student aid",
+                "fil": "Mga scholarship at tulong sa mag-aaral",
+                "ceb": "Scholarship ug tabang sa estudyante"
+              },
+              "text": {
+                "en": "The Province may offer scholarships or student assistance through its programs. Ask the Provincial Governor's Office or the PSWDO for what is open now.",
+                "fil": "Maaaring mag-alok ang Lalawigan ng mga scholarship o tulong sa mag-aaral sa pamamagitan ng mga programa nito. Magtanong sa Provincial Governor's Office o sa PSWDO kung ano ang bukas ngayon."
+              },
+              "link": {
+                "href": "/service-details/pswdo",
+                "label": {
+                  "en": "PSWDO",
+                  "fil": "PSWDO",
+                  "ceb": "PSWDO"
+                }
+              }
+            },
+            {
+              "icon": "cash-stack",
+              "title": {
+                "en": "Provincial budget",
+                "fil": "Badyet ng lalawigan",
+                "ceb": "Badyet sa probinsya"
+              },
+              "text": {
+                "en": "Education support is part of the provincial budget.",
+                "fil": "Ang suporta sa edukasyon ay bahagi ng badyet ng lalawigan.",
+                "ceb": "Ang suporta sa edukasyon bahin sa badyet sa probinsya."
+              },
+              "link": {
+                "href": "/budget/",
+                "label": {
+                  "en": "View the budget page",
+                  "fil": "Tingnan ang pahina ng badyet",
+                  "ceb": "Tan-awa ang panid sa badyet"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": {
+            "en": "Who handles what",
+            "fil": "Sino ang may hawak ng ano",
+            "ceb": "Kinsay nag-asikaso sa unsa"
+          },
+          "intro": {
+            "en": "Where to go depends on the school level.",
+            "fil": "Nakadepende ang pupuntahan sa antas ng paaralan.",
+            "ceb": "Ang adtoan nagdepende sa lebel sa eskwelahan."
+          },
+          "cards": [
+            {
+              "icon": "backpack",
+              "title": {
+                "en": "Public elementary and high schools",
+                "fil": "Mga pampublikong paaralang elementarya at high school",
+                "ceb": "Publikong elementarya ug hayskul"
+              },
+              "text": {
+                "en": "Enrollment, records and school concerns go to your school and the DepEd Schools Division Office of Bukidnon.",
+                "fil": "Ang enrollment, mga talaan at alalahanin sa paaralan ay sa inyong paaralan at sa DepEd Schools Division Office ng Bukidnon."
+              }
+            },
+            {
+              "icon": "building",
+              "title": {
+                "en": "City and municipal governments",
+                "fil": "Mga pamahalaan ng lungsod at munisipyo",
+                "ceb": "Mga gobyerno sa siyudad ug munisipyo"
+              },
+              "text": {
+                "en": "They also receive a share of the Special Education Fund and may run local education programs.",
+                "fil": "Tumatanggap din sila ng bahagi ng Special Education Fund at maaaring magpatakbo ng mga lokal na programa sa edukasyon."
+              },
+              "link": {
+                "href": "/government/#lgus",
+                "label": {
+                  "en": "Find your city or municipality",
+                  "fil": "Hanapin ang inyong lungsod o munisipyo",
+                  "ceb": "Pangitaa ang imong siyudad o munisipyo"
+                }
+              }
+            },
+            {
+              "icon": "bank",
+              "title": {
+                "en": "State universities",
+                "fil": "Mga state university",
+                "ceb": "Mga state university"
+              },
+              "text": {
+                "en": "Central Mindanao University (Musuan, Maramag) and Bukidnon State University (Malaybalay City) handle their own admission and scholarships.",
+                "fil": "Ang Central Mindanao University (Musuan, Maramag) at Bukidnon State University (Malaybalay City) ang may hawak ng sarili nilang admission at scholarship."
+              }
+            }
+          ]
+        }
+      ],
+      "note": {
+        "text": {
+          "en": "This page is a general guide written by volunteers. Requirements, fees and processing times are set by each office and may vary, so confirm with the office before you go. The official source is the",
+          "fil": "Ang pahinang ito ay pangkalahatang gabay na isinulat ng mga boluntaryo. Ang mga kinakailangan, bayarin at oras ng pagproseso ay itinatakda ng bawat opisina at maaaring magkaiba, kaya kumpirmahin sa opisina bago pumunta. Ang opisyal na pinagmulan ay ang"
+        },
+        "link": {
+          "href": "https://bukidnon.gov.ph/",
+          "label": {
+            "en": "Provincial Government of Bukidnon website",
+            "fil": "Website ng Pamahalaang Panlalawigan ng Bukidnon",
+            "ceb": "Website sa Probinsyal nga Gobyerno sa Bukidnon"
+          }
+        }
+      }
+    },
+    "public-safety": {
+      "breadcrumb": {
+        "en": "Public Safety",
+        "fil": "Kaligtasang Pampubliko",
+        "ceb": "Kaluwasan sa Publiko"
+      },
+      "badge": {
+        "en": "Public Safety",
+        "fil": "Kaligtasang Pampubliko",
+        "ceb": "Kaluwasan sa Publiko"
+      },
+      "icon": "shield-fill-check",
+      "title": {
+        "en": "Public Safety & Emergency Services",
+        "fil": "Kaligtasang Pampubliko at mga Serbisyong Pang-emergency",
+        "ceb": "Kaluwasan sa Publiko ug Serbisyo sa Emerhensya"
+      },
+      "description": {
+        "en": "Emergency numbers and who responds to disasters, crime and fire in Bukidnon",
+        "fil": "Mga numero sa emergency at kung sino ang tumutugon sa sakuna, krimen at sunog sa Bukidnon",
+        "ceb": "Mga numero sa emerhensya ug kinsay motubag sa katalagman, krimen, ug sunog sa Bukidnon"
+      },
+      "contacts": [
+        {
+          "icon": "telephone-fill",
+          "href": "tel:911",
+          "label": {
+            "en": "National Emergency Hotline",
+            "fil": "National Emergency Hotline",
+            "ceb": "National Emergency Hotline"
+          },
+          "value": {
+            "en": "911",
+            "fil": "911",
+            "ceb": "911"
+          }
+        },
+        {
+          "icon": "exclamation-triangle",
+          "href": "tel:0888131262",
+          "label": {
+            "en": "PDRRMD Bukidnon",
+            "fil": "PDRRMD Bukidnon",
+            "ceb": "PDRRMD Bukidnon"
+          },
+          "value": {
+            "en": "(088) 813-1262",
+            "fil": "(088) 813-1262",
+            "ceb": "(088) 813-1262"
+          }
+        },
+        {
+          "icon": "shield-check",
+          "href": "tel:0888134263",
+          "label": {
+            "en": "Bukidnon Police Provincial Office",
+            "fil": "Bukidnon Police Provincial Office",
+            "ceb": "Bukidnon Police Provincial Office"
+          },
+          "value": {
+            "en": "(088) 813-4263",
+            "fil": "(088) 813-4263",
+            "ceb": "(088) 813-4263"
+          }
+        },
+        {
+          "icon": "fire",
+          "href": "tel:0888135449",
+          "label": {
+            "en": "BFP Malaybalay City Fire Station",
+            "fil": "BFP Malaybalay City Fire Station",
+            "ceb": "BFP Malaybalay City Fire Station"
+          },
+          "value": {
+            "en": "(088) 813-5449",
+            "fil": "(088) 813-5449",
+            "ceb": "(088) 813-5449"
+          }
+        }
+      ],
+      "sections": [
+        {
+          "title": {
+            "en": "Who to call",
+            "fil": "Sino ang tatawagan",
+            "ceb": "Kinsay tawgan"
+          },
+          "intro": {
+            "en": "In a life-threatening emergency, call 911 first. The other numbers are local landlines; dial (088) first if you are calling from outside the area.",
+            "fil": "Sa emergency na nagbabanta sa buhay, tumawag muna sa 911. Ang iba pang numero ay lokal na landline; i-dial muna ang (088) kung tatawag mula sa labas ng area."
+          },
+          "cards": [
+            {
+              "icon": "exclamation-triangle",
+              "title": {
+                "en": "Disasters: PDRRMD",
+                "fil": "Mga sakuna: PDRRMD",
+                "ceb": "Katalagman: PDRRMD"
+              },
+              "text": {
+                "en": "The Provincial Disaster Risk Reduction and Management Department leads disaster preparedness, response and recovery in the province, working with city, municipal and barangay offices.",
+                "fil": "Pinamumunuan ng Provincial Disaster Risk Reduction and Management Department ang paghahanda, pagtugon at pagbangon mula sa sakuna sa lalawigan, katuwang ang mga tanggapan ng lungsod, munisipyo at barangay."
+              },
+              "link": {
+                "href": "/service-details/pdrrmd",
+                "label": {
+                  "en": "Office details",
+                  "fil": "Mga detalye ng opisina",
+                  "ceb": "Detalye sa opisina"
+                }
+              }
+            },
+            {
+              "icon": "shield-check",
+              "title": {
+                "en": "Crime and security: Bukidnon PPO",
+                "fil": "Krimen at seguridad: Bukidnon PPO",
+                "ceb": "Krimen ug seguridad: Bukidnon PPO"
+              },
+              "text": {
+                "en": "The Bukidnon Police Provincial Office (Camp Onahon, Malaybalay City) is part of the Philippine National Police. It is a national agency, not a provincial office.",
+                "fil": "Ang Bukidnon Police Provincial Office (Camp Onahon, Malaybalay City) ay bahagi ng Philippine National Police. Isa itong pambansang ahensya, hindi opisina ng lalawigan."
+              }
+            },
+            {
+              "icon": "fire",
+              "title": {
+                "en": "Fire: BFP",
+                "fil": "Sunog: BFP",
+                "ceb": "Sunog: BFP"
+              },
+              "text": {
+                "en": "The Bureau of Fire Protection is a national agency. The number above is for the Malaybalay City Fire Station; for other areas, ask your city or municipal fire station.",
+                "fil": "Ang Bureau of Fire Protection ay pambansang ahensya. Ang numero sa itaas ay para sa Malaybalay City Fire Station; para sa ibang lugar, magtanong sa istasyon ng bumbero ng inyong lungsod o munisipyo."
+              }
+            }
+          ]
+        },
+        {
+          "title": {
+            "en": "Other help",
+            "fil": "Iba pang tulong",
+            "ceb": "Uban pang tabang"
+          },
+          "intro": {
+            "en": "Related offices and local contacts.",
+            "fil": "Mga kaugnay na opisina at lokal na contact.",
+            "ceb": "Mga kaugalingong opisina ug lokal nga kontak."
+          },
+          "cards": [
+            {
+              "icon": "heart-pulse",
+              "title": {
+                "en": "Medical emergencies",
+                "fil": "Mga medikal na emergency",
+                "ceb": "Medikal nga emerhensya"
+              },
+              "text": {
+                "en": "The Provincial Health Office can guide you to health services.",
+                "fil": "Maaaring gabayan kayo ng Provincial Health Office sa mga serbisyong pangkalusugan.",
+                "ceb": "Ang Provincial Health Office makagiya kanimo sa mga serbisyo sa panglawas."
+              },
+              "link": {
+                "href": "/service-details/provincial-health-office",
+                "label": {
+                  "en": "Health Office",
+                  "fil": "Tanggapang Pangkalusugan",
+                  "ceb": "Health Office"
+                }
+              }
+            },
+            {
+              "icon": "people",
+              "title": {
+                "en": "Families in crisis",
+                "fil": "Mga pamilyang nasa krisis",
+                "ceb": "Mga pamilya sa krisis"
+              },
+              "text": {
+                "en": "The PSWDO assists individuals and families in crisis situations.",
+                "fil": "Tumutulong ang PSWDO sa mga indibidwal at pamilyang nasa krisis.",
+                "ceb": "Ang PSWDO motabang sa mga indibidwal ug pamilya sa krisis."
+              },
+              "link": {
+                "href": "/service-details/pswdo",
+                "label": {
+                  "en": "PSWDO",
+                  "fil": "PSWDO",
+                  "ceb": "PSWDO"
+                }
+              }
+            },
+            {
+              "icon": "building",
+              "title": {
+                "en": "City and municipal offices",
+                "fil": "Mga tanggapan ng lungsod at munisipyo",
+                "ceb": "Mga opisina sa siyudad ug munisipyo"
+              },
+              "text": {
+                "en": "Each city and municipality has its own disaster risk reduction office, police station and barangay officials.",
+                "fil": "Ang bawat lungsod at munisipyo ay may sariling disaster risk reduction office, istasyon ng pulis at mga opisyal ng barangay."
+              },
+              "link": {
+                "href": "/government/#lgus",
+                "label": {
+                  "en": "Find your city or municipality",
+                  "fil": "Hanapin ang inyong lungsod o munisipyo",
+                  "ceb": "Pangitaa ang imong siyudad o munisipyo"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "note": {
+        "text": {
+          "en": "This page is a general guide written by volunteers. Requirements, fees and processing times are set by each office and may vary, so confirm with the office before you go. The official source is the",
+          "fil": "Ang pahinang ito ay pangkalahatang gabay na isinulat ng mga boluntaryo. Ang mga kinakailangan, bayarin at oras ng pagproseso ay itinatakda ng bawat opisina at maaaring magkaiba, kaya kumpirmahin sa opisina bago pumunta. Ang opisyal na pinagmulan ay ang"
+        },
+        "link": {
+          "href": "https://bukidnon.gov.ph/",
+          "label": {
+            "en": "Provincial Government of Bukidnon website",
+            "fil": "Website ng Pamahalaang Panlalawigan ng Bukidnon",
+            "ceb": "Website sa Probinsyal nga Gobyerno sa Bukidnon"
+          }
+        }
+      }
+    },
+    "environment": {
+      "breadcrumb": {
+        "en": "Environment",
+        "fil": "Kapaligiran",
+        "ceb": "Kinaiyahan"
+      },
+      "badge": {
+        "en": "Environment",
+        "fil": "Kapaligiran",
+        "ceb": "Kinaiyahan"
+      },
+      "icon": "globe-americas",
+      "title": {
+        "en": "Environmental Services",
+        "fil": "Mga Serbisyong Pangkapaligiran",
+        "ceb": "Mga Serbisyo sa Kalikopan"
+      },
+      "description": {
+        "en": "Environmental protection in Bukidnon: provincial planning, national agencies and local governments",
+        "fil": "Pangangalaga sa kapaligiran sa Bukidnon: pagpaplano ng lalawigan, mga pambansang ahensya at mga lokal na pamahalaan"
+      },
+      "contacts": [],
+      "sections": [
+        {
+          "title": {
+            "en": "What the Province does",
+            "fil": "Ang ginagawa ng Lalawigan",
+            "ceb": "Unsay gibuhat sa Probinsya"
+          },
+          "intro": {
+            "en": "The Local Government Code gives provinces a role in protecting the environment and planning land use across their territory.",
+            "fil": "Binibigyan ng Local Government Code ang mga lalawigan ng papel sa pangangalaga sa kapaligiran at pagpaplano ng paggamit ng lupa sa buong nasasakupan nila."
+          },
+          "cards": [
+            {
+              "icon": "diagram-3",
+              "title": {
+                "en": "Provincial planning",
+                "fil": "Pagpaplano ng lalawigan",
+                "ceb": "Pagplano sa probinsya"
+              },
+              "text": {
+                "en": "The Provincial Planning and Development Office prepares the provincial development plan, which includes the environment.",
+                "fil": "Inihahanda ng Provincial Planning and Development Office ang plano sa kaunlaran ng lalawigan, na kinabibilangan ng kapaligiran."
+              },
+              "link": {
+                "href": "/service-details/provincial-planning",
+                "label": {
+                  "en": "Planning office",
+                  "fil": "Tanggapan ng pagpaplano",
+                  "ceb": "Planning office"
+                }
+              }
+            },
+            {
+              "icon": "tree-fill",
+              "title": {
+                "en": "Agriculture and natural resources",
+                "fil": "Agrikultura at likas na yaman",
+                "ceb": "Agrikultura ug natural nga kapanguhaan"
+              },
+              "text": {
+                "en": "The Office of the Provincial Agriculturist works on farm practices and related programs.",
+                "fil": "Ang Opisina ng Provincial Agriculturist ay nagtatrabaho sa mga gawi sa pagsasaka at kaugnay na programa.",
+                "ceb": "Ang Opisina sa Provincial Agriculturist nagtrabaho sa mga pamaagi sa uma ug may kalabutan nga mga programa."
+              },
+              "link": {
+                "href": "/service-details/provincial-agriculture",
+                "label": {
+                  "en": "Office details",
+                  "fil": "Mga detalye ng opisina",
+                  "ceb": "Detalye sa opisina"
+                }
+              }
+            },
+            {
+              "icon": "exclamation-triangle",
+              "title": {
+                "en": "Disaster risk reduction",
+                "fil": "Pagbabawas ng panganib sa sakuna",
+                "ceb": "Pagpakunhod sa risgo sa katalagman"
+              },
+              "text": {
+                "en": "The PDRRMD prepares the province for floods, landslides and other hazards.",
+                "fil": "Inihahanda ng PDRRMD ang lalawigan para sa baha, landslide at iba pang panganib.",
+                "ceb": "Gi-andam sa PDRRMD ang probinsya alang sa baha, pagdahili sa yuta, ug uban pang katalagman."
+              },
+              "link": {
+                "href": "/service-details/pdrrmd",
+                "label": {
+                  "en": "PDRRMD",
+                  "fil": "PDRRMD",
+                  "ceb": "PDRRMD"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": {
+            "en": "Who handles what",
+            "fil": "Sino ang may hawak ng ano",
+            "ceb": "Kinsay nag-asikaso sa unsa"
+          },
+          "intro": {
+            "en": "Most environmental permits and day-to-day services sit with other offices.",
+            "fil": "Karamihan ng permit sa kapaligiran at pang-araw-araw na serbisyo ay nasa ibang mga opisina.",
+            "ceb": "Kadaghanan sa environmental permit ug adlaw-adlaw nga serbisyo anaa sa ubang opisina."
+          },
+          "cards": [
+            {
+              "icon": "flag",
+              "title": {
+                "en": "DENR and national agencies",
+                "fil": "DENR at mga pambansang ahensya",
+                "ceb": "DENR ug nasudnong mga ahensya"
+              },
+              "text": {
+                "en": "Environmental clearances, tree cutting permits and protected areas such as the Mount Kitanglad Range Natural Park are handled by the Department of Environment and Natural Resources.",
+                "fil": "Ang mga environmental clearance, permit sa pagputol ng puno at mga protektadong lugar tulad ng Mount Kitanglad Range Natural Park ay inaasikaso ng Department of Environment and Natural Resources."
+              }
+            },
+            {
+              "icon": "trash",
+              "title": {
+                "en": "Garbage and solid waste",
+                "fil": "Basura at solid waste",
+                "ceb": "Basura ug solid waste"
+              },
+              "text": {
+                "en": "Collection and segregation are handled by your city, municipality and barangay.",
+                "fil": "Ang koleksyon at paghihiwalay ng basura ay hawak ng inyong lungsod, munisipyo at barangay.",
+                "ceb": "Ang koleksyon ug pagbulag gi-asikaso sa imong siyudad, munisipyo, ug barangay."
+              },
+              "link": {
+                "href": "/government/#lgus",
+                "label": {
+                  "en": "Find your city or municipality",
+                  "fil": "Hanapin ang inyong lungsod o munisipyo",
+                  "ceb": "Pangitaa ang imong siyudad o munisipyo"
+                }
+              }
+            },
+            {
+              "icon": "droplet",
+              "title": {
+                "en": "Water and sanitation",
+                "fil": "Tubig at sanitasyon",
+                "ceb": "Tubig ug sanitasyon"
+              },
+              "text": {
+                "en": "Provincial waterworks projects are with the Provincial Engineer's Office; local water districts and city or municipal offices run their own systems.",
+                "fil": "Ang mga proyektong waterworks ng lalawigan ay nasa Provincial Engineer's Office; ang mga lokal na water district at opisina ng lungsod o munisipyo ang nagpapatakbo ng sarili nilang sistema."
+              },
+              "link": {
+                "href": "/service-details/provincial-engineering",
+                "label": {
+                  "en": "Engineer's Office",
+                  "fil": "Engineer's Office",
+                  "ceb": "Opisina sa Engineer"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "note": {
+        "text": {
+          "en": "This page is a general guide written by volunteers. Requirements, fees and processing times are set by each office and may vary, so confirm with the office before you go. The official source is the",
+          "fil": "Ang pahinang ito ay pangkalahatang gabay na isinulat ng mga boluntaryo. Ang mga kinakailangan, bayarin at oras ng pagproseso ay itinatakda ng bawat opisina at maaaring magkaiba, kaya kumpirmahin sa opisina bago pumunta. Ang opisyal na pinagmulan ay ang"
+        },
+        "link": {
+          "href": "https://bukidnon.gov.ph/",
+          "label": {
+            "en": "Provincial Government of Bukidnon website",
+            "fil": "Website ng Pamahalaang Panlalawigan ng Bukidnon",
+            "ceb": "Website sa Probinsyal nga Gobyerno sa Bukidnon"
+          }
+        }
+      }
+    }
+  }
+}

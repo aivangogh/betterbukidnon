@@ -14,22 +14,22 @@ import { Route as AccessibilityRouteImport } from './routes/accessibility'
 import { Route as BudgetRouteImport } from './routes/budget'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FaqRouteImport } from './routes/faq'
-import { Route as GovernmentRouteImport } from './routes/government'
-import { Route as LegislativeRouteImport } from './routes/legislative'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as OfflineRouteImport } from './routes/offline'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProjectsRouteImport } from './routes/projects'
-import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SitemapRouteImport } from './routes/sitemap'
 import { Route as StatisticsRouteImport } from './routes/statistics'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as AdminNewsEditorRouteImport } from './routes/admin.news-editor'
-import { Route as GovernmentOfficialsRouteImport } from './routes/government.officials'
-import { Route as LegislativeOrdinanceFrameworkRouteImport } from './routes/legislative.ordinance-framework'
-import { Route as LegislativeResolutionFrameworkRouteImport } from './routes/legislative.resolution-framework'
+import { Route as GovernmentIndexRouteImport } from './routes/government/index'
+import { Route as GovernmentOfficialsRouteImport } from './routes/government/officials'
+import { Route as LegislativeIndexRouteImport } from './routes/legislative/index'
+import { Route as LegislativeOrdinanceFrameworkRouteImport } from './routes/legislative/ordinance-framework'
+import { Route as LegislativeResolutionFrameworkRouteImport } from './routes/legislative/resolution-framework'
 import { Route as ServiceDetailsSlugRouteImport } from './routes/service-details.$slug'
-import { Route as ServicesCategoryRouteImport } from './routes/services.$category'
+import { Route as ServicesIndexRouteImport } from './routes/services/index'
+import { Route as ServicesCategoryRouteImport } from './routes/services/$category'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -56,16 +56,6 @@ const FaqRoute = FaqRouteImport.update({
   path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
-const GovernmentRoute = GovernmentRouteImport.update({
-  id: '/government',
-  path: '/government',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LegislativeRoute = LegislativeRouteImport.update({
-  id: '/legislative',
-  path: '/legislative',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const NewsRoute = NewsRouteImport.update({
   id: '/news',
   path: '/news',
@@ -84,11 +74,6 @@ const PrivacyRoute = PrivacyRouteImport.update({
 const ProjectsRoute = ProjectsRouteImport.update({
   id: '/projects',
   path: '/projects',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ServicesRoute = ServicesRouteImport.update({
-  id: '/services',
-  path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapRoute = SitemapRouteImport.update({
@@ -111,32 +96,47 @@ const AdminNewsEditorRoute = AdminNewsEditorRouteImport.update({
   path: '/admin/news-editor',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GovernmentIndexRoute = GovernmentIndexRouteImport.update({
+  id: '/government/',
+  path: '/government/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GovernmentOfficialsRoute = GovernmentOfficialsRouteImport.update({
-  id: '/officials',
-  path: '/officials',
-  getParentRoute: () => GovernmentRoute,
+  id: '/government/officials',
+  path: '/government/officials',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegislativeIndexRoute = LegislativeIndexRouteImport.update({
+  id: '/legislative/',
+  path: '/legislative/',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const LegislativeOrdinanceFrameworkRoute =
   LegislativeOrdinanceFrameworkRouteImport.update({
-    id: '/ordinance-framework',
-    path: '/ordinance-framework',
-    getParentRoute: () => LegislativeRoute,
+    id: '/legislative/ordinance-framework',
+    path: '/legislative/ordinance-framework',
+    getParentRoute: () => rootRouteImport,
   } as any)
 const LegislativeResolutionFrameworkRoute =
   LegislativeResolutionFrameworkRouteImport.update({
-    id: '/resolution-framework',
-    path: '/resolution-framework',
-    getParentRoute: () => LegislativeRoute,
+    id: '/legislative/resolution-framework',
+    path: '/legislative/resolution-framework',
+    getParentRoute: () => rootRouteImport,
   } as any)
 const ServiceDetailsSlugRoute = ServiceDetailsSlugRouteImport.update({
   id: '/service-details/$slug',
   path: '/service-details/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesIndexRoute = ServicesIndexRouteImport.update({
+  id: '/services/',
+  path: '/services/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesCategoryRoute = ServicesCategoryRouteImport.update({
-  id: '/$category',
-  path: '/$category',
-  getParentRoute: () => ServicesRoute,
+  id: '/services/$category',
+  path: '/services/$category',
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -145,13 +145,10 @@ export interface FileRoutesByFullPath {
   '/budget': typeof BudgetRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
-  '/government': typeof GovernmentRouteWithChildren
-  '/legislative': typeof LegislativeRouteWithChildren
   '/news': typeof NewsRoute
   '/offline': typeof OfflineRoute
   '/privacy': typeof PrivacyRoute
   '/projects': typeof ProjectsRoute
-  '/services': typeof ServicesRouteWithChildren
   '/sitemap': typeof SitemapRoute
   '/statistics': typeof StatisticsRoute
   '/terms': typeof TermsRoute
@@ -161,6 +158,9 @@ export interface FileRoutesByFullPath {
   '/legislative/resolution-framework': typeof LegislativeResolutionFrameworkRoute
   '/service-details/$slug': typeof ServiceDetailsSlugRoute
   '/services/$category': typeof ServicesCategoryRoute
+  '/government/': typeof GovernmentIndexRoute
+  '/legislative/': typeof LegislativeIndexRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -168,13 +168,10 @@ export interface FileRoutesByTo {
   '/budget': typeof BudgetRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
-  '/government': typeof GovernmentRouteWithChildren
-  '/legislative': typeof LegislativeRouteWithChildren
   '/news': typeof NewsRoute
   '/offline': typeof OfflineRoute
   '/privacy': typeof PrivacyRoute
   '/projects': typeof ProjectsRoute
-  '/services': typeof ServicesRouteWithChildren
   '/sitemap': typeof SitemapRoute
   '/statistics': typeof StatisticsRoute
   '/terms': typeof TermsRoute
@@ -184,6 +181,9 @@ export interface FileRoutesByTo {
   '/legislative/resolution-framework': typeof LegislativeResolutionFrameworkRoute
   '/service-details/$slug': typeof ServiceDetailsSlugRoute
   '/services/$category': typeof ServicesCategoryRoute
+  '/government': typeof GovernmentIndexRoute
+  '/legislative': typeof LegislativeIndexRoute
+  '/services': typeof ServicesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -192,13 +192,10 @@ export interface FileRoutesById {
   '/budget': typeof BudgetRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
-  '/government': typeof GovernmentRouteWithChildren
-  '/legislative': typeof LegislativeRouteWithChildren
   '/news': typeof NewsRoute
   '/offline': typeof OfflineRoute
   '/privacy': typeof PrivacyRoute
   '/projects': typeof ProjectsRoute
-  '/services': typeof ServicesRouteWithChildren
   '/sitemap': typeof SitemapRoute
   '/statistics': typeof StatisticsRoute
   '/terms': typeof TermsRoute
@@ -208,6 +205,9 @@ export interface FileRoutesById {
   '/legislative/resolution-framework': typeof LegislativeResolutionFrameworkRoute
   '/service-details/$slug': typeof ServiceDetailsSlugRoute
   '/services/$category': typeof ServicesCategoryRoute
+  '/government/': typeof GovernmentIndexRoute
+  '/legislative/': typeof LegislativeIndexRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -217,13 +217,10 @@ export interface FileRouteTypes {
     | '/budget'
     | '/contact'
     | '/faq'
-    | '/government'
-    | '/legislative'
     | '/news'
     | '/offline'
     | '/privacy'
     | '/projects'
-    | '/services'
     | '/sitemap'
     | '/statistics'
     | '/terms'
@@ -233,6 +230,9 @@ export interface FileRouteTypes {
     | '/legislative/resolution-framework'
     | '/service-details/$slug'
     | '/services/$category'
+    | '/government/'
+    | '/legislative/'
+    | '/services/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -240,13 +240,10 @@ export interface FileRouteTypes {
     | '/budget'
     | '/contact'
     | '/faq'
-    | '/government'
-    | '/legislative'
     | '/news'
     | '/offline'
     | '/privacy'
     | '/projects'
-    | '/services'
     | '/sitemap'
     | '/statistics'
     | '/terms'
@@ -256,6 +253,9 @@ export interface FileRouteTypes {
     | '/legislative/resolution-framework'
     | '/service-details/$slug'
     | '/services/$category'
+    | '/government'
+    | '/legislative'
+    | '/services'
   id:
     | '__root__'
     | '/'
@@ -263,13 +263,10 @@ export interface FileRouteTypes {
     | '/budget'
     | '/contact'
     | '/faq'
-    | '/government'
-    | '/legislative'
     | '/news'
     | '/offline'
     | '/privacy'
     | '/projects'
-    | '/services'
     | '/sitemap'
     | '/statistics'
     | '/terms'
@@ -279,6 +276,9 @@ export interface FileRouteTypes {
     | '/legislative/resolution-framework'
     | '/service-details/$slug'
     | '/services/$category'
+    | '/government/'
+    | '/legislative/'
+    | '/services/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -287,18 +287,22 @@ export interface RootRouteChildren {
   BudgetRoute: typeof BudgetRoute
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
-  GovernmentRoute: typeof GovernmentRouteWithChildren
-  LegislativeRoute: typeof LegislativeRouteWithChildren
   NewsRoute: typeof NewsRoute
   OfflineRoute: typeof OfflineRoute
   PrivacyRoute: typeof PrivacyRoute
   ProjectsRoute: typeof ProjectsRoute
-  ServicesRoute: typeof ServicesRouteWithChildren
   SitemapRoute: typeof SitemapRoute
   StatisticsRoute: typeof StatisticsRoute
   TermsRoute: typeof TermsRoute
   AdminNewsEditorRoute: typeof AdminNewsEditorRoute
+  GovernmentOfficialsRoute: typeof GovernmentOfficialsRoute
+  LegislativeOrdinanceFrameworkRoute: typeof LegislativeOrdinanceFrameworkRoute
+  LegislativeResolutionFrameworkRoute: typeof LegislativeResolutionFrameworkRoute
   ServiceDetailsSlugRoute: typeof ServiceDetailsSlugRoute
+  ServicesCategoryRoute: typeof ServicesCategoryRoute
+  GovernmentIndexRoute: typeof GovernmentIndexRoute
+  LegislativeIndexRoute: typeof LegislativeIndexRoute
+  ServicesIndexRoute: typeof ServicesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -338,20 +342,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/government': {
-      id: '/government'
-      path: '/government'
-      fullPath: '/government'
-      preLoaderRoute: typeof GovernmentRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/legislative': {
-      id: '/legislative'
-      path: '/legislative'
-      fullPath: '/legislative'
-      preLoaderRoute: typeof LegislativeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/news': {
       id: '/news'
       path: '/news'
@@ -378,13 +368,6 @@ declare module '@tanstack/react-router' {
       path: '/projects'
       fullPath: '/projects'
       preLoaderRoute: typeof ProjectsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/services': {
-      id: '/services'
-      path: '/services'
-      fullPath: '/services'
-      preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap': {
@@ -415,26 +398,40 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminNewsEditorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/government/': {
+      id: '/government/'
+      path: '/government'
+      fullPath: '/government/'
+      preLoaderRoute: typeof GovernmentIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/government/officials': {
       id: '/government/officials'
-      path: '/officials'
+      path: '/government/officials'
       fullPath: '/government/officials'
       preLoaderRoute: typeof GovernmentOfficialsRouteImport
-      parentRoute: typeof GovernmentRoute
+      parentRoute: typeof rootRouteImport
+    }
+    '/legislative/': {
+      id: '/legislative/'
+      path: '/legislative'
+      fullPath: '/legislative/'
+      preLoaderRoute: typeof LegislativeIndexRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/legislative/ordinance-framework': {
       id: '/legislative/ordinance-framework'
-      path: '/ordinance-framework'
+      path: '/legislative/ordinance-framework'
       fullPath: '/legislative/ordinance-framework'
       preLoaderRoute: typeof LegislativeOrdinanceFrameworkRouteImport
-      parentRoute: typeof LegislativeRoute
+      parentRoute: typeof rootRouteImport
     }
     '/legislative/resolution-framework': {
       id: '/legislative/resolution-framework'
-      path: '/resolution-framework'
+      path: '/legislative/resolution-framework'
       fullPath: '/legislative/resolution-framework'
       preLoaderRoute: typeof LegislativeResolutionFrameworkRouteImport
-      parentRoute: typeof LegislativeRoute
+      parentRoute: typeof rootRouteImport
     }
     '/service-details/$slug': {
       id: '/service-details/$slug'
@@ -443,53 +440,22 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServiceDetailsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/': {
+      id: '/services/'
+      path: '/services'
+      fullPath: '/services/'
+      preLoaderRoute: typeof ServicesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/$category': {
       id: '/services/$category'
-      path: '/$category'
+      path: '/services/$category'
       fullPath: '/services/$category'
       preLoaderRoute: typeof ServicesCategoryRouteImport
-      parentRoute: typeof ServicesRoute
+      parentRoute: typeof rootRouteImport
     }
   }
 }
-
-interface GovernmentRouteChildren {
-  GovernmentOfficialsRoute: typeof GovernmentOfficialsRoute
-}
-
-const GovernmentRouteChildren: GovernmentRouteChildren = {
-  GovernmentOfficialsRoute: GovernmentOfficialsRoute,
-}
-
-const GovernmentRouteWithChildren = GovernmentRoute._addFileChildren(
-  GovernmentRouteChildren,
-)
-
-interface LegislativeRouteChildren {
-  LegislativeOrdinanceFrameworkRoute: typeof LegislativeOrdinanceFrameworkRoute
-  LegislativeResolutionFrameworkRoute: typeof LegislativeResolutionFrameworkRoute
-}
-
-const LegislativeRouteChildren: LegislativeRouteChildren = {
-  LegislativeOrdinanceFrameworkRoute: LegislativeOrdinanceFrameworkRoute,
-  LegislativeResolutionFrameworkRoute: LegislativeResolutionFrameworkRoute,
-}
-
-const LegislativeRouteWithChildren = LegislativeRoute._addFileChildren(
-  LegislativeRouteChildren,
-)
-
-interface ServicesRouteChildren {
-  ServicesCategoryRoute: typeof ServicesCategoryRoute
-}
-
-const ServicesRouteChildren: ServicesRouteChildren = {
-  ServicesCategoryRoute: ServicesCategoryRoute,
-}
-
-const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
-  ServicesRouteChildren,
-)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -497,18 +463,22 @@ const rootRouteChildren: RootRouteChildren = {
   BudgetRoute: BudgetRoute,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
-  GovernmentRoute: GovernmentRouteWithChildren,
-  LegislativeRoute: LegislativeRouteWithChildren,
   NewsRoute: NewsRoute,
   OfflineRoute: OfflineRoute,
   PrivacyRoute: PrivacyRoute,
   ProjectsRoute: ProjectsRoute,
-  ServicesRoute: ServicesRouteWithChildren,
   SitemapRoute: SitemapRoute,
   StatisticsRoute: StatisticsRoute,
   TermsRoute: TermsRoute,
   AdminNewsEditorRoute: AdminNewsEditorRoute,
+  GovernmentOfficialsRoute: GovernmentOfficialsRoute,
+  LegislativeOrdinanceFrameworkRoute: LegislativeOrdinanceFrameworkRoute,
+  LegislativeResolutionFrameworkRoute: LegislativeResolutionFrameworkRoute,
   ServiceDetailsSlugRoute: ServiceDetailsSlugRoute,
+  ServicesCategoryRoute: ServicesCategoryRoute,
+  GovernmentIndexRoute: GovernmentIndexRoute,
+  LegislativeIndexRoute: LegislativeIndexRoute,
+  ServicesIndexRoute: ServicesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

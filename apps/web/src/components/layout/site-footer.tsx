@@ -41,7 +41,7 @@ export function SiteFooter() {
     <footer className="bg-linear-180 from-footer to-footer-dark text-white">
       <div className="container-site">
         <div className="grid grid-cols-[1.5fr_1fr_1fr_1fr] gap-12 border-b border-white/8 pb-10 pt-15 max-lg:grid-cols-2 max-lg:gap-10 max-sm:grid-cols-1 max-sm:gap-8 max-sm:pb-8 max-sm:pt-10">
-          <div className="max-w-80 max-lg:col-span-full max-lg:max-w-full max-sm:flex max-sm:flex-col max-sm:items-center max-sm:text-center">
+          <div className="max-w-80 max-xl:col-span-full max-lg:max-w-full max-sm:flex max-sm:flex-col max-sm:items-center max-sm:text-center">
             <img src={logoWhiteUrl} alt="Better Bukidnon logo" className="mb-4 h-14 w-auto" />
             <p className="mb-6 text-[0.875rem] leading-[1.6] text-white/70">
               {t('footer-empowering-the-people-of-bukidnon-with-transparent')}
@@ -88,7 +88,7 @@ export function SiteFooter() {
             </ul>
           </div>
 
-          <div className="flex flex-col items-start max-sm:items-center max-sm:text-center">
+          <div className="max-sm:flex max-sm:flex-col max-sm:items-center max-sm:text-center">
             <div
               role="status"
               aria-label="Cost to the People of Bukidnon: Zero Pesos"

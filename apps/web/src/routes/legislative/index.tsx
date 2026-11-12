@@ -3,7 +3,7 @@ import { Icon } from '@/components/ui/icon'
 import { SectionPage } from '@/components/content/section-page'
 import { ordinances, resolutions } from '@/content/civic-data'
 
-export const Route = createFileRoute('/legislative')({
+export const Route = createFileRoute('/legislative/')({
   component: LegislativePage,
 })
 

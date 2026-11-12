@@ -26,3 +26,6 @@ release/
 *.tsbuildinfo
 apps/web/dist/
 .vitest/
+
+# TanStack router generator scratch files
+.tanstack/
