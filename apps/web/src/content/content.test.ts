@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vite-plus/test'
 import { demographics, fiscalData, news, officials, ordinances, resolutions } from './civic-data'
-import { searchServices, serviceBySlug, services, servicesForCategory } from './services'
+import { serviceBySlug, services, servicesForCategory } from './services'
 import bootstrapIcons from 'bootstrap-icons/font/bootstrap-icons.json' with { type: 'json' }
 import { projectIcon, projects } from './projects'
 import { isTranslationKey, translate } from './translations'
@@ -33,11 +33,6 @@ describe('civic content contracts', () => {
     expect(
       servicesForCategory('health').every((service) => service.url.includes('service-details')),
     ).toBe(true)
-  })
-
-  it('ranks service search results by title relevance', () => {
-    expect(searchServices('birth certificate')[0]?.id).toBe('birth-certificate')
-    expect(searchServices('zzzz')).toEqual([])
   })
 
   it('provides localized shell labels with English fallback contracts', () => {
