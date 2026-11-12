@@ -17,8 +17,8 @@ the merged code on `develop` as the source of truth; an open pull request is not
 deployed application until merged and deployed.
 
 Not yet migrated: several routes are shorter than the legacy pages they replace (FAQ, legal
-pages, and most translations). Routes that match the legacy design so far: the page chrome
-and `/projects`. See [Legacy static pages](#legacy-static-pages).
+pages, and most translations). Routes that match the legacy design so far: the page chrome,
+`/` (home), and `/projects`. See [Legacy static pages](#legacy-static-pages).
 
 Current migration goals:
 
@@ -43,6 +43,8 @@ Current migration goals:
 | Validation        | Zod                                          | Runtime validation for imported JSON content and editor input               |
 | Icons             | Bootstrap Icons (`components/ui/icon.tsx`)   | The same icon font the legacy pages use                                     |
 | Offline support   | Workbox build and a generated service worker | Precaches the static site and handles offline navigation                    |
+| Map               | Leaflet with OpenStreetMap tiles             | Home page map; falls back to the OpenStreetMap embed if tiles are blocked   |
+| Animation files   | lottie-web (light player)                    | Plays the legacy Lottie JSON from `public/animations/`, loaded on scroll    |
 | Hosting           | Cloudflare Workers static assets             | Serves the prerendered output and preview deployments                       |
 
 Vite+ provides the frontend toolchain in one place. Do not add Biome as a parallel formatter or
@@ -140,7 +142,9 @@ Fontsource), the `container-site` utility (the legacy `.container`: 1200px, 960p
 compare a migrated route with its legacy page at desktop and phone widths before merging.
 Legacy text inherits the body's 1.6 line-height, so set legacy font sizes with arbitrary values
 such as `text-[0.8125rem]`; Tailwind's named sizes (`text-sm`, `text-xs`) also set a
-line-height and make elements a pixel or two shorter than the legacy ones.
+line-height and make elements a pixel or two shorter than the legacy ones. Legacy buttons and inputs
+usually keep the browser's `normal` line-height, which Tailwind's reset replaces with the
+inherited 1.6; add `leading-[normal]` to those unless the legacy rule sets `font: inherit`.
 
 Icons use `<Icon name="arrow-right" />`, which renders the Bootstrap Icons font with the same
 `bi bi-*` classes as the legacy markup. `name` is typed against the icon set. Pass `label` for
