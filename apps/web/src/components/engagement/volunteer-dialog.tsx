@@ -1,16 +1,18 @@
-import { AnimatePresence, motion } from 'motion/react'
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { useEffect, useRef, useState } from 'react'
-import { Icon } from '@/components/ui/icon'
+import logoWhiteUrl from '@/assets/logo/better-bukidnon-logo-white.svg?url'
+import { Icon, type IconName } from '@/components/ui/icon'
 
 const STORAGE_KEY = 'bb-vol-popup-v1'
 const SHOW_DELAY_MS = 800
 
-const roles = [
-  'Research and verify public information',
-  'Improve accessibility and translations',
-  'Build civic technology for Bukidnon',
-  'Share local knowledge and community needs',
-  'Help keep this portal accurate and useful',
+// Same roles as the legacy popup (index.html #vol-popup-overlay).
+const roles: ReadonlyArray<{ icon: IconName; label: string }> = [
+  { icon: 'code-slash', label: 'Software Dev' },
+  { icon: 'layers', label: 'UI/UX Design' },
+  { icon: 'palette', label: 'Graphic Design' },
+  { icon: 'pencil-square', label: 'Content Creation' },
+  { icon: 'megaphone', label: 'Digital Marketing' },
 ]
 
 export function VolunteerDialog() {
@@ -94,6 +96,8 @@ export function VolunteerDialog() {
     window.setTimeout(() => previousFocus.current?.focus(), 0)
   }
 
+  const still = useReducedMotion()
+
   return (
     <AnimatePresence>
       {open ? (
@@ -102,67 +106,99 @@ export function VolunteerDialog() {
           role="dialog"
           aria-modal="true"
           aria-labelledby="volunteer-dialog-title"
-          className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-slate-950/70 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-[20000] flex items-center justify-center overflow-y-auto overscroll-contain bg-black/72 p-4 backdrop-blur-[4px]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          transition={{ duration: still ? 0 : 0.3 }}
           onClick={(event) => {
             if (event.target === event.currentTarget) dismiss()
           }}
         >
           <motion.div
-            className="relative my-8 w-full max-w-lg overflow-hidden rounded-3xl bg-white shadow-2xl"
-            initial={{ opacity: 0, scale: 0.94, y: 16 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.96, y: 8 }}
-            transition={{ type: 'spring', stiffness: 280, damping: 24 }}
+            className="relative max-h-[calc(100dvh-32px)] w-full max-w-115 overflow-y-auto overflow-x-hidden overscroll-contain rounded-[20px] bg-surface shadow-[0_0_0_1px_rgba(0,50,160,0.12),0_8px_32px_rgba(0,0,0,0.24),0_28px_72px_rgba(0,0,0,0.2)] max-[500px]:rounded-2xl forced-colors:border forced-colors:border-[CanvasText]"
+            initial={{ opacity: 0, scale: 0.93, y: 24 }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+              y: 0,
+              transition: { duration: still ? 0 : 0.38, ease: [0.34, 1.56, 0.64, 1] },
+            }}
+            exit={{
+              opacity: 0,
+              scale: 0.96,
+              y: 10,
+              transition: { duration: still ? 0 : 0.22, ease: 'easeIn' },
+            }}
           >
             <button
               ref={closeButtonRef}
               type="button"
               aria-label="Close volunteer popup"
-              className="absolute right-4 top-4 z-10 rounded-full bg-white/15 p-2 text-white hover:bg-white/25 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              className="absolute right-3.5 top-3.5 z-[2] flex size-9 cursor-pointer leading-[normal] items-center justify-center rounded-full border-0 bg-white/18 text-[1rem] text-white transition-[background-color,transform] duration-200 before:absolute before:-inset-1.25 before:content-[''] hover:scale-110 hover:bg-white/32 focus-visible:scale-110 focus-visible:bg-white/32 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60"
               onClick={dismiss}
             >
-              <Icon name="x-lg" className="text-xl" />
+              <Icon name="x-lg" />
             </button>
-            <div className="bg-linear-135 from-primary to-secondary px-7 py-10 text-white">
-              <p className="mb-0 text-sm font-semibold uppercase tracking-[0.18em] text-primary-tint">
-                BetterBukidnon volunteers
-              </p>
-              <h2 id="volunteer-dialog-title" className="mb-0 mt-3 text-3xl font-bold text-inherit">
-                Be part of something greater
+            <div className="relative overflow-hidden bg-[linear-gradient(140deg,#0032a0_0%,#003d82_55%,#001f6b_100%)] px-8 pb-7.5 pt-9.5 text-center max-[500px]:px-5 max-[500px]:pb-6 max-[500px]:pt-7 [@media(max-height:560px)]:px-6 [@media(max-height:560px)]:pb-4 [@media(max-height:560px)]:pt-5">
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 before:absolute before:-right-17.5 before:-top-22.5 before:size-65 before:rounded-full before:bg-white/6 before:content-[''] after:absolute after:-bottom-17.5 after:-left-12.5 after:size-45 after:rounded-full after:bg-accent/10 after:content-['']"
+              />
+              <img
+                src={logoWhiteUrl}
+                alt="BetterBukidnon.org"
+                width={210}
+                height={76}
+                draggable={false}
+                className="relative z-[1] mx-auto mb-4.5 block h-auto w-52.5 max-w-[72%] select-none drop-shadow-[0_2px_8px_rgba(0,0,0,0.22)] max-[500px]:w-42.5 [@media(max-height:560px)]:mb-2.5 [@media(max-height:560px)]:w-37.5"
+              />
+              <h2
+                id="volunteer-dialog-title"
+                className="relative z-[1] mb-2.5 mt-0 text-[1.5rem] font-extrabold leading-[1.15] text-white max-[500px]:text-[1.25rem] [@media(max-height:560px)]:text-[1.25rem]"
+              >
+                Be Part of Something Greater
               </h2>
-              <p className="mb-0 mt-3 text-slate-200">
-                Help make reliable public information easier for every Bukidnon to find.
+              <p className="relative z-[1] m-0 text-[0.875rem] leading-[1.55] text-white/75">
+                Bukidnon deserves public information that is easy to find. Help us build it.
               </p>
             </div>
-            <div className="p-7">
-              <p className="mb-0 leading-7 text-slate-600">
-                This is a volunteer civic project. You can contribute a few hours, local knowledge,
-                research, design, or code.
+            <div className="px-7 pb-7.5 pt-6.5 max-[500px]:px-5 max-[500px]:pb-6 max-[500px]:pt-5 [@media(max-height:560px)]:px-5.5 [@media(max-height:560px)]:pb-5 [@media(max-height:560px)]:pt-4">
+              <p className="mb-5 text-center text-[0.9375rem] leading-[1.6] text-ink [@media(max-height:560px)]:mb-3.5">
+                We are looking for passionate <strong className="text-primary">Bukidnons</strong>{' '}
+                who want to serve their community through their craft.
               </p>
-              <ul className="mt-5 grid gap-2 text-sm text-slate-700 sm:grid-cols-2">
+              <div
+                role="list"
+                className="mb-6.5 flex flex-wrap justify-center gap-2 [@media(max-height:560px)]:mb-4"
+              >
                 {roles.map((role) => (
-                  <li key={role} className="rounded-lg bg-primary-tint px-3 py-2">
-                    {role}
-                  </li>
+                  <div
+                    key={role.label}
+                    role="listitem"
+                    className="inline-flex items-center gap-1.5 rounded-full border-[1.5px] border-primary/14 bg-primary/6 px-3.5 py-1.75 text-[0.8125rem] font-semibold text-primary forced-colors:border-[CanvasText]"
+                  >
+                    <Icon name={role.icon} className="text-[0.9375rem]" />
+                    <span>{role.label}</span>
+                  </div>
                 ))}
-              </ul>
-              <div className="mt-7 flex flex-wrap gap-3">
+              </div>
+              <div className="flex flex-col items-center gap-2.5">
                 <a
-                  className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 font-semibold text-white hover:bg-primary-dark"
                   href="mailto:volunteer@betterbukidnon.org"
+                  rel="noopener"
                   onClick={dismiss}
+                  className="inline-flex w-full items-center justify-center gap-2.25 rounded-xl border-0 bg-linear-135 from-primary to-secondary px-6 py-3.5 text-[1rem] font-bold text-white shadow-[0_4px_16px_rgba(0,50,160,0.32)] transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:text-white hover:no-underline hover:shadow-[0_8px_28px_rgba(0,50,160,0.44)] focus-visible:-translate-y-0.5 focus-visible:text-white focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-primary"
                 >
-                  <Icon name="envelope-fill" className="text-base" /> Email the volunteers
+                  <Icon name="envelope-heart-fill" className="text-[1.125rem]" />
+                  I Want to Volunteer
                 </a>
                 <button
                   type="button"
-                  className="rounded-lg border border-slate-300 px-5 py-3 font-semibold text-slate-700 hover:bg-slate-50"
                   onClick={dismiss}
+                  className="cursor-pointer rounded-sm border-0 bg-transparent px-2 py-1 text-[0.8125rem] leading-[normal] text-ink-light transition-colors hover:text-ink hover:underline focus-visible:text-ink focus-visible:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                 >
-                  Maybe later
+                  Maybe Later
                 </button>
               </div>
             </div>

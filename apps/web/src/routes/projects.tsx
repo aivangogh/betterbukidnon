@@ -295,7 +295,7 @@ function ProjectsPage() {
         title={t('proj-title')}
         description={t('proj-subtitle')}
       />
-      <section className="bg-surface-alt py-16 max-xl:py-8 max-md:py-6">
+      <section className="section-y bg-surface-alt">
         <div className="container-site">
           <div
             role="tablist"
