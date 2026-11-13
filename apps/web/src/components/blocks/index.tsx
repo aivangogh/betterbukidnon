@@ -5,6 +5,22 @@ import { BulletList, Box, ListItem, NumberedList, OfficeInfo, Phone, Prose } fro
 import { Card, Cards, Stat, Stats } from './cards'
 import { CharterNote, LinkButton } from './notes'
 import { Columns, Section } from './section'
+import {
+  Checklist,
+  Contact,
+  ContactCard,
+  KeyFact,
+  KeyFacts,
+  PageSection,
+  RelatedLinks,
+  SidebarLayout,
+  Step,
+  Steps,
+  Topic,
+  TopicLink,
+  TopicNav,
+  Topics,
+} from './guide'
 import { Danger, Table, TableCell, TableHeading, TableNote } from './table'
 
 /**
@@ -12,6 +28,20 @@ import { Danger, Table, TableCell, TableHeading, TableNote } from './table'
  * restyle. The content tests check documents against `blockNames`.
  */
 const blocks = {
+  Checklist,
+  Contact,
+  ContactCard,
+  KeyFact,
+  KeyFacts,
+  PageSection,
+  RelatedLinks,
+  SidebarLayout,
+  Step,
+  Steps,
+  Topic,
+  TopicLink,
+  TopicNav,
+  Topics,
   Box,
   Card,
   Cards,
