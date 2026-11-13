@@ -10,12 +10,15 @@ export const blockNames = [
   'Cards',
   'CharterNote',
   'Columns',
+  'Danger',
   'LinkButton',
   'OfficeInfo',
+  'Phone',
   'Prose',
   'Section',
   'Stat',
   'Stats',
+  'TableNote',
 ] as const
 export type BlockName = (typeof blockNames)[number]
 

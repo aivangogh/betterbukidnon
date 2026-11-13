@@ -36,7 +36,10 @@ export function Section({
   )
 }
 
-/** Legacy `.grid.grid-2` with a 16px gap: two columns, one below 768px. */
+/**
+ * Legacy `.grid.grid-2` with a 16px gap: two columns, one below 768px. A table right after it
+ * gets the 16px space legacy gives it.
+ */
 export function Columns({ children }: { children: React.ReactNode }) {
-  return <div className="grid grid-cols-2 gap-4 max-md:grid-cols-1">{children}</div>
+  return <div className="grid grid-cols-2 gap-4 max-md:grid-cols-1 [&+table]:mt-4">{children}</div>
 }

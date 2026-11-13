@@ -78,8 +78,14 @@ export const serviceDocumentSchema = z
     badge: z.string().min(1),
     /** Bootstrap Icons name for the badge. */
     icon: z.string().min(1),
-    /** The service category the page belongs to, for the breadcrumb. */
-    category: z.string().min(1),
+    /**
+     * The page above this one in the breadcrumb, after Home and Services: a service category
+     * (`/services/tax-payments`) or `/government`. Omit it to go straight from Services.
+     */
+    parent: z
+      .string()
+      .regex(/^\/(services\/[a-z0-9-]+|government)$/)
+      .optional(),
   })
   .strict()
 export type ServiceDocument = z.infer<typeof serviceDocumentSchema>

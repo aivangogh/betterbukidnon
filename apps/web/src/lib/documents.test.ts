@@ -81,7 +81,8 @@ describe('document files', () => {
       expect(frontmatter).toBeDefined()
       if (parsed?.collection !== 'services') return
       const meta = serviceDocumentSchema.parse(frontmatter)
-      expect(serviceCategories).toHaveProperty(meta.category)
+      if (meta.parent?.startsWith('/services/'))
+        expect(serviceCategories).toHaveProperty(meta.parent.replace('/services/', ''))
       expect(bootstrapIcons).toHaveProperty(meta.icon)
       expect(serviceBySlug(parsed.slug)).toBeDefined()
     })
