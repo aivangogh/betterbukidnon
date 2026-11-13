@@ -222,5 +222,9 @@
   "seo_accessibility_description": "Accessibility statement for BetterBukidnon.org. How BetterBukidnon.org works toward WCAG 2.1 Level AA so that everyone in Bukidnon can use it, and how to get help if something does not work.",
   "seo_sitemap_title": "Sitemap",
   "seo_sitemap_description": "Complete sitemap for BetterBukidnon.org - Navigate all pages, services, and resources of the Province of Bukidnon portal. Find all available provincial services and information.",
-  "seo_offline_title": "Offline"
+  "seo_offline_title": "Offline",
+  "err404_title": "Page Not Found",
+  "err404_text": "We could not find the page you were looking for. It may have moved, or the address may be mistyped. Try the homepage or browse the services.",
+  "err404_home": "Go to Homepage",
+  "err404_services": "Browse Services"
 }

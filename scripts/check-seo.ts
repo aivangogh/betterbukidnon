@@ -3,7 +3,9 @@
  * Validates the SEO of the built site (apps/web/dist/client) and exits non-zero on problems:
  * - every page has a title and <html lang> matching its URL language
  * - indexable pages have a description, a canonical URL equal to their own URL, hreflang links
- *   for en/fil/ceb/x-default that point to built pages, Open Graph tags, and unique titles
+ *   for their own language, en and x-default that point to built, indexable pages, Open Graph
+ *   tags, and unique titles
+ * - a page without a translation (showing English) names a built English page as canonical
  * - every JSON-LD block is valid JSON
  * - sitemap.xml lists exactly the indexable pages
  */
@@ -33,6 +35,13 @@ for (const file of pages(clientDir)) {
   built.set(urlPath, fs.readFileSync(file, 'utf8'))
 }
 const builtUrls = new Set([...built.keys()].map(absolute))
+const canonicalOf = (html: string) => attr(html, /<link rel="canonical" href="([^"]+)"/)
+// Pages that are their own canonical URL; hreflang links may only point to these.
+const selfCanonical = new Set(
+  [...built]
+    .filter(([urlPath, html]) => canonicalOf(html) === absolute(urlPath))
+    .map(([u]) => absolute(u)),
+)
 const indexable = new Set<string>()
 const titles = new Map<string, string>()
 
@@ -57,21 +66,31 @@ for (const [urlPath, html] of built) {
   }
 
   if (/<meta name="robots" content="noindex/.test(head)) continue
+
+  const canonical = canonicalOf(head)
+  if (canonical && canonical !== absolute(urlPath) && locale !== 'en') {
+    // Not translated: the English page must exist and be canonical itself.
+    if (!selfCanonical.has(canonical))
+      fail(`canonical ${canonical} is not a built page that is its own canonical`)
+    continue
+  }
   indexable.add(absolute(urlPath))
 
   if (!attr(head, /<meta name="description" content="([^"]+)"/)) fail('missing meta description')
-  const canonical = attr(head, /<link rel="canonical" href="([^"]+)"/)
   if (canonical !== absolute(urlPath))
     fail(`canonical is ${canonical ?? 'missing'}, expected ${absolute(urlPath)}`)
-  for (const lang of [...LOCALES, 'x-default']) {
+  for (const lang of LOCALES) {
     const href = attr(
       head,
       new RegExp(`<link rel="alternate" hrefLang="${lang}" href="([^"]+)"`, 'i'),
     )
-    if (!href) fail(`missing hreflang="${lang}"`)
-    else if (!builtUrls.has(href))
-      fail(`hreflang="${lang}" points to a page that was not built: ${href}`)
+    if (!href) {
+      if (lang === locale || lang === 'en') fail(`missing hreflang="${lang}"`)
+    } else if (!selfCanonical.has(href))
+      fail(`hreflang="${lang}" points to a page that is not built or not canonical: ${href}`)
   }
+  const xDefault = attr(head, /<link rel="alternate" hrefLang="x-default" href="([^"]+)"/i)
+  if (!xDefault || !builtUrls.has(xDefault)) fail('missing or broken hreflang="x-default"')
   for (const property of ['og:title', 'og:description', 'og:url', 'og:image', 'og:locale']) {
     if (!attr(head, new RegExp(`<meta property="${property}" content="([^"]+)"`)))
       fail(`missing ${property}`)

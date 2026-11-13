@@ -26,9 +26,13 @@ Text comes from three places, depending on what it is:
 | -------------------------------------------------------------- | ------------------------------------------------------ | ------------------------------ |
 | Interface text (navigation, buttons, headings, footer, labels) | `apps/web/messages/{en,fil,ceb}.json`                  | `"nav_home": "Tahanan"`        |
 | Records shared across pages (category pages, later officials…) | `data/*.json`, each string as `{ "en", "fil", "ceb" }` | `data/service-categories.json` |
-| Documents (service guides, FAQ, policies; coming with MDX)     | `content/<collection>/<slug>/{en,fil,ceb}.mdx`         | —                              |
+| Documents (service guides, later FAQ and policies)             | `content/<collection>/<slug>/{en,fil,ceb}.mdx`         | `content/services/pswdo/`      |
 
-A missing Filipino or Cebuano message, record string or document falls back to English.
+A missing Filipino or Cebuano message, record string or document falls back to English. A
+document without a translation is not listed as its own language version: its Filipino or
+Cebuano URL shows the English text and names the English page as canonical, so search engines
+do not index two copies. Translate a document by adding `fil.mdx` or `ceb.mdx` next to
+`en.mdx` (see [content-guide.md](content-guide.md)).
 
 Interface messages are compiled by [Paraglide JS](https://paraglidejs.com) into typed
 functions: `m.nav_home()` in code. A message that is used in code but missing from

@@ -1,27 +1,83 @@
 import { createFileRoute, Link, notFound } from '@tanstack/react-router'
+import { DocumentBody } from '@/components/blocks/document-body'
+import { PageHeader } from '@/components/content/page-header'
+import { Breadcrumbs } from '@/components/layout/breadcrumbs'
 import { Icon, type IconName } from '@/components/ui/icon'
+import { serviceCategories } from '@/content/service-categories'
 import { serviceBySlug } from '@/content/services'
+import { loadServiceDocument } from '@/lib/content'
+import { localized } from '@/lib/i18n'
 import { seo } from '@/lib/seo'
+import { getLocale } from '@/paraglide/runtime'
+import { m } from '@/paraglide/messages'
 
 export const Route = createFileRoute('/service-details/$slug')({
-  loader: ({ params }) => {
+  loader: async ({ params }) => {
+    const document = await loadServiceDocument(params.slug)
+    if (document) return { document }
     const service = serviceBySlug(params.slug)
     if (!service) throw notFound()
     return { service }
   },
-  head: ({ loaderData, params }) =>
-    loaderData
-      ? seo({
-          title: loaderData.service.title,
-          description: loaderData.service.description,
-          path: `/service-details/${params.slug}`,
-        })
-      : {},
+  head: ({ loaderData, params }) => {
+    const path = `/service-details/${params.slug}`
+    if (loaderData?.document) {
+      const { meta, locales } = loaderData.document
+      return seo({ title: meta.shortTitle, description: meta.description, path, locales })
+    }
+    return loaderData?.service
+      ? seo({ title: loaderData.service.title, description: loaderData.service.description, path })
+      : {}
+  },
   component: ServiceDetailPage,
 })
 
 function ServiceDetailPage() {
-  const { service } = Route.useLoaderData()
+  const data = Route.useLoaderData()
+  return data.document ? <ServiceGuide {...data.document} /> : <ServiceSummary {...data} />
+}
+
+/** A service guide written as a document (`content/services/<slug>`). */
+function ServiceGuide({
+  path,
+  locale,
+  meta,
+}: NonNullable<Awaited<ReturnType<typeof loadServiceDocument>>>) {
+  const category = serviceCategories[meta.category]
+  return (
+    <>
+      <Breadcrumbs
+        items={[
+          { label: m.nav_home(), link: { to: '/' } },
+          { label: m.nav_services(), link: { to: '/services' } },
+          ...(category
+            ? [
+                {
+                  label: localized(category.breadcrumb),
+                  link: { to: '/services/$category', params: { category: meta.category } },
+                } as const,
+              ]
+            : []),
+          { label: meta.shortTitle },
+        ]}
+      />
+      {/* An untranslated page shows the English text; mark it so screen readers read it as English. */}
+      <div lang={locale === getLocale() ? undefined : locale}>
+        <PageHeader
+          badge={meta.badge}
+          icon={meta.icon as IconName}
+          title={meta.title}
+          description={meta.summary}
+        />
+        <DocumentBody path={path} />
+      </div>
+    </>
+  )
+}
+
+/** Services without a written guide yet: the summary from `data/services.json`. */
+function ServiceSummary({ service }: { service?: ReturnType<typeof serviceBySlug> }) {
+  if (!service) return null
   return (
     <article className="mx-auto max-w-5xl px-4 py-16 lg:px-8">
       <Link to="/services" className="inline-flex items-center gap-2 font-semibold text-primary">
