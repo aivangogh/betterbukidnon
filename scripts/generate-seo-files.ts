@@ -41,6 +41,9 @@ for (const file of pages(clientDir)) {
   const urlPath = `/${path.relative(clientDir, path.dirname(file))}`.replace(/\/$/, '') || '/'
   const html = fs.readFileSync(file, 'utf8')
   if (/<meta name="robots" content="noindex/.test(html)) continue
+  // An untranslated page shows English and names the English page as canonical; leave it out.
+  const canonical = /<link rel="canonical" href="([^"]+)"/.exec(html)?.[1]
+  if (canonical && canonical !== absolute(urlPath)) continue
   const { locale, route } = parse(urlPath)
   if (!indexable.has(route)) indexable.set(route, new Set())
   indexable.get(route)?.add(locale)

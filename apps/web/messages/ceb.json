@@ -190,5 +190,8 @@
   "svc_starting_a_business": "Pagsugod og Negosyo",
   "svc_view_services": "Tan-awa ang mga Serbisyo",
   "seo_projects_title": "Among mga Proyekto",
-  "seo_services_title": "Direktoryo sa mga Serbisyo sa Probinsya"
+  "seo_services_title": "Direktoryo sa mga Serbisyo sa Probinsya",
+  "err404_title": "Wala Makita ang Panid",
+  "err404_home": "Adto sa Homepage",
+  "err404_services": "Tan-awa ang mga Serbisyo"
 }

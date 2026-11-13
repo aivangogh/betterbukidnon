@@ -1,4 +1,5 @@
 import { createRouter } from '@tanstack/react-router'
+import { NotFound } from './components/layout/not-found'
 import { deLocalizeUrl, localizeUrl } from './paraglide/runtime'
 import { routeTree } from './routeTree.gen'
 
@@ -15,6 +16,7 @@ export function getRouter() {
     routeTree,
     scrollRestoration: true,
     defaultPreload: 'intent',
+    defaultNotFoundComponent: NotFound,
     // Routes are defined once; /fil/... and /ceb/... map onto them and back.
     rewrite: {
       input: ({ url }) => deLocalizeUrl(url),

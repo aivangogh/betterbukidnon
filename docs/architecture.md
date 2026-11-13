@@ -58,13 +58,14 @@ apps/
   web/
     public/                  Static public files, manifest, icons, error pages
     src/
-      components/            content, engagement, i18n, layout, pwa, and services
+      components/            blocks (MDX document blocks), content, engagement, i18n, layout, pwa, services
       content/               Typed content access, schemas, translations, site metadata
       routes/                TanStack file routes
       lib/                   Shared low-level utilities
       styles.css             Tailwind entry and application theme
     vite.config.ts           Vite+, TanStack Start, Tailwind, prerender settings
     tsconfig.json
+content/                     MDX documents: content/<collection>/<slug>/<locale>.mdx
 data/                        JSON content sources, validated at the app boundary
 scripts/                     TypeScript maintenance and build helpers, plus legacy shell scripts
 tests/                       Playwright browser tests for remaining legacy pages
@@ -130,6 +131,12 @@ page with sample or inferred public facts.
 The schemas cover services, news, officials, demographics, legislative records, and fiscal
 data. `content/content.test.ts` checks dataset contracts and common lookups. Contact data and
 shell translations have typed modules as well.
+
+Documents (pages read top to bottom, such as service guides) are MDX files in `content/`,
+compiled by `@mdx-js/rollup`. `lib/content.ts` loads each one as its own chunk and validates
+its frontmatter with the schema in `content/documents.ts`; `components/blocks` holds the only
+components a document may use. `content/documents.test.ts` checks every file. URLs that match
+no route render `components/layout/not-found.tsx` (the router's default not-found page).
 
 ### Languages and SEO
 

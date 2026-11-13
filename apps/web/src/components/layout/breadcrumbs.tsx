@@ -30,7 +30,11 @@ export function Breadcrumbs({ items }: { items: readonly Crumb[] }) {
           const last = index === items.length - 1
           return (
             <Fragment key={item.label}>
+              {/* Spaces around "/" as in legacy: after it on every trail (so long trails wrap
+                  between items), and also before it on top-level pages. */}
+              {index > 0 && items.length === 2 && ' '}
               {index > 0 && <span className="mx-2">/</span>}
+              {index > 0 && ' '}
               {item.link && !last ? (
                 <Link {...item.link} className="text-ink-light">
                   {item.label}

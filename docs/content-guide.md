@@ -19,7 +19,7 @@ pages listed below.
 | Cities, municipalities and districts                    | `government/index.html` (section `#lgus`) and `data/demographics.json`                                                                           |
 | Population and area                                     | `data/demographics.json`, the homepage stat cards, `statistics/index.html`                                                                       |
 | Service categories                                      | `data/service-categories.json` (each `/services/<id>` page, in EN, FIL and CEB); the directory cards in `apps/web/src/routes/services/index.tsx` |
-| Office pages and document guides                        | `service-details/*.html`                                                                                                                         |
+| Office pages and document guides                        | `content/services/<slug>/{en,fil,ceb}.mdx` (PSWDO so far); the others are still `service-details/*.html`                                         |
 | Search results                                          | `data/services.json` (titles, keywords, offices) and the engine in `apps/web/src/content/search.ts`                                              |
 | Capitol directory                                       | `contact/index.html`                                                                                                                             |
 | Ordinances and resolutions                              | `data/ordinances.json`, `data/resolutions.json`                                                                                                  |
@@ -61,15 +61,72 @@ paths (`/service-details/pswdo`), `tel:` numbers, or `https://` URLs, which open
 `pnpm web:test` fails if a link points to a page that does not exist or an icon is not in
 Bootstrap Icons.
 
-### Add a service-details page
+### Write or change a service guide (MDX)
 
-1. Copy an existing page in `service-details/` that has a similar layout.
-2. Change the `<title>`, meta description, canonical and `og:url`, breadcrumbs and content.
-3. Use a new key prefix for its `data-i18n` keys and add `en` and `fil` (and ideally `ceb`)
-   values to `translations.js`.
-4. Link to it from the relevant `services/*.html` page and from `government/index.html` if
-   it is an office.
-5. Add it to `data/services.json` (for search), `sitemap.xml` and `sitemap/index.html`.
+Service guides such as `/service-details/pswdo` are documents in
+`content/services/<slug>/`, one file per language: `en.mdx` (required), `fil.mdx` and
+`ceb.mdx`. A language without a file shows the English text; that page points search engines
+to the English one and leaves the sitemap until it is translated. The slug must exist in
+`data/services.json`.
+
+Each file starts with frontmatter, then Markdown and a small set of blocks that reproduce the
+legacy design:
+
+```mdx
+---
+title: Provincial Social Welfare and Development Office (PSWDO) # page heading
+shortTitle: Provincial Social Welfare and Development Office # breadcrumb and browser title
+description: One or two sentences for search results and link previews (50-300 characters).
+summary: The line under the heading
+badge: Social Welfare
+icon: heart-fill # Bootstrap Icons name
+category: social-services # the /services/<category> page it belongs to
+---
+
+<Section alt icon="list-ol" title="How to Ask for Help" intro="General steps.">
+
+<Columns>
+
+<Box title="Steps">
+
+1. Numbered steps get numbered icons.
+2. ...
+
+</Box>
+
+<Box title="What to Bring" note="Requirements may vary; confirm with the office.">
+
+- Bullet lists get check icons (`listIcon="check"` changes them).
+
+</Box>
+
+</Columns>
+
+</Section>
+```
+
+| Block                                  | Use                                                                        |
+| -------------------------------------- | -------------------------------------------------------------------------- |
+| `<Section alt icon title intro>`       | A band of the page; `alt` makes it grey. Without `title` it has no heading |
+| `<Stats>` with `<Stat icon label>`     | Four quick facts (office, location, hours, days)                           |
+| `<CharterNote>`                        | The volunteer-guide disclaimer, ending with a Markdown link                |
+| `<Prose>`                              | Paragraphs of running text in a box                                        |
+| `<Cards>` with `<Card icon title tag>` | A grid of programs or services; the text goes between the tags             |
+| `<Columns>`                            | Two columns (one on phones)                                                |
+| `<Box title icon listIcon note>`       | A box with a heading and a list                                            |
+| `<OfficeInfo address hours phone>`     | Address, hours and a tap-to-call number                                    |
+| `<LinkButton href icon>`               | A button link on its own line                                              |
+
+- Leave a blank line around Markdown inside a block, as above.
+- Links: app paths (`/government#lgus`) stay in the reader's language; `https://` links open
+  in a new tab.
+- No `import`, `export` or other components: `pnpm web:test` fails on anything not in the
+  table, on unknown icons and on invalid frontmatter.
+- Keep the same blocks, in the same order, in every language. Text that is not translated yet
+  can stay in English in `fil.mdx` or `ceb.mdx`.
+
+Office pages not yet converted are still the legacy `service-details/*.html` files; new guides
+go in `content/services/`.
 
 ### Add or change a project on the Our Projects page
 

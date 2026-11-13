@@ -190,5 +190,9 @@
   "svc_starting_a_business": "Pagsisimula ng Negosyo",
   "svc_view_services": "Tingnan ang mga Serbisyo",
   "seo_projects_title": "Mga Proyekto Namin",
-  "seo_services_title": "Direktoryo ng Serbisyong Panlalawigan"
+  "seo_services_title": "Direktoryo ng Serbisyong Panlalawigan",
+  "err404_title": "Hindi Nahanap ang Pahina",
+  "err404_text": "Hindi namin mahanap ang pahinang hinahanap ninyo. Maaaring inilipat ito, o may mali sa pagkakasulat ng address. Subukan ang homepage o i-browse ang mga serbisyo.",
+  "err404_home": "Pumunta sa Homepage",
+  "err404_services": "Mag-browse ng mga Serbisyo"
 }
