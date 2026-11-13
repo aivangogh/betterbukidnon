@@ -1,10 +1,11 @@
 import type { MDXComponents } from 'mdx/types'
 import { SiteLink } from '@/components/ui/site-link'
 import type { BlockName } from '@/lib/documents'
-import { BulletList, Box, ListItem, NumberedList, OfficeInfo, Prose } from './box'
+import { BulletList, Box, ListItem, NumberedList, OfficeInfo, Phone, Prose } from './box'
 import { Card, Cards, Stat, Stats } from './cards'
 import { CharterNote, LinkButton } from './notes'
 import { Columns, Section } from './section'
+import { Danger, Table, TableCell, TableHeading, TableNote } from './table'
 
 /**
  * The blocks a document (`content/**\/*.mdx`) may use, plus the Markdown elements they
@@ -16,12 +17,15 @@ const blocks = {
   Cards,
   CharterNote,
   Columns,
+  Danger,
   LinkButton,
   OfficeInfo,
+  Phone,
   Prose,
   Section,
   Stat,
   Stats,
+  TableNote,
 } satisfies Record<BlockName, unknown>
 
 export const documentComponents: MDXComponents = {
@@ -30,4 +34,7 @@ export const documentComponents: MDXComponents = {
   ul: BulletList,
   ol: NumberedList,
   li: ListItem,
+  table: Table,
+  th: TableHeading,
+  td: TableCell,
 }

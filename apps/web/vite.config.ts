@@ -1,6 +1,7 @@
 import { paraglideVitePlugin } from '@inlang/paraglide-js'
 import mdx from '@mdx-js/rollup'
 import remarkFrontmatter from 'remark-frontmatter'
+import remarkGfm from 'remark-gfm'
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
 import { paraglideOptions } from './paraglide.config'
 import tailwindcss from '@tailwindcss/vite'
@@ -29,7 +30,7 @@ export default defineConfig({
     paraglideVitePlugin(paraglideOptions),
     {
       enforce: 'pre',
-      ...mdx({ remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter] }),
+      ...mdx({ remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter, remarkGfm] }),
     },
     tailwindcss(),
     tanstackStart({

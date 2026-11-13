@@ -39,18 +39,20 @@ export function Cards({ children }: { children: React.ReactNode }) {
   )
 }
 
-/** Legacy `.service-card`: a titled card with an optional tag (`.service-meta`). */
+/** Legacy `.service-card`: a titled card with optional tags (`.service-meta`). */
 export function Card({
   icon,
   title,
-  tag,
+  tags = [],
   children,
 }: {
   icon: IconName
   title: string
-  tag?: string
+  /** One tag (`tags="PWD"`) or several (`tags={["Businesses", "Provincial tax"]}`). */
+  tags?: string | string[]
   children: React.ReactNode
 }) {
+  const tagList = typeof tags === 'string' ? [tags] : tags
   return (
     <div className="rounded-site border border-black/6 bg-white p-3.5 transition-all duration-200 hover:border-primary hover:shadow-[0_2px_10px_rgba(0,50,160,0.08)] [&_p]:mb-2 [&_p]:text-[0.6875rem] [&_p]:leading-[1.4] [&_p]:text-ink-light">
       <h3 className="mb-1.5 flex items-center gap-1.5 text-[0.8125rem] font-semibold text-ink">
@@ -58,9 +60,13 @@ export function Card({
         <span>{title}</span>
       </h3>
       {children}
-      {tag && (
+      {tagList.length > 0 && (
         <div className="flex flex-wrap gap-2 text-[0.625rem]">
-          <span className="rounded bg-primary/6 px-1.5 py-0.5 font-medium text-primary">{tag}</span>
+          {tagList.map((tag) => (
+            <span key={tag} className="rounded bg-primary/6 px-1.5 py-0.5 font-medium text-primary">
+              {tag}
+            </span>
+          ))}
         </div>
       )}
     </div>

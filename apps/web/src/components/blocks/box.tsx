@@ -1,5 +1,6 @@
 import { Children, cloneElement, createContext, isValidElement, useContext } from 'react'
 import { Icon, type IconName } from '@/components/ui/icon'
+import { cn } from '@/lib/utils'
 
 const box = 'rounded-site border border-black/6 bg-white p-3.5'
 
@@ -14,7 +15,7 @@ export function Prose({ children }: { children: React.ReactNode }) {
   )
 }
 
-type ListOptions = { icon: IconName; note?: string }
+type ListOptions = { icon: IconName; note?: string; boxed?: boolean }
 const ListContext = createContext<ListOptions>({ icon: 'check-circle-fill' })
 
 /**
@@ -42,7 +43,7 @@ export function Box({
         {icon && <Icon name={icon} className="mr-1.5 text-[2rem] text-primary" />}{' '}
         <span>{title}</span>
       </h3>
-      <ListContext value={{ icon: listIcon, note }}>{children}</ListContext>
+      <ListContext value={{ icon: listIcon, note, boxed: true }}>{children}</ListContext>
     </div>
   )
 }
@@ -72,40 +73,70 @@ export function NumberedList({ children }: { children?: React.ReactNode }) {
   )
 }
 
-export function ListItem({ icon, children }: { icon?: IconName; children?: React.ReactNode }) {
+export function ListItem({
+  icon,
+  bare = false,
+  children,
+}: {
+  icon?: IconName
+  /** Put the children in the list item directly instead of in a span. */
+  bare?: boolean
+  children?: React.ReactNode
+}) {
   const list = useContext(ListContext)
   return (
     <li className="flex items-start gap-2 border-b border-black/4 py-1.5 text-[0.75rem] text-ink last:border-b-0">
-      {/* Legacy `.info-box i` adds a 16px bottom margin to list icons. */}
       <Icon
         name={icon ?? list.icon}
-        className="mb-4 mt-0.5 shrink-0 text-[0.6875rem] text-primary"
+        className={cn(
+          'mt-0.5 shrink-0 text-[0.6875rem] text-primary',
+          // Legacy `.info-box i` adds a 16px bottom margin to list icons in boxes, not in cards.
+          list.boxed && 'mb-4',
+        )}
       />
       {/* Legacy wraps item text in a span, but puts links in the list item directly. */}
-      {isValidElement(children) && children.type === 'a' ? children : <span>{children}</span>}
+      {bare || (isValidElement(children) && children.type === 'a') ? (
+        children
+      ) : (
+        <span>{children}</span>
+      )}
     </li>
   )
 }
 
-/** The address, hours and phone number of an office, as a `.req-list`. */
+const telHref = (number: string) => `tel:+63${number.replace(/\D/g, '').replace(/^0/, '')}`
+
+/**
+ * The address, hours and phone numbers of an office, as a `.req-list`. One number goes in
+ * `phone`; several, or numbers with a note, go inside as `<Phone>` items.
+ */
 export function OfficeInfo({
   address,
   hours,
   phone,
+  children,
 }: {
   address: string
   hours?: string
   phone?: string
+  children?: React.ReactNode
 }) {
   return (
     <ul className={listClass}>
       <ListItem icon="geo-alt">{address}</ListItem>
       {hours && <ListItem icon="clock">{hours}</ListItem>}
-      {phone && (
-        <ListItem icon="telephone">
-          <a href={`tel:+63${phone.replace(/\D/g, '').replace(/^0/, '')}`}>{phone}</a>
-        </ListItem>
-      )}
+      {phone && <Phone number={phone} />}
+      {children}
     </ul>
+  )
+}
+
+/** A tap-to-call number in `<OfficeInfo>`, with an optional note such as "(Capitol main line)". */
+export function Phone({ number, children }: { number: string; children?: React.ReactNode }) {
+  return (
+    <ListItem icon="telephone" bare>
+      <a href={telHref(number)}>{number}</a>
+      {children && <span>{children}</span>}
+    </ListItem>
   )
 }

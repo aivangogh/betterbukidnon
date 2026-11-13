@@ -10,21 +10,13 @@ import type { ServiceGuide } from './guides'
 
 /** A service guide written as a document (`content/services/<slug>`). */
 export function ServiceGuidePage({ path, locale, meta }: ServiceGuide) {
-  const category = serviceCategories[meta.category]
   return (
     <>
       <Breadcrumbs
         items={[
           { label: m.nav_home(), link: { to: '/' } },
           { label: m.nav_services(), link: { to: '/services' } },
-          ...(category
-            ? [
-                {
-                  label: localized(category.breadcrumb),
-                  link: { to: '/services/$category', params: { category: meta.category } },
-                } as const,
-              ]
-            : []),
+          ...parentCrumb(meta.parent),
           { label: meta.shortTitle },
         ]}
       />
@@ -40,4 +32,18 @@ export function ServiceGuidePage({ path, locale, meta }: ServiceGuide) {
       </div>
     </>
   )
+}
+
+function parentCrumb(parent: string | undefined) {
+  if (parent === '/government')
+    return [{ label: m.nav_government(), link: { to: '/government' } } as const]
+  const id = parent?.replace('/services/', '')
+  const category = id ? serviceCategories[id] : undefined
+  if (!id || !category) return []
+  return [
+    {
+      label: localized(category.breadcrumb),
+      link: { to: '/services/$category', params: { category: id } },
+    } as const,
+  ]
 }

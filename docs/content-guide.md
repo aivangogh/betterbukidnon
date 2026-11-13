@@ -19,7 +19,7 @@ pages listed below.
 | Cities, municipalities and districts                    | `government/index.html` (section `#lgus`) and `data/demographics.json`                                                                           |
 | Population and area                                     | `data/demographics.json`, the homepage stat cards, `statistics/index.html`                                                                       |
 | Service categories                                      | `data/service-categories.json` (each `/services/<id>` page, in EN, FIL and CEB); the directory cards in `apps/web/src/routes/services/index.tsx` |
-| Office pages and document guides                        | `content/services/<slug>/{en,fil,ceb}.mdx` (PSWDO so far); the others are still `service-details/*.html`                                         |
+| Office pages and document guides                        | `content/services/<slug>/{en,fil,ceb}.mdx` (PSWDO and eight other offices so far); the rest are still `service-details/*.html`                   |
 | Search results                                          | `data/services.json` (titles, keywords, offices) and the engine in `apps/web/src/features/services/search.ts`                                    |
 | Capitol directory                                       | `contact/index.html`                                                                                                                             |
 | Ordinances and resolutions                              | `data/ordinances.json`, `data/resolutions.json`                                                                                                  |
@@ -80,7 +80,7 @@ description: One or two sentences for search results and link previews (50-300 c
 summary: The line under the heading
 badge: Social Welfare
 icon: heart-fill # Bootstrap Icons name
-category: social-services # the /services/<category> page it belongs to
+parent: /services/social-services # breadcrumb parent: a /services/<category> page or /government; omit to go straight from Services
 ---
 
 <Section alt icon="list-ol" title="How to Ask for Help" intro="General steps.">
@@ -105,17 +105,19 @@ category: social-services # the /services/<category> page it belongs to
 </Section>
 ```
 
-| Block                                  | Use                                                                        |
-| -------------------------------------- | -------------------------------------------------------------------------- |
-| `<Section alt icon title intro>`       | A band of the page; `alt` makes it grey. Without `title` it has no heading |
-| `<Stats>` with `<Stat icon label>`     | Four quick facts (office, location, hours, days)                           |
-| `<CharterNote>`                        | The volunteer-guide disclaimer, ending with a Markdown link                |
-| `<Prose>`                              | Paragraphs of running text in a box                                        |
-| `<Cards>` with `<Card icon title tag>` | A grid of programs or services; the text goes between the tags             |
-| `<Columns>`                            | Two columns (one on phones)                                                |
-| `<Box title icon listIcon note>`       | A box with a heading and a list                                            |
-| `<OfficeInfo address hours phone>`     | Address, hours and a tap-to-call number                                    |
-| `<LinkButton href icon>`               | A button link on its own line                                              |
+| Block                                   | Use                                                                                                                                                                      |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `<Section alt icon title intro>`        | A band of the page; `alt` makes it grey. Without `title` it has no heading                                                                                               |
+| `<Stats>` with `<Stat icon label>`      | Four quick facts (office, location, hours, days)                                                                                                                         |
+| `<CharterNote>`                         | The volunteer-guide disclaimer, ending with a Markdown link                                                                                                              |
+| `<Prose>`                               | Paragraphs of running text in a box                                                                                                                                      |
+| `<Cards>` with `<Card icon title tags>` | A grid of programs or services; the text or a list goes between the tags. `tags="PWD"` or `tags={["Businesses", "Provincial tax"]}`                                      |
+| `<Columns>`                             | Two columns (one on phones)                                                                                                                                              |
+| `<Box title icon listIcon note>`        | A box with a heading and a list                                                                                                                                          |
+| `<OfficeInfo address hours phone>`      | Address, hours and a tap-to-call number. For several numbers or a note, put `<Phone number="(088) 813-5741">(Capitol main line)</Phone>` items inside instead of `phone` |
+| `<LinkButton href icon>`                | A button link on its own line                                                                                                                                            |
+| Markdown table                          | A fee or schedule table (blue header row); `<Danger>` inside a cell makes it red                                                                                         |
+| `<TableNote>`                           | The small source line under a table                                                                                                                                      |
 
 - Leave a blank line around Markdown inside a block, as above.
 - Links: app paths (`/government#lgus`) stay in the reader's language; `https://` links open
