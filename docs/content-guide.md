@@ -10,23 +10,23 @@ pages listed below.
 
 ## Where things live
 
-| What                                                    | Where                                                                                                                                            |
-| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Emergency hotline bar                                   | `scripts/chrome/hotline.html` (then `npm run chrome`), plus `react-app/src/components/layout/HotlineBar.tsx`                                     |
-| Header, navigation and footer                           | `scripts/chrome/header.html`, `footer.html` (then `npm run chrome`), plus the React `Header.tsx` and `Footer.tsx`                                |
-| Homepage                                                | `apps/web/src/features/home/` and the `home_*` keys in `apps/web/messages/*.json`                                                                |
-| Governor, Vice Governor, Board Members, representatives | `data/officials.json` (rendered by `assets/js/officials.js`) and the cards in `government/index.html` and `index.html`                           |
-| Cities, municipalities and districts                    | `government/index.html` (section `#lgus`) and `data/demographics.json`                                                                           |
-| Population and area                                     | `data/demographics.json`, the homepage stat cards, `statistics/index.html`                                                                       |
-| Service categories                                      | `data/service-categories.json` (each `/services/<id>` page, in EN, FIL and CEB); the directory cards in `apps/web/src/routes/services/index.tsx` |
-| Office pages and document guides                        | `content/services/<slug>/{en,fil,ceb}.mdx` (PSWDO and eight other offices so far); the rest are still `service-details/*.html`                   |
-| Search results                                          | `data/services.json` (titles, keywords, offices) and the engine in `apps/web/src/features/services/search.ts`                                    |
-| Capitol directory                                       | `contact/index.html`                                                                                                                             |
-| Ordinances and resolutions                              | `data/ordinances.json`, `data/resolutions.json`                                                                                                  |
-| Budget, SRE and DPWH projects                           | `data/fiscal_transparency.json`, `data/dpwh-projects.json`                                                                                       |
-| News                                                    | `data/news.json` (see [news-curation.md](news-curation.md))                                                                                      |
-| Our Projects page and nav dropdown                      | `data/projects.json` (validated in `apps/web/src/features/projects/`), the "Our Projects" dropdown in `apps/web/src/config/navigation.ts`        |
-| Sitemap                                                 | `sitemap.xml` and `sitemap/index.html`                                                                                                           |
+| What                                                    | Where                                                                                                                                                                                    |
+| ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Emergency hotline bar                                   | `scripts/chrome/hotline.html` (then `npm run chrome`), plus `react-app/src/components/layout/HotlineBar.tsx`                                                                             |
+| Header, navigation and footer                           | `scripts/chrome/header.html`, `footer.html` (then `npm run chrome`), plus the React `Header.tsx` and `Footer.tsx`                                                                        |
+| Homepage                                                | `apps/web/src/features/home/` and the `home_*` keys in `apps/web/messages/*.json`                                                                                                        |
+| Governor, Vice Governor, Board Members, representatives | `data/officials.json` (rendered by `assets/js/officials.js`) and the cards in `government/index.html` and `index.html`                                                                   |
+| Cities, municipalities and districts                    | `government/index.html` (section `#lgus`) and `data/demographics.json`                                                                                                                   |
+| Population and area                                     | `data/demographics.json`, the homepage stat cards, `statistics/index.html`                                                                                                               |
+| Service categories                                      | `data/service-categories.json` (each `/services/<id>` page, in EN, FIL and CEB); the directory cards in `apps/web/src/routes/services/index.tsx`                                         |
+| Office pages and document guides                        | `content/services/<slug>/{en,fil,ceb}.mdx` (PSWDO, eight other offices, Civil Registration, PDRRMD and the Provincial Health Office so far); the rest are still `service-details/*.html` |
+| Search results                                          | `data/services.json` (titles, keywords, offices) and the engine in `apps/web/src/features/services/search.ts`                                                                            |
+| Capitol directory                                       | `contact/index.html`                                                                                                                                                                     |
+| Ordinances and resolutions                              | `data/ordinances.json`, `data/resolutions.json`                                                                                                                                          |
+| Budget, SRE and DPWH projects                           | `data/fiscal_transparency.json`, `data/dpwh-projects.json`                                                                                                                               |
+| News                                                    | `data/news.json` (see [news-curation.md](news-curation.md))                                                                                                                              |
+| Our Projects page and nav dropdown                      | `data/projects.json` (validated in `apps/web/src/features/projects/`), the "Our Projects" dropdown in `apps/web/src/config/navigation.ts`                                                |
+| Sitemap                                                 | `sitemap.xml` and `sitemap/index.html`                                                                                                                                                   |
 
 ## Common tasks
 
@@ -118,6 +118,24 @@ parent: /services/social-services # breadcrumb parent: a /services/<category> pa
 | `<LinkButton href icon>`                | A button link on its own line                                                                                                                                            |
 | Markdown table                          | A fee or schedule table (blue header row); `<Danger>` inside a cell makes it red                                                                                         |
 | `<TableNote>`                           | The small source line under a table                                                                                                                                      |
+
+Some offices (Civil Registration, PDRRMD, the Provincial Health Office) use the legacy guide
+layout instead: quick facts, then topics on the left and the office's contact card on the
+right. See `content/services/pdrrmd/en.mdx` for a complete example.
+
+| Block                                             | Use                                                                                                                                             |
+| ------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `<PageSection>`                                   | A band of the page with the larger legacy spacing                                                                                               |
+| `<KeyFacts>` with `<KeyFact icon label>`          | Four quick facts; the value can be a link (`[(088) 813-1262](tel:+63888131262)`)                                                                |
+| `<TopicNav label>` with `<TopicLink href icon>`   | Buttons that jump to topics (`href="#psa"` for `<Topic id="psa">`)                                                                              |
+| `<SidebarLayout>`                                 | Holds `<Topics>` (the topics) and `<ContactCard>` (the sidebar)                                                                                 |
+| `<Topic id theme icon title subtitle>`            | A topic with a coloured header; `theme` is one of `birth`, `marriage`, `death`, `cenomar`, `correction`, `legitimation`, `foundling`, `delayed` |
+| `<Checklist>`                                     | A Markdown list shown as tiles with a green check                                                                                               |
+| `<Steps>` with `<Step title>`                     | Numbered steps, each with a title and text                                                                                                      |
+| `<ContactCard title>` with `<Contact icon label>` | The office's contact details; text or links inside each `Contact`                                                                               |
+| `<RelatedLinks title>`                            | A Markdown list of links at the bottom of the contact card                                                                                      |
+
+Inside a `<Topic>`, use Markdown headings (`###`, `####`), paragraphs, links and tables.
 
 - Leave a blank line around Markdown inside a block, as above.
 - Links: app paths (`/government#lgus`) stay in the reader's language; `https://` links open

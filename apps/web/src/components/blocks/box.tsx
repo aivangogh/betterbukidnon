@@ -15,8 +15,19 @@ export function Prose({ children }: { children: React.ReactNode }) {
   )
 }
 
-type ListOptions = { icon: IconName; note?: string; boxed?: boolean }
+type ListOptions = {
+  icon: IconName
+  note?: string
+  boxed?: boolean
+  /** `checklist`: tiles with a green check; `links`: a plain list of links. */
+  variant?: 'checklist' | 'links'
+}
 const ListContext = createContext<ListOptions>({ icon: 'check-circle-fill' })
+
+/** Lets a block change how the Markdown lists inside it look. */
+export function ListScope({ value, children }: { value: ListOptions; children: React.ReactNode }) {
+  return <ListContext value={value}>{children}</ListContext>
+}
 
 /**
  * Legacy `.info-box` with a heading and a `.req-list`. Markdown lists inside get the legacy
@@ -51,7 +62,14 @@ export function Box({
 const listClass = 'm-0 list-none p-0'
 
 export function BulletList({ children }: { children?: React.ReactNode }) {
-  const { note } = useContext(ListContext)
+  const { note, variant } = useContext(ListContext)
+  if (variant === 'checklist')
+    return (
+      <ul className="checklist mt-6 grid list-none grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4 p-0">
+        {children}
+      </ul>
+    )
+  if (variant === 'links') return <ul className="m-0 list-none p-0 text-[0.8125rem]">{children}</ul>
   return (
     <ul className={listClass}>
       {children}
@@ -84,6 +102,15 @@ export function ListItem({
   children?: React.ReactNode
 }) {
   const list = useContext(ListContext)
+  if (list.variant === 'checklist')
+    return (
+      <li className="flex items-center gap-2 rounded-site bg-surface-alt px-3 py-2.5 text-[0.875rem]">
+        <Icon name="check-circle-fill" className="text-success" />
+        <span>{children}</span>
+      </li>
+    )
+  if (list.variant === 'links')
+    return <li className="mb-2 [&_a]:flex [&_a]:items-center [&_a]:gap-1.5">{children}</li>
   return (
     <li className="flex items-start gap-2 border-b border-black/4 py-1.5 text-[0.75rem] text-ink last:border-b-0">
       <Icon

@@ -5,6 +5,20 @@
 
 /** Components a document may use; `components/blocks` implements each one. */
 export const blockNames = [
+  'Checklist',
+  'Contact',
+  'ContactCard',
+  'KeyFact',
+  'KeyFacts',
+  'PageSection',
+  'RelatedLinks',
+  'SidebarLayout',
+  'Step',
+  'Steps',
+  'Topic',
+  'TopicLink',
+  'TopicNav',
+  'Topics',
   'Box',
   'Card',
   'Cards',
