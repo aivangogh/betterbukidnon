@@ -1,6 +1,6 @@
 import { createRootRoute, HeadContent, Outlet, Scripts } from '@tanstack/react-router'
 import { SiteShell } from '@/components/layout/site-shell'
-import { PwaUpdateNotice } from '@/components/pwa/update-notice'
+import { PwaUpdateNotice } from '@/features/pwa/update-notice'
 import { getLocale } from '@/paraglide/runtime'
 import appCss from '../styles.css?url'
 

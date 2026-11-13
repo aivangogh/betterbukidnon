@@ -1,4 +1,4 @@
-import { site } from '@/content/site'
+import { site } from '@/config/site'
 import { locales } from '@/paraglide/runtime'
 import { localizePath } from './i18n'
 import { absoluteUrl, jsonLd } from './seo'

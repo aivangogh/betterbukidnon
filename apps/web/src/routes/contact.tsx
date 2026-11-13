@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { Icon, type IconName } from '@/components/ui/icon'
-import { SectionPage } from '@/components/content/section-page'
-import { contactDirectory } from '@/content/contact'
+import { SectionPage } from '@/components/layout/section-page'
+import { contactDirectory } from '@/config/contact'
 import { seo } from '@/lib/seo'
 import { m } from '@/paraglide/messages'
 

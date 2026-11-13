@@ -1,5 +1,6 @@
-import rawServices from '../../../../data/services.json'
-import { parseContent, servicesDataSchema } from './schemas'
+import rawServices from '../../../../../data/services.json'
+import { parseContent } from '@/lib/schemas'
+import { servicesDataSchema } from './schemas'
 
 export const services = parseContent(servicesDataSchema, rawServices, 'data/services.json').services
 

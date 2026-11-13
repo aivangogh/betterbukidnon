@@ -1,6 +1,6 @@
 import { Link } from '@tanstack/react-router'
 import { Icon } from '@/components/ui/icon'
-import type { InternalNavLink } from '@/content/navigation'
+import type { InternalNavLink } from '@/config/navigation'
 import { cn } from '@/lib/utils'
 
 /** Legacy `.home-section-link`: arrow link whose gap widens on hover. */

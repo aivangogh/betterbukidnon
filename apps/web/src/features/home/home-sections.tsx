@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { Icon, type IconName } from '@/components/ui/icon'
 import { LottieAnimation } from '@/components/ui/lottie'
-import type { InternalNavLink } from '@/content/navigation'
+import type { InternalNavLink } from '@/config/navigation'
 import { text, type Message } from '@/lib/i18n'
 import { cn } from '@/lib/utils'
 import { GlanceHeader, SectionHeader, SectionLink } from './home-ui'

@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { InformationPage } from '@/components/content/information-page'
+import { InformationPage } from '@/components/layout/information-page'
 import { seo } from '@/lib/seo'
 import { m } from '@/paraglide/messages'
 

@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vite-plus/test'
 import en from '../../messages/en.json' with { type: 'json' }
 import fil from '../../messages/fil.json' with { type: 'json' }
 import ceb from '../../messages/ceb.json' with { type: 'json' }
-import { projects } from './projects'
+import { projects } from '@/features/projects/projects'
 
 type Messages = Record<string, string>
 const locales = { en, fil, ceb } as Record<string, Messages>

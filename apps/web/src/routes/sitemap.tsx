@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { SectionPage } from '@/components/content/section-page'
-import { primaryNavigation } from '@/content/navigation'
+import { SectionPage } from '@/components/layout/section-page'
+import { primaryNavigation } from '@/config/navigation'
 import { seo } from '@/lib/seo'
 import { m } from '@/paraglide/messages'
 

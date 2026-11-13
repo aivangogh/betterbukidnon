@@ -14,18 +14,18 @@ pages listed below.
 | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Emergency hotline bar                                   | `scripts/chrome/hotline.html` (then `npm run chrome`), plus `react-app/src/components/layout/HotlineBar.tsx`                                     |
 | Header, navigation and footer                           | `scripts/chrome/header.html`, `footer.html` (then `npm run chrome`), plus the React `Header.tsx` and `Footer.tsx`                                |
-| Homepage                                                | `apps/web/src/components/home/` and the `home_*` keys in `apps/web/messages/*.json`                                                              |
+| Homepage                                                | `apps/web/src/features/home/` and the `home_*` keys in `apps/web/messages/*.json`                                                                |
 | Governor, Vice Governor, Board Members, representatives | `data/officials.json` (rendered by `assets/js/officials.js`) and the cards in `government/index.html` and `index.html`                           |
 | Cities, municipalities and districts                    | `government/index.html` (section `#lgus`) and `data/demographics.json`                                                                           |
 | Population and area                                     | `data/demographics.json`, the homepage stat cards, `statistics/index.html`                                                                       |
 | Service categories                                      | `data/service-categories.json` (each `/services/<id>` page, in EN, FIL and CEB); the directory cards in `apps/web/src/routes/services/index.tsx` |
 | Office pages and document guides                        | `content/services/<slug>/{en,fil,ceb}.mdx` (PSWDO so far); the others are still `service-details/*.html`                                         |
-| Search results                                          | `data/services.json` (titles, keywords, offices) and the engine in `apps/web/src/content/search.ts`                                              |
+| Search results                                          | `data/services.json` (titles, keywords, offices) and the engine in `apps/web/src/features/services/search.ts`                                    |
 | Capitol directory                                       | `contact/index.html`                                                                                                                             |
 | Ordinances and resolutions                              | `data/ordinances.json`, `data/resolutions.json`                                                                                                  |
 | Budget, SRE and DPWH projects                           | `data/fiscal_transparency.json`, `data/dpwh-projects.json`                                                                                       |
 | News                                                    | `data/news.json` (see [news-curation.md](news-curation.md))                                                                                      |
-| Our Projects page and nav dropdown                      | `data/projects.json` (validated in `apps/web/src/content/projects.ts`), the "Our Projects" dropdown in `apps/web/src/content/navigation.ts`      |
+| Our Projects page and nav dropdown                      | `data/projects.json` (validated in `apps/web/src/features/projects/`), the "Our Projects" dropdown in `apps/web/src/config/navigation.ts`        |
 | Sitemap                                                 | `sitemap.xml` and `sitemap/index.html`                                                                                                           |
 
 ## Common tasks
@@ -137,10 +137,10 @@ go in `content/services/`.
    Details dialog are built from this file, and the build fails if an entry is invalid.
 2. Add `proj_<id>_name` and `proj_<id>_desc` to `apps/web/messages/{en,fil,ceb}.json` (and
    `proj_cat_<category>` for a new category), and map them in `projectText` in
-   `apps/web/src/routes/projects.tsx`. `pnpm web:test` fails if a project has no name or
+   `apps/web/src/features/projects/projects-page.tsx`. `pnpm web:test` fails if a project has no name or
    description in a language, or if its icon is not in Bootstrap Icons.
 3. If the project is `active`, also add it to the "Our Projects" dropdown in
-   `apps/web/src/content/navigation.ts`, with a `nav_projects_<id>` message.
+   `apps/web/src/config/navigation.ts`, with a `nav_projects_<id>` message.
 4. While the legacy `projects/` page still exists, make the same change in
    `assets/js/translations.js` and `scripts/chrome/header.html` (then `pnpm chrome`).
 
@@ -151,7 +151,8 @@ Bukidnon data is available. To fill one:
 
 1. Get the data from the official source (Sangguniang Panlalawigan records, BLGF, DBM,
    DPWH, DTI CMCI, the Provincial Government's Facebook page).
-2. Look at its schema in `apps/web/src/content/schemas.ts` (see
+2. Look at its schema in the feature's data module, such as
+   `apps/web/src/features/legislative/data.ts` (see
    [architecture.md](architecture.md#content-and-validation)) to see the fields it expects. Keep the existing top-level shape of the file.
 3. Add a source and "as of" date in the data where the format allows, and mention the source
    on the page.

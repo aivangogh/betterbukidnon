@@ -1,4 +1,4 @@
-import projectsJson from '../../../../data/projects.json'
+import projectsJson from '../../../../../data/projects.json'
 import type { IconName } from '@/components/ui/icon'
 import { projectsDataSchema, type Project } from './schemas'
 

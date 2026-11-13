@@ -1,5 +1,5 @@
 import { createRouter } from '@tanstack/react-router'
-import { NotFound } from './components/layout/not-found'
+import { NotFound } from '@/components/layout/not-found'
 import { deLocalizeUrl, localizeUrl } from './paraglide/runtime'
 import { routeTree } from './routeTree.gen'
 

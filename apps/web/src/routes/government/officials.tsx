@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { officials } from '@/content/civic-data'
+import { officials } from '@/features/government/data'
 import { seo } from '@/lib/seo'
 import { m } from '@/paraglide/messages'
 

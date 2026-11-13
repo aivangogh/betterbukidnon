@@ -1,7 +1,7 @@
 import { useRouter } from '@tanstack/react-router'
 import { Fragment, useEffect, useId, useRef, useState } from 'react'
 import { Icon, type IconName } from '@/components/ui/icon'
-import type { Service } from '@/content/schemas'
+import type { Service } from './schemas'
 import {
   addRecentSearch,
   clearRecentSearches,
@@ -12,7 +12,7 @@ import {
   tokenize,
   trackSearch,
   type Suggestions,
-} from '@/content/search'
+} from './search'
 import { localizePath } from '@/lib/i18n'
 import { cn } from '@/lib/utils'
 

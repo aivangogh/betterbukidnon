@@ -1,15 +1,15 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { VolunteerDialog } from '@/components/engagement/volunteer-dialog'
-import { HomeHero } from '@/components/home/home-hero'
-import { GlanceStats, LguCta, PopularServices } from '@/components/home/home-sections'
+import { VolunteerDialog } from '@/features/engagement/volunteer-dialog'
+import { HomeHero } from '@/features/home/home-hero'
+import { GlanceStats, LguCta, PopularServices } from '@/features/home/home-sections'
 import {
   ContactInfo,
   History,
   LatestUpdates,
   Leadership,
   VolunteerCta,
-} from '@/components/home/home-sections-lower'
-import { WeatherMap } from '@/components/home/weather-map'
+} from '@/features/home/home-sections-lower'
+import { WeatherMap } from '@/features/home/weather-map'
 import { homeStructuredData } from '@/lib/structured-data'
 import { seo } from '@/lib/seo'
 import { m } from '@/paraglide/messages'
