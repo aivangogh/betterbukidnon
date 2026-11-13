@@ -16,7 +16,15 @@ export function LanguageMenu() {
   // The page's language comes from its URL (/, /fil/..., /ceb/...), so it is fixed for a render.
   const locale = getLocale()
   // The router location is the unprefixed route path, e.g. /services/health.
-  const path = useRouterState({ select: (state) => state.location.href })
+  const path = useRouterState({
+    select: (state) =>
+      // A missing page has no other-language version, so offer each language's home page.
+      // This also keeps the static 404.html the same at whatever URL it is served.
+      state.matches.some((match) => match.status === 'notFound' || match._notFound) ||
+      state.matches.at(-1)?.routeId === '/404'
+        ? '/'
+        : state.location.href,
+  })
   const [open, setOpen] = useState(false)
   const root = useRef<HTMLDivElement>(null)
   const toggle = useRef<HTMLButtonElement>(null)

@@ -41,6 +41,11 @@ export default defineConfig({
       // The locale home pages seed the crawl of each language's pages.
       pages: [
         ...serviceDetailPages,
+        // Cloudflare serves the nearest 404.html for unknown URLs (not_found_handling).
+        ...['', '/fil', '/ceb'].map((prefix) => ({
+          path: `${prefix}/404`,
+          prerender: { enabled: true, outputPath: `${prefix}/404`, autoSubfolderIndex: false },
+        })),
         ...['fil', 'ceb'].flatMap((locale) => [
           { path: `/${locale}`, prerender: { enabled: true } },
           ...serviceDetailPages.map((page) => ({ ...page, path: `/${locale}${page.path}` })),
