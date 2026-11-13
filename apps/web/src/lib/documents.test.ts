@@ -3,9 +3,10 @@ import path from 'node:path'
 import bootstrapIcons from 'bootstrap-icons/font/bootstrap-icons.json' with { type: 'json' }
 import { parse as parseYaml } from 'yaml'
 import { describe, expect, it } from 'vite-plus/test'
-import { blockNames, parseDocumentPath, resolveDocument, serviceDocumentSchema } from './documents'
-import { serviceCategories } from './service-categories'
-import { serviceBySlug } from './services'
+import { serviceDocumentSchema } from '@/features/services/schemas'
+import { blockNames, parseDocumentPath, resolveDocument } from './documents'
+import { serviceCategories } from '@/features/services/categories'
+import { serviceBySlug } from '@/features/services/services'
 
 const contentDir = new URL('../../../../content/', import.meta.url).pathname
 const LOCALES = ['en', 'fil', 'ceb']

@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { SectionPage } from '@/components/content/section-page'
+import { SectionPage } from '@/components/layout/section-page'
 import { seo } from '@/lib/seo'
 import { m } from '@/paraglide/messages'
 

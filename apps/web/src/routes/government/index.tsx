@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { Icon } from '@/components/ui/icon'
-import { SectionPage } from '@/components/content/section-page'
-import { demographics, officials } from '@/content/civic-data'
+import { SectionPage } from '@/components/layout/section-page'
+import { demographics, officials } from '@/features/government/data'
 import { seo } from '@/lib/seo'
 import { m } from '@/paraglide/messages'
 

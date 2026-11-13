@@ -93,10 +93,10 @@ gap stays visible. See [content-guide.md](content-guide.md) for each data file.
    `apps/web/messages/<code>.json`. Start with navigation, buttons and headings; everything
    else falls back to English.
 2. Add a URL pattern for it in `apps/web/paraglide.config.ts`, before the English pattern,
-   and its name to `localeNames` in `apps/web/src/components/i18n/locale-provider.tsx`.
+   and its name to `localeNames` in `apps/web/src/components/layout/language-menu.tsx`.
 3. Add it to the locale lists in `apps/web/src/lib/seo.ts` (`og:locale`),
    `apps/web/vite.config.ts` (prerendered pages), `scripts/generate-seo-files.ts` and
-   `scripts/check-seo.ts`, and to `localizedTextSchema` in `apps/web/src/content/schemas.ts`.
+   `scripts/check-seo.ts`, and to `localizedTextSchema` in `apps/web/src/lib/schemas.ts`.
 4. Run `pnpm build && pnpm seo:check`: every page should now exist in the new language with
    `hreflang` links in all the others.
 

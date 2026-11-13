@@ -2,7 +2,7 @@ import { Icon } from '@/components/ui/icon'
 import { useState } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
 import newsJson from '../../../../data/news.json'
-import { newsDataSchema } from '@/content/schemas'
+import { newsDataSchema } from '@/features/news/data'
 import { seo } from '@/lib/seo'
 
 export const Route = createFileRoute('/admin/news-editor')({

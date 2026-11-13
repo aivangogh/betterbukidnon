@@ -58,10 +58,14 @@ apps/
   web/
     public/                  Static public files, manifest, icons, error pages
     src/
-      components/            blocks (MDX document blocks), content, engagement, i18n, layout, pwa, services
-      content/               Typed content access, schemas, translations, site metadata
-      routes/                TanStack file routes
-      lib/                   Shared low-level utilities
+      routes/                TanStack file routes: loader, head (seo) and one feature page each
+      features/<domain>/     Pages, components, data loaders, schemas and tests for one domain:
+                             home, services, projects, government, legislative, transparency,
+                             news, engagement, pwa
+      components/            Shared UI: layout (shell, header, footer, page header, breadcrumbs,
+                             language menu, not-found), ui (icon, links), blocks (MDX blocks)
+      config/                Site metadata, navigation and the contact/hotline directory
+      lib/                   Helpers: i18n, seo, structured data, document loading, schemas
       styles.css             Tailwind entry and application theme
     vite.config.ts           Vite+, TanStack Start, Tailwind, prerender settings
     tsconfig.json
@@ -104,38 +108,50 @@ data-driven service detail pages so their direct URLs exist at deployment time.
 
 `components/layout/site-shell.tsx` renders the page chrome in the legacy order: skip link,
 `hotline-bar.tsx`, `site-header.tsx` (navigation with dropdowns, the slide-down menu at 1024px
-and below, and `i18n/language-menu.tsx`), `info-bar.tsx` (exchange rate, Malaybalay weather,
+and below, and `language-menu.tsx`), `info-bar.tsx` (exchange rate, Malaybalay weather,
 and Philippine time), the page, and `site-footer.tsx`. Pages that need a trail use
 `breadcrumbs.tsx`. Navigation, footer links, and the hotline bar items come from
-`content/navigation.ts`; hotline numbers come from `content/contact.ts`. Root route metadata
-and the document shell live in `routes/__root.tsx`. Other stateful features have their own
-components, such as the volunteer dialog, service search, and PWA update notice.
+`config/navigation.ts`; hotline numbers come from `config/contact.ts`. Root route metadata
+and the document shell live in `routes/__root.tsx`.
 
-Service search (`components/services/service-search-box.tsx`, used by the home hero and the
-Services page) runs the engine in `content/search.ts`, a port of the legacy
+### Features and routes
+
+Code for one domain lives together in `features/<domain>/`: its page components, data
+loaders with their Zod schemas, and tests. Routes stay thin: a route file declares its path,
+loader and `head` (`seo()`), and renders the feature's page, passing loader data and search
+params as props. A feature imports shared code from `components/`, `config/` and `lib/`, and
+another feature's public modules only when it needs them (the home hero uses the services
+search box). Pages not yet migrated from legacy are still placeholder routes; each gets its
+feature folder when it is migrated.
+
+Service search (`features/services/service-search-box.tsx`, used by the home hero and the
+Services page) runs the engine in `features/services/search.ts`, a port of the legacy
 `assets/js/search.js`: the same fuzzy matching, scores, "Did you mean?" suggestions, category
 chips, and recent and popular searches, under the same `localStorage` keys.
-`content/search.test.ts` holds results recorded from the legacy engine; if you change
+`features/services/search.test.ts` holds results recorded from the legacy engine; if you change
 ranking on purpose, update those expectations in the same pull request. Results link to the
 app path for each `services.json` entry (`serviceHref`), and keywords in `services.json` are
 what most searches match against.
 
 ### Content and validation
 
-Content remains in repository JSON files under `data/`. App modules in `content/` import the
-data and validate it with schemas from `content/schemas.ts` before routes consume it. Keep
+Content remains in repository JSON files under `data/`. Each feature's data module (such as
+`features/services/services.ts` or `features/government/data.ts`) imports its JSON and
+validates it with the feature's schema and `parseContent` from `lib/schemas.ts` before pages
+use it, so invalid data fails the build. Shared schema pieces (`localizedTextSchema`,
+`sourceSchema`) are in `lib/schemas.ts`. Keep
 validation at this boundary so components receive typed, normalized values. When a dataset is
 empty, show an explicit empty state and link to an authoritative source instead of filling the
 page with sample or inferred public facts.
 
-The schemas cover services, news, officials, demographics, legislative records, and fiscal
-data. `content/content.test.ts` checks dataset contracts and common lookups. Contact data and
-shell translations have typed modules as well.
+Each feature has tests next to its data (`*.test.ts`); `pnpm web:test` runs them all from
+`apps/web`, so tests can use the `@/` imports like the rest of the app.
 
 Documents (pages read top to bottom, such as service guides) are MDX files in `content/`,
 compiled by `@mdx-js/rollup`. `lib/content.ts` loads each one as its own chunk and validates
-its frontmatter with the schema in `content/documents.ts`; `components/blocks` holds the only
-components a document may use. `content/documents.test.ts` checks every file. URLs that match
+its frontmatter with the collection's schema (service guides: `features/services/schemas.ts`,
+loaded by `features/services/guides.ts`); `lib/documents.ts` lists the blocks a document may
+use and `components/blocks` implements them. `lib/documents.test.ts` checks every file. URLs that match
 no route render `components/layout/not-found.tsx` (the router's default not-found page).
 
 ### Languages and SEO

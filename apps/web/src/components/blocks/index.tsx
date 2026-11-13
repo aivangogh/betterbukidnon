@@ -1,6 +1,6 @@
 import type { MDXComponents } from 'mdx/types'
 import { SiteLink } from '@/components/ui/site-link'
-import type { BlockName } from '@/content/documents'
+import type { BlockName } from '@/lib/documents'
 import { BulletList, Box, ListItem, NumberedList, OfficeInfo, Prose } from './box'
 import { Card, Cards, Stat, Stats } from './cards'
 import { CharterNote, LinkButton } from './notes'

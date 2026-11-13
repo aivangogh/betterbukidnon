@@ -1,4 +1,4 @@
-import { site } from '@/content/site'
+import { site } from '@/config/site'
 import { baseLocale, getLocale, locales as allLocales, type Locale } from '@/paraglide/runtime'
 import { localizePath } from './i18n'
 

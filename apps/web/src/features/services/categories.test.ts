@@ -1,7 +1,7 @@
 import bootstrapIcons from 'bootstrap-icons/font/bootstrap-icons.json' with { type: 'json' }
 import { describe, expect, it } from 'vite-plus/test'
-import { appPath } from '../lib/paths'
-import { serviceCategories, serviceCategoryIds } from './service-categories'
+import { appPath } from '@/lib/paths'
+import { serviceCategories, serviceCategoryIds } from './categories'
 import { serviceBySlug } from './services'
 
 // Pages that exist outside the data-driven service routes.

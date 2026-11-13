@@ -1,4 +1,4 @@
-import type { LocalizedText } from '@/content/schemas'
+import type { LocalizedText } from './schemas'
 import { getLocale, localizeHref, type Locale } from '@/paraglide/runtime'
 
 /**

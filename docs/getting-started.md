@@ -40,7 +40,7 @@ routes.
 | ----------------------------------- | -------------------------------------------------------------- |
 | `pnpm web:dev`                      | Start the app development server                               |
 | `pnpm web:check`                    | Run app formatting, lint, and TypeScript checks                |
-| `pnpm web:test`                     | Run content contract tests                                     |
+| `pnpm web:test`                     | Run the app's unit and content tests                           |
 | `pnpm web:build`                    | Build, prerender, and generate the service worker              |
 | `pnpm build`                        | Production build entry point                                   |
 | `pnpm version:check`                | Print current project version without changing it              |
@@ -57,8 +57,9 @@ parity; see [architecture.md](architecture.md#legacy-static-pages).
 
 For a new feature, prefer this sequence:
 
-1. Put a route in `apps/web/src/routes` and reusable components under `apps/web/src/components`.
-2. Keep data access and validation in `apps/web/src/content`; validate JSON at the boundary.
+1. Put the page, its components, data loading and tests in `apps/web/src/features/<domain>/`,
+   and a thin route in `apps/web/src/routes` that renders it.
+2. Validate JSON where the feature loads it, with a Zod schema and `parseContent`.
 3. Use shared route links, localization, and layout components rather than duplicating them.
 4. Run `pnpm web:check`, `pnpm web:test`, and `pnpm build` for app or deployment changes.
 5. Open a pull request into `develop` and describe any content sources or verification limits.

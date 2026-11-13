@@ -1,6 +1,7 @@
 import type { MDXContent } from 'mdx/types'
-import { resolveDocument, serviceDocumentSchema } from '@/content/documents'
-import { parseContent } from '@/content/schemas'
+import type { z } from 'zod'
+import { resolveDocument } from './documents'
+import { parseContent } from './schemas'
 import { baseLocale, getLocale, type Locale } from '@/paraglide/runtime'
 
 type DocumentModule = { default: MDXContent; frontmatter?: unknown }
@@ -31,17 +32,17 @@ export function loadDocumentModule(path: string): Promise<DocumentModule> {
 }
 
 /**
- * The service guide for a slug in the current language (English when it has no translation),
- * with its validated frontmatter and the languages it exists in.
+ * A document in the current language (English when it has no translation), with its
+ * frontmatter validated against `schema` and the languages it exists in.
  */
-export async function loadServiceDocument(slug: string) {
-  const found = resolveDocument(paths, 'services', slug, getLocale(), baseLocale)
+export async function loadDocument<T>(collection: string, slug: string, schema: z.ZodType<T>) {
+  const found = resolveDocument(paths, collection, slug, getLocale(), baseLocale)
   if (!found) return undefined
   const module = await loadDocumentModule(found.path)
   return {
     path: found.path,
     locale: found.locale as Locale,
     locales: found.locales as Locale[],
-    meta: parseContent(serviceDocumentSchema, module.frontmatter, found.path),
+    meta: parseContent(schema, module.frontmatter, found.path),
   }
 }

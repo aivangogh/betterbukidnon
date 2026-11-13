@@ -1,5 +1,3 @@
-import { z } from 'zod'
-
 /**
  * Documents: pages read top to bottom, written in MDX at
  * `content/<collection>/<slug>/<locale>.mdx` (see docs/content-guide.md).
@@ -20,25 +18,6 @@ export const blockNames = [
   'Stats',
 ] as const
 export type BlockName = (typeof blockNames)[number]
-
-export const serviceDocumentSchema = z
-  .object({
-    /** The page heading. */
-    title: z.string().min(1),
-    /** The breadcrumb and the browser/search title, when shorter than `title`. */
-    shortTitle: z.string().min(1),
-    /** Meta description for search results and link previews. */
-    description: z.string().min(50).max(300),
-    /** The line under the heading. */
-    summary: z.string().min(1),
-    badge: z.string().min(1),
-    /** Bootstrap Icons name for the badge. */
-    icon: z.string().min(1),
-    /** The service category the page belongs to, for the breadcrumb. */
-    category: z.string().min(1),
-  })
-  .strict()
-export type ServiceDocument = z.infer<typeof serviceDocumentSchema>
 
 /** `…/content/services/pswdo/fil.mdx` -> { collection: 'services', slug: 'pswdo', locale: 'fil' } */
 export function parseDocumentPath(path: string) {

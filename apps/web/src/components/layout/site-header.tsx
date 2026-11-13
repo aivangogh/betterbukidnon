@@ -1,9 +1,9 @@
 import { Link, useRouterState } from '@tanstack/react-router'
 import { useEffect, useRef, useState } from 'react'
 import logoUrl from '@/assets/logo/better-bukidnon-logo.svg?url'
-import { LanguageMenu } from '@/components/i18n/language-menu'
+import { LanguageMenu } from './language-menu'
 import { Icon } from '@/components/ui/icon'
-import { primaryNavigation, type NavItem } from '@/content/navigation'
+import { primaryNavigation, type NavItem } from '@/config/navigation'
 import { cn } from '@/lib/utils'
 import { m } from '@/paraglide/messages'
 

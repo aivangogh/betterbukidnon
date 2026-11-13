@@ -1,6 +1,6 @@
 import { Link, useRouter } from '@tanstack/react-router'
 import { Fragment } from 'react'
-import type { InternalNavLink } from '@/content/navigation'
+import type { InternalNavLink } from '@/config/navigation'
 import { localizePath } from '@/lib/i18n'
 import { scriptJson } from '@/lib/seo'
 import { breadcrumbStructuredData } from '@/lib/structured-data'

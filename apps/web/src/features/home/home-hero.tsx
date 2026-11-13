@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router'
-import { ServiceSearchBox } from '@/components/services/service-search-box'
+import { ServiceSearchBox } from '@/features/services/service-search-box'
 import { Icon } from '@/components/ui/icon'
 import { cn } from '@/lib/utils'
 import { buttonBase } from './home-ui'

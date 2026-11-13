@@ -1,5 +1,5 @@
 import { Icon } from '@/components/ui/icon'
-import { hotlineBarItems } from '@/content/navigation'
+import { hotlineBarItems } from '@/config/navigation'
 import { cn } from '@/lib/utils'
 
 function HotlineLinks({ copy = false }: { copy?: boolean }) {

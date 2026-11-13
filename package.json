@@ -33,7 +33,7 @@
     "web:preview": "cd apps/web && vp preview",
     "web:typecheck": "pnpm web:messages && vp check --no-fmt --no-lint apps/web",
     "web:check": "pnpm web:messages && vp check apps/web",
-    "web:test": "pnpm web:messages && vp test run apps/web/src",
+    "web:test": "pnpm web:messages && cd apps/web && vp test run",
     "package": "bash scripts/package-cpanel.sh --build",
     "package:only": "bash scripts/package-cpanel.sh",
     "web:messages": "tsx scripts/compile-messages.ts",

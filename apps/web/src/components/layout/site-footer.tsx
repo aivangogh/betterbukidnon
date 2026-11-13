@@ -9,7 +9,7 @@ import {
   volunteerEmail,
   type ExternalNavLink,
   type InternalNavLink,
-} from '@/content/navigation'
+} from '@/config/navigation'
 import versionData from '../../../../../version.json'
 import { m } from '@/paraglide/messages'
 

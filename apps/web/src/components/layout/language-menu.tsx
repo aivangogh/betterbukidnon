@@ -3,11 +3,18 @@ import { useEffect, useId, useRef, useState } from 'react'
 import { Icon } from '@/components/ui/icon'
 import { localizePath } from '@/lib/i18n'
 import { cn } from '@/lib/utils'
-import { locales } from '@/paraglide/runtime'
-import { localeNames, useLocale } from './locale-provider'
+import { getLocale, locales, type Locale } from '@/paraglide/runtime'
+
+/** Names shown in the language menu, in each language's own spelling. */
+export const localeNames: Record<Locale, string> = {
+  en: 'English',
+  fil: 'Filipino',
+  ceb: 'Cebuano (Binisaya)',
+}
 
 export function LanguageMenu() {
-  const { locale } = useLocale()
+  // The page's language comes from its URL (/, /fil/..., /ceb/...), so it is fixed for a render.
+  const locale = getLocale()
   // The router location is the unprefixed route path, e.g. /services/health.
   const path = useRouterState({ select: (state) => state.location.href })
   const [open, setOpen] = useState(false)
