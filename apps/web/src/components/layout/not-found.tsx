@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { SiteLink } from '@/components/ui/site-link'
 import { m } from '@/paraglide/messages'
 
@@ -33,5 +34,18 @@ export function NotFound() {
         </div>
       </div>
     </section>
+  )
+}
+
+/**
+ * The router's not-found page. Routes render inside a Suspense boundary (from the root
+ * Outlet) but not-found pages do not; add one so the prerendered 404.html, which comes from
+ * the /404 route, hydrates at any URL.
+ */
+export function RouterNotFound() {
+  return (
+    <Suspense>
+      <NotFound />
+    </Suspense>
   )
 }

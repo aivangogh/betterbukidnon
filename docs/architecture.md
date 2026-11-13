@@ -212,8 +212,15 @@ bundle to `apps/web/dist/server`; only the client directory is deployed because 
 prerendered. `wrangler.jsonc` points Cloudflare static assets at `apps/web/dist/client`.
 
 The client output contains the prerendered route HTML, hashed assets, web manifest, icons,
-static `403.html`, `404.html`, and `500.html` fallbacks, and generated `sw.js` plus its Workbox
-runtime. The post-build worker generator is TypeScript in `scripts/generate-web-sw.ts`.
+static `403.html` and `500.html` fallbacks, and generated `sw.js` plus its Workbox runtime.
+`404.html` (and `fil/404.html`, `ceb/404.html`) are prerendered from the `/404` route, the
+same page the router shows for unknown URLs inside the app.
+
+The service worker (`scripts/generate-web-sw.ts`) precaches the English pages under their
+URLs (`/services`, matched without the query string) and caches Filipino and Cebuano pages
+as they are visited. Any other navigation goes to the network, so unknown URLs get the 404
+page; without a connection it shows `offline.html`, a script-free copy of the `/offline`
+page that can be shown at any URL.
 
 Cloudflare has development, production, and branch preview environments. Domain routing and
 the static asset path are configured in `wrangler.jsonc`; consult [deployment.md](deployment.md)
