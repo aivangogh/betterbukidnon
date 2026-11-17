@@ -1,5 +1,7 @@
 # Legacy static-site URLs (*.html) -> the app's clean URLs. Generated once from the legacy pages.
 /accessibility/index.html /accessibility 301
+/barangays/index.html /barangays 301
+/barangays/profile/index.html /barangays/profile 301
 /admin/news-editor.html /admin/news-editor 301
 /budget/index.html /budget 301
 /contact/index.html /contact 301
