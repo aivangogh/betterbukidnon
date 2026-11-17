@@ -78,7 +78,7 @@ wrangler.jsonc                Cloudflare static asset directory and environment 
 
 The root still holds the legacy static site (page folders such as `services/` and `faq/`,
 `index.html`, `assets/`). It is not deployed; see
-[Legacy static pages](#legacy-static-pages).
+[Legacy static pages](#legacy-static-pages) and the [cutover readiness checklist](cutover-readiness.md).
 
 ## App structure
 

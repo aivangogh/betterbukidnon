@@ -42,7 +42,15 @@ export const primaryNavigation: readonly NavItem[] = [
       service(m.nav_environment, 'environment'),
     ],
   },
-  { label: m.nav_government, sections: ['government'], link: linkOptions({ to: '/government' }) },
+  {
+    label: m.nav_government,
+    sections: ['government', 'lgus', 'barangays'],
+    link: linkOptions({ to: '/government' }),
+    children: [
+      { label: m.dir_lgus, link: linkOptions({ to: '/lgus' }) },
+      { label: m.dir_barangays, link: linkOptions({ to: '/barangays' }) },
+    ],
+  },
   { label: m.nav_statistics, sections: ['statistics'], link: linkOptions({ to: '/statistics' }) },
   {
     label: m.nav_legislative,

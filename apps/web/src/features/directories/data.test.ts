@@ -3,6 +3,7 @@ import {
   barangays,
   bukidnonBoundary,
   findBarangay,
+  findBarangayByPsgc,
   findBarangaysForLgu,
   findLgu,
   lgus,
@@ -33,6 +34,8 @@ describe('LGU and barangay directory data', () => {
     expect(directoryPaths.lgu('baungon')).toBe('/lgus/baungon')
     expect(barangayPath(balintad!)).toBe('/barangays/baungon/balintad')
     expect(directoryBarangaySlug('baungon', 'balintad')).toBe('baungon/balintad')
+    expect(findBarangayByPsgc(balintad!.psgc_code)).toBe(balintad)
+    expect(findBarangayByPsgc(balintad!.psgc_9digit)).toBe(balintad)
   })
 
   it('rejects a malformed compound barangay slug', () => {
